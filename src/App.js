@@ -12,9 +12,7 @@ class App extends React.Component {
     user: {},
   };
   componentDidMount() {
-    fetch("http://localhost:3000/api/v1/users").then((res) =>
-      res.json().then((data) => console.log(data))
-    );
+    console.log("componentdidMount");
   }
   handleLoginSubmit = (event) => {
     console.log("handleLoginSubmit");
