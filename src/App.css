@@ -3,7 +3,14 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.map-squere {
+  float: left;
+  position: relative;
+  width: 500px;
+  height: 500px;
+  box-sizing: border-box;
+  border: none;
+}
 .form-grid {
   border: 3px solid #f1f1f1;
   text-align: center;
@@ -25,7 +32,17 @@ input[type="password"] {
   box-sizing: border-box;
   text-align: left;
 }
-button {
+.x-btn {
+  border-radius: 8px;
+  padding: 20px;
+  float: right;
+  cursor: pointer;
+  color: red;
+  border: none;
+  font-size: 16px;
+  background: none;
+}
+.btn {
   background-color: #51d6cb;
   color: white;
   padding: 14px;

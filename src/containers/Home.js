@@ -1,4 +1,7 @@
 import React from "react";
+// import GoogleApiWrapper from "./MapContainer";
+// import AddToCalendar from "./AddToCalendar";
+
 import { Link } from "react-router-dom";
 
 export default class Home extends React.Component {
@@ -16,12 +19,20 @@ export default class Home extends React.Component {
           <p>See all your upcoming appointments. </p>
           <Link to="/login">
             {" "}
-            <button> Login </button>
+            <button className="btn"> Login </button>
           </Link>{" "}
           <Link to="/signup">
             {" "}
-            <button> Signup </button>
+            <button className="btn"> Signup </button>
           </Link>
+          {/* <div>
+            <AddToCalendar />
+          </div> */}
+          {/* <div>
+            <div className="map-squere">
+              <GoogleApiWrapper />
+            </div>
+          </div> */}
         </div>
       </div>
     );

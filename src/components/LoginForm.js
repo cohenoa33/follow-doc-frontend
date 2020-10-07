@@ -20,8 +20,10 @@ export default class LoginForm extends React.Component {
             <button className="x-btn"> x </button>
           </Link>{" "}
           <br />
+          <br />
+          <br />
           <div className="form-container">
-            <form onSubmit={this.props.handleLoginSubmit}>
+            <form onSubmit={(e) => this.props.handleLoginSubmit(e, this.state)}>
               <input
                 onChange={this.handleChange}
                 type="text"
@@ -37,7 +39,7 @@ export default class LoginForm extends React.Component {
                 placeholder="Password"
               ></input>
               <br />
-              <button>Login</button>
+              <button className="btn">Login</button>
             </form>
             <div>
               <br></br>

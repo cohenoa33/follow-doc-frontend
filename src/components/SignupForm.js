@@ -20,6 +20,8 @@ export default class SignupForm extends React.Component {
             <button className="x-btn"> x </button>
           </Link>{" "}
           <br />
+          <br />
+          <br />
           <div className="form-container">
             <form onSubmit={this.props.handleLoginSubmit}>
               <input
@@ -49,7 +51,7 @@ export default class SignupForm extends React.Component {
                 value={this.state.password_confirmation}
               />
               <br />
-              <button>Signup</button>
+              <button className="btn">Signup</button>
             </form>
             <div>
               <br></br>
