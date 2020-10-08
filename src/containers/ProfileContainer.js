@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch, Link, NavLink, withRouter } from "react-router-dom";
-
+import { connect } from "react-redux";
 class ProfileContainer extends React.Component {
   state = {
     user: {},
@@ -34,5 +34,10 @@ class ProfileContainer extends React.Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
 
-export default withRouter(ProfileContainer);
+export default connect(mapStateToProps)(withRouter(ProfileContainer));

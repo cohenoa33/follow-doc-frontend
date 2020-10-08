@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch, Link, NavLink, withRouter } from "react-router-dom";
 import "./App.css";
+import { connect } from "react-redux";
 
 import api from "./services/api";
 
@@ -9,12 +10,9 @@ import SignupForm from "./components/SignupForm";
 import Navbar from "./components/Navbar";
 import Home from "./containers/Home";
 import ProfileContainer from "./containers/ProfileContainer";
+import { setLogin, setLogout } from "./actions";
 
 class App extends React.Component {
-  state = {
-    user: {},
-  };
-
   handleLoginSubmit = (e, user) => {
     e.preventDefault();
     api.auth
@@ -43,18 +41,8 @@ class App extends React.Component {
   handleAuthResponse = (data) => {
     if (data.user) {
       localStorage.token = data.jwt;
-      this.setState(
-        {
-          user: {
-            id: data.user.id,
-            username: data.user.username,
-            token: data.jwt,
-          },
-        },
-        () => {
-          this.props.history.push("/profile");
-        }
-      );
+      this.props.setLogin(data);
+      this.props.history.push("/profile");
     } else {
       alert(data.error);
     }
@@ -62,7 +50,7 @@ class App extends React.Component {
 
   handleLogout = () => {
     localStorage.removeItem("token");
-    this.setState({ user: {} });
+    this.props.setLogin();
   };
   renderHomePage = () => <Home />;
 
@@ -79,10 +67,8 @@ class App extends React.Component {
     />
   );
 
-  renderProfile = () => <ProfileContainer user={this.state.user} />;
-  renderNavBar = () => (
-    <Navbar handleLogout={this.handleLogout} user={this.state.user} />
-  );
+  renderProfile = () => <ProfileContainer user={this.props.user} />;
+  renderNavBar = () => <Navbar handleLogout={this.handleLogout} />;
 
   render() {
     return (
@@ -98,5 +84,16 @@ class App extends React.Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setLogin: (user) => dispatch(setLogin(user)),
+    setLogout: () => dispatch(setLogout()),
+  };
+};
 
-export default withRouter(App);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
