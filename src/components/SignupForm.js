@@ -5,10 +5,13 @@ export default class SignupForm extends React.Component {
   state = {
     username: "",
     password: "",
+    email: "",
+    password_confirmation: "",
   };
 
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+    console.log(this.state);
   };
 
   render() {
@@ -23,29 +26,33 @@ export default class SignupForm extends React.Component {
           <br />
           <br />
           <div className="form-container">
-            <form onSubmit={this.props.handleLoginSubmit}>
+            <form
+              onSubmit={(e) => this.props.handleSignUpSubmit(e, this.state)}
+            >
               <input
-                onChange={this.handleChange}
                 type="text"
+                onChange={this.handleChange}
                 value={this.state.username}
                 name="username"
                 placeholder="username"
               ></input>
               <input
                 type="text"
+                onChange={this.handleChange}
                 name="email"
                 placeholder="Email"
                 value={this.state.email}
               />
               <input
-                onChange={this.handleChange}
                 type="password"
+                onChange={this.handleChange}
                 value={this.state.password}
                 name="password"
                 placeholder="Password"
               ></input>
               <input
                 type="password"
+                onChange={this.handleChange}
                 name="password_confirmation"
                 placeholder="password Confirmation"
                 value={this.state.password_confirmation}
