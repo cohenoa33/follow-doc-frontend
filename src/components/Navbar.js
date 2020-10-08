@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-const Navbar = (props) => {
-  console.log(props.user.token);
+const Navbar = ({ user, handleLogout }) => {
   return (
     <div className="nav-bar">
-      {props.user.token ? (
-        <Link to="/" className="navbar-list" onClick={props.handleLogout}>
+      hello
+      {user ? (
+        <Link to="/" className="navbar-list" onClick={handleLogout}>
           {" "}
           Logout{" "}
         </Link>
@@ -14,5 +15,9 @@ const Navbar = (props) => {
     </div>
   );
 };
-
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user.user,
+  };
+};
+export default connect(mapStateToProps)(Navbar);
