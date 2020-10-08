@@ -8,7 +8,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <div>
-        <div className="form-grid">
+        <div className="home-page">
           <h1> Welcome to FollowDoc</h1>
           <h3>
             {" "}
