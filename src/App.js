@@ -41,6 +41,7 @@ class App extends React.Component {
   handleAuthResponse = (data) => {
     if (data.user) {
       localStorage.token = data.jwt;
+
       this.props.setLogin(data);
       this.props.history.push("/profile");
     } else {
@@ -50,7 +51,7 @@ class App extends React.Component {
 
   handleLogout = () => {
     localStorage.removeItem("token");
-    this.props.setLogin();
+    this.props.setLogout();
   };
   renderHomePage = () => <Home />;
 
@@ -67,7 +68,7 @@ class App extends React.Component {
     />
   );
 
-  renderProfile = () => <ProfileContainer user={this.props.user} />;
+  renderProfile = () => <ProfileContainer />;
   renderNavBar = () => <Navbar handleLogout={this.handleLogout} />;
 
   render() {

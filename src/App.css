@@ -53,6 +53,25 @@ input[type="password"] {
   width: 25%;
 }
 
+.problems-list-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.problems-list-table th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.problems-list-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.problems-list-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #51d6cb;
+  color: black;
+}
 * {
   padding: 6px;
   margin: 0 auto;

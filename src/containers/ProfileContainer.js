@@ -1,42 +1,35 @@
 import React from "react";
 import { Route, Switch, Link, NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-class ProfileContainer extends React.Component {
-  state = {
-    user: {},
-    problems: [],
-  };
 
+import Problems from "../components/Problems";
+
+class ProfileContainer extends React.Component {
   componentDidMount() {
-    if (localStorage.token) {
-      fetch("http://localhost:3000/api/v1/persist", {
-        headers: {
-          Authorization: `Bearer ${localStorage.token}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((json) => {
-          this.setState({
-            user: { name: json.user.username, id: json.user.id },
-            problems: json.user.problems,
-          });
-        });
+    if (this.props.user.jwt) {
+      console.log(this.props.id, "Profile");
     } else {
       this.props.history.push("/");
     }
   }
 
+  renderProblems = () => <Problems />;
+
   render() {
     return (
       <div>
-        <div>Profile Page</div>
+        <div>Profile Page </div>
+        {this.renderProblems()}
       </div>
     );
   }
 }
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     user: state.user,
+    id: state.user.user.id,
+    problems: state.user.problems,
   };
 };
 

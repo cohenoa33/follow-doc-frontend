@@ -5,7 +5,7 @@ export const setLogin = (user) => {
   };
 };
 
-export const setLogout = (user) => {
+export const setLogout = () => {
   return {
     type: "USER_LOGOUT",
     payload: {},
