@@ -14,8 +14,6 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         user: action.payload.user,
         problems: action.payload.user.user.problems,
-        dependents: action.payload.user.user.dependents,
-        comments: action.payload.user.user.comments,
       };
     }
     case "USER_LOGOUT": {

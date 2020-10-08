@@ -23,13 +23,6 @@ const signup = (user) => {
     body: JSON.stringify({ user }),
   }).then((res) => res.json());
 };
-const problemsList = (user) => {
-  return fetch(`${API_ROOT}/problems`, {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify({ user }),
-  }).then((res) => res.json());
-};
 
 export default {
   auth: {
