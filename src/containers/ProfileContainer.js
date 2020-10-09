@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Problems from "../components/Problems";
 import Comments from "../components/Comments";
 import Dependent from "../components/Dependent";
+import NewProblem from "../components/NewProblem";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -13,10 +14,10 @@ class ProfileContainer extends React.Component {
     }
   }
 
-  handelNewProblem = () => this.props.history.push("/newproblem");
   renderProblems = () => <Problems />;
   renderComments = () => <Comments />;
   renderAddNewDependent = () => <Dependent />;
+  renderAddNewProblem2 = () => <NewProblem />;
 
   render() {
     return (
@@ -27,10 +28,7 @@ class ProfileContainer extends React.Component {
           <div className="column-50">
             {this.renderComments()}
             <div> {this.renderAddNewDependent()}</div>
-
-            <button onClick={this.handelNewProblem} className="btn">
-              Add New Problem
-            </button>
+            <div> {this.renderAddNewProblem2()}</div>
           </div>
         </div>
       </div>

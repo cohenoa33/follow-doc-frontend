@@ -30,17 +30,18 @@ export const addNewDependent = (newDependent, userID, e) => {
       .addDependent({ name: newDependent, user_id: userID })
       .then((data) => dispatch({ type: "ADD_DEP", payload: data }));
   };
-  // e.preventDefault();
-  // return (dispatch) => {
-  //   return api.auth
-  //     .addDependent({ name: newDependent, user_id: userID })
-  //     .then((data) => dispatch({ type: "ADD_DEP", payload: data }));
-  // };
 };
 
-export const addNewProblem = (newProblem) => {
-  return {
-    type: "ADD_PROBLEM",
-    payload: { newProblem },
+export const addNewProblem = (newProblem, e) => {
+  const { name, description, dependent_id } = newProblem;
+  e.preventDefault();
+  return (dispatch) => {
+    return api.auth
+      .addProblem({
+        name: name,
+        dependent_id: dependent_id,
+        description: description,
+      })
+      .then((data) => dispatch({ type: "ADD_PROBLEM", payload: data }));
   };
 };
