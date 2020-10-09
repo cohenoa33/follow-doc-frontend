@@ -13,12 +13,12 @@ class ProfileContainer extends React.Component {
     }
   }
 
+  handelNewProblem = () => this.props.history.push("/newproblem");
   renderProblems = () => <Problems />;
   renderComments = () => <Comments />;
   renderAddNewDependent = () => <Dependent />;
 
   render() {
-    console.log(this.props.dependents);
     return (
       <div>
         <div>Profile Page </div>
@@ -28,7 +28,9 @@ class ProfileContainer extends React.Component {
             {this.renderComments()}
             <div> {this.renderAddNewDependent()}</div>
 
-            <button className="btn"> Add New Problem </button>
+            <button onClick={this.handelNewProblem} className="btn">
+              Add New Problem
+            </button>
           </div>
         </div>
       </div>

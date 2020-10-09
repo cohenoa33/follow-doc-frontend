@@ -7,6 +7,7 @@ import api from "./services/api";
 
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
+import NewProblem from "./components/NewProblem";
 import Navbar from "./components/Navbar";
 import Home from "./containers/Home";
 import ProfileContainer from "./containers/ProfileContainer";
@@ -70,6 +71,7 @@ class App extends React.Component {
 
   renderProfile = () => <ProfileContainer />;
   renderNavBar = () => <Navbar handleLogout={this.handleLogout} />;
+  renderNewProblem = () => <NewProblem />;
 
   render() {
     return (
@@ -80,6 +82,7 @@ class App extends React.Component {
           <Route path="/login" component={this.renderLogin} />
           <Route path="/signup" component={this.renderSignup} />
           <Route path="/profile" component={this.renderProfile} />
+          <Route path="/newproblem" component={this.renderNewProblem} />
         </Switch>
       </div>
     );

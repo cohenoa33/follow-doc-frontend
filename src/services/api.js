@@ -30,11 +30,19 @@ const addDependent = (newDependent) => {
     body: JSON.stringify({ dependent: newDependent }),
   }).then((res) => res.json());
 };
+const addProblem = (problem) => {
+  return fetch(`${API_ROOT}/problems`, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify({ problem: problem }),
+  }).then((res) => res.json());
+};
 
 export default {
   auth: {
     login: login,
     signup: signup,
     addDependent: addDependent,
+    addProblem: addProblem,
   },
 };

@@ -30,3 +30,10 @@ export const addNewDependent = (newDependent, userID) => {
       .then((data) => dispatch({ type: "ADD_DEP", payload: data }));
   };
 };
+
+export const addNewProblem = (newProblem) => {
+  return {
+    type: "ADD_PROBLEM",
+    payload: { newProblem },
+  };
+};

@@ -21,7 +21,6 @@ export const userReducer = (state = initialState, action) => {
       };
     }
     case "USER_LOGOUT": {
-      console.log("User logged out");
       return {
         ...state,
         user: {},
@@ -35,6 +34,13 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         dependents: [...state.dependents, action.payload],
+      };
+    }
+
+    case "ADD_PROBLEM": {
+      return {
+        ...state,
+        problems: [...state.problems, action.payload],
       };
     }
 
