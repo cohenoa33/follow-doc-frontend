@@ -17,7 +17,7 @@ class ProfileContainer extends React.Component {
   renderProblems = () => <Problems />;
   renderComments = () => <Comments />;
   renderAddNewDependent = () => <Dependent />;
-  renderAddNewProblem2 = () => <NewProblem />;
+  renderAddNewProblem = () => <NewProblem />;
 
   render() {
     return (
@@ -28,7 +28,7 @@ class ProfileContainer extends React.Component {
           <div className="column-50">
             {this.renderComments()}
             <div> {this.renderAddNewDependent()}</div>
-            <div> {this.renderAddNewProblem2()}</div>
+            <div> {this.renderAddNewProblem()}</div>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
-    problems: state.user.problems,
+    problems: state.problems,
     dependents: state.dependents,
   };
 };

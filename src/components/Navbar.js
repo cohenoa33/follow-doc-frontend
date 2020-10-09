@@ -7,10 +7,19 @@ const Navbar = ({ user, handleLogout }) => {
     <div className="nav-bar">
       hello
       {user ? (
-        <Link to="/" className="navbar-list" onClick={handleLogout}>
-          {" "}
-          Logout{" "}
-        </Link>
+        <div>
+          <Link to="/" className="navbar-list" onClick={handleLogout}>
+            Logout
+          </Link>
+          <Link to="/problems" className="navbar-list">
+            {" "}
+            All Problems{" "}
+          </Link>
+          <Link to="/profile" className="navbar-list">
+            {" "}
+            Profile{" "}
+          </Link>
+        </div>
       ) : null}
     </div>
   );

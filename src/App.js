@@ -4,6 +4,7 @@ import "./App.css";
 import { connect } from "react-redux";
 
 import api from "./services/api";
+import { setLogin, setLogout } from "./actions";
 
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
@@ -11,7 +12,7 @@ import NewProblem from "./components/NewProblem";
 import Navbar from "./components/Navbar";
 import Home from "./containers/Home";
 import ProfileContainer from "./containers/ProfileContainer";
-import { setLogin, setLogout } from "./actions";
+import ProblemsContainer from "./containers/ProblemsContainer";
 
 class App extends React.Component {
   handleLoginSubmit = (e, user) => {
@@ -72,6 +73,7 @@ class App extends React.Component {
   renderProfile = () => <ProfileContainer />;
   renderNavBar = () => <Navbar handleLogout={this.handleLogout} />;
   renderNewProblem = () => <NewProblem />;
+  renderAllProblem = () => <ProblemsContainer />;
 
   render() {
     return (
@@ -83,6 +85,7 @@ class App extends React.Component {
           <Route path="/signup" component={this.renderSignup} />
           <Route path="/profile" component={this.renderProfile} />
           <Route path="/newproblem" component={this.renderNewProblem} />
+          <Route path="/problems" component={this.renderAllProblem} />
         </Switch>
       </div>
     );

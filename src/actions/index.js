@@ -6,13 +6,18 @@ export const setLogin = (user) => {
       index ===
       self.findIndex((d) => d.id === dependent.id && d.name === dependent.name)
   );
+  let sortDependents = dependents.sort(function (a, b) {
+    return a.name === b.name ? 0 : a.name < b.name ? -1 : 1;
+  });
+
+  debugger;
   let problems = user.user.problems;
   let jwt = user.jwt;
   let id = user.user.id;
 
   return {
     type: "USER_LOGIN",
-    payload: { dependents, user, problems, jwt, id },
+    payload: { sortDependents, user, problems, jwt, id },
   };
 };
 

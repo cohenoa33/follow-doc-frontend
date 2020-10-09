@@ -15,7 +15,7 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         user: action.payload.user,
         problems: action.payload.problems,
-        dependents: action.payload.dependents,
+        dependents: action.payload.sortDependents,
         jwt: action.payload.jwt,
         id: action.payload.id,
       };
