@@ -8,6 +8,13 @@ const headers = {
   Authorization: `Bearers ${token}`,
 };
 
+const reauth = () => {
+  return fetch(`${API_ROOT}/reauth`, {
+    method: "GET",
+    headers: headers,
+  }).then((res) => res.json());
+};
+
 const login = (user) => {
   return fetch(`${API_ROOT}/login`, {
     method: "POST",
@@ -60,6 +67,7 @@ export default {
     addProblem: addProblem,
     oneProblem: oneProblem,
     addComment: addComment,
+    reauth: reauth,
   },
 };
 

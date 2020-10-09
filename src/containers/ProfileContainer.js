@@ -9,7 +9,7 @@ import NewProblem from "../components/NewProblem";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    if (!this.props.user.jwt) {
+    if (!localStorage.token) {
       this.props.history.push("/");
     }
   }

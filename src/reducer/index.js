@@ -19,6 +19,7 @@ export const userReducer = (state = initialState, action) => {
         dependents: action.payload.sortDependents,
         jwt: action.payload.jwt,
         id: action.payload.id,
+        comments: action.payload.comments,
       };
     }
     case "USER_LOGOUT": {

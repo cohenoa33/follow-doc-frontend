@@ -60,14 +60,6 @@ class OneProblem extends React.Component {
       minute: "2-digit",
       second: "2-digit",
     }).format(today);
-    let comment = {
-      created_at: time,
-      id: 0,
-      problem_id: this.state.problem.id,
-      status_open: this.state.newComment.status_open,
-      text: this.state.newComment.text,
-      updated_at: time,
-    };
 
     this.setState({
       ...this.state,
@@ -83,6 +75,7 @@ class OneProblem extends React.Component {
         },
       ],
     });
+    this.props.addNewComment(this.state.newComment, e, this.state.problem.id);
   };
 
   render() {
@@ -100,17 +93,7 @@ class OneProblem extends React.Component {
           <div className="problem-container-buttons">
             <button className="btn">Upload File</button>
             <button className="btn">Add New Appointment</button>
-            <form
-              onSubmit={
-                ((e) =>
-                  this.props.addNewComment(
-                    this.state.newComment,
-                    e,
-                    this.state.problem.id
-                  ),
-                (e) => this.updateOneProblemPage(e))
-              }
-            >
+            <form onSubmit={(e) => this.updateOneProblemPage(e)}>
               <label>
                 {" "}
                 Status

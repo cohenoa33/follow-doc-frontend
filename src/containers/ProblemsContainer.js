@@ -9,7 +9,7 @@ class ProblemsContainer extends React.Component {
     filter: "all",
   };
   componentDidMount() {
-    if (!this.props.user.jwt) {
+    if (!localStorage.token) {
       this.props.history.push("/");
     }
   }

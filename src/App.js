@@ -1,10 +1,17 @@
 import React from "react";
-import { Route, Switch, Link, NavLink, withRouter } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  Redirect,
+  Link,
+  NavLink,
+  withRouter,
+} from "react-router-dom";
 import "./App.css";
 import { connect } from "react-redux";
 
 import api from "./services/api";
-import { setLogin, setLogout } from "./actions";
+import { reauth, setLogin, setLogout } from "./actions";
 
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
@@ -40,6 +47,19 @@ class App extends React.Component {
       }
     });
   };
+  componentDidMount() {
+    if (localStorage.token) {
+      api.auth.reauth().then((data) => {
+        if (!data.error) {
+          this.props.setLogin(data);
+          // <Redirect to="/profile"></Redirect>;
+          this.props.history.push("/profile");
+        } else {
+          alert(data.error);
+        }
+      });
+    }
+  }
 
   handleAuthResponse = (data) => {
     if (data.user) {
