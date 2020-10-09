@@ -1,8 +1,21 @@
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
   }
 }
+
+.column-50 {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .map-squere {
   float: left;
   position: relative;
@@ -41,7 +54,12 @@ input[type="password"] {
   border: none;
   font-size: 16px;
   background: none;
+  outline: none;
 }
+.x-btn:focus {
+  outline: none;
+}
+
 .btn {
   background-color: #51d6cb;
   color: white;
@@ -53,9 +71,29 @@ input[type="password"] {
   width: 25%;
 }
 
+.problems-list-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.problems-list-table th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.problems-list-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.problems-list-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #51d6cb;
+  color: black;
+}
 * {
   padding: 6px;
   margin: 0 auto;
   text-align: center;
   border-radius: 5px;
+  box-sizing: border-box;
 }

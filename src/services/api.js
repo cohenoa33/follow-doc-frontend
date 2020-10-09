@@ -23,10 +23,18 @@ const signup = (user) => {
     body: JSON.stringify({ user }),
   }).then((res) => res.json());
 };
+const addDependent = (newDependent) => {
+  return fetch(`${API_ROOT}/dependents`, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify({ dependent: newDependent }),
+  }).then((res) => res.json());
+};
 
 export default {
   auth: {
     login: login,
     signup: signup,
+    addDependent: addDependent,
   },
 };

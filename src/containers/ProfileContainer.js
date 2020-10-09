@@ -1,35 +1,36 @@
 import React from "react";
 import { Route, Switch, Link, NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-class ProfileContainer extends React.Component {
-  state = {
-    user: {},
-    problems: [],
-  };
 
+import Problems from "../components/Problems";
+import Comments from "../components/Comments";
+import Dependent from "../components/Dependent";
+
+class ProfileContainer extends React.Component {
   componentDidMount() {
-    if (localStorage.token) {
-      fetch("http://localhost:3000/api/v1/persist", {
-        headers: {
-          Authorization: `Bearer ${localStorage.token}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((json) => {
-          this.setState({
-            user: { name: json.user.username, id: json.user.id },
-            problems: json.user.problems,
-          });
-        });
-    } else {
+    if (!this.props.user.jwt) {
       this.props.history.push("/");
     }
   }
 
+  renderProblems = () => <Problems />;
+  renderComments = () => <Comments />;
+  renderAddNewDependent = () => <Dependent />;
+
   render() {
+    console.log(this.props.dependents);
     return (
       <div>
-        <div>Profile Page</div>
+        <div>Profile Page </div>
+        <div className="row">
+          <div className="column-50">{this.renderProblems()} </div>
+          <div className="column-50">
+            {this.renderComments()}
+            <div> {this.renderAddNewDependent()}</div>
+
+            <button className="btn"> Add New Problem </button>
+          </div>
+        </div>
       </div>
     );
   }
@@ -37,6 +38,8 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    problems: state.user.problems,
+    dependents: state.dependents,
   };
 };
 
