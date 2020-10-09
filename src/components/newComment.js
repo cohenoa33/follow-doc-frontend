@@ -49,28 +49,6 @@ class OneProblem extends React.Component {
     });
   };
 
-  addNewComment = (newComment, e, id) => {
-    e.preventDefault();
-    api.auth
-      .addComment({
-        text: newComment.text,
-        status_open: newComment.status_open,
-        problem_id: id,
-      })
-      .then((data) => this.updateNewComment(data));
-  };
-
-  updateNewComment = (comment) => {
-    this.setState({
-      ...this.state,
-      comments: {
-        ...this.state.newComment,
-        comment,
-      },
-    });
-    debugger;
-  };
-
   render() {
     const { name, description } = this.state.problem;
     return (
@@ -87,7 +65,7 @@ class OneProblem extends React.Component {
             <button className="btn">Add New Appointment</button>
             <form
               onSubmit={(e) =>
-                this.addNewComment(
+                this.props.addNewComment(
                   this.state.newComment,
                   e,
                   this.state.problem.id
@@ -119,14 +97,13 @@ class OneProblem extends React.Component {
         <br />
         <div className="one-problem-comments">
           <table className="one-problem-comments-table">
-            <thead></thead>
+            <thead>Comments</thead>
             <tbody>
-              Comments
               {this.state.comments.map((comment) => (
-                <tr key={comment.id}>
+                <tr>
                   <td> {comment.text}</td>
-                  <td> {comment.updated_at.toString()}</td>
-                  <td> {comment.created_at.toString()}</td>
+                  <td> {comment.updated_at}</td>
+                  <td> {comment.created_at}</td>
                   <td> {comment.status_open ? "Open" : "Closed"}</td>
                 </tr>
               ))}
@@ -143,14 +120,14 @@ const mapStateToProps = (state) => {
     user: state.user,
   };
 };
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     addNewComment: (newComment, e, id) =>
-//       dispatch(addNewComment(newComment, e, id)),
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addNewComment: (newComment, e, id) =>
+      dispatch(addNewComment(newComment, e, id)),
+  };
+};
 
 export default connect(
-  mapStateToProps
-  //   mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(withRouter(OneProblem));

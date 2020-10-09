@@ -44,6 +44,14 @@ const oneProblem = (id) => {
   }).then((res) => res.json());
 };
 
+const addComment = (comment) => {
+  return fetch(`${API_ROOT}/comments`, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify({ comment: comment }),
+  }).then((res) => res.json());
+};
+
 export default {
   auth: {
     login: login,
@@ -51,5 +59,6 @@ export default {
     addDependent: addDependent,
     addProblem: addProblem,
     oneProblem: oneProblem,
+    addComment: addComment,
   },
 };
