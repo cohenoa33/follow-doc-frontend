@@ -4,7 +4,7 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { addNewDependent } from "../actions";
 
-class Dependent extends React.Component {
+class NewDependent extends React.Component {
   state = {
     newDependent: "",
     blockInput: false,
@@ -87,4 +87,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dependent);
+export default connect(mapStateToProps, mapDispatchToProps)(NewDependent);

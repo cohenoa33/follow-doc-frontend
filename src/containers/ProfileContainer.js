@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import Problems from "../components/Problems";
 import Comments from "../components/Comments";
-import Dependent from "../components/Dependent";
+import NewDependent from "../components/NewDependent";
 import NewProblem from "../components/NewProblem";
 
 class ProfileContainer extends React.Component {
@@ -16,7 +16,7 @@ class ProfileContainer extends React.Component {
 
   renderProblems = () => <Problems />;
   renderComments = () => <Comments />;
-  renderAddNewDependent = () => <Dependent />;
+  renderAddNewDependent = () => <NewDependent />;
   renderAddNewProblem = () => <NewProblem />;
 
   render() {
