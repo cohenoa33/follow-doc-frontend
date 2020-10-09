@@ -7,6 +7,7 @@ import { addNewDependent } from "../actions";
 class Dependent extends React.Component {
   state = {
     newDependent: "",
+    blockInput: false,
   };
 
   handleChange = (e) => {
@@ -27,25 +28,44 @@ class Dependent extends React.Component {
             <button className="x-btn" onClick={close}>
               x
             </button>
-            <div className="header"> Please Enter a New Dependent Name </div>
+            <div className="header"> </div>
             <div className="content"> </div>
             <div className="actions">
-              <label> Name</label>
-              <input
-                onChange={this.handleChange}
-                name="name"
-                type="text"
-                placeholder="New Dependent Name"
-              />
-              <button
-                className="btn"
-                onClick={() => {
-                  setTimeout(() => close(), 1000);
-                  this.props.addNewDependent(this.state.newDependent, userID);
+              <form
+                onSubmit={(e) => {
+                  this.props.addNewDependent(
+                    this.state.newDependent,
+                    userID,
+                    e
+                  );
+                  this.setState({ blockInput: true });
                 }}
               >
+                <label>Dependent Name</label>
+                {this.state.blockInput ? (
+                  <input
+                    name="name"
+                    type="text"
+                    placeholder="New Dependent Name"
+                    disabled
+                  />
+                ) : (
+                  <input
+                    onChange={this.handleChange}
+                    name="name"
+                    type="text"
+                    placeholder="New Dependent Name"
+                  />
+                )}
+                {this.state.blockInput ? null : (
+                  <button className="btn" type="submit">
+                    Add new Dependent
+                  </button>
+                )}
+              </form>
+              <button className="btn" onClick={close}>
                 {" "}
-                Save{" "}
+                Close{" "}
               </button>
             </div>
           </div>
@@ -62,8 +82,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    addNewDependent: (newDependent, userID) =>
-      dispatch(addNewDependent(newDependent, userID)),
+    addNewDependent: (newDependent, userID, e) =>
+      dispatch(addNewDependent(newDependent, userID, e)),
   };
 };
 

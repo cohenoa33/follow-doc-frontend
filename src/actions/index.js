@@ -23,12 +23,19 @@ export const setLogout = () => {
   };
 };
 
-export const addNewDependent = (newDependent, userID) => {
+export const addNewDependent = (newDependent, userID, e) => {
+  e.preventDefault();
   return (dispatch) => {
     return api.auth
       .addDependent({ name: newDependent, user_id: userID })
       .then((data) => dispatch({ type: "ADD_DEP", payload: data }));
   };
+  // e.preventDefault();
+  // return (dispatch) => {
+  //   return api.auth
+  //     .addDependent({ name: newDependent, user_id: userID })
+  //     .then((data) => dispatch({ type: "ADD_DEP", payload: data }));
+  // };
 };
 
 export const addNewProblem = (newProblem) => {
