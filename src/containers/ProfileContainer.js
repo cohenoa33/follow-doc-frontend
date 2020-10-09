@@ -38,7 +38,7 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
-    problems: state.problems,
+    problems: state.user.problems,
     dependents: state.dependents,
   };
 };

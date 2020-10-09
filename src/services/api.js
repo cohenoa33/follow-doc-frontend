@@ -62,3 +62,7 @@ export default {
     addComment: addComment,
   },
 };
+
+// {()=> this.renderNewComment(this.state.problem.id)}
+// renderNewComment = (id) => <NewComment id={id}/>
+//

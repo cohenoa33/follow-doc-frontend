@@ -30,7 +30,7 @@ class OneProblem extends React.Component {
     }
   }
 
-  handleInputChange = (e) => {
+  handleInputChange = () => {
     this.setState({
       ...this.state,
       newComment: {
@@ -49,30 +49,45 @@ class OneProblem extends React.Component {
     });
   };
 
-  addNewComment = (newComment, e, id) => {
+  updateOneProblemPage = (e) => {
     e.preventDefault();
-    api.auth
-      .addComment({
-        text: newComment.text,
-        status_open: newComment.status_open,
-        problem_id: id,
-      })
-      .then((data) => this.updateNewComment(data));
-  };
+    let today = Date.now();
+    let time = new Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    }).format(today);
+    let comment = {
+      created_at: time,
+      id: 0,
+      problem_id: this.state.problem.id,
+      status_open: this.state.newComment.status_open,
+      text: this.state.newComment.text,
+      updated_at: time,
+    };
 
-  updateNewComment = (comment) => {
     this.setState({
       ...this.state,
-      comments: {
-        ...this.state.newComment,
-        comment,
-      },
+      comments: [
+        ...this.state.comments,
+        {
+          created_at: time,
+          id: 0,
+          problem_id: this.state.problem.id,
+          status_open: this.state.newComment.status_open,
+          text: this.state.newComment.text,
+          updated_at: time,
+        },
+      ],
     });
-    debugger;
   };
 
   render() {
     const { name, description } = this.state.problem;
+    console.log(this.state.comments);
     return (
       <div>
         <div>
@@ -86,12 +101,14 @@ class OneProblem extends React.Component {
             <button className="btn">Upload File</button>
             <button className="btn">Add New Appointment</button>
             <form
-              onSubmit={(e) =>
-                this.addNewComment(
-                  this.state.newComment,
-                  e,
-                  this.state.problem.id
-                )
+              onSubmit={
+                ((e) =>
+                  this.props.addNewComment(
+                    this.state.newComment,
+                    e,
+                    this.state.problem.id
+                  ),
+                (e) => this.updateOneProblemPage(e))
               }
             >
               <label>
@@ -119,14 +136,15 @@ class OneProblem extends React.Component {
         <br />
         <div className="one-problem-comments">
           <table className="one-problem-comments-table">
-            <thead></thead>
+            <thead>
+              <div> Comments</div>
+            </thead>
             <tbody>
-              Comments
               {this.state.comments.map((comment) => (
                 <tr key={comment.id}>
                   <td> {comment.text}</td>
-                  <td> {comment.updated_at.toString()}</td>
-                  <td> {comment.created_at.toString()}</td>
+                  <td> {comment.updated_at}</td>
+                  <td> {comment.created_at}</td>
                   <td> {comment.status_open ? "Open" : "Closed"}</td>
                 </tr>
               ))}
@@ -143,14 +161,14 @@ const mapStateToProps = (state) => {
     user: state.user,
   };
 };
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     addNewComment: (newComment, e, id) =>
-//       dispatch(addNewComment(newComment, e, id)),
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addNewComment: (newComment, e, id) =>
+      dispatch(addNewComment(newComment, e, id)),
+  };
+};
 
 export default connect(
-  mapStateToProps
-  //   mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(withRouter(OneProblem));

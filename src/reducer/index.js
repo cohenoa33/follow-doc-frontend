@@ -4,6 +4,7 @@ const initialState = {
   user: {},
   problems: [],
   dependents: [],
+  comments: [],
   jwt: "",
   id: "",
 };
@@ -41,6 +42,12 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         problems: [...state.problems, action.payload],
+      };
+    }
+    case "ADD_COMMENT": {
+      return {
+        ...state,
+        comments: [...state.comments, action.payload],
       };
     }
 
