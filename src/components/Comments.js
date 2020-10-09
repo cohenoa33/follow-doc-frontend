@@ -11,7 +11,6 @@ class Comments extends React.Component {
   };
 
   render() {
-    console.log(this.props, "From Comments");
     return (
       <div>
         <h1> Comments</h1>

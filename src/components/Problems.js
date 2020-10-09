@@ -1,10 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 class Problems extends React.Component {
   render() {
-    console.log(this.props, "From Problems");
     return (
       <div>
         <h1> Problems list </h1>
