@@ -37,6 +37,12 @@ const addProblem = (problem) => {
     body: JSON.stringify({ problem: problem }),
   }).then((res) => res.json());
 };
+const oneProblem = (id) => {
+  return fetch(`${API_ROOT}/problems/${id}`, {
+    method: "GET",
+    headers: headers,
+  }).then((res) => res.json());
+};
 
 export default {
   auth: {
@@ -44,5 +50,6 @@ export default {
     signup: signup,
     addDependent: addDependent,
     addProblem: addProblem,
+    oneProblem: oneProblem,
   },
 };

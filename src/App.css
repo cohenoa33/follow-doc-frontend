@@ -15,6 +15,31 @@
   display: table;
   clear: both;
 }
+.problem-container-description {
+  float: left;
+  width: 33%;
+  border: 1px solid grey;
+}
+.problem-container-appointments {
+  width: 33%;
+  border: 1px solid grey;
+}
+.problem-container-buttons {
+  width: 33%;
+  float: right;
+  border: 1px solid grey;
+}
+.one-problem-comments-table {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.one-problem-comments-table td {
+  border: none;
+  text-align: left;
+  font-size: 14px;
+}
 
 .map-squere {
   float: left;

@@ -9,6 +9,7 @@ import { setLogin, setLogout } from "./actions";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import NewProblem from "./components/NewProblem";
+import OneProblem from "./components/OneProblem";
 import Navbar from "./components/Navbar";
 import Home from "./containers/Home";
 import ProfileContainer from "./containers/ProfileContainer";
@@ -74,6 +75,7 @@ class App extends React.Component {
   renderNavBar = () => <Navbar handleLogout={this.handleLogout} />;
   renderNewProblem = () => <NewProblem />;
   renderAllProblem = () => <ProblemsContainer />;
+  renderOneProblem = (id) => <OneProblem slug={id} />;
 
   render() {
     return (
@@ -81,11 +83,12 @@ class App extends React.Component {
         {this.renderNavBar()}
         <Switch>
           <Route exact path="/" component={this.renderHomePage} />
-          <Route path="/login" component={this.renderLogin} />
-          <Route path="/signup" component={this.renderSignup} />
-          <Route path="/profile" component={this.renderProfile} />
-          <Route path="/newproblem" component={this.renderNewProblem} />
-          <Route path="/problems" component={this.renderAllProblem} />
+          <Route exact path="/login" component={this.renderLogin} />
+          <Route exact path="/signup" component={this.renderSignup} />
+          <Route exact path="/profile" component={this.renderProfile} />
+          <Route exact path="/newproblem" component={this.renderNewProblem} />
+          <Route exact path="/problems" component={this.renderAllProblem} />
+          <Route exact path="/problems/:id" render={this.renderOneProblem} />
         </Switch>
       </div>
     );
