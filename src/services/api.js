@@ -8,6 +8,13 @@ const headers = {
   Authorization: `Bearers ${token}`,
 };
 
+const reauth = () => {
+  return fetch(`${API_ROOT}/reauth`, {
+    method: "GET",
+    headers: headers,
+  }).then((res) => res.json());
+};
+
 const login = (user) => {
   return fetch(`${API_ROOT}/login`, {
     method: "POST",
@@ -30,11 +37,40 @@ const addDependent = (newDependent) => {
     body: JSON.stringify({ dependent: newDependent }),
   }).then((res) => res.json());
 };
+const addProblem = (problem) => {
+  return fetch(`${API_ROOT}/problems`, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify({ problem: problem }),
+  }).then((res) => res.json());
+};
+const oneProblem = (id) => {
+  return fetch(`${API_ROOT}/problems/${id}`, {
+    method: "GET",
+    headers: headers,
+  }).then((res) => res.json());
+};
+
+const addComment = (comment) => {
+  return fetch(`${API_ROOT}/comments`, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify({ comment: comment }),
+  }).then((res) => res.json());
+};
 
 export default {
   auth: {
     login: login,
     signup: signup,
     addDependent: addDependent,
+    addProblem: addProblem,
+    oneProblem: oneProblem,
+    addComment: addComment,
+    reauth: reauth,
   },
 };
+
+// {()=> this.renderNewComment(this.state.problem.id)}
+// renderNewComment = (id) => <NewComment id={id}/>
+//

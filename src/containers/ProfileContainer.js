@@ -5,10 +5,11 @@ import { connect } from "react-redux";
 import Problems from "../components/Problems";
 import Comments from "../components/Comments";
 import Dependent from "../components/Dependent";
+import NewProblem from "../components/NewProblem";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    if (!this.props.user.jwt) {
+    if (!localStorage.token) {
       this.props.history.push("/");
     }
   }
@@ -16,9 +17,9 @@ class ProfileContainer extends React.Component {
   renderProblems = () => <Problems />;
   renderComments = () => <Comments />;
   renderAddNewDependent = () => <Dependent />;
+  renderAddNewProblem = () => <NewProblem />;
 
   render() {
-    console.log(this.props.dependents);
     return (
       <div>
         <div>Profile Page </div>
@@ -27,8 +28,7 @@ class ProfileContainer extends React.Component {
           <div className="column-50">
             {this.renderComments()}
             <div> {this.renderAddNewDependent()}</div>
-
-            <button className="btn"> Add New Problem </button>
+            <div> {this.renderAddNewProblem()}</div>
           </div>
         </div>
       </div>

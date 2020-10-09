@@ -1,16 +1,26 @@
 import React from "react";
-import { Route, Switch, Link, NavLink, withRouter } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  Redirect,
+  Link,
+  NavLink,
+  withRouter,
+} from "react-router-dom";
 import "./App.css";
 import { connect } from "react-redux";
 
 import api from "./services/api";
+import { reauth, setLogin, setLogout } from "./actions";
 
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
+import NewProblem from "./components/NewProblem";
+import OneProblem from "./components/OneProblem";
 import Navbar from "./components/Navbar";
 import Home from "./containers/Home";
 import ProfileContainer from "./containers/ProfileContainer";
-import { setLogin, setLogout } from "./actions";
+import ProblemsContainer from "./containers/ProblemsContainer";
 
 class App extends React.Component {
   handleLoginSubmit = (e, user) => {
@@ -37,6 +47,19 @@ class App extends React.Component {
       }
     });
   };
+  componentDidMount() {
+    if (localStorage.token) {
+      api.auth.reauth().then((data) => {
+        if (!data.error) {
+          this.props.setLogin(data);
+          // <Redirect to="/profile"></Redirect>;
+          this.props.history.push("/profile");
+        } else {
+          alert(data.error);
+        }
+      });
+    }
+  }
 
   handleAuthResponse = (data) => {
     if (data.user) {
@@ -70,6 +93,9 @@ class App extends React.Component {
 
   renderProfile = () => <ProfileContainer />;
   renderNavBar = () => <Navbar handleLogout={this.handleLogout} />;
+  renderNewProblem = () => <NewProblem />;
+  renderAllProblem = () => <ProblemsContainer />;
+  renderOneProblem = (id) => <OneProblem slug={id} />;
 
   render() {
     return (
@@ -77,9 +103,12 @@ class App extends React.Component {
         {this.renderNavBar()}
         <Switch>
           <Route exact path="/" component={this.renderHomePage} />
-          <Route path="/login" component={this.renderLogin} />
-          <Route path="/signup" component={this.renderSignup} />
-          <Route path="/profile" component={this.renderProfile} />
+          <Route exact path="/login" component={this.renderLogin} />
+          <Route exact path="/signup" component={this.renderSignup} />
+          <Route exact path="/profile" component={this.renderProfile} />
+          <Route exact path="/newproblem" component={this.renderNewProblem} />
+          <Route exact path="/problems" component={this.renderAllProblem} />
+          <Route exact path="/problems/:id" render={this.renderOneProblem} />
         </Switch>
       </div>
     );

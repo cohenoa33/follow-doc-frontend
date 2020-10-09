@@ -4,6 +4,7 @@ const initialState = {
   user: {},
   problems: [],
   dependents: [],
+  comments: [],
   jwt: "",
   id: "",
 };
@@ -15,13 +16,13 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         user: action.payload.user,
         problems: action.payload.problems,
-        dependents: action.payload.dependents,
+        dependents: action.payload.sortDependents,
         jwt: action.payload.jwt,
         id: action.payload.id,
+        comments: action.payload.comments,
       };
     }
     case "USER_LOGOUT": {
-      console.log("User logged out");
       return {
         ...state,
         user: {},
@@ -35,6 +36,19 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         dependents: [...state.dependents, action.payload],
+      };
+    }
+
+    case "ADD_PROBLEM": {
+      return {
+        ...state,
+        problems: [...state.problems, action.payload],
+      };
+    }
+    case "ADD_COMMENT": {
+      return {
+        ...state,
+        comments: [...state.comments, action.payload],
       };
     }
 

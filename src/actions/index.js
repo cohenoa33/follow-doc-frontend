@@ -6,13 +6,17 @@ export const setLogin = (user) => {
       index ===
       self.findIndex((d) => d.id === dependent.id && d.name === dependent.name)
   );
+  let sortDependents = dependents.sort(function (a, b) {
+    return a.name === b.name ? 0 : a.name < b.name ? -1 : 1;
+  });
+  let comments = user.user.comments;
   let problems = user.user.problems;
   let jwt = user.jwt;
   let id = user.user.id;
 
   return {
     type: "USER_LOGIN",
-    payload: { dependents, user, problems, jwt, id },
+    payload: { sortDependents, user, problems, jwt, id, comments },
   };
 };
 
@@ -23,10 +27,38 @@ export const setLogout = () => {
   };
 };
 
-export const addNewDependent = (newDependent, userID) => {
+export const addNewDependent = (newDependent, userID, e) => {
+  e.preventDefault();
   return (dispatch) => {
     return api.auth
       .addDependent({ name: newDependent, user_id: userID })
       .then((data) => dispatch({ type: "ADD_DEP", payload: data }));
+  };
+};
+
+export const addNewProblem = (newProblem, e) => {
+  const { name, description, dependent_id } = newProblem;
+  e.preventDefault();
+  return (dispatch) => {
+    return api.auth
+      .addProblem({
+        name: name,
+        dependent_id: dependent_id,
+        description: description,
+      })
+      .then((data) => dispatch({ type: "ADD_PROBLEM", payload: data }));
+  };
+};
+
+export const addNewComment = (newComment, e, id) => {
+  e.preventDefault();
+  return (dispatch) => {
+    return api.auth
+      .addComment({
+        text: newComment.text,
+        status_open: newComment.status_open,
+        problem_id: id,
+      })
+      .then((data) => dispatch({ type: "ADD_COMMENT", payload: data }));
   };
 };
