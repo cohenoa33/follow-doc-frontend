@@ -69,3 +69,12 @@ export const deleteComment = (id) => {
       .then((data) => dispatch({ type: "DELETE_COMMENT", payload: id }));
   };
 };
+
+export const addEditComment = (comment, e, id) => {
+  e.preventDefault();
+  return (dispatch) => {
+    return api.auth
+      .editComment(comment, id)
+      .then((data) => dispatch({ type: "EDIT_COMMENT", payload: data }));
+  };
+};

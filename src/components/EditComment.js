@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Popup from "reactjs-popup";
 import { withRouter } from "react-router-dom";
-import { addNewProblem } from "../actions";
+import { addEditComment } from "../actions";
 import "reactjs-popup/dist/index.css";
 
 class EditComment extends React.Component {
@@ -16,6 +16,7 @@ class EditComment extends React.Component {
 
   handleChange = (e) => {
     this.setState({
+      ...this.state,
       comment: {
         ...this.state.comment,
         [e.target.name]: e.target.value,
@@ -24,6 +25,7 @@ class EditComment extends React.Component {
   };
   handleStatusChange = (e) => {
     this.setState({
+      ...this.state,
       comment: {
         ...this.state.comment,
         status_open: !this.props.status_open,
@@ -32,8 +34,11 @@ class EditComment extends React.Component {
   };
 
   validate = (e) => {
-    e.preventDefault();
-    console.log(this.state);
+    this.setState({
+      ...this.state,
+      blockInput: true,
+    });
+    this.props.addEditComment(this.state.comment, e, this.props.id);
   };
 
   render() {
@@ -95,7 +100,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    addNewProblem: (newProblem, e) => dispatch(addNewProblem(newProblem, e)),
+    addEditComment: (comment, e, id) =>
+      dispatch(addEditComment(comment, e, id)),
   };
 };
 

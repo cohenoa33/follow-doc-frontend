@@ -49,6 +49,16 @@ export const userReducer = (state = initialState, action) => {
         comments: [...state.comments, action.payload],
       };
     }
+    case "EDIT_COMMENT": {
+      // const commentList = state.comments.filter(
+      //   (comment) => comment.id !== action.payload.id
+      // );
+      // debugger;
+      return {
+        ...state,
+        comments: [...state.comments, action.payload],
+      };
+    }
     case "DELETE_COMMENT": {
       const list = state.comments.filter(
         (comment) => comment.id !== parseInt(action.payload)
