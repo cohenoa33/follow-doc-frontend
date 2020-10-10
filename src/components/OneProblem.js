@@ -50,6 +50,7 @@ class OneProblem extends React.Component {
   };
 
   updateOneProblemPage = (e) => {
+    const { problem, newComment, comments } = this.state;
     e.preventDefault();
     let today = Date.now();
     let time = new Intl.DateTimeFormat("en-US", {
@@ -64,20 +65,23 @@ class OneProblem extends React.Component {
     this.setState({
       ...this.state,
       comments: [
-        ...this.state.comments,
+        ...comments,
         {
           created_at: time,
           id: 0,
-          problem_id: this.state.problem.id,
-          status_open: this.state.newComment.status_open,
-          text: this.state.newComment.text,
+          problem_id: problem.id,
+          status_open: newComment.status_open,
+          text: newComment.text,
           updated_at: time,
         },
       ],
     });
-    this.props.addNewComment(this.state.newComment, e, this.state.problem.id);
+    this.props.addNewComment(newComment, e, problem.id);
   };
 
+  handleEditComment = (e) => {
+    console.log(e.target.id);
+  };
   render() {
     const { name, description } = this.state.problem;
     console.log(this.state.comments);
@@ -85,6 +89,9 @@ class OneProblem extends React.Component {
       <div>
         <div>
           <div className="problem-container-description">
+            <button className="btn-x">Edit</button>
+            <br />
+            <br />
             <span> {this.state.dependent.name}</span>
             <h1>{name}</h1>
             <div>{description} </div>
@@ -129,6 +136,23 @@ class OneProblem extends React.Component {
                   <td> {comment.updated_at}</td>
                   <td> {comment.created_at}</td>
                   <td> {comment.status_open ? "Open" : "Closed"}</td>
+                  <td>
+                    {" "}
+                    <button
+                      className="btn-x"
+                      id={comment.id}
+                      onClick={this.handleEditComment}
+                    >
+                      Edit
+                    </button>
+                  </td>
+                  <td>
+                    {" "}
+                    <button className="btn-x" id={comment.id}>
+                      {" "}
+                      delete
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

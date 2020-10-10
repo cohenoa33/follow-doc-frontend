@@ -25,8 +25,11 @@ class NewProblem extends React.Component {
   };
   validate = (e) => {
     e.preventDefault();
-    if (this.state.newProblem.dependent_id === "") {
+    const { name, description, dependent_id } = this.state.newProblem;
+    if (dependent_id === "") {
       alert("Please Choose Dependent From List");
+    } else if (name.length < 5 || description.length < 5) {
+      alert("Name/Description Must be at least 5 letters long");
     } else {
       this.props.addNewProblem(this.state.newProblem, e);
       this.setState({ blockInput: true });

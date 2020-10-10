@@ -32,7 +32,7 @@ class App extends React.Component {
           console.log(json);
           this.handleAuthResponse(json);
         } else {
-          alert(json.error);
+          alert("handleLoginSubmit");
         }
       })
       .catch((err) => console.log(err));
@@ -56,7 +56,7 @@ class App extends React.Component {
           // <Redirect to="/profile"></Redirect>;
           this.props.history.push("/profile");
         } else {
-          alert(data.error);
+          alert("componentDidMount");
         }
       });
     }
@@ -69,7 +69,7 @@ class App extends React.Component {
       this.props.setLogin(data);
       this.props.history.push("/profile");
     } else {
-      alert(data.error);
+      alert("handleAuthResponse");
     }
   };
 
