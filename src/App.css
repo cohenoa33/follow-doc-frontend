@@ -29,6 +29,9 @@
   float: right;
   border: 1px solid grey;
 }
+.problem-container-new-comment {
+  border: none;
+}
 .one-problem-comments-table {
   text-align: center;
   font-size: 20px;

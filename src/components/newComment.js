@@ -1,6 +1,5 @@
 import React from "react";
-import api from "../services/api";
-import { Route, Switch, Link, NavLink, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { addNewComment } from "../actions";
 
 import { connect } from "react-redux";
@@ -32,16 +31,42 @@ class NewComment extends React.Component {
     });
   };
 
+  updateOneProblemPage = (e) => {
+    const { problem, newComment, comments } = this.state;
+    e.preventDefault();
+    let today = Date.now();
+    let time = new Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    }).format(today);
+    console.log(time);
+    console.log(this.state);
+
+    // this.setState({
+    //   ...this.state,
+    //   comments: [
+    //     ...comments,
+    //     {
+    //       created_at: time,
+    //       id: 0,
+    //       problem_id: problem.id,
+    //       status_open: newComment.status_open,
+    //       text: newComment.text,
+    //       updated_at: time,
+    //     },
+    //   ],
+    // });
+    // this.props.addNewComment(newComment, e, problem.id);
+  };
+
   render() {
     return (
-      <div className="problem-container-buttons">
-        <button className="btn">Upload File</button>
-        <button className="btn">Add New Appointment</button>
-        <form
-          onSubmit={(e) =>
-            this.props.addNewComment(this.state.newComment, e, this.props.id)
-          }
-        >
+      <div className="problem-container-new-comment">
+        <form onSubmit={(e) => this.updateOneProblemPage(e)}>
           <label>
             {" "}
             Status

@@ -19,6 +19,7 @@ class ProblemsContainer extends React.Component {
   };
   filterByDependent = () => {
     const problems = this.props.problems;
+    console.log(problems);
     if (this.state.filter === "all") {
       return problems;
     } else {
