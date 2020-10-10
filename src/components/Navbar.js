@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 
 const Navbar = ({ user, handleLogout }) => {
@@ -8,17 +8,17 @@ const Navbar = ({ user, handleLogout }) => {
       hello
       {user ? (
         <div>
-          <Link to="/" className="navbar-list" onClick={handleLogout}>
+          <NavLink to="/" className="navbar-list" onClick={handleLogout}>
             Logout
-          </Link>
-          <Link to="/problems" className="navbar-list">
+          </NavLink>
+          <NavLink to="/problems" className="navbar-list">
             {" "}
             All Problems{" "}
-          </Link>
-          <Link to="/profile" className="navbar-list">
+          </NavLink>
+          <NavLink to="/profile" className="navbar-list">
             {" "}
             Profile{" "}
-          </Link>
+          </NavLink>
         </div>
       ) : null}
     </div>

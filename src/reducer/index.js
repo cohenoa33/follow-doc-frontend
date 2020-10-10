@@ -1,5 +1,3 @@
-import { combineReducers } from "redux";
-
 const initialState = {
   user: {},
   problems: [],
@@ -49,6 +47,25 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         comments: [...state.comments, action.payload],
+      };
+    }
+    case "EDIT_COMMENT": {
+      const commentList = state.comments.filter(
+        (comment) => comment.id !== action.payload.id
+      );
+      return {
+        ...state,
+        comments: [...state.comments, commentList],
+      };
+    }
+    case "DELETE_COMMENT": {
+      const list = state.comments.filter(
+        (comment) => comment.id !== parseInt(action.payload)
+      );
+
+      return {
+        ...state,
+        comments: list,
       };
     }
 
