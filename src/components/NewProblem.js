@@ -10,7 +10,7 @@ class NewProblem extends React.Component {
     newProblem: {
       name: "",
       description: "",
-      dependent_id: "",
+      dependent_id: 0,
     },
     blockInput: false,
   };
@@ -22,6 +22,15 @@ class NewProblem extends React.Component {
         [e.target.name]: e.target.value,
       },
     });
+  };
+  validate = (e) => {
+    e.preventDefault();
+    if (this.state.newProblem.dependent_id === "") {
+      alert("Please Choose Dependent From List");
+    } else {
+      this.props.addNewProblem(this.state.newProblem, e);
+      this.setState({ blockInput: true });
+    }
   };
 
   render() {
@@ -40,12 +49,18 @@ class NewProblem extends React.Component {
             <div className="content"> </div>
             <div className="actions">
               <form
+                noValidate
                 onSubmit={(e) => {
-                  this.props.addNewProblem(this.state.newProblem, e);
-                  this.setState({ blockInput: true });
+                  this.validate(e);
                 }}
               >
-                <select name="dependent_id" onClick={this.handleChange}>
+                Please Select Dependent from List:
+                <br></br>
+                <select name="dependent_id" onChange={this.handleChange}>
+                  <option name="dependent_id" value="0">
+                    {" "}
+                    Please Choose Dependent From List{" "}
+                  </option>
                   {this.props.dependents.map((dependant) => (
                     <option
                       name="dependent_id"
@@ -62,6 +77,7 @@ class NewProblem extends React.Component {
                   value={this.state.name}
                   name="name"
                   placeholder="Problem Name"
+                  noValidate
                 ></input>
                 <input
                   onChange={this.handleChange}
@@ -69,6 +85,7 @@ class NewProblem extends React.Component {
                   value={this.state.description}
                   name="description"
                   placeholder="Description"
+                  noValidate
                 ></input>
                 <br />
                 {this.state.blockInput ? null : (

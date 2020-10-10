@@ -29,6 +29,7 @@ class App extends React.Component {
       .login(user)
       .then((json) => {
         if (!json.error) {
+          console.log(json);
           this.handleAuthResponse(json);
         } else {
           alert(json.error);

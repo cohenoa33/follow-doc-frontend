@@ -16,7 +16,7 @@ class OneProblem extends React.Component {
     },
   };
   componentDidMount() {
-    if (!this.props.user.jwt) {
+    if (!localStorage.token) {
       this.props.history.push("/");
     } else {
       let id = `${this.props.slug.match.params.id}`;
