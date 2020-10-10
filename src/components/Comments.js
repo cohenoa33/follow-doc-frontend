@@ -1,12 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 class Comments extends React.Component {
   commentsList = () => {
-    let comments = this.props.problems
-      .map((problem) => problem.comments)
-      .flat();
+    let comments = this.props.comments;
     return comments.filter((comment) => comment.status_open === true);
   };
 
@@ -26,7 +23,7 @@ class Comments extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    problems: state.problems,
+    comments: state.comments,
     user: state.user,
   };
 };

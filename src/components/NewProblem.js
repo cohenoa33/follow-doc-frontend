@@ -124,5 +124,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(withRouter(NewProblem));
-
-// export default NewProblem;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, Link, NavLink, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Problems from "../components/Problems";

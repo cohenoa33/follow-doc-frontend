@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Route,
-  Switch,
-  Redirect,
-  Link,
-  NavLink,
-  withRouter,
-} from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import "./App.css";
 import { connect } from "react-redux";
 
@@ -53,7 +46,6 @@ class App extends React.Component {
       api.auth.reauth().then((data) => {
         if (!data.error) {
           this.props.setLogin(data);
-          // <Redirect to="/profile"></Redirect>;
           this.props.history.push("/profile");
         } else {
           alert("componentDidMount");

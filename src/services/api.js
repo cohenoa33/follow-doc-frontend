@@ -59,6 +59,13 @@ const addComment = (comment) => {
   }).then((res) => res.json());
 };
 
+const deleteComment = (id) => {
+  return fetch(`${API_ROOT}/comments/${id}`, {
+    method: "DELETE",
+    headers: headers,
+  }).then((res) => res.json());
+};
+
 export default {
   auth: {
     login: login,
@@ -68,6 +75,7 @@ export default {
     oneProblem: oneProblem,
     addComment: addComment,
     reauth: reauth,
+    deleteComment: deleteComment,
   },
 };
 
