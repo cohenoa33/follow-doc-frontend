@@ -48,58 +48,55 @@ class NewProblem extends React.Component {
             <button className="x-btn" onClick={close}>
               x
             </button>
-            <div className="header"> </div>
-            <div className="content"> </div>
-            <div className="actions">
-              <form
-                noValidate
-                onSubmit={(e) => {
-                  this.validate(e);
-                }}
-              >
-                Please Select Dependent from List:
-                <br></br>
-                <select name="dependent_id" onChange={this.handleChange}>
-                  <option name="dependent_id" value="0">
-                    {" "}
-                    Please Choose Dependent From List{" "}
+
+            <form
+              className="popup-form"
+              noValidate
+              onSubmit={(e) => {
+                this.validate(e);
+              }}
+            >
+              <br></br>
+              <select name="dependent_id" onChange={this.handleChange}>
+                <option name="dependent_id" value="0">
+                  {" "}
+                  Please Choose Dependent From List{" "}
+                </option>
+                {this.props.dependents.map((dependant) => (
+                  <option
+                    name="dependent_id"
+                    value={dependant.id}
+                    key={dependant.id}
+                  >
+                    {dependant.name}
                   </option>
-                  {this.props.dependents.map((dependant) => (
-                    <option
-                      name="dependent_id"
-                      value={dependant.id}
-                      key={dependant.id}
-                    >
-                      {dependant.name}
-                    </option>
-                  ))}
-                </select>
-                <input
-                  onChange={this.handleChange}
-                  type="text"
-                  value={this.state.name}
-                  name="name"
-                  placeholder="Problem Name"
-                  noValidate
-                ></input>
-                <input
-                  onChange={this.handleChange}
-                  type="textarea"
-                  value={this.state.description}
-                  name="description"
-                  placeholder="Description"
-                  noValidate
-                ></input>
-                <br />
-                {this.state.blockInput ? null : (
-                  <button className="btn">Add new Problem</button>
-                )}
-              </form>
-              <button className="btn" onClick={close}>
-                {" "}
-                Close{" "}
-              </button>
-            </div>
+                ))}
+              </select>
+              <input
+                onChange={this.handleChange}
+                type="text"
+                value={this.state.name}
+                name="name"
+                placeholder="Problem Name"
+                noValidate
+              ></input>
+              <input
+                onChange={this.handleChange}
+                type="textarea"
+                value={this.state.description}
+                name="description"
+                placeholder="Description"
+                noValidate
+              ></input>
+              <br />
+              {this.state.blockInput ? null : (
+                <button className="btn">Add new Problem</button>
+              )}
+            </form>
+            <button className="btn" onClick={close}>
+              {" "}
+              Close{" "}
+            </button>
           </div>
         )}
       </Popup>

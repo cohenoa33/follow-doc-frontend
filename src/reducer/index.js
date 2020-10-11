@@ -3,6 +3,8 @@ const initialState = {
   problems: [],
   dependents: [],
   comments: [],
+  appointments: [],
+  doctors: [],
   jwt: "",
   id: "",
 };
@@ -18,6 +20,8 @@ export const userReducer = (state = initialState, action) => {
         jwt: action.payload.jwt,
         id: action.payload.id,
         comments: action.payload.comments,
+        appointments: action.payload.appointments,
+        doctors: action.payload.doctors,
       };
     }
     case "USER_LOGOUT": {

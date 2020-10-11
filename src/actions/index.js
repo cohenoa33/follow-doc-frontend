@@ -13,10 +13,21 @@ export const setLogin = (user) => {
   let problems = user.user.problems;
   let jwt = user.jwt;
   let id = user.user.id;
-
+  let appointments = user.user.appointments;
+  let doctors = user.user.doctors;
+  // debugger;
   return {
     type: "USER_LOGIN",
-    payload: { sortDependents, user, problems, jwt, id, comments },
+    payload: {
+      sortDependents,
+      user,
+      problems,
+      jwt,
+      id,
+      comments,
+      appointments,
+      doctors,
+    },
   };
 };
 

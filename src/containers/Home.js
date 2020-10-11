@@ -1,6 +1,6 @@
 import React from "react";
 // import GoogleApiWrapper from "./MapContainer";
-// import AddToCalendar from "./AddToCalendar";
+// import AddToCalendar from "../components/AddToCalendar";
 
 import { Link } from "react-router-dom";
 

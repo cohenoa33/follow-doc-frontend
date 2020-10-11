@@ -6,6 +6,8 @@ import Problems from "../components/Problems";
 import Comments from "../components/Comments";
 import NewDependent from "../components/NewDependent";
 import NewProblem from "../components/NewProblem";
+import OpenAppointments from "../components/OpenAppointments";
+import AllAppointments from "../components/AllAppointments";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -18,19 +20,22 @@ class ProfileContainer extends React.Component {
   renderComments = () => <Comments />;
   renderAddNewDependent = () => <NewDependent />;
   renderAddNewProblem = () => <NewProblem />;
+  renderOpenAppointments = () => <OpenAppointments />;
+  renderAllAppointments = () => <AllAppointments />;
 
   render() {
     return (
       <div>
         <div>Profile Page </div>
         <div className="row">
-          <div className="column-50"> </div>
-          <div className="column-50">
+          <div className="column-30">{this.renderOpenAppointments()} </div>
+          <div className="column-30">
             <div> {this.renderAddNewDependent()}</div>
             <div> {this.renderAddNewProblem()}</div>
           </div>
-          <div className="column-50"> {this.renderComments()}</div>
-          <div className="column-50">{this.renderProblems()} </div>
+          <div className="column-30"> {this.renderComments()}</div>
+          <div className="column-100">{this.renderProblems()} </div>
+          <div className="column-100">{this.renderAllAppointments()} </div>
         </div>
       </div>
     );

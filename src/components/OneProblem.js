@@ -98,28 +98,31 @@ class OneProblem extends React.Component {
       <div>
         <div>
           <div className="problem-container-description">
-            <button className="btn-x">Edit</button>
             <br />
-            <br />
+            <span> Dependent: </span>
             <span> {this.state.dependent.name}</span>
             <h1>{name}</h1>
+            Description:
             <div>{description} </div>
           </div>
           <div className="problem-container-appointments">Appointments</div>
           <div className="problem-container-buttons">
-            <button className="btn">Upload File</button>
-            <button className="btn">Add New Appointment</button>
+            <button className="btn-problem-container-buttons">
+              Upload File
+            </button>
+            <button className="btn-problem-container-buttons">
+              Add New Appointment
+            </button>
             <form onSubmit={(e) => this.updateOneProblemPage(e)}>
               <label>
                 {" "}
-                Status
                 <input
                   name="status_open"
                   type="checkbox"
                   value={this.state.newComment.status_open}
                   onChange={this.handleInputChange}
                 />{" "}
-                open
+                Mark as Open
               </label>
               <input
                 type="text"
@@ -128,17 +131,24 @@ class OneProblem extends React.Component {
                 value={this.state.newComment.text}
                 onChange={this.handleInput}
               />
-              <button className="btn">Add New Comment</button>
+              <button className="btn-problem-container-buttons">
+                Add New Comment
+              </button>
             </form>
           </div>
         </div>
         <br />
         <div className="one-problem-comments">
           <table className="one-problem-comments-table">
-            <thead>
-              <div> Comments</div>
-            </thead>
+            <h1 className="one-problem-comments-title"> Comments</h1>
+            <thead></thead>
             <tbody>
+              <tr>
+                <th>Text </th>
+                <th>Updated Date</th>
+                <th>Created Date</th>
+                <th>Status</th>
+              </tr>
               {this.state.comments.map((comment) => (
                 <tr key={comment.id}>
                   <td> {comment.text}</td>
@@ -151,22 +161,13 @@ class OneProblem extends React.Component {
                       comment.text,
                       comment.status_open
                     )}{" "}
-                    {/* <button
-                      className="btn-x"
-                      id={comment.id}
-                      onClick={this.handleEditComment}
-                    >
-                      Edit
-                    </button> */}
                   </td>
                   <td>
-                    {" "}
                     <button
                       className="x-btn"
                       id={comment.id}
                       onClick={this.handleDeleteComment}
                     >
-                      {" "}
                       delete
                     </button>
                   </td>
