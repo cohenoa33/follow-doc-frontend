@@ -43,7 +43,11 @@ class EditComment extends React.Component {
 
   render() {
     return (
-      <Popup trigger={<button className="btn"> edit </button>} modal nested>
+      <Popup
+        trigger={<button className="edit-btn"> edit </button>}
+        modal
+        nested
+      >
         {(close) => (
           <div className="modal">
             <button className="x-btn" onClick={close}>
@@ -58,7 +62,6 @@ class EditComment extends React.Component {
               >
                 <label>
                   {" "}
-                  Status
                   <input
                     name="status_open"
                     type="checkbox"
@@ -66,7 +69,7 @@ class EditComment extends React.Component {
                     value={this.state.comment.status_open}
                     onClick={this.handleStatusChange}
                   />{" "}
-                  open
+                  Mark as Open
                 </label>
                 <input
                   onChange={this.handleChange}

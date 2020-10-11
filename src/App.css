@@ -4,9 +4,12 @@
   }
 }
 
-.column-50 {
+.column-100 {
+  float: center;
+}
+.column-30 {
   float: left;
-  width: 50%;
+  width: 33%;
 }
 
 /* Clear floats after the columns */
@@ -22,15 +25,14 @@
 }
 .problem-container-appointments {
   width: 33%;
-  border: 1px solid grey;
 }
 .problem-container-buttons {
   width: 33%;
   float: right;
-  border: 1px solid grey;
 }
 .problem-container-new-comment {
   border: none;
+  border: 1px solid grey;
 }
 .one-problem-comments-table {
   text-align: center;
@@ -38,6 +40,22 @@
   font-weight: bold;
 }
 
+.btn-problem-container-buttons {
+  background-color: #51d6cb;
+  color: white;
+  padding: 14px;
+  margin: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 80%;
+  text-align: center;
+}
+.one-problem-comments-title h1 {
+  width: 100%;
+  float: center;
+  text-align: center;
+}
 .one-problem-comments-table td {
   border: none;
   text-align: left;
@@ -105,6 +123,18 @@ input[type="textarea"] {
   background: none;
   outline: none;
 }
+
+.edit-btn {
+  border-radius: 8px;
+  padding: 20px;
+  float: right;
+  cursor: pointer;
+  color: #51d6cb;
+  border: none;
+  font-size: 16px;
+  background: none;
+  outline: none;
+}
 .x-btn:focus {
   outline: none;
 }
@@ -120,7 +150,10 @@ input[type="textarea"] {
   width: 50%;
   text-align: center;
 }
-
+.popup-form input[type="text"] {
+  text-align: center;
+  padding: 10px 0 10px 0;
+}
 .problems-list-table {
   border-collapse: collapse;
   width: 100%;

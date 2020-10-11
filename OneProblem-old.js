@@ -7,29 +7,16 @@ import EditComment from "./EditComment";
 
 class OneProblem extends React.Component {
   state = {
-    problem: {},
-    dependent: {},
-    comments: [],
     newComment: {
       text: "",
       status_open: false,
     },
   };
-  componentDidMount() {
-    if (!localStorage.token) {
-      this.props.history.push("/");
-    } else {
-      let id = this.props.id;
-
-      api.auth.oneProblem(id).then((data) =>
-        this.setState({
-          problem: data,
-          dependent: data.dependent,
-          comments: data.comments,
-        })
-      );
-    }
-  }
+  // componentDidMount() {
+  //   // if (!localStorage.token) {
+  //   //   this.props.history.push("/");
+  //   // }
+  // }
 
   handleInputChange = () => {
     this.setState({
@@ -52,78 +39,51 @@ class OneProblem extends React.Component {
 
   updateOneProblemPage = (e) => {
     const { problem, newComment, comments } = this.state;
-    e.preventDefault();
-    let today = Date.now();
-    let time = new Intl.DateTimeFormat("en-US", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    }).format(today);
-
-    this.setState({
-      ...this.state,
-      comments: [
-        ...comments,
-        {
-          created_at: time,
-          id: 0,
-          problem_id: problem.id,
-          status_open: newComment.status_open,
-          text: newComment.text,
-          updated_at: time,
-        },
-      ],
-    });
-
-    this.props.addNewComment(newComment, e, problem.id);
+    let id = this.props.slug.match.params.id;
+    this.props.addNewComment(newComment, e, id);
   };
 
   handleDeleteComment = (e) => {
-    let id = e.target.id;
-    const list = this.state.comments.filter(
-      (comment) => comment.id !== parseInt(id)
-    );
-    this.setState({ ...this.state, comments: list });
+    debugger;
+    let id = +e.target.id;
     this.props.deleteComment(id);
   };
+
   renderEditComment = (id, text, status_open) => (
     <EditComment id={id} text={text} status_open={status_open} />
   );
 
   render() {
-    const { name, description } = this.state.problem;
+    const problem = this.props.problems.filter(
+      (p) => p.id == this.props.slug.match.params.id
+    );
+
     return (
       <div>
         <div>
           <div className="problem-container-description">
+            <button className="btn-x">Edit</button>
             <br />
-            <span> Dependent: </span>
-            <span> {this.state.dependent.name}</span>
-            <h1>{name}</h1>
-            Description:
-            <div>{description} </div>
+            <br />
+            <span> {problem[0].dependent.name}</span>
+            <h1>{problem[0].name}</h1>
+            <div>{problem[0].description} </div>
           </div>
           <div className="problem-container-appointments">Appointments</div>
           <div className="problem-container-buttons">
-            <button className="btn-problem-container-buttons">
-              Upload File
-            </button>
-            <button className="btn-problem-container-buttons">
-              Add New Appointment
-            </button>
+            <button className="btn">Upload File</button>
+            <button className="btn">Add New Appointment</button>
             <form onSubmit={(e) => this.updateOneProblemPage(e)}>
               <label>
                 {" "}
+                Status
                 <input
                   name="status_open"
                   type="checkbox"
                   value={this.state.newComment.status_open}
                   onChange={this.handleInputChange}
                 />{" "}
-                Mark as Open
+                open
               </label>
               <input
                 type="text"
@@ -132,25 +92,18 @@ class OneProblem extends React.Component {
                 value={this.state.newComment.text}
                 onChange={this.handleInput}
               />
-              <button className="btn-problem-container-buttons">
-                Add New Comment
-              </button>
+              <button className="btn">Add New Comment</button>
             </form>
           </div>
         </div>
         <br />
         <div className="one-problem-comments">
           <table className="one-problem-comments-table">
-            <h1 className="one-problem-comments-title"> Comments</h1>
-            <thead></thead>
+            <thead>
+              <div> Comments</div>
+            </thead>
             <tbody>
-              <tr>
-                <th>Text </th>
-                <th>Updated Date</th>
-                <th>Created Date</th>
-                <th>Status</th>
-              </tr>
-              {this.state.comments.map((comment) => (
+              {problem[0].comments.map((comment) => (
                 <tr key={comment.id}>
                   <td> {comment.text}</td>
                   <td> {comment.updated_at}</td>
@@ -162,13 +115,22 @@ class OneProblem extends React.Component {
                       comment.text,
                       comment.status_open
                     )}{" "}
+                    {/* <button
+                      className="btn-x"
+                      id={comment.id}
+                      onClick={this.handleEditComment}
+                    >
+                      Edit
+                    </button> */}
                   </td>
                   <td>
+                    {" "}
                     <button
                       className="x-btn"
                       id={comment.id}
                       onClick={this.handleDeleteComment}
                     >
+                      {" "}
                       delete
                     </button>
                   </td>
