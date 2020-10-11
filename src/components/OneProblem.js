@@ -19,7 +19,8 @@ class OneProblem extends React.Component {
     if (!localStorage.token) {
       this.props.history.push("/");
     } else {
-      let id = `${this.props.slug.match.params.id}`;
+      let id = this.props.id;
+
       api.auth.oneProblem(id).then((data) =>
         this.setState({
           problem: data,
@@ -184,6 +185,7 @@ class OneProblem extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    problems: state.problems,
   };
 };
 const mapDispatchToProps = (dispatch) => {
