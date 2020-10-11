@@ -24,12 +24,13 @@ class ProfileContainer extends React.Component {
       <div>
         <div>Profile Page </div>
         <div className="row">
-          <div className="column-50">{this.renderProblems()} </div>
+          <div className="column-50"> </div>
           <div className="column-50">
-            {this.renderComments()}
             <div> {this.renderAddNewDependent()}</div>
             <div> {this.renderAddNewProblem()}</div>
           </div>
+          <div className="column-50"> {this.renderComments()}</div>
+          <div className="column-50">{this.renderProblems()} </div>
         </div>
       </div>
     );

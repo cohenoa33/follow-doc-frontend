@@ -95,13 +95,13 @@ class App extends React.Component {
       <div>
         {this.renderNavBar()}
         <Switch>
+          <Route exact path="/problems/:id" render={this.renderOneProblem} />
+          <Route exact path="/problems" component={this.renderAllProblem} />
           <Route exact path="/" component={this.renderHomePage} />
           <Route exact path="/login" component={this.renderLogin} />
           <Route exact path="/signup" component={this.renderSignup} />
           <Route exact path="/profile" component={this.renderProfile} />
           <Route exact path="/newproblem" component={this.renderNewProblem} />
-          <Route exact path="/problems" component={this.renderAllProblem} />
-          <Route exact path="/problems/:id" render={this.renderOneProblem} />
         </Switch>
       </div>
     );
