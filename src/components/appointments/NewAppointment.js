@@ -18,12 +18,22 @@ class NewAppointment extends React.Component {
   };
 
   handleChange = (e) => {
-    this.setState({
-      appointment: {
-        ...this.state.appointment,
-        [e.target.name]: e.target.value,
-      },
-    });
+    let name = e.target.name;
+    if (name === "insurance_auth" || name === "status_open") {
+      this.setState({
+        appointment: {
+          ...this.state.appointment,
+          [name]: !this.state.name,
+        },
+      });
+    } else {
+      this.setState({
+        appointment: {
+          ...this.state.appointment,
+          [name]: e.target.value,
+        },
+      });
+    }
   };
 
   filterDocors = () => {
@@ -33,9 +43,9 @@ class NewAppointment extends React.Component {
         self.findIndex((d) => d.id === doctor.id && d.name === doctor.name)
     );
   };
+
   validate = (e) => {
     e.preventDefault();
-
     this.props.addAppointment(this.state.appointment, e);
     this.setState({ blockInput: true });
   };
@@ -69,11 +79,7 @@ class NewAppointment extends React.Component {
                   Please Choose Problem From List{" "}
                 </option>
                 {this.props.problems.map((problem) => (
-                  <option
-                    name="problem_id"
-                    value={problem.id}
-                    key={problem.name}
-                  >
+                  <option name="problem_id" value={problem.id} key={problem.id}>
                     {problem.name} for {problem.dependent.name}
                   </option>
                 ))}
@@ -93,7 +99,7 @@ class NewAppointment extends React.Component {
               <input
                 onChange={this.handleChange}
                 type="date"
-                value={this.state.date}
+                value={this.state.appointment.date}
                 name="date"
                 placeholder="Date"
                 noValidate
@@ -102,9 +108,38 @@ class NewAppointment extends React.Component {
               <input
                 onChange={this.handleChange}
                 type="time"
-                value={this.state.time}
+                value={this.state.appointment.time}
                 name="time"
                 placeholder="time"
+                noValidate
+              ></input>
+              <br />
+              <label>
+                {" "}
+                <input
+                  name="status_open"
+                  type="checkbox"
+                  value={this.state.appointment.status_open}
+                  onChange={this.handleChange}
+                />{" "}
+                Mark as Open
+              </label>
+              <label>
+                {" "}
+                <input
+                  name="insurance_auth"
+                  type="checkbox"
+                  value={this.state.appointment.insurance_auth}
+                  onChange={this.handleChange}
+                />{" "}
+                Approved by Insurance
+              </label>
+              <input
+                onChange={this.handleChange}
+                type="textarea"
+                value={this.state.appointment.note}
+                name="note"
+                placeholder="Add More Information"
                 noValidate
               ></input>
               <br />
