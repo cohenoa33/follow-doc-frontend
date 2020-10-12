@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { deleteComment, addNewComment } from "../actions";
 import { connect } from "react-redux";
 import EditComment from "./comments/EditComment";
+import OneProbAllAppointments from "./appointments/OneProbAllAppointments";
 
 class OneProblem extends React.Component {
   state = {
@@ -92,6 +93,7 @@ class OneProblem extends React.Component {
   renderEditComment = (id, text, status_open) => (
     <EditComment id={id} text={text} status_open={status_open} />
   );
+  renderAllAppointments = (id) => <OneProbAllAppointments id={id} />;
 
   render() {
     const { name, description } = this.state.problem;
@@ -176,6 +178,7 @@ class OneProblem extends React.Component {
               ))}
             </tbody>
           </table>
+          <div>{this.renderAllAppointments(this.props.id)}</div>
         </div>
       </div>
     );
@@ -185,7 +188,7 @@ class OneProblem extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
-    problems: state.problems,
+    problem: state.problems,
   };
 };
 const mapDispatchToProps = (dispatch) => {
