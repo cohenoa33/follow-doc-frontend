@@ -1,8 +1,7 @@
 import React from "react";
-import api from "../../services/api";
 import { withRouter } from "react-router-dom";
-import { deleteComment, addNewComment } from "../../actions";
 import { connect } from "react-redux";
+import GoogleApiWrapper from "../../containers/MapContainer";
 
 class OneAppointment extends React.Component {
   componentDidMount() {
@@ -16,6 +15,7 @@ class OneAppointment extends React.Component {
     const appointment = this.props.appointments.filter(
       (appointment) => appointment.id === +id
     );
+    console.log(appointment);
     return (
       <div>
         {appointment.map((appointment) => (
@@ -24,9 +24,18 @@ class OneAppointment extends React.Component {
             <p className="one-appointment-data">{appointment.time} </p>
             <p className="one-appointment-data">{appointment.note} </p>
             <p className="one-appointment-data">{appointment.doctor.name} </p>
+            <p className="one-appointment-data">
+              {appointment.doctor.address}{" "}
+            </p>
             <p className="one-appointment-data">{appointment.problem.name} </p>
           </div>
         ))}
+
+        <div>
+          <div className="map-squere">
+            <GoogleApiWrapper />
+          </div>
+        </div>
       </div>
     );
   }
