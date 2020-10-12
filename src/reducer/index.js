@@ -60,6 +60,13 @@ export const userReducer = (state = initialState, action) => {
       };
     }
 
+    case "ADD_DOCTOR": {
+      return {
+        ...state,
+        doctors: [...state.doctors, action.payload],
+      };
+    }
+
     case "EDIT_COMMENT": {
       const commentList = state.comments.filter(
         (comment) => comment.id !== action.payload.id
