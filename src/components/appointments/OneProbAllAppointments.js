@@ -21,14 +21,14 @@ const OneProbAllAppointments = ({ appointments, id }) => {
             </tr>
             {appointmentsList.map((app) => (
               <tr key={app.id}>
-                {/* <Link to={`/appointment/${app.id}`}> */}
-                <td>{app.date}</td>
+                <td>
+                  <Link to={`/appointment/${app.id}`}>{app.date} </Link>
+                </td>
                 <td>{app.time}</td>
                 <td>{app.doctor.name}</td>
                 <td>{app.note} </td>
                 <td>{app.status_open ? "Open" : "Close"} </td>
                 <td>{app.insurance_auth ? "Yes" : "No"} </td>
-                {/* </Link> */}
               </tr>
             ))}
           </tbody>
