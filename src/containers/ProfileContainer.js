@@ -3,11 +3,12 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Problems from "../components/Problems";
-import Comments from "../components/Comments";
+import OpenComments from "../components/comments/OpenComments";
 import NewDependent from "../components/NewDependent";
 import NewProblem from "../components/NewProblem";
-import OpenAppointments from "../components/OpenAppointments";
-import AllAppointments from "../components/AllAppointments";
+import OpenAppointments from "../components/appointments/OpenAppointments";
+import AllAppointments from "../components/appointments/AllAppointments";
+import NewAppointment from "../components/appointments/NewAppointment";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -17,11 +18,12 @@ class ProfileContainer extends React.Component {
   }
 
   renderProblems = () => <Problems />;
-  renderComments = () => <Comments />;
+  renderComments = () => <OpenComments />;
   renderAddNewDependent = () => <NewDependent />;
   renderAddNewProblem = () => <NewProblem />;
   renderOpenAppointments = () => <OpenAppointments />;
   renderAllAppointments = () => <AllAppointments />;
+  renderAddNewAppointment = () => <NewAppointment />;
 
   render() {
     return (
@@ -32,6 +34,7 @@ class ProfileContainer extends React.Component {
           <div className="column-30">
             <div> {this.renderAddNewDependent()}</div>
             <div> {this.renderAddNewProblem()}</div>
+            <div> {this.renderAddNewAppointment()}</div>
           </div>
           <div className="column-30"> {this.renderComments()}</div>
           <div className="column-100">{this.renderProblems()} </div>

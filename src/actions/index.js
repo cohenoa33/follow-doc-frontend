@@ -73,6 +73,19 @@ export const addNewComment = (newComment, e, id) => {
       .then((data) => dispatch({ type: "ADD_COMMENT", payload: data }));
   };
 };
+
+export const addAppointment = (appointment, e) => {
+  e.preventDefault();
+  return (dispatch) => {
+    return api.appointments.addAppointment(appointment).then((data) => {
+      if (!data.error) {
+        dispatch({ type: "ADD_APPOINTMENT", payload: data });
+      } else {
+        alert(data.error);
+      }
+    });
+  };
+};
 export const deleteComment = (id) => {
   return (dispatch) => {
     return api.auth

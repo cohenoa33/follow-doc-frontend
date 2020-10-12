@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Popup from "reactjs-popup";
 import { withRouter } from "react-router-dom";
-import { addEditComment } from "../actions";
+import { addEditComment } from "../../actions";
 import "reactjs-popup/dist/index.css";
 
 class EditComment extends React.Component {
