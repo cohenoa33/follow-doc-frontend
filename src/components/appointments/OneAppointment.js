@@ -28,14 +28,14 @@ class OneAppointment extends React.Component {
               {appointment.doctor.address}{" "}
             </p>
             <p className="one-appointment-data">{appointment.problem.name} </p>
+            <div className="map-squere">
+              <GoogleApiWrapper
+                lat={appointment.doctor.latitude}
+                lng={appointment.doctor.longitude}
+              />
+            </div>
           </div>
         ))}
-
-        <div>
-          <div className="map-squere">
-            <GoogleApiWrapper />
-          </div>
-        </div>
       </div>
     );
   }

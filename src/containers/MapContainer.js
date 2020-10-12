@@ -2,16 +2,61 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import React from "react";
 
 export class MapContainer extends React.Component {
-  render() {
-    console.log(process.env.GOOGLE_API_KEY);
-    return (
-      <Map google={this.props.google} zoom={14}>
-        <Marker onClick={this.onMarkerClick} name={"Current location"} />
+  // state = {
+  //   showingInfoWindow: false,
+  //   activeMarker: {},
+  //   selectedPlace: {},
+  // };
 
-        <InfoWindow onClose={this.onInfoWindowClose}>
-          <div></div>
-        </InfoWindow>
-      </Map>
+  // onMarkerClick = (props, marker, e) =>
+  //   this.setState({
+  //     selectedPlace: props,
+  //     activeMarker: marker,
+  //     showingInfoWindow: true,
+  //   });
+
+  // onMapClicked = (props) => {
+  //   if (this.state.showingInfoWindow) {
+  //     this.setState({
+  //       showingInfoWindow: false,
+  //       activeMarker: null,
+  //     });
+  //   }
+  // };
+  render() {
+    console.log(process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
+    let myLatLng = { lat: this.props.latitude, lng: this.props.longitude };
+    return (
+      <div className="map-container">
+        <Map
+          initialCenter={{
+            lat: this.props.lat,
+            lng: this.props.lng,
+          }}
+          google={this.props.google}
+          zoom={16}
+          className="map-container"
+          onClick={this.onMapClicked}
+        >
+          <Marker
+            title="My Location"
+            onClick={this.onMarkerClick}
+            name={"Current location"}
+            position={myLatLng}
+            draggable={true}
+          >
+            <InfoWindow
+            // marker={this.state.activeMarker}
+            // onClose={this.onInfoWindowClose}
+            // visible={this.state.showingInfoWindow}
+            >
+              <div>
+                <h1>Hey There!!!</h1>
+              </div>
+            </InfoWindow>
+          </Marker>
+        </Map>
+      </div>
     );
   }
 }
