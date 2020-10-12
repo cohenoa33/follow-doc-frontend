@@ -1,4 +1,4 @@
-@media screen and (max-width: 600px) {
+media screen and (max-width: 600px) {
   .column {
     width: 100%;
   }
@@ -10,6 +10,7 @@
 .column-30 {
   float: left;
   width: 33%;
+  list-style-type: none;
 }
 
 /* Clear floats after the columns */

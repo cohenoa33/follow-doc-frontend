@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-class Comments extends React.Component {
+class OpenComments extends React.Component {
   commentsList = () => {
     let comments = this.props.comments;
     return comments.filter((comment) => comment.status_open === true);
@@ -28,4 +28,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Comments);
+export default connect(mapStateToProps)(OpenComments);

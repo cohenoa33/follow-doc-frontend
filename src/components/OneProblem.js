@@ -3,7 +3,7 @@ import api from "../services/api";
 import { withRouter } from "react-router-dom";
 import { deleteComment, addNewComment } from "../actions";
 import { connect } from "react-redux";
-import EditComment from "./EditComment";
+import EditComment from "./comments/EditComment";
 
 class OneProblem extends React.Component {
   state = {

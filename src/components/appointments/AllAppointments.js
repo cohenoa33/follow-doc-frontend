@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class AllAppointments extends React.Component {
   appointmentsList = () => {
@@ -38,7 +39,12 @@ class AllAppointments extends React.Component {
                   <td>{app.date}</td>
                   <td>{app.time}</td>
                   <td>{app.doctor.name}</td>
-                  <td>{app.problem.name}</td>
+                  <td>
+                    {" "}
+                    <Link to={`/problems/${app.problem.id}`}>
+                      {app.problem.name}{" "}
+                    </Link>{" "}
+                  </td>
                 </tr>
               ))}
             </tbody>

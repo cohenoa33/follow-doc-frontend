@@ -53,6 +53,13 @@ export const userReducer = (state = initialState, action) => {
         comments: [...state.comments, action.payload],
       };
     }
+    case "ADD_APPOINTMENT": {
+      return {
+        ...state,
+        appointments: [...state.appointments, action.payload],
+      };
+    }
+
     case "EDIT_COMMENT": {
       const commentList = state.comments.filter(
         (comment) => comment.id !== action.payload.id

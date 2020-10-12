@@ -58,6 +58,13 @@ const addComment = (comment) => {
     body: JSON.stringify({ comment: comment }),
   }).then((res) => res.json());
 };
+const addAppointment = (appointment) => {
+  return fetch(`${API_ROOT}/appointments`, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify({ appointment: appointment }),
+  }).then((res) => res.json());
+};
 
 const editComment = (comment, id) => {
   return fetch(`${API_ROOT}/comments/${id}`, {
@@ -85,6 +92,9 @@ export default {
     reauth: reauth,
     deleteComment: deleteComment,
     editComment: editComment,
+  },
+  appointments: {
+    addAppointment: addAppointment,
   },
 };
 
