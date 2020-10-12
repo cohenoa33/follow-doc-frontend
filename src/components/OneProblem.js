@@ -3,7 +3,6 @@ import api from "../services/api";
 import { withRouter } from "react-router-dom";
 import { deleteComment, addNewComment } from "../actions";
 import { connect } from "react-redux";
-import EditComment from "./comments/EditComment";
 import NewAppointment from "./appointments/NewAppointment";
 import OneProbAllAppointments from "./appointments/OneProbAllAppointments";
 import OneProbProblemInfo from "./problems/OneProbProblemInfo";
@@ -85,17 +84,6 @@ class OneProblem extends React.Component {
     this.props.addNewComment(newComment, e, problem.id);
   };
 
-  // handleDeleteComment = (e) => {
-  //   let id = e.target.id;
-  //   const list = this.state.comments.filter(
-  //     (comment) => comment.id !== parseInt(id)
-  //   );
-  //   this.setState({ ...this.state, comments: list });
-  //   this.props.deleteComment(id);
-  // };
-  // renderEditComment = (id, text, status_open) => (
-  //   <EditComment id={id} text={text} status_open={status_open} />
-  // );
   renderAllAppointments = (id) => <OneProbAllAppointments id={id} />;
   renderOneProbProblemInfo = () => (
     <OneProbProblemInfo
