@@ -5,6 +5,7 @@ import { deleteComment, addNewComment } from "../actions";
 import { connect } from "react-redux";
 import NewAppointment from "./appointments/NewAppointment";
 import OneProbAllAppointments from "./appointments/OneProbAllAppointments";
+import OpenAppointments from "./appointments/OpenAppointments";
 import OneProbProblemInfo from "./problems/OneProbProblemInfo";
 import OneProbComments from "./comments/OneProbComments";
 
@@ -85,6 +86,7 @@ class OneProblem extends React.Component {
   };
 
   renderAllAppointments = (id) => <OneProbAllAppointments id={id} />;
+  renderOpenAppointments = (id) => <OpenAppointments id={id} />;
   renderOneProbProblemInfo = () => (
     <OneProbProblemInfo
       name={this.state.problem.name}
@@ -96,16 +98,17 @@ class OneProblem extends React.Component {
   renderOneProbComments = () => <OneProbComments />;
 
   render() {
+    const id = this.props.id;
     return (
       <div>
         <div>
-          <div> {this.renderOneProbProblemInfo()}</div>
-          <div className="problem-container-appointments">Appointments</div>
+          {this.renderOneProbProblemInfo()}
+          <div className="column-30"> {this.renderOpenAppointments(id)} </div>
           <div className="problem-container-buttons">
             <button className="btn-problem-container-buttons">
               Upload File
             </button>
-            {this.renderNewAppointment(this.props.id)}
+            {this.renderNewAppointment(id)}
             <form onSubmit={(e) => this.updateOneProblemPage(e)}>
               <label>
                 {" "}
@@ -133,7 +136,7 @@ class OneProblem extends React.Component {
         <br />
 
         <div>{this.renderOneProbComments()}</div>
-        <div>{this.renderAllAppointments(this.props.id)}</div>
+        <div>{this.renderAllAppointments(id)}</div>
       </div>
     );
   }

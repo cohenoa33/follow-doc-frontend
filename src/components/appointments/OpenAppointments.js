@@ -2,19 +2,25 @@ import React from "react";
 import { connect } from "react-redux";
 
 class OpenAppointments extends React.Component {
-  appointmentsList = () => {
-    let appointments = this.props.appointments;
-    let filteredApp = appointments.filter(
+  state = {
+    list: {},
+  };
+  filterdAppointments() {
+    const appointments = this.props.appointments.filter(
       (app) => app.status_open === true || app.insurance_auth === true
     );
-    return filteredApp;
-  };
+    if (this.props.id) {
+      return appointments.filter((app) => app.problem.id === this.props.id);
+    } else {
+      return appointments;
+    }
+  }
 
   render() {
     return (
       <div>
         <h1>Appointments who needs preparation:</h1>
-        {this.appointmentsList().map((app) => (
+        {this.filterdAppointments().map((app) => (
           <li key={app.id}>
             {" "}
             Appointment for {app.doctor.name} on {app.date} at {app.time}.
