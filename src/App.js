@@ -15,6 +15,7 @@ import Navbar from "./components/Navbar";
 import Home from "./containers/Home";
 import ProfileContainer from "./containers/ProfileContainer";
 import ProblemsContainer from "./containers/ProblemsContainer";
+import OneAppointment from "./components/appointments/OneAppointment";
 
 class App extends React.Component {
   handleLoginSubmit = (e, user) => {
@@ -23,10 +24,9 @@ class App extends React.Component {
       .login(user)
       .then((json) => {
         if (!json.error) {
-          console.log(json);
           this.handleAuthResponse(json);
         } else {
-          alert("handleLoginSubmit");
+          alert("Wrong Username or Password");
         }
       })
       .catch((err) => console.log(err));
@@ -48,7 +48,7 @@ class App extends React.Component {
         if (!data.error) {
           this.props.setLogin(data);
         } else {
-          alert("componentDidMount");
+          alert("Please Login");
         }
       });
     }
@@ -65,7 +65,7 @@ class App extends React.Component {
         this.props.history.push("/profile");
       }
     } else {
-      alert("handleAuthResponse");
+      alert("Something Went Wrong....");
     }
   };
 
@@ -103,6 +103,13 @@ class App extends React.Component {
       <NotFound />
     );
   };
+  renderOneAppointment = (routerProps) => {
+    let appID = parseInt(routerProps.match.params.id);
+    let foundApp = this.props.appointments.filter(
+      (appointment) => appointment.id === appID
+    );
+    return foundApp ? <OneAppointment /> : <NotFound />;
+  };
 
   render() {
     return (
@@ -113,6 +120,11 @@ class App extends React.Component {
             exact
             path="/problems/:id"
             render={(routerProps) => this.renderOneProblem(routerProps)}
+          />{" "}
+          <Route
+            exact
+            path="/appointments/:id"
+            render={(routerProps) => this.renderOneAppointment(routerProps)}
           />{" "}
           <Route path="/problems" component={this.renderAllProblem} />
           <Route path="/login" component={this.renderLogin} />
@@ -129,6 +141,7 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
     problems: state.problems,
+    appointments: state.appointments,
   };
 };
 const mapDispatchToProps = (dispatch) => {
