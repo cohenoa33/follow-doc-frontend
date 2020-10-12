@@ -94,13 +94,15 @@ export default {
   auth: {
     login: login,
     signup: signup,
+    reauth: reauth,
+  },
+  dependents: {
     addDependent: addDependent,
+  },
+
+  problems: {
     addProblem: addProblem,
     oneProblem: oneProblem,
-    addComment: addComment,
-    reauth: reauth,
-    deleteComment: deleteComment,
-    editComment: editComment,
   },
   appointments: {
     addAppointment: addAppointment,
@@ -108,8 +110,10 @@ export default {
   doctors: {
     addDoctor: addDoctor,
   },
-};
 
-// {()=> this.renderNewComment(this.state.problem.id)}
-// renderNewComment = (id) => <NewComment id={id}/>
-//
+  comments: {
+    addComment: addComment,
+    deleteComment: deleteComment,
+    editComment: editComment,
+  },
+};
