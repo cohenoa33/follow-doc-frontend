@@ -8,13 +8,6 @@ const headers = {
   Authorization: `Bearers ${token}`,
 };
 
-const reauth = () => {
-  return fetch(`${API_ROOT}/reauth`, {
-    method: "GET",
-    headers: headers,
-  }).then((res) => res.json());
-};
-
 const login = (user) => {
   return fetch(`${API_ROOT}/login`, {
     method: "POST",
@@ -30,6 +23,20 @@ const signup = (user) => {
     body: JSON.stringify({ user }),
   }).then((res) => res.json());
 };
+const reauth = () => {
+  return fetch(`${API_ROOT}/reauth`, {
+    method: "GET",
+    headers: headers,
+  }).then((res) => res.json());
+};
+
+const oneProblem = (id) => {
+  return fetch(`${API_ROOT}/problems/${id}`, {
+    method: "GET",
+    headers: headers,
+  }).then((res) => res.json());
+};
+
 const addDependent = (newDependent) => {
   return fetch(`${API_ROOT}/dependents`, {
     method: "POST",
@@ -37,17 +44,12 @@ const addDependent = (newDependent) => {
     body: JSON.stringify({ dependent: newDependent }),
   }).then((res) => res.json());
 };
+
 const addProblem = (problem) => {
   return fetch(`${API_ROOT}/problems`, {
     method: "POST",
     headers: headers,
     body: JSON.stringify({ problem: problem }),
-  }).then((res) => res.json());
-};
-const oneProblem = (id) => {
-  return fetch(`${API_ROOT}/problems/${id}`, {
-    method: "GET",
-    headers: headers,
   }).then((res) => res.json());
 };
 
@@ -63,6 +65,13 @@ const addAppointment = (appointment) => {
     method: "POST",
     headers: headers,
     body: JSON.stringify({ appointment: appointment }),
+  }).then((res) => res.json());
+};
+const addDoctor = (doctor) => {
+  return fetch(`${API_ROOT}/doctors`, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify({ doctor: doctor }),
   }).then((res) => res.json());
 };
 
@@ -95,6 +104,9 @@ export default {
   },
   appointments: {
     addAppointment: addAppointment,
+  },
+  doctors: {
+    addDoctor: addDoctor,
   },
 };
 

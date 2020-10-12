@@ -86,6 +86,18 @@ export const addAppointment = (appointment, e) => {
     });
   };
 };
+export const addDoctor = (doctor, e) => {
+  e.preventDefault();
+  return (dispatch) => {
+    return api.doctors.addDoctor(doctor).then((data) => {
+      if (!data.error) {
+        dispatch({ type: "ADD_DOCTOR", payload: data });
+      } else {
+        alert(data.error);
+      }
+    });
+  };
+};
 export const deleteComment = (id) => {
   return (dispatch) => {
     return api.auth

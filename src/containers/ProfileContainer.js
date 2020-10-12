@@ -6,6 +6,7 @@ import Problems from "../components/Problems";
 import OpenComments from "../components/comments/OpenComments";
 import NewDependent from "../components/NewDependent";
 import NewProblem from "../components/NewProblem";
+import NewDoctor from "../components/doctors/NewDoctor";
 import OpenAppointments from "../components/appointments/OpenAppointments";
 import AllAppointments from "../components/appointments/AllAppointments";
 import NewAppointment from "../components/appointments/NewAppointment";
@@ -24,6 +25,7 @@ class ProfileContainer extends React.Component {
   renderOpenAppointments = () => <OpenAppointments />;
   renderAllAppointments = () => <AllAppointments />;
   renderAddNewAppointment = () => <NewAppointment />;
+  renderAddNewDoctor = () => <NewDoctor />;
 
   render() {
     return (
@@ -34,6 +36,7 @@ class ProfileContainer extends React.Component {
           <div className="column-30">
             <div> {this.renderAddNewDependent()}</div>
             <div> {this.renderAddNewProblem()}</div>
+            <div> {this.renderAddNewDoctor()}</div>
             <div> {this.renderAddNewAppointment()}</div>
           </div>
           <div className="column-30"> {this.renderComments()}</div>

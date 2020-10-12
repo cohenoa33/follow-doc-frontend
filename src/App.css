@@ -85,14 +85,19 @@ media screen and (max-width: 600px) {
   background: rgb(238, 238, 238);
   border: 1px solid #ccc;
 }
-
+input[type="time"]::-webkit-datetime-edit-ampm-field {
+  display: none;
+}
 .form-container {
   padding: 10px;
 }
 .form-container-newProblem {
   padding: 10px;
 }
+select,
 input[type="text"],
+input[type="time"],
+input[type="date"],
 input[type="password"] {
   width: 80%;
   padding: 12px 20px;

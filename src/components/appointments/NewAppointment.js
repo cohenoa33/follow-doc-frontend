@@ -35,6 +35,7 @@ class NewAppointment extends React.Component {
   };
   validate = (e) => {
     e.preventDefault();
+
     this.props.addAppointment(this.state.appointment, e);
     this.setState({ blockInput: true });
   };
@@ -88,17 +89,19 @@ class NewAppointment extends React.Component {
                   </option>
                 ))}
               </select>
+              <br />
               <input
                 onChange={this.handleChange}
-                type="text"
+                type="date"
                 value={this.state.date}
                 name="date"
                 placeholder="Date"
                 noValidate
               ></input>
+              <br />
               <input
                 onChange={this.handleChange}
-                type="text"
+                type="time"
                 value={this.state.time}
                 name="time"
                 placeholder="time"
