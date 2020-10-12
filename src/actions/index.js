@@ -15,7 +15,7 @@ export const setLogin = (user) => {
   let id = user.user.id;
   let appointments = user.user.appointments;
   let doctors = user.user.doctors;
- 
+
   return {
     type: "USER_LOGIN",
     payload: {
@@ -100,16 +100,15 @@ export const addDoctor = (doctor, e) => {
 };
 export const deleteComment = (id) => {
   return (dispatch) => {
-    return api.comments
-      .deleteComment(id)
-      .then((data) => 
+    return api.comments.deleteComment(id).then((data) => {
       if (!data.error) {
-        dispatch({ type: "DELETE_COMMENT", payload: id })
+        dispatch({ type: "DELETE_COMMENT", payload: id });
       } else {
-      alert(data.error)
-      })
-  }
-}
+        alert(data.error);
+      }
+    });
+  };
+};
 
 export const addEditComment = (comment, e, id) => {
   e.preventDefault();
