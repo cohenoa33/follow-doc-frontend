@@ -50,7 +50,16 @@ class NewAppointment extends React.Component {
     this.setState({ blockInput: true });
   };
 
+  problemsList = () => {
+    if (this.props.id) {
+      return this.props.problems.filter((p) => p.id === this.props.id);
+    } else {
+      return this.props.problems;
+    }
+  };
+
   render() {
+    const id = this.props.id;
     return (
       <Popup
         trigger={<button className="btn"> add New Appointment </button>}
@@ -78,7 +87,8 @@ class NewAppointment extends React.Component {
                   {" "}
                   Please Choose Problem From List{" "}
                 </option>
-                {this.props.problems.map((problem) => (
+
+                {this.problemsList().map((problem) => (
                   <option name="problem_id" value={problem.id} key={problem.id}>
                     {problem.name} for {problem.dependent.name}
                   </option>
@@ -162,7 +172,6 @@ const mapStateToProps = (state) => {
   return {
     problems: state.problems,
     doctors: state.doctors,
-    id: state.user.id,
   };
 };
 const mapDispatchToProps = (dispatch) => {

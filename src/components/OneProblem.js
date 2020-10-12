@@ -92,7 +92,7 @@ class OneProblem extends React.Component {
       dependent={this.state.dependent.name}
     />
   );
-  renderNewAppointment = () => <NewAppointment />;
+  renderNewAppointment = (id) => <NewAppointment id={id} />;
   renderOneProbComments = () => <OneProbComments />;
 
   render() {
@@ -105,7 +105,7 @@ class OneProblem extends React.Component {
             <button className="btn-problem-container-buttons">
               Upload File
             </button>
-            {this.renderNewAppointment()}
+            {this.renderNewAppointment(this.props.id)}
             <form onSubmit={(e) => this.updateOneProblemPage(e)}>
               <label>
                 {" "}
