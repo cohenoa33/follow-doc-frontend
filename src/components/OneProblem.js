@@ -4,7 +4,10 @@ import { withRouter } from "react-router-dom";
 import { deleteComment, addNewComment } from "../actions";
 import { connect } from "react-redux";
 import EditComment from "./comments/EditComment";
+import NewAppointment from "./appointments/NewAppointment";
 import OneProbAllAppointments from "./appointments/OneProbAllAppointments";
+import OneProbProblemInfo from "./problems/OneProbProblemInfo";
+import OneProbComments from "./comments/OneProbComments";
 
 class OneProblem extends React.Component {
   state = {
@@ -82,40 +85,39 @@ class OneProblem extends React.Component {
     this.props.addNewComment(newComment, e, problem.id);
   };
 
-  handleDeleteComment = (e) => {
-    let id = e.target.id;
-    const list = this.state.comments.filter(
-      (comment) => comment.id !== parseInt(id)
-    );
-    this.setState({ ...this.state, comments: list });
-    this.props.deleteComment(id);
-  };
-  renderEditComment = (id, text, status_open) => (
-    <EditComment id={id} text={text} status_open={status_open} />
-  );
+  // handleDeleteComment = (e) => {
+  //   let id = e.target.id;
+  //   const list = this.state.comments.filter(
+  //     (comment) => comment.id !== parseInt(id)
+  //   );
+  //   this.setState({ ...this.state, comments: list });
+  //   this.props.deleteComment(id);
+  // };
+  // renderEditComment = (id, text, status_open) => (
+  //   <EditComment id={id} text={text} status_open={status_open} />
+  // );
   renderAllAppointments = (id) => <OneProbAllAppointments id={id} />;
+  renderOneProbProblemInfo = () => (
+    <OneProbProblemInfo
+      name={this.state.problem.name}
+      description={this.state.problem.description}
+      dependent={this.state.dependent.name}
+    />
+  );
+  renderNewAppointment = () => <NewAppointment />;
+  renderOneProbComments = () => <OneProbComments />;
 
   render() {
-    const { name, description } = this.state.problem;
     return (
       <div>
         <div>
-          <div className="problem-container-description">
-            <br />
-            <span> Dependent: </span>
-            <span> {this.state.dependent.name}</span>
-            <h1>{name}</h1>
-            Description:
-            <div>{description} </div>
-          </div>
+          <div> {this.renderOneProbProblemInfo()}</div>
           <div className="problem-container-appointments">Appointments</div>
           <div className="problem-container-buttons">
             <button className="btn-problem-container-buttons">
               Upload File
             </button>
-            <button className="btn-problem-container-buttons">
-              Add New Appointment
-            </button>
+            {this.renderNewAppointment()}
             <form onSubmit={(e) => this.updateOneProblemPage(e)}>
               <label>
                 {" "}
@@ -141,45 +143,9 @@ class OneProblem extends React.Component {
           </div>
         </div>
         <br />
-        <div className="one-problem-comments">
-          <table className="one-problem-comments-table">
-            <h1 className="one-problem-comments-title"> Comments</h1>
-            <thead></thead>
-            <tbody>
-              <tr>
-                <th>Text </th>
-                <th>Updated Date</th>
-                <th>Created Date</th>
-                <th>Status</th>
-              </tr>
-              {this.state.comments.map((comment) => (
-                <tr key={comment.id}>
-                  <td> {comment.text}</td>
-                  <td> {comment.updated_at}</td>
-                  <td> {comment.created_at}</td>
-                  <td> {comment.status_open ? "Open" : "Closed"}</td>
-                  <td>
-                    {this.renderEditComment(
-                      comment.id,
-                      comment.text,
-                      comment.status_open
-                    )}{" "}
-                  </td>
-                  <td>
-                    <button
-                      className="x-btn"
-                      id={comment.id}
-                      onClick={this.handleDeleteComment}
-                    >
-                      delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div>{this.renderAllAppointments(this.props.id)}</div>
-        </div>
+
+        <div>{this.renderOneProbComments()}</div>
+        <div>{this.renderAllAppointments(this.props.id)}</div>
       </div>
     );
   }
