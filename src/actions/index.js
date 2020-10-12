@@ -15,7 +15,7 @@ export const setLogin = (user) => {
   let id = user.user.id;
   let appointments = user.user.appointments;
   let doctors = user.user.doctors;
-  // debugger;
+ 
   return {
     type: "USER_LOGIN",
     payload: {
@@ -41,7 +41,7 @@ export const setLogout = () => {
 export const addNewDependent = (newDependent, userID, e) => {
   e.preventDefault();
   return (dispatch) => {
-    return api.auth
+    return api.dependents
       .addDependent({ name: newDependent, user_id: userID })
       .then((data) => dispatch({ type: "ADD_DEP", payload: data }));
   };
@@ -51,7 +51,7 @@ export const addNewProblem = (newProblem, e) => {
   const { name, description, dependent_id } = newProblem;
   e.preventDefault();
   return (dispatch) => {
-    return api.auth
+    return api.problems
       .addProblem({
         name: name,
         dependent_id: dependent_id,
@@ -64,7 +64,7 @@ export const addNewProblem = (newProblem, e) => {
 export const addNewComment = (newComment, e, id) => {
   e.preventDefault();
   return (dispatch) => {
-    return api.auth
+    return api.comments
       .addComment({
         text: newComment.text,
         status_open: newComment.status_open,
@@ -100,16 +100,21 @@ export const addDoctor = (doctor, e) => {
 };
 export const deleteComment = (id) => {
   return (dispatch) => {
-    return api.auth
+    return api.comments
       .deleteComment(id)
-      .then((data) => dispatch({ type: "DELETE_COMMENT", payload: id }));
-  };
-};
+      .then((data) => 
+      if (!data.error) {
+        dispatch({ type: "DELETE_COMMENT", payload: id })
+      } else {
+      alert(data.error)
+      })
+  }
+}
 
 export const addEditComment = (comment, e, id) => {
   e.preventDefault();
   return (dispatch) => {
-    return api.auth
+    return api.comments
       .editComment(comment, id)
       .then((data) => dispatch({ type: "EDIT_COMMENT", payload: data }));
   };

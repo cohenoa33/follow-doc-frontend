@@ -24,7 +24,7 @@ class OneProblem extends React.Component {
     } else {
       let id = this.props.id;
 
-      api.auth.oneProblem(id).then((data) =>
+      api.problems.oneProblem(id).then((data) =>
         this.setState({
           problem: data,
           dependent: data.dependent,
