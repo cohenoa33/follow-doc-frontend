@@ -109,6 +109,17 @@ export const deleteComment = (id) => {
     });
   };
 };
+export const deleteAppointment = (id) => {
+  return (dispatch) => {
+    return api.appointments.deleteAppointment(id).then((data) => {
+      if (!data.error) {
+        dispatch({ type: "DELETE_APPOINTMENT", payload: id });
+      } else {
+        alert(data.error);
+      }
+    });
+  };
+};
 
 export const addEditComment = (comment, e, id) => {
   e.preventDefault();

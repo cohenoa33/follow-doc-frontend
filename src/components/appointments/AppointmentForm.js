@@ -2,8 +2,14 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import GoogleApiWrapper from "../../containers/MapContainer";
+import { deleteAppointment } from "../../actions";
 
 class AppointmentForm extends React.Component {
+  handleDelete = () => {
+    this.props.deleteAppointment(this.props.appointment.id);
+    this.props.history.push("/profile");
+  };
+
   render() {
     const {
       id,
@@ -65,7 +71,7 @@ class AppointmentForm extends React.Component {
               disabled
             />
           </form>
-          <button key={id} className="btn" onClick={null}>
+          <button key={id} className="btn" onClick={this.handleDelete}>
             {" "}
             Delete Appointment
           </button>
@@ -86,4 +92,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(withRouter(AppointmentForm));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteAppointment: (id) => dispatch(deleteAppointment(id)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(AppointmentForm));
