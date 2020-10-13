@@ -22,7 +22,7 @@ class AllAppointments extends React.Component {
 
   render() {
     const appointments = this.appointmentsList();
-    console.log(appointments);
+
     return (
       <div>
         <Appointments appointments={appointments} />

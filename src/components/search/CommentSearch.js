@@ -20,7 +20,7 @@ class CommentSearch extends React.Component {
         {this.props.search.length > 0 ? (
           <div>
             {this.commentsList().map((comment) => (
-              <Link to={`/problems/${comment.problem_id}`}>
+              <Link to={`/problems/${comment.problem_id}`} key={comment.id}>
                 <li key={comment.id}>{comment.text}</li>
               </Link>
             ))}

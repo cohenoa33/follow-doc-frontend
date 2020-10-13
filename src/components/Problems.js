@@ -16,7 +16,6 @@ class Problems extends React.Component {
               </tr>
               {this.props.problems.map((problem) => (
                 <tr key={problem.id}>
-                  {" "}
                   <td>
                     <Link to={`/problems/${problem.id}`}>{problem.name} </Link>
                   </td>

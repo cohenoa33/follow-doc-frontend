@@ -6,7 +6,6 @@ const OneProbAllAppointments = ({ appointments, id }) => {
   const appointmentsList = appointments.filter(
     (appointment) => appointment.problem.id === +id
   );
-  console.log(appointmentsList);
 
   return (
     <div>
