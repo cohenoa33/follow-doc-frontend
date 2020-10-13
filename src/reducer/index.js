@@ -78,12 +78,12 @@ export const userReducer = (state = initialState, action) => {
     }
 
     case "EDIT_COMMENT": {
-      const commentList = state.comments.filter(
-        (comment) => comment.id !== action.payload.id
-      );
+      // const commentList = state.comments.filter(
+      //   (comment) => comment.id !== action.payload.id
+      // );
       return {
         ...state,
-        comments: [...state.comments, commentList],
+        comments: [...state.comments, action.payload],
       };
     }
     case "DELETE_COMMENT": {
