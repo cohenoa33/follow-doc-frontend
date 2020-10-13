@@ -4,7 +4,7 @@ import Appointments from "./Appointments";
 
 const OneProbAllAppointments = ({ appointments, id }) => {
   const appointmentsList = appointments.filter(
-    (appointment) => appointment.problem.id == id
+    (appointment) => appointment.problem.id === +id
   );
   console.log(appointmentsList);
 

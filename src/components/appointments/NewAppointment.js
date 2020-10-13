@@ -36,7 +36,7 @@ class NewAppointment extends React.Component {
     }
   };
 
-  filterDocors = () => {
+  filterDoctors = () => {
     return this.props.doctors.filter(
       (doctor, index, self) =>
         index ===
@@ -59,7 +59,6 @@ class NewAppointment extends React.Component {
   };
 
   render() {
-    const id = this.props.id;
     return (
       <Popup
         trigger={<button className="btn"> add New Appointment </button>}
@@ -99,7 +98,7 @@ class NewAppointment extends React.Component {
                   {" "}
                   Please Choose Doctor From List{" "}
                 </option>
-                {this.filterDocors().map((doctor) => (
+                {this.filterDoctors().map((doctor) => (
                   <option name="doctor_id" value={doctor.id} key={doctor.name}>
                     {doctor.name}
                   </option>
