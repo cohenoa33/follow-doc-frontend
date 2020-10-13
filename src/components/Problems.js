@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 class Problems extends React.Component {
-  componentDidMount() {}
   render() {
     return (
       <div>

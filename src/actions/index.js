@@ -129,3 +129,10 @@ export const addEditComment = (comment, e, id) => {
       .then((data) => dispatch({ type: "EDIT_COMMENT", payload: data }));
   };
 };
+
+export const searchValue = (search) => {
+  return {
+    type: "SEARCH",
+    payload: search,
+  };
+};

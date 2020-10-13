@@ -12,11 +12,13 @@ import NewProblem from "./components/NewProblem";
 import OneProblem from "./components/OneProblem";
 import NotFound from "./components/NotFound";
 import Navbar from "./components/Navbar";
+import SearchBar from "./components/search/SearchBar";
 import Home from "./containers/Home";
 import ProfileContainer from "./containers/ProfileContainer";
 import ProblemsContainer from "./containers/ProblemsContainer";
 import OneAppointment from "./components/appointments/OneAppointment";
 import Appointments from "./components/appointments/Appointments";
+import SearchResults from "./components/search/SearchResults";
 
 class App extends React.Component {
   handleLoginSubmit = (e, user) => {
@@ -90,7 +92,11 @@ class App extends React.Component {
   );
 
   renderProfile = () => <ProfileContainer />;
-  renderNavBar = () => <Navbar handleLogout={this.handleLogout} />;
+  renderSearchBar = () => <SearchBar />;
+  renderSearchResults = () => <SearchResults />;
+  renderNavBar = () => (
+    <Navbar handleLogout={this.handleLogout} searchBar={this.renderSearchBar} />
+  );
   renderNewProblem = () => <NewProblem />;
   renderAllProblem = () => <ProblemsContainer />;
   renderAllAppointments = () => (
@@ -119,6 +125,7 @@ class App extends React.Component {
     return (
       <div>
         {this.renderNavBar()}
+
         <Switch>
           <Route
             exact
@@ -136,6 +143,7 @@ class App extends React.Component {
           <Route path="/signup" component={this.renderSignup} />
           <Route path="/profile" component={this.renderProfile} />
           <Route path="/newproblem" component={this.renderNewProblem} />
+          <Route path="/search" component={this.renderSearchResults} />
           <Route path="/" component={this.renderHomePage} />
         </Switch>
       </div>
