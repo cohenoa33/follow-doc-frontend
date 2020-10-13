@@ -162,7 +162,18 @@ input[type="textarea"] {
 .x-btn:focus {
   outline: none;
 }
-
+.add-to-calendar,
+.add-to-calendar a {
+  background-color: #51d6cb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 80%;
+  text-align: center;
+  float: center;
+  text-decoration: none;
+}
 .btn {
   background-color: #51d6cb;
   color: white;

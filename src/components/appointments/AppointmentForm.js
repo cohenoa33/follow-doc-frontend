@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import GoogleApiWrapper from "../../containers/MapContainer";
 import { deleteAppointment } from "../../actions";
+import AddToCalendar from "./AddToCalendar";
 
 class AppointmentForm extends React.Component {
   handleDelete = () => {
@@ -26,6 +27,15 @@ class AppointmentForm extends React.Component {
       .filter((p) => p.id === problem.id)
       .map((problem) => problem);
     let dependent = prob[0].dependent.name;
+
+    const newTime = `${+time.split(":")[0] + 1}:${time.split(":")[1]}`;
+    const event = {
+      title: `Appointment to Dr.${doctor.name} for ${dependent}`,
+      description: `Problem: ${problem.name}`,
+      location: `${doctor.address}`,
+      startTime: `${date}T${time}:00-04:00`,
+      endTime: `${date}T${newTime}:00-04:00`,
+    };
 
     return (
       <div>
@@ -70,12 +80,18 @@ class AppointmentForm extends React.Component {
               placeholder={note}
               disabled
             />
+            <div>
+              <div className="add-to-calendar">
+                <AddToCalendar event={event} />
+              </div>
+            </div>
           </form>
           <button key={id} className="btn" onClick={this.handleDelete}>
             {" "}
             Delete Appointment
           </button>
         </div>
+
         <div className="map-squere">
           <GoogleApiWrapper lat={doctor.latitude} lng={doctor.longitude} />
         </div>

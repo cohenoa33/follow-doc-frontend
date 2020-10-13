@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class Problems extends React.Component {
   componentDidMount() {}
@@ -16,7 +17,10 @@ class Problems extends React.Component {
               </tr>
               {this.props.problems.map((problem) => (
                 <tr key={problem.id}>
-                  <td>{problem.name}</td>
+                  {" "}
+                  <td>
+                    <Link to={`/problems/${problem.id}`}>{problem.name} </Link>
+                  </td>
                   <td>{problem.description}</td>
                   <td>{problem.dependent.name}</td>
                 </tr>

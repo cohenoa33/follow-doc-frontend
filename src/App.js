@@ -60,8 +60,8 @@ class App extends React.Component {
       localStorage.token = data.jwt;
       this.props.setLogin(data);
       if (
-        this.props.history.location.pathname == "/login" ||
-        this.props.history.location.pathname == "/signup"
+        this.props.history.location.pathname === "/login" ||
+        this.props.history.location.pathname === "/signup"
       ) {
         this.props.history.push("/profile");
       }
