@@ -74,7 +74,7 @@ media screen and (max-width: 600px) {
   float: right;
   margin-right: 10px;
   position: relative;
-  width: 500px;
+  width: 40%;
   height: 500px;
   box-sizing: border-box;
   border: none;
@@ -114,6 +114,16 @@ input[type="password"] {
   border: 1px solid #ccc;
   box-sizing: border-box;
   text-align: left;
+}
+input[type="textarea"].one-appointment-text-area {
+  width: 80%;
+  height: auto;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 input[type="textarea"] {
