@@ -89,6 +89,12 @@ const deleteComment = (id) => {
     headers: headers,
   }).then((res) => res.json());
 };
+const deleteAppointment = (id) => {
+  return fetch(`${API_ROOT}/appointments/${id}`, {
+    method: "DELETE",
+    headers: headers,
+  }).then((res) => res.json());
+};
 
 export default {
   auth: {
@@ -106,6 +112,7 @@ export default {
   },
   appointments: {
     addAppointment: addAppointment,
+    deleteAppointment: deleteAppointment,
   },
   doctors: {
     addDoctor: addDoctor,

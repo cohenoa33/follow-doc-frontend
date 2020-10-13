@@ -59,6 +59,15 @@ export const userReducer = (state = initialState, action) => {
         appointments: [...state.appointments, action.payload],
       };
     }
+    case "DELETE_APPOINTMENT": {
+      const list = state.appointments.filter(
+        (appointment) => appointment.id !== parseInt(action.payload)
+      );
+      return {
+        ...state,
+        appointments: list,
+      };
+    }
 
     case "ADD_DOCTOR": {
       return {
@@ -80,7 +89,6 @@ export const userReducer = (state = initialState, action) => {
       const list = state.comments.filter(
         (comment) => comment.id !== parseInt(action.payload)
       );
-
       return {
         ...state,
         comments: list,
