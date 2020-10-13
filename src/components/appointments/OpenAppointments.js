@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class OpenAppointments extends React.Component {
   state = {
@@ -7,10 +8,13 @@ class OpenAppointments extends React.Component {
   };
   filterdAppointments() {
     const appointments = this.props.appointments.filter(
-      (app) => app.status_open === true || app.insurance_auth === true
+      (appointment) =>
+        appointment.status_open === true || appointment.insurance_auth === true
     );
     if (this.props.id) {
-      return appointments.filter((app) => app.problem.id === this.props.id);
+      return appointments.filter(
+        (appointment) => appointment.problem.id === this.props.id
+      );
     } else {
       return appointments;
     }
@@ -20,12 +24,14 @@ class OpenAppointments extends React.Component {
     return (
       <div>
         <h1>Appointments who needs preparation:</h1>
-        {this.filterdAppointments().map((app) => (
-          <li key={app.id}>
-            {" "}
-            Appointment for {app.doctor.name} on {app.date} at {app.time}.
-            Notes:
-            {app.note}
+        {this.filterdAppointments().map((appointment) => (
+          <li key={appointment.id}>
+            <Link to={`/appointments/${appointment.id}`}>
+              {" "}
+              Appointment for {appointment.doctor.name} on {appointment.date} at{" "}
+              {appointment.time}. Notes:
+              {appointment.note}
+            </Link>
           </li>
         ))}
       </div>

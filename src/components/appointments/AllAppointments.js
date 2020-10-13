@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import Appointments from "./Appointments";
 
 class AllAppointments extends React.Component {
   appointmentsList = () => {
@@ -12,47 +12,25 @@ class AllAppointments extends React.Component {
       day: "2-digit",
     }).format(today);
 
-    let a = appointments
+    let appointmentList = appointments
       .filter((app) => app.date > time)
       .sort(function (a, b) {
         return a.date === b.date ? 0 : a.date < b.date ? 1 : -1;
       });
-    return a;
+    return appointmentList;
   };
 
   render() {
+    const appointments = this.appointmentsList();
+    console.log(appointments);
     return (
       <div>
-        <h1> All Appointments </h1>
-        <div className="problems-list-table">
-          <table>
-            <tbody>
-              <tr>
-                <th>Date </th>
-                <th>Time </th>
-                <th>Doctor Name</th>
-                <th>Problem</th>
-              </tr>
-              {this.appointmentsList().map((app) => (
-                <tr key={app.id}>
-                  <td>{app.date}</td>
-                  <td>{app.time}</td>
-                  <td>{app.doctor.name}</td>
-                  <td>
-                    {" "}
-                    <Link to={`/problems/${app.problem.id}`}>
-                      {app.problem.name}{" "}
-                    </Link>{" "}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <Appointments appointments={appointments} />
       </div>
     );
   }
 }
+
 const mapStateToProps = (state) => {
   return {
     appointments: state.appointments,

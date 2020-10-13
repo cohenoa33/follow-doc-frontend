@@ -24,7 +24,11 @@ class NewDoctor extends React.Component {
         [e.target.name]: e.target.value,
       },
     });
-    console.log(this.state.doctor);
+  };
+
+  handleAddDoctor = (e) => {
+    this.setState({ blockInput: !this.state.blockInput });
+    this.props.addDoctor(this.state.doctor, e);
   };
 
   render() {
@@ -45,7 +49,7 @@ class NewDoctor extends React.Component {
               className="popup-form"
               noValidate
               onSubmit={(e) => {
-                this.props.addDoctor(this.state.doctor, e);
+                this.handleAddDoctor(e);
               }}
             >
               <br></br>
@@ -94,7 +98,7 @@ class NewDoctor extends React.Component {
               ></input>
               <br />
               {this.state.blockInput ? null : (
-                <button className="btn">Add new Appointment</button>
+                <button className="btn">Add new Doctor</button>
               )}
             </form>
             <button className="btn" onClick={close}>

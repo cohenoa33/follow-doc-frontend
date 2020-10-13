@@ -5,22 +5,31 @@ import { connect } from "react-redux";
 const Navbar = ({ user, handleLogout }) => {
   return (
     <div className="nav-bar">
-      {user ? (
-        <div>
-          Hello, {user.username}
-          <NavLink to="/" className="navbar-list" onClick={handleLogout}>
-            Logout
-          </NavLink>
-          <NavLink to="/problems" className="navbar-list">
-            {" "}
-            All Problems{" "}
-          </NavLink>
-          <NavLink to="/profile" className="navbar-list">
-            {" "}
-            Profile{" "}
-          </NavLink>
-        </div>
-      ) : null}
+      <div className="navbar-list">
+        <NavLink to="/" className="navbar-list-followDoc">
+          {" "}
+          FollowDoc
+        </NavLink>
+        {user ? (
+          <div>
+            <NavLink to="/profile" className="navbar-list">
+              {" "}
+              {user.username} Profile{" "}
+            </NavLink>
+            <NavLink to="/problems" className="navbar-list">
+              {" "}
+              All Problems{" "}
+            </NavLink>
+            <NavLink to="/appointments" className="navbar-list">
+              {" "}
+              All Appointments{" "}
+            </NavLink>
+            <NavLink to="/" className="navbar-list" onClick={handleLogout}>
+              Logout
+            </NavLink>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 };

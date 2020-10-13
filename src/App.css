@@ -208,17 +208,50 @@ td {
   display: inline-grid;
   margin: 1rem 2rem;
 }
-
 .nav-bar {
-  background: #222222;
-  padding: 10px 40px 10px 70px;
-  color: white;
-  text-align: left;
+  position: relative;
+  background-color: #333;
+  width: 100%;
+  overflow: hidden;
+  overflow: hidden;
 }
 
-.nav-bar a {
-  color: white;
-  text-align: left;
+.navbar-list .navbar-list-followDoc {
+  height: 100%;
+  float: left;
+  color: #bad63d;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 22px;
+}
+.navbar-list a {
+  height: 100%;
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.navbar-list a:hover {
+  background-color: #51d6cb;
+  color: black;
+  cursor: pointer;
+}
+.navbar-list-items {
+  float: left;
+  padding: 6px;
+  border: none;
+  margin-top: 1px;
+  font-size: 17px;
+  text-align: center;
+  align-content: center;
+}
+
+a {
+  color: black;
+  text-decoration: none;
 }
 
 * {

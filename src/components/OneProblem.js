@@ -126,10 +126,12 @@ class OneProblem extends React.Component {
                 name="text"
                 value={this.state.newComment.text}
                 onChange={this.handleInput}
-              />
-              <button className="btn-problem-container-buttons">
-                Add New Comment
-              </button>
+              />{" "}
+              {this.state.newComment.text.length > 0 ? (
+                <button className="btn-problem-container-buttons">
+                  Add New Comment
+                </button>
+              ) : null}
             </form>
           </div>
         </div>
