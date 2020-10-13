@@ -3,11 +3,13 @@ import api from "../services/api";
 import { withRouter } from "react-router-dom";
 import { deleteComment, addNewComment } from "../actions";
 import { connect } from "react-redux";
+
 import NewAppointment from "./appointments/NewAppointment";
 import OneProbAllAppointments from "./appointments/OneProbAllAppointments";
 import OpenAppointments from "./appointments/OpenAppointments";
 import OneProbProblemInfo from "./problems/OneProbProblemInfo";
 import OneProbComments from "./comments/OneProbComments";
+import AddNewComment from "./comments/AddNewComment";
 
 class OneProblem extends React.Component {
   state = {
@@ -95,6 +97,7 @@ class OneProblem extends React.Component {
     />
   );
   renderNewAppointment = (id) => <NewAppointment id={id} />;
+  renderAddNewComment = (id) => <AddNewComment id={id} />;
   renderOneProbComments = () => <OneProbComments />;
 
   render() {
@@ -109,34 +112,10 @@ class OneProblem extends React.Component {
               Upload File
             </button>
             {this.renderNewAppointment(id)}
-            <form onSubmit={(e) => this.updateOneProblemPage(e)}>
-              <label>
-                {" "}
-                <input
-                  name="status_open"
-                  type="checkbox"
-                  value={this.state.newComment.status_open}
-                  onChange={this.handleInputChange}
-                />{" "}
-                Mark as Open
-              </label>
-              <input
-                type="text"
-                placeholder="Add New Comment"
-                name="text"
-                value={this.state.newComment.text}
-                onChange={this.handleInput}
-              />{" "}
-              {this.state.newComment.text.length > 0 ? (
-                <button className="btn-problem-container-buttons">
-                  Add New Comment
-                </button>
-              ) : null}
-            </form>
+            {this.renderAddNewComment(id)}
           </div>
         </div>
         <br />
-
         <div>{this.renderOneProbComments()}</div>
         <div>{this.renderAllAppointments(id)}</div>
       </div>
