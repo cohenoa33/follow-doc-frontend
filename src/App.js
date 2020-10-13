@@ -16,6 +16,7 @@ import Home from "./containers/Home";
 import ProfileContainer from "./containers/ProfileContainer";
 import ProblemsContainer from "./containers/ProblemsContainer";
 import OneAppointment from "./components/appointments/OneAppointment";
+import Appointments from "./components/appointments/Appointments";
 
 class App extends React.Component {
   handleLoginSubmit = (e, user) => {
@@ -92,6 +93,9 @@ class App extends React.Component {
   renderNavBar = () => <Navbar handleLogout={this.handleLogout} />;
   renderNewProblem = () => <NewProblem />;
   renderAllProblem = () => <ProblemsContainer />;
+  renderAllAppointments = () => (
+    <Appointments appointments={this.props.appointments} />
+  );
   renderOneProblem = (routerProps) => {
     let problemId = parseInt(routerProps.match.params.id);
     let foundProblem = this.props.problems.filter(
@@ -127,6 +131,7 @@ class App extends React.Component {
             render={(routerProps) => this.renderOneAppointment(routerProps)}
           />{" "}
           <Route path="/problems" component={this.renderAllProblem} />
+          <Route path="/appointments" component={this.renderAllAppointments} />
           <Route path="/login" component={this.renderLogin} />
           <Route path="/signup" component={this.renderSignup} />
           <Route path="/profile" component={this.renderProfile} />
