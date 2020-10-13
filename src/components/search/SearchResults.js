@@ -1,28 +1,26 @@
 import React from "react";
-import api from "../../services/api";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
+import CommentSearch from "./CommentSearch";
+import ProblemsSearch from "./ProblemsSearch";
+import DoctorsSearch from "./DoctorsSearch";
+import AppointmentsSearch from "./AppointmentsSearch";
+
 class SearchResults extends React.Component {
-  commentsList = () => {
-    let search = this.props.search.toLowerCase();
-    return this.props.comments.filter((comment) =>
-      comment.text.toLowerCase().includes(search)
-    );
-  };
-  problemsList = () => {
-    // let search = this.props.search.toLowerCase();
-    // let list = this.props.problems.filter((problem) =>
-    //   problem.text.toLowerCase().includes(search)
-    // );
-    // console.log(list);
-    // console.log(this.props.problems);
-  };
+  renderCommentSearch = () => <CommentSearch />;
+  renderProblemsSearch = () => <ProblemsSearch />;
+  renderDoctorsSearch = () => <DoctorsSearch />;
+  renderAppointmentsSearch = () => <AppointmentsSearch />;
 
   render() {
     return (
       <div>
-        Search Results for {this.props.search}:{this.problemsList()}
+        <h2> Search Results for</h2> <h1> {this.props.search}</h1>
+        {this.renderCommentSearch()}
+        {this.renderProblemsSearch()}
+        {this.renderDoctorsSearch()}
+        {this.renderAppointmentsSearch()}
       </div>
     );
   }
@@ -30,10 +28,7 @@ class SearchResults extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    problems: state.problems,
     appointments: state.appointments,
-    doctors: state.doctors,
-    comments: state.comments,
     search: state.search,
   };
 };
