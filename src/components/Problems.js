@@ -6,7 +6,6 @@ class Problems extends React.Component {
   render() {
     return (
       <div>
-        <h1> Problems list </h1>
         <div className="problems-list-table">
           <table>
             <tbody>
