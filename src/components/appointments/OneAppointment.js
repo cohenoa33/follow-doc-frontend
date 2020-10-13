@@ -9,7 +9,6 @@ class OneAppointment extends React.Component {
       this.props.history.push("/");
     }
   }
-
   render() {
     const id = this.props.match.params.id;
     const appointment = this.props.appointments.filter(
@@ -20,14 +19,56 @@ class OneAppointment extends React.Component {
       <div>
         {appointment.map((appointment) => (
           <div>
-            <p className="one-appointment-data">{appointment.date} </p>
-            <p className="one-appointment-data">{appointment.time} </p>
-            <p className="one-appointment-data">{appointment.note} </p>
-            <p className="one-appointment-data">{appointment.doctor.name} </p>
-            <p className="one-appointment-data">
-              {appointment.doctor.address}{" "}
-            </p>
-            <p className="one-appointment-data">{appointment.problem.name} </p>
+            <h1>Appointment for {appointment.problem.name}</h1>
+            <div className="column-60">
+              <form>
+                <label> Doctor: </label> <br />
+                <input
+                  type="text"
+                  placeholder={appointment.doctor.name}
+                  disabled
+                />
+                <br />
+                <label> Date: </label> <br />
+                <input
+                  disabled
+                  type="text"
+                  className="one-appointment-data"
+                  placeholder={appointment.date}
+                />
+                <br />
+                <label> Time: </label>
+                <br />
+                <input type="text" placeholder={appointment.time} disabled />
+                <br />
+                <label> Address: </label> <br />
+                <input
+                  type="text"
+                  placeholder={appointment.doctor.address}
+                  disabled
+                />
+                <br />
+                <label> Additional Information: </label> <br />
+                <label>
+                  {appointment.insurance_auth
+                    ? "Waiting for Insurance Approval"
+                    : "Approved By Insurance"}{" "}
+                </label>{" "}
+                <label>
+                  <br />
+                  <br />
+                  {appointment.status_open
+                    ? "Status: Open"
+                    : "Status: Close"}{" "}
+                </label>{" "}
+                <br />
+                <input
+                  type="textarea"
+                  placeholder={appointment.note}
+                  disabled
+                />
+              </form>
+            </div>
             <div className="map-squere">
               <GoogleApiWrapper
                 lat={appointment.doctor.latitude}
@@ -45,6 +86,7 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
     appointments: state.appointments,
+    problems: state.problems,
   };
 };
 

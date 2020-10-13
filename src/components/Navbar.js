@@ -5,9 +5,9 @@ import { connect } from "react-redux";
 const Navbar = ({ user, handleLogout }) => {
   return (
     <div className="nav-bar">
-      hello
       {user ? (
         <div>
+          Hello, {user.username}
           <NavLink to="/" className="navbar-list" onClick={handleLogout}>
             Logout
           </NavLink>

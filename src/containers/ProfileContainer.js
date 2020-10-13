@@ -39,7 +39,9 @@ class ProfileContainer extends React.Component {
             <div> {this.renderAddNewDoctor()}</div>
             <div> {this.renderAddNewAppointment()}</div>
           </div>
+
           <div className="column-30"> {this.renderComments()}</div>
+
           <div className="column-100">{this.renderProblems()} </div>
           <div className="column-100">{this.renderAllAppointments()} </div>
         </div>

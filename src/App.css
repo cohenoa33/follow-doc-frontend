@@ -12,6 +12,13 @@ media screen and (max-width: 600px) {
   width: 33%;
   list-style-type: none;
 }
+.column-60 {
+  float: left;
+  width: 50%;
+  list-style-type: none;
+  align-items: left;
+  text-align-last: center;
+}
 
 /* Clear floats after the columns */
 .row:after {
@@ -64,7 +71,8 @@ media screen and (max-width: 600px) {
 }
 
 .map-squere {
-  float: left;
+  float: right;
+  margin-right: 10px;
   position: relative;
   width: 500px;
   height: 500px;
@@ -194,15 +202,13 @@ td {
 .nav-bar {
   background: #222222;
   padding: 10px 40px 10px 70px;
-  border: 1px solid #000;
-  border-left: none;
-  border-right: none;
-  border-radius: 10px;
   color: white;
+  text-align: left;
 }
 
 .nav-bar a {
   color: white;
+  text-align: left;
 }
 
 * {

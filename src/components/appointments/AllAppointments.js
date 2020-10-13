@@ -17,7 +17,6 @@ class AllAppointments extends React.Component {
       .sort(function (a, b) {
         return a.date === b.date ? 0 : a.date < b.date ? 1 : -1;
       });
-    console.log(time);
     return a;
   };
 
