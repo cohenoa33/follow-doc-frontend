@@ -7,6 +7,7 @@ const initialState = {
   doctors: [],
   jwt: "",
   id: "",
+  search: "",
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -92,6 +93,12 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         comments: list,
+      };
+    }
+    case "SEARCH": {
+      return {
+        ...state,
+        search: action.payload,
       };
     }
 

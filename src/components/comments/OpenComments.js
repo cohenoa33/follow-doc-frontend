@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class OpenComments extends React.Component {
   commentsList = () => {
@@ -10,11 +11,14 @@ class OpenComments extends React.Component {
   render() {
     return (
       <div>
-        <h1> Comments</h1>
+        <h1> Open Comments</h1>
         {this.commentsList().map((comment) => (
           <li key={comment.id}>
             {" "}
-            {comment.text} {comment.created_at.toString()}{" "}
+            <Link to={`/problems/${comment.problem_id}`}>
+              {comment.text}
+              <br></br>
+            </Link>
           </li>
         ))}
       </div>
