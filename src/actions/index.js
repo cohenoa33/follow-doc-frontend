@@ -38,8 +38,7 @@ export const setLogout = () => {
   };
 };
 
-export const addNewDependent = (newDependent, userID, e) => {
-  e.preventDefault();
+export const addNewDependent = (newDependent, userID) => {
   return (dispatch) => {
     return api.dependents
       .addDependent({ name: newDependent, user_id: userID })

@@ -38,7 +38,6 @@ class NewAppointment extends React.Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    alert(this.state.appointment);
     this.props.addAppointment(this.state.appointment);
     this.setState({ blockInput: true });
   };

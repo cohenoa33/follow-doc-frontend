@@ -14,9 +14,14 @@ class NewDependent extends React.Component {
     this.setState({ newDependent: e.target.value });
   };
 
-  render() {
+  handleSubmit = (e) => {
+    e.preventDefault();
     let userID = this.props.id;
+    this.props.addNewDependent(this.state.newDependent, userID);
+    this.setState({ blockInput: true });
+  };
 
+  render() {
     return (
       <Popup
         trigger={<button className="btn"> Add Dependent </button>}
@@ -31,16 +36,7 @@ class NewDependent extends React.Component {
             <div className="header"> </div>
             <div className="content"> </div>
             <div className="actions">
-              <form
-                onSubmit={(e) => {
-                  this.props.addNewDependent(
-                    this.state.newDependent,
-                    userID,
-                    e
-                  );
-                  this.setState({ blockInput: true });
-                }}
-              >
+              <form onSubmit={this.handleSubmit}>
                 <label>Dependent Name</label>
                 {this.state.blockInput ? (
                   <input

@@ -77,11 +77,15 @@ export const userReducer = (state = initialState, action) => {
       };
     }
     case "EDIT_APPOINTMENT": {
+      let updatedList = [
+        ...state.appointments.filter(
+          (appointment) => appointment.id != action.payload.id
+        ),
+        action.payload,
+      ];
       return {
         ...state,
-        appointments: state.appointments
-          .filter((appointment) => appointment.id !== action.payload.id)
-          .push(action.payload),
+        appointments: updatedList,
       };
     }
 

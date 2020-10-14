@@ -49,6 +49,7 @@ class AppointmentForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.editAppointment(this.state.appointment);
+    this.handleEditButton();
   };
 
   handleEditButton = () => {
@@ -59,6 +60,7 @@ class AppointmentForm extends React.Component {
     this.props.deleteAppointment(this.props.appointment.id);
     this.props.history.push("/profile");
   };
+
   render() {
     const {
       id,
@@ -168,9 +170,14 @@ class AppointmentForm extends React.Component {
               disabled={this.state.disabled ? true : false}
             />
             {this.state.disabled ? null : (
-              <button type="submit" className="btn">
-                Save Changes
-              </button>
+              <div>
+                <button type="submit" className="btn">
+                  Save Changes
+                </button>
+                <button onClick={this.handleEditButton} className="btn">
+                  Back
+                </button>
+              </div>
             )}
           </form>
           {this.state.disabled ? (
@@ -203,7 +210,6 @@ const mapStateToProps = (state) => {
     user: state.user,
     appointments: state.appointments,
     problems: state.problems,
-    doctors: state.doctors,
   };
 };
 
