@@ -60,6 +60,7 @@ const addComment = (comment) => {
     body: JSON.stringify({ comment: comment }),
   }).then((res) => res.json());
 };
+
 const addAppointment = (appointment) => {
   return fetch(`${API_ROOT}/appointments`, {
     method: "POST",
@@ -80,6 +81,13 @@ const editComment = ({ text, status_open, id }) => {
     method: "PATCH",
     headers: headers,
     body: JSON.stringify({ text, status_open }),
+  }).then((res) => res.json());
+};
+const editAppointment = ({ note, status_open, insurance_auth, id }) => {
+  return fetch(`${API_ROOT}/appointments/${id}`, {
+    method: "PATCH",
+    headers: headers,
+    body: JSON.stringify({ note, status_open, insurance_auth }),
   }).then((res) => res.json());
 };
 
@@ -113,6 +121,7 @@ export default {
   appointments: {
     addAppointment: addAppointment,
     deleteAppointment: deleteAppointment,
+    editAppointment: editAppointment,
   },
   doctors: {
     addDoctor: addDoctor,

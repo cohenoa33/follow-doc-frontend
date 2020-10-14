@@ -176,8 +176,9 @@ input[type="textarea"] {
 }
 .add-to-calendar,
 .add-to-calendar a {
+  padding: 0;
   background-color: #51d6cb;
-  color: white;
+  color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -186,6 +187,13 @@ input[type="textarea"] {
   float: center;
   text-decoration: none;
 }
+.add-to-calendar ul li a {
+  text-decoration: none;
+  list-style: none;
+  font-size: 12px;
+  cursor: pointer;
+}
+
 .btn {
   background-color: #51d6cb;
   color: white;
@@ -283,4 +291,5 @@ a {
   text-align: center;
   border-radius: 5px;
   box-sizing: border-box;
+  text-decoration: none;
 }

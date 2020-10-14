@@ -74,8 +74,7 @@ export const addNewComment = (newComment, e, id) => {
   };
 };
 
-export const addAppointment = (appointment, e) => {
-  e.preventDefault();
+export const addAppointment = (appointment) => {
   return (dispatch) => {
     return api.appointments.addAppointment(appointment).then((data) => {
       if (!data.error) {
@@ -126,6 +125,13 @@ export const editComment = (comment) => {
     return api.comments
       .editComment(comment)
       .then((data) => dispatch({ type: "EDIT_COMMENT", payload: data }));
+  };
+};
+export const editAppointment = (appointment) => {
+  return (dispatch) => {
+    return api.appointments
+      .editAppointment(appointment)
+      .then((data) => dispatch({ type: "EDIT_APPOINTMENT", payload: data }));
   };
 };
 
