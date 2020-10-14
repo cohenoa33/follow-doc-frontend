@@ -1,7 +1,6 @@
 import React from "react";
 
 const OneProbProblemInfo = (props) => {
-  console.log(props.problem);
   return (
     <div>
       {props.problem.map((problem) => (

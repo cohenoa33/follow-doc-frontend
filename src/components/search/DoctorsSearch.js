@@ -7,8 +7,13 @@ class DoctorsSearch extends React.Component {
     if (this.props.search.length > 0) {
       let search = this.props.search.toLowerCase();
       let filterlist = this.props.doctors.filter((doctor) => doctor.info);
-      return filterlist.filter((doctor) =>
+      let list = filterlist.filter((doctor) =>
         doctor.info.toLowerCase().includes(search)
+      );
+      return list.filter(
+        (doctor, index, self) =>
+          index ===
+          self.findIndex((d) => d.id === doctor.id && d.name === doctor.name)
       );
     }
   };
