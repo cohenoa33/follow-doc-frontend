@@ -1,16 +1,17 @@
 import React from "react";
 
-const OneProbProblemInfo = ({ name, description, dependent }) => {
+const OneProbProblemInfo = (props) => {
   return (
     <div>
-      <div className="problem-container-description">
-        <br />
-        <span> Dependent: </span>
-        <span> {dependent}</span>
-        <h1>{name}</h1>
-        Description:
-        <div>{description} </div>
-      </div>
+      {props.problem.map((problem) => (
+        <div className="problem-container-description">
+          <span> Dependent: </span>
+          <span> {problem.dependent.name}</span>
+          <h1>{problem.name}</h1>
+          Description:
+          <div>{problem.description} </div>
+        </div>
+      ))}
     </div>
   );
 };

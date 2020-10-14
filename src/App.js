@@ -107,11 +107,7 @@ class App extends React.Component {
     let foundProblem = this.props.problems.filter(
       (problem) => problem.id === problemId
     );
-    return foundProblem ? (
-      <OneProblem problem={foundProblem} id={problemId} />
-    ) : (
-      <NotFound />
-    );
+    return foundProblem ? <OneProblem id={problemId} /> : <NotFound />;
   };
   renderOneAppointment = (routerProps) => {
     let appID = parseInt(routerProps.match.params.id);

@@ -121,11 +121,10 @@ export const deleteAppointment = (id) => {
   };
 };
 
-export const addEditComment = (comment, e, id) => {
-  e.preventDefault();
+export const editComment = (comment) => {
   return (dispatch) => {
     return api.comments
-      .editComment(comment, id)
+      .editComment(comment)
       .then((data) => dispatch({ type: "EDIT_COMMENT", payload: data }));
   };
 };
