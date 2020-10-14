@@ -27,6 +27,7 @@ class NewAppointment extends React.Component {
         },
       });
     } else {
+      console.log(e.target.value, e.target.name);
       this.setState({
         appointment: {
           ...this.state.appointment,
@@ -35,6 +36,11 @@ class NewAppointment extends React.Component {
       });
     }
   };
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.addAppointment(this.state.appointment);
+    this.setState({ blockInput: true });
+  };
 
   filterDoctors = () => {
     return this.props.doctors.filter(
@@ -42,12 +48,6 @@ class NewAppointment extends React.Component {
         index ===
         self.findIndex((d) => d.id === doctor.id && d.name === doctor.name)
     );
-  };
-
-  validate = (e) => {
-    e.preventDefault();
-    this.props.addAppointment(this.state.appointment, e);
-    this.setState({ blockInput: true });
   };
 
   problemsList = () => {
@@ -74,9 +74,8 @@ class NewAppointment extends React.Component {
             <br></br>
             <form
               className="popup-form"
-              noValidate
               onSubmit={(e) => {
-                this.validate(e);
+                this.handleSubmit(e);
               }}
             >
               <br></br>
@@ -111,6 +110,7 @@ class NewAppointment extends React.Component {
                 value={this.state.appointment.date}
                 name="date"
                 placeholder="Date"
+                required
                 noValidate
               ></input>
               <br />
@@ -121,6 +121,7 @@ class NewAppointment extends React.Component {
                 name="time"
                 placeholder="time"
                 noValidate
+                required
               ></input>
               <br />
               <label>
@@ -153,7 +154,9 @@ class NewAppointment extends React.Component {
               ></input>
               <br />
               {this.state.blockInput ? null : (
-                <button className="btn">Add new Appointment</button>
+                <button className="btn" type="Submit">
+                  Add new Appointment
+                </button>
               )}
             </form>
             <button className="btn" onClick={close}>
@@ -175,8 +178,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    addAppointment: (appointment, e) =>
-      dispatch(addAppointment(appointment, e)),
+    addAppointment: (appointment) => dispatch(addAppointment(appointment)),
   };
 };
 
