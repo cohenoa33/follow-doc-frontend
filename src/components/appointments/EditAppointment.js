@@ -38,7 +38,7 @@ class EditAppointment extends React.Component {
       ...this.state,
       blockInput: true,
     });
-    this.props.addEditComment(this.state.comment, e, this.props.id);
+    this.props.editComment(this.state.comment, e, this.props.id);
   };
 
   render() {

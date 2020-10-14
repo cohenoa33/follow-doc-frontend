@@ -75,11 +75,11 @@ const addDoctor = (doctor) => {
   }).then((res) => res.json());
 };
 
-const editComment = (comment, id) => {
+const editComment = ({ text, status_open, id }) => {
   return fetch(`${API_ROOT}/comments/${id}`, {
     method: "PATCH",
     headers: headers,
-    body: JSON.stringify(comment),
+    body: JSON.stringify({ text, status_open }),
   }).then((res) => res.json());
 };
 
