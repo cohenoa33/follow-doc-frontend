@@ -93,6 +93,7 @@ class OneProbProblemInfo extends React.Component {
                     value={this.state.description}
                     disabled={!this.state.disabled ? true : false}
                   />
+                  <br />
                   <button className="edit-btn" onClick={this.saveChanges}>
                     Save
                   </button>
