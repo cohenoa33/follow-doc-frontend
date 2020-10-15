@@ -76,13 +76,15 @@ class AppointmentForm extends React.Component {
     let prob = this.props.problems.find((p) => p.id === problem.id);
     let dependent = prob.dependent.name;
 
-    const newTime = `${+time.split(":")[0] + 1}:${time.split(":")[1]}`;
+    const hour = +time.split(":")[0] + 1;
+    const updatedHour = hour < 10 ? `0${hour}` : hour;
+    const newTime = `${updatedHour}:${time.split(":")[1]}`;
     const event = {
       title: `Appointment to Dr.${doctor.name} for ${dependent}`,
       description: `Problem: ${problem.name}`,
       location: `${doctor.address}`,
-      startTime: `${date}T${time}:00-04:00`,
-      endTime: `${date}T${newTime}:00-04:00`,
+      startTime: `${date}T${time}:00-07:00`,
+      endTime: `${date}T${newTime}:00-07:00`,
     };
 
     return (

@@ -9,7 +9,7 @@ class OpenAppointments extends React.Component {
   filterdAppointments() {
     const appointments = this.props.appointments.filter(
       (appointment) =>
-        appointment.status_open === true || appointment.insurance_auth === true
+        appointment.status_open === true || appointment.insurance_auth === false
     );
     if (this.props.id) {
       return appointments.filter(
