@@ -88,6 +88,16 @@ export const userReducer = (state = initialState, action) => {
         appointments: updatedList,
       };
     }
+    case "EDIT_PROBLEM": {
+      let updatedList = [
+        ...state.problems.filter((problem) => problem.id != action.payload.id),
+        action.payload,
+      ];
+      return {
+        ...state,
+        problems: updatedList,
+      };
+    }
 
     case "DELETE_COMMENT": {
       const list = state.comments.filter(
