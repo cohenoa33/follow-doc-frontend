@@ -143,7 +143,7 @@ class AppointmentForm extends React.Component {
                     type="checkbox"
                     value={status_open}
                   />{" "}
-                  Mark as Open
+                  {status_open ? "Mark as Closed" : "Mark as Open"}
                 </label>
                 <br />
                 <br></br>
@@ -154,7 +154,9 @@ class AppointmentForm extends React.Component {
                     type="checkbox"
                     value={insurance_auth}
                   />{" "}
-                  Approved by Insurance
+                  {insurance_auth
+                    ? "Need Insurance Approval"
+                    : "Approved By Insurance"}
                 </label>
               </div>
             )}

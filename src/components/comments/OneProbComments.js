@@ -23,13 +23,12 @@ class OneProbComments extends React.Component {
       <div>
         <div className="one-problem-comments">
           <table className="one-problem-comments-table">
-            <h1 className="one-problem-comments-title"> Comments</h1>
             <thead></thead>
             <tbody>
               <tr>
-                <th>Text </th>
-                <th>Updated Date</th>
-                <th>Created Date</th>
+                <th>Comment </th>
+                <th>Last update</th>
+                <th>Create at</th>
                 <th>Status</th>
               </tr>
               {comments.map((comment) => (
