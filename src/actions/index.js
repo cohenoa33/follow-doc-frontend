@@ -133,6 +133,13 @@ export const editAppointment = (appointment) => {
       .then((data) => dispatch({ type: "EDIT_APPOINTMENT", payload: data }));
   };
 };
+export const editProblem = (problem, id) => {
+  return (dispatch) => {
+    return api.problems
+      .editProblem(problem, id)
+      .then((data) => dispatch({ type: "EDIT_PROBLEM", payload: data }));
+  };
+};
 
 export const searchValue = (search) => {
   return {

@@ -90,6 +90,13 @@ const editAppointment = ({ note, status_open, insurance_auth, id }) => {
     body: JSON.stringify({ note, status_open, insurance_auth }),
   }).then((res) => res.json());
 };
+const editProblem = (problem, id) => {
+  return fetch(`${API_ROOT}/problems/${id}`, {
+    method: "PATCH",
+    headers: headers,
+    body: JSON.stringify({ problem }),
+  }).then((res) => res.json());
+};
 
 const deleteComment = (id) => {
   return fetch(`${API_ROOT}/comments/${id}`, {
@@ -117,6 +124,7 @@ export default {
   problems: {
     addProblem: addProblem,
     oneProblem: oneProblem,
+    editProblem: editProblem,
   },
   appointments: {
     addAppointment: addAppointment,

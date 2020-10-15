@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { editProblem } from "../../actions";
 
 class OneProbProblemInfo extends React.Component {
   state = {
@@ -12,7 +14,7 @@ class OneProbProblemInfo extends React.Component {
     this.setState({ disabled: !this.state.disabled });
   };
 
-  handleSaveChanges = (e) => {
+  saveChanges = (e) => {
     this.setState({
       ...this.state,
       problem: {
@@ -20,6 +22,13 @@ class OneProbProblemInfo extends React.Component {
         [e.target.name]: e.target.value,
       },
     });
+  };
+
+  submitChanges = (e, id) => {
+    e.preventDefault();
+
+    this.props.editProblem(this.state.problem, id);
+    this.toggleDisabled();
   };
 
   render() {
@@ -52,10 +61,14 @@ class OneProbProblemInfo extends React.Component {
                 <br />
                 <br />
                 <br />
-                <form>
+                <form onSubmit={(e) => this.submitChanges(e, problem.id)}>
                   <label>Dependent:</label>
                   <br />
-                  <input disabled placeholder={problem.dependent.name} />
+                  <input
+                    disabled
+                    placeholder={problem.dependent.name}
+                    className="one-appointment-text-area"
+                  />
                   <br />
                   <br />
                   <label> Problem Name: </label> <br />
@@ -63,7 +76,7 @@ class OneProbProblemInfo extends React.Component {
                     className="one-appointment-text-area"
                     type="text"
                     name="name"
-                    onChange={this.handleSaveChanges}
+                    onChange={this.saveChanges}
                     placeholder={problem.name}
                     value={this.state.name}
                     disabled={!this.state.disabled ? true : false}
@@ -75,12 +88,12 @@ class OneProbProblemInfo extends React.Component {
                     className="one-appointment-text-area"
                     type="textarea"
                     name="description"
-                    onChange={this.handleSaveChanges}
+                    onChange={this.saveChanges}
                     placeholder={problem.description}
                     value={this.state.description}
                     disabled={!this.state.disabled ? true : false}
                   />
-                  <button className="edit-btn" onClick={this.handleSaveChanges}>
+                  <button className="edit-btn" onClick={this.saveChanges}>
                     Save
                   </button>
                 </form>
@@ -93,4 +106,10 @@ class OneProbProblemInfo extends React.Component {
   }
 }
 
-export default OneProbProblemInfo;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    editProblem: (problem, id) => dispatch(editProblem(problem, id)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(OneProbProblemInfo);
