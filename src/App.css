@@ -174,6 +174,9 @@ input[type="textarea"] {
 .x-btn:focus {
   outline: none;
 }
+
+.description-one-problem {
+}
 .add-to-calendar,
 .add-to-calendar a {
   padding: 0;
