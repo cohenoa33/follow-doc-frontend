@@ -10,7 +10,7 @@ class OpenComments extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="open-comments-appointments">
         <h1> Open Comments</h1>
         {this.commentsList().map((comment) => (
           <li key={comment.id}>

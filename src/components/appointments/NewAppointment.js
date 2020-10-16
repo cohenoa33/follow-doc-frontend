@@ -27,7 +27,6 @@ class NewAppointment extends React.Component {
         },
       });
     } else {
-      console.log(e.target.value, e.target.name);
       this.setState({
         appointment: {
           ...this.state.appointment,
@@ -36,10 +35,9 @@ class NewAppointment extends React.Component {
       });
     }
   };
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.addAppointment(this.state.appointment);
-    this.setState({ blockInput: true });
+  handleAddAppointment = (e) => {
+    this.setState({ blockInput: !this.state.blockInput });
+    this.props.addAppointment(this.state.appointment, e);
   };
 
   filterDoctors = () => {
@@ -74,8 +72,9 @@ class NewAppointment extends React.Component {
             <br></br>
             <form
               className="popup-form"
+              noValidate
               onSubmit={(e) => {
-                this.handleSubmit(e);
+                this.handleAddAppointment(e);
               }}
             >
               <br></br>
@@ -152,6 +151,7 @@ class NewAppointment extends React.Component {
                 placeholder="Add More Information"
                 noValidate
               ></input>
+
               <br />
               {this.state.blockInput ? null : (
                 <button className="btn" type="Submit">
@@ -178,7 +178,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    addAppointment: (appointment) => dispatch(addAppointment(appointment)),
+    addAppointment: (appointment, e) =>
+      dispatch(addAppointment(appointment, e)),
   };
 };
 

@@ -69,6 +69,13 @@ media screen and (max-width: 600px) {
   text-align: left;
   font-size: 14px;
 }
+
+.open-comments-appointments li {
+  text-align: left;
+  padding: 5px;
+  list-style-type: disc;
+  font-size: 14px;
+}
 .search-bar input[type="text"] {
   background-image: url(./images/search-icon.png);
   background-color: white;

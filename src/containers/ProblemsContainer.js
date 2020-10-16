@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-import ProblemCard from "../components/ProblemCard";
+import ProblemCard from "../components/problems/ProblemCard";
 
 class ProblemsContainer extends React.Component {
   state = {

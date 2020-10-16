@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-class LoginForm extends React.Component {
+export default class EditUser extends React.Component {
   state = {
     username: "",
     password: "",
+    email: "",
+    password_confirmation: "",
   };
 
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
@@ -23,28 +25,44 @@ class LoginForm extends React.Component {
           <br />
           <br />
           <div className="form-container">
-            <form onSubmit={(e) => this.props.handleLoginSubmit(e, this.state)}>
+            <form
+              onSubmit={(e) => this.props.handleSignUpSubmit(e, this.state)}
+            >
               <input
-                onChange={this.handleChange}
                 type="text"
+                onChange={this.handleChange}
                 value={this.state.username}
                 name="username"
                 placeholder="username"
               ></input>
               <input
+                type="text"
                 onChange={this.handleChange}
+                name="email"
+                placeholder="Email"
+                value={this.state.email}
+              />
+              <input
                 type="password"
+                onChange={this.handleChange}
                 value={this.state.password}
                 name="password"
                 placeholder="Password"
               ></input>
+              <input
+                type="password"
+                onChange={this.handleChange}
+                name="password_confirmation"
+                placeholder="password Confirmation"
+                value={this.state.password_confirmation}
+              />
               <br />
-              <button className="btn">Login</button>
+              <button className="btn">Signup</button>
             </form>
             <div>
               <br></br>
-              <Link to="/signup" className="login-signup-link">
-                New here?
+              <Link to="/login" className="signup-link">
+                Have an account?
               </Link>
             </div>
           </div>
@@ -53,5 +71,3 @@ class LoginForm extends React.Component {
     );
   }
 }
-
-export default LoginForm;

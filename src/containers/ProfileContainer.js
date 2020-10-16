@@ -2,10 +2,10 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-import Problems from "../components/Problems";
+import Problems from "../components/problems/ProblemsList";
 import OpenComments from "../components/comments/OpenComments";
-import NewDependent from "../components/NewDependent";
-import NewProblem from "../components/NewProblem";
+import NewDependent from "../components/user/NewDependent";
+import NewProblem from "../components/problems/NewProblem";
 import NewDoctor from "../components/doctors/NewDoctor";
 import OpenAppointments from "../components/appointments/OpenAppointments";
 import AllAppointments from "../components/appointments/AllAppointments";

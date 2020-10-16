@@ -22,15 +22,14 @@ class OpenAppointments extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="open-comments-appointments">
         <h1>Appointments who needs preparation:</h1>
         {this.filterdAppointments().map((appointment) => (
           <li key={appointment.id}>
             <Link to={`/appointments/${appointment.id}`}>
-              {" "}
               Appointment for {appointment.doctor.name} on {appointment.date} at{" "}
-              {appointment.time}. Notes:
-              {appointment.note}
+              {appointment.time}.
+              <br /> Notes: {appointment.note}
             </Link>
           </li>
         ))}

@@ -73,7 +73,8 @@ export const addNewComment = (newComment, e, id) => {
   };
 };
 
-export const addAppointment = (appointment) => {
+export const addAppointment = (appointment, e) => {
+  e.preventDefault();
   return (dispatch) => {
     return api.appointments.addAppointment(appointment).then((data) => {
       if (!data.error) {

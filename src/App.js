@@ -6,14 +6,14 @@ import { connect } from "react-redux";
 import api from "./services/api";
 import { setLogin, setLogout } from "./actions";
 
-import LoginForm from "./components/LoginForm";
-import SignupForm from "./components/SignupForm";
-import NewProblem from "./components/NewProblem";
-import OneProblem from "./components/OneProblem";
+import LoginForm from "./components/signup-login/LoginForm";
+import SignupForm from "./components/signup-login/SignupForm";
+import NewProblem from "./components/problems/NewProblem";
+import OneProblem from "./components/problems/OneProblem";
 import NotFound from "./components/NotFound";
 import Navbar from "./components/Navbar";
 import SearchBar from "./components/search/SearchBar";
-import Home from "./containers/Home";
+import Welcome from "./containers/Welcome";
 import ProfileContainer from "./containers/ProfileContainer";
 import ProblemsContainer from "./containers/ProblemsContainer";
 import OneAppointment from "./components/appointments/OneAppointment";
@@ -76,7 +76,7 @@ class App extends React.Component {
     localStorage.removeItem("token");
     this.props.setLogout();
   };
-  renderHomePage = () => <Home />;
+  renderWelcomePage = () => <Welcome />;
 
   renderLogin = () => (
     <LoginForm
@@ -140,7 +140,7 @@ class App extends React.Component {
           <Route path="/profile" component={this.renderProfile} />
           <Route path="/newproblem" component={this.renderNewProblem} />
           <Route path="/search" component={this.renderSearchResults} />
-          <Route path="/" component={this.renderHomePage} />
+          <Route path="/" component={this.renderWelcomePage} />
         </Switch>
       </div>
     );
