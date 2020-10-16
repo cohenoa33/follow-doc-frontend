@@ -32,9 +32,6 @@ class OneProblem extends React.Component {
   render() {
     const id = this.props.id;
     let problem = this.props.problems.filter((problem) => problem.id === id);
-    // let prob = this.props.problems.find((problem) => problem.id === id);
-    console.log(this.props.problems);
-
     return (
       <div>
         <div>

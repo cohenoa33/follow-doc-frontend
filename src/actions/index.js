@@ -108,6 +108,7 @@ export const deleteComment = (id) => {
     });
   };
 };
+
 export const deleteAppointment = (id) => {
   return (dispatch) => {
     return api.appointments.deleteAppointment(id).then((data) => {
@@ -146,6 +147,18 @@ export const updateFile = (formData) => {
     return api.problems
       .addFile(formData)
       .then((data) => dispatch({ type: "EDIT_PROBLEM", payload: data }));
+  };
+};
+
+export const deleteFile = (problem_id, index) => {
+  return (dispatch) => {
+    return api.problems.deleteFile(problem_id, index).then((data) => {
+      if (!data.error) {
+        dispatch({ type: "EDIT_PROBLEM", payload: data });
+      } else {
+        alert(data.error);
+      }
+    });
   };
 };
 
