@@ -85,6 +85,14 @@ const addFile = (formData) => {
     body: formData,
   }).then((res) => res.json());
 };
+const deleteFile = (problem_id, file) => {
+  const body = { problem_id: problem_id, file: file };
+  return fetch(`${API_ROOT}/deletefile`, {
+    method: "PATCH",
+    headers: headers,
+    body: JSON.stringify(body),
+  }).then((res) => res.json());
+};
 
 const editComment = ({ text, status_open, id }) => {
   return fetch(`${API_ROOT}/comments/${id}`, {
@@ -136,6 +144,7 @@ export default {
     oneProblem: oneProblem,
     editProblem: editProblem,
     addFile: addFile,
+    deleteFile: deleteFile,
   },
   appointments: {
     addAppointment: addAppointment,

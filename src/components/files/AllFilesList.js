@@ -1,11 +1,23 @@
 import React from "react";
-import { deleteComment } from "../../actions";
+import { deleteFile } from "../../actions";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import api from "../../services/api";
 
 class OneProbComments extends React.Component {
+  handleDeleteFile = (problem, file) => {
+    const problem_id = problem.id;
+    // debugger;
+    const index = problem.file.findIndex((f) => f == file);
+    // console.log(index);
+    this.props.deleteFile(problem_id, index);
+    // api.problems
+    //   .deleteFile(problem_id, index)
+    //   .then((data) => console.log(data));
+  };
   render() {
     let problem = this.props.id[0];
+    console.log(problem);
     return (
       <div>
         <div className="one-problem-comments">
@@ -14,9 +26,9 @@ class OneProbComments extends React.Component {
             ? problem.file.map((file) => (
                 <li className="x-btn" key={file.id}>
                   <a href={`http://localhost:3000/${file}`} target="_blank">
-                    File
+                    {file.name}
                   </a>
-                  <button id={file.id} onClick={this.handleDeleteComme} t>
+                  <button onClick={() => this.handleDeleteFile(problem, file)}>
                     x
                   </button>
                 </li>
@@ -36,7 +48,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteComment: (id) => dispatch(deleteComment(id)),
+    deleteFile: (problem_id, index) => dispatch(deleteFile(problem_id, index)),
   };
 };
 
