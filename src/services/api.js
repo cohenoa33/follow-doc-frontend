@@ -7,6 +7,9 @@ const headers = {
   Accept: "application/json",
   Authorization: `Bearers ${token}`,
 };
+const headersDorFile = {
+  Authorization: `Bearers ${token}`,
+};
 
 const login = (user) => {
   return fetch(`${API_ROOT}/login`, {
@@ -75,6 +78,13 @@ const addDoctor = (doctor) => {
     body: JSON.stringify({ doctor: doctor }),
   }).then((res) => res.json());
 };
+const addFile = (formData) => {
+  return fetch(`${API_ROOT}/addfile`, {
+    method: "POST",
+    headers: headersDorFile,
+    body: formData,
+  }).then((res) => res.json());
+};
 
 const editComment = ({ text, status_open, id }) => {
   return fetch(`${API_ROOT}/comments/${id}`, {
@@ -125,6 +135,7 @@ export default {
     addProblem: addProblem,
     oneProblem: oneProblem,
     editProblem: editProblem,
+    addFile: addFile,
   },
   appointments: {
     addAppointment: addAppointment,

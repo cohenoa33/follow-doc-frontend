@@ -2,27 +2,29 @@ import React from "react";
 import { connect } from "react-redux";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import api from "../services/api";
 
 class UploadFiles extends React.Component {
   state = {
     newFile: null,
-    url: "",
   };
   handleFileChange = (e) => {
-    if (e.target.files[0]) {
-      this.setState({ newFile: e.target.files[0] });
+    let file = e.target.files[0];
+    if (file) {
+      this.setState({ newFile: file });
     }
-    console.log(this.state);
   };
 
   uploadFile = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", this.state.newFile);
-    console.log("Hello");
+    formData.append("problem_id", this.props.id);
+    api.problems.addFile(formData).then((data) => console.log(data));
   };
   render() {
     console.log(this.state);
+    console.log(this.props.id);
     return (
       <Popup
         trigger={<button className="btn"> Upload File</button>}
@@ -36,7 +38,13 @@ class UploadFiles extends React.Component {
             </button>
             <br></br>
             <br></br>
-            <form className="popup-form" onSubmit={this.uploadFile}>
+            <form
+              enctype="multipart/form-data"
+              method="post"
+              name="fileinfo"
+              className="popup-form"
+              onSubmit={this.uploadFile}
+            >
               <input
                 type="file"
                 name="newFile"
