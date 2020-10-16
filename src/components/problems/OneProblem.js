@@ -8,7 +8,8 @@ import OpenAppointments from "../appointments/OpenAppointments";
 import OneProbProblemInfo from "./OneProbProblemInfo";
 import OneProbComments from "../comments/OneProbComments";
 import AddNewComment from "../comments/AddNewComment";
-import UploadFiles from "../UploadFiles";
+import UploadFiles from "../files/UploadFiles";
+import AllFilesList from "../files/AllFilesList";
 
 class OneProblem extends React.Component {
   componentDidMount() {
@@ -26,11 +27,14 @@ class OneProblem extends React.Component {
   renderAddNewComment = (id) => <AddNewComment id={id} />;
   renderOneProbComments = () => <OneProbComments />;
   renderUploadFiles = (id) => <UploadFiles id={id} />;
+  renderFiles = (id) => <AllFilesList id={id} />;
 
   render() {
-    console.log(this.props.problems);
     const id = this.props.id;
     let problem = this.props.problems.filter((problem) => problem.id === id);
+    // let prob = this.props.problems.find((problem) => problem.id === id);
+    console.log(this.props.problems);
+
     return (
       <div>
         <div>
@@ -45,6 +49,7 @@ class OneProblem extends React.Component {
         <br />
         <div>{this.renderOneProbComments()}</div>
         <div>{this.renderAllAppointments(id)}</div>
+        <div>{this.renderFiles(problem)}</div>
       </div>
     );
   }

@@ -141,6 +141,13 @@ export const editProblem = (problem, id) => {
       .then((data) => dispatch({ type: "EDIT_PROBLEM", payload: data }));
   };
 };
+export const updateFile = (formData) => {
+  return (dispatch) => {
+    return api.problems
+      .addFile(formData)
+      .then((data) => dispatch({ type: "EDIT_PROBLEM", payload: data }));
+  };
+};
 
 export const searchValue = (search) => {
   return {
