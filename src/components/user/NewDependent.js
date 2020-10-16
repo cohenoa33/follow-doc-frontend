@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-import { addNewDependent } from "../actions";
+import { addNewDependent } from "../../actions";
 
 class NewDependent extends React.Component {
   state = {

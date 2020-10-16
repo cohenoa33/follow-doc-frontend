@@ -2,12 +2,13 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-import NewAppointment from "./appointments/NewAppointment";
-import OneProbAllAppointments from "./appointments/OneProbAllAppointments";
-import OpenAppointments from "./appointments/OpenAppointments";
-import OneProbProblemInfo from "./problems/OneProbProblemInfo";
-import OneProbComments from "./comments/OneProbComments";
-import AddNewComment from "./comments/AddNewComment";
+import NewAppointment from "../appointments/NewAppointment";
+import OneProbAllAppointments from "../appointments/OneProbAllAppointments";
+import OpenAppointments from "../appointments/OpenAppointments";
+import OneProbProblemInfo from "./OneProbProblemInfo";
+import OneProbComments from "../comments/OneProbComments";
+import AddNewComment from "../comments/AddNewComment";
+import UploadFiles from "../UploadFiles";
 
 class OneProblem extends React.Component {
   componentDidMount() {
@@ -24,8 +25,10 @@ class OneProblem extends React.Component {
   renderNewAppointment = (id) => <NewAppointment id={id} />;
   renderAddNewComment = (id) => <AddNewComment id={id} />;
   renderOneProbComments = () => <OneProbComments />;
+  renderUploadFiles = (id) => <UploadFiles id={id} />;
 
   render() {
+    console.log(this.props.problems);
     const id = this.props.id;
     let problem = this.props.problems.filter((problem) => problem.id === id);
     return (
@@ -34,9 +37,7 @@ class OneProblem extends React.Component {
           {this.renderOneProbProblemInfo(problem)}
           <div className="column-30"> {this.renderOpenAppointments(id)} </div>
           <div className="problem-container-buttons">
-            <button className="btn-problem-container-buttons">
-              Upload File
-            </button>
+            {this.renderUploadFiles(id)}
             {this.renderNewAppointment(id)}
             {this.renderAddNewComment(id)}
           </div>

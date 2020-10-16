@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Popup from "reactjs-popup";
 import { withRouter } from "react-router-dom";
-import { addNewProblem } from "../actions";
+import { addNewProblem } from "../../actions";
 import "reactjs-popup/dist/index.css";
 
 class NewProblem extends React.Component {
@@ -48,7 +48,9 @@ class NewProblem extends React.Component {
             <button className="x-btn" onClick={close}>
               x
             </button>
-
+            <br />
+            <br />
+            <br />
             <form
               className="popup-form"
               noValidate
