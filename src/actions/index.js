@@ -128,6 +128,7 @@ export const editComment = (comment) => {
       .then((data) => dispatch({ type: "EDIT_COMMENT", payload: data }));
   };
 };
+
 export const editAppointment = (appointment) => {
   return (dispatch) => {
     return api.appointments
@@ -135,6 +136,7 @@ export const editAppointment = (appointment) => {
       .then((data) => dispatch({ type: "EDIT_APPOINTMENT", payload: data }));
   };
 };
+
 export const editProblem = (problem, id) => {
   return (dispatch) => {
     return api.problems
@@ -142,6 +144,7 @@ export const editProblem = (problem, id) => {
       .then((data) => dispatch({ type: "EDIT_PROBLEM", payload: data }));
   };
 };
+
 export const updateFile = (formData) => {
   return (dispatch) => {
     return api.problems
