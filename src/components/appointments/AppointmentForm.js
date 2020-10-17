@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import GoogleApiWrapper from "../../containers/MapContainer";
 import { deleteAppointment, editAppointment } from "../../actions";
@@ -90,7 +90,9 @@ class AppointmentForm extends React.Component {
     return (
       <div>
         <h1>Appointment for {dependent} </h1>
-        <h1>Problem: {problem.name} </h1>
+        <Link to={`/problems/${problem.id}`}>
+          <h1>Problem: {problem.name}</h1>
+        </Link>
         <div className="column-60">
           <form
             onChange={this.handleChange}
@@ -200,7 +202,6 @@ class AppointmentForm extends React.Component {
             </div>
           ) : null}
         </div>
-
         <div className="map-squere">
           <GoogleApiWrapper lat={doctor.latitude} lng={doctor.longitude} />
         </div>

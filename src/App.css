@@ -31,9 +31,15 @@ media screen and (max-width: 600px) {
   clear: both;
 }
 .problem-container-description {
+  padding-top: 20px;
+  line-height: 1.5em;
   float: left;
   width: 33%;
   border: 1px solid grey;
+}
+.problem-container-description h1 {
+  padding-top: 20px;
+  line-height: 1.5em;
 }
 .problem-container-appointments {
   width: 33%;

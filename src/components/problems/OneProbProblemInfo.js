@@ -5,16 +5,14 @@ import { editProblem } from "../../actions";
 class OneProbProblemInfo extends React.Component {
   state = {
     disabled: false,
-    problem: {
-      name: "",
-      description: "",
-    },
   };
+
   toggleDisabled = () => {
     this.setState({ disabled: !this.state.disabled });
   };
 
-  saveChanges = (e) => {
+  saveChanges = (e, data) => {
+    // if (e.target.value !== "") {
     this.setState({
       ...this.state,
       problem: {
@@ -24,14 +22,17 @@ class OneProbProblemInfo extends React.Component {
     });
   };
 
-  submitChanges = (e, id) => {
+  submitChanges = (e) => {
     e.preventDefault();
-
-    this.props.editProblem(this.state.problem, id);
-    this.toggleDisabled();
+    this.props
+      .editProblem(this.state.problem, this.props.id)
+      .then(this.toggleDisabled());
   };
 
   render() {
+    console.log(this.props.problems);
+    console.log(this.props.id);
+
     return (
       <div>
         {!this.state.disabled ? (
@@ -39,12 +40,11 @@ class OneProbProblemInfo extends React.Component {
             {this.props.problem.map((problem) => (
               <div className="problem-container-description">
                 <span> Dependent: {problem.dependent.name}</span>
+                <br />
                 <h1>{problem.name}</h1>
+                <br />
                 Description:
-                <div name="description-one-problem">
-                  {" "}
-                  {problem.description}{" "}
-                </div>
+                <div name="description-one-problem">{problem.description}</div>
                 <button className="edit-btn" onClick={this.toggleDisabled}>
                   Edit
                 </button>
@@ -61,7 +61,7 @@ class OneProbProblemInfo extends React.Component {
                 <br />
                 <br />
                 <br />
-                <form onSubmit={(e) => this.submitChanges(e, problem.id)}>
+                <form onSubmit={this.submitChanges}>
                   <label>Dependent:</label>
                   <br />
                   <input
@@ -76,7 +76,7 @@ class OneProbProblemInfo extends React.Component {
                     className="one-appointment-text-area"
                     type="text"
                     name="name"
-                    onChange={this.saveChanges}
+                    onChange={(e) => this.saveChanges(e, problem.name)}
                     placeholder={problem.name}
                     value={this.state.name}
                     disabled={!this.state.disabled ? true : false}
@@ -88,13 +88,13 @@ class OneProbProblemInfo extends React.Component {
                     className="one-appointment-text-area"
                     type="textarea"
                     name="description"
-                    onChange={this.saveChanges}
+                    onChange={(e) => this.saveChanges(e, problem.description)}
                     placeholder={problem.description}
                     value={this.state.description}
                     disabled={!this.state.disabled ? true : false}
                   />
                   <br />
-                  <button className="edit-btn" onClick={this.saveChanges}>
+                  <button className="edit-btn" onClick={this.submitChanges}>
                     Save
                   </button>
                 </form>
@@ -106,6 +106,11 @@ class OneProbProblemInfo extends React.Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    problems: state.problems,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -113,4 +118,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(OneProbProblemInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(OneProbProblemInfo);

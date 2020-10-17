@@ -20,8 +20,8 @@ class OneProblem extends React.Component {
 
   renderAllAppointments = (id) => <OneProbAllAppointments id={id} />;
   renderOpenAppointments = (id) => <OpenAppointments id={id} />;
-  renderOneProbProblemInfo = (problem) => (
-    <OneProbProblemInfo problem={problem} />
+  renderOneProbProblemInfo = (problem, id) => (
+    <OneProbProblemInfo problem={problem} id={id} />
   );
   renderNewAppointment = (id) => <NewAppointment id={id} />;
   renderAddNewComment = (id) => <AddNewComment id={id} />;
@@ -35,7 +35,7 @@ class OneProblem extends React.Component {
     return (
       <div>
         <div>
-          {this.renderOneProbProblemInfo(problem)}
+          {this.renderOneProbProblemInfo(problem, id)}
           <div className="column-30"> {this.renderOpenAppointments(id)} </div>
           <div className="problem-container-buttons">
             {this.renderUploadFiles(id)}
