@@ -16,7 +16,7 @@ class CommentSearch extends React.Component {
   render() {
     return (
       <div className="search-results">
-        <h3>Comments</h3>
+        Comments that match to {this.props.search}:
         {this.props.search.length > 0 ? (
           <div>
             {this.commentsList().map((comment) => (

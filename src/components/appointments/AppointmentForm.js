@@ -58,7 +58,7 @@ class AppointmentForm extends React.Component {
 
   handleDelete = () => {
     this.props.deleteAppointment(this.props.appointment.id);
-    this.props.history.push("/profile");
+    this.props.history.push("/home");
   };
 
   render() {

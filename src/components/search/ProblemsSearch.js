@@ -17,7 +17,7 @@ class ProblemsSearch extends React.Component {
   render() {
     return (
       <div className="search-results">
-        <h3>Problems</h3>
+        Problems that match to {this.props.search}:
         {this.props.search.length > 0 ? (
           <div>
             {this.problemsList().map((problem) => (

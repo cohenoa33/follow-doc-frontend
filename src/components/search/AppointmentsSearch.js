@@ -19,7 +19,7 @@ class AppointmentsSearch extends React.Component {
   render() {
     return (
       <div className="search-results">
-        <h3>Appointment Notes</h3>
+        Appointments that match to {this.props.search}:
         {this.props.search.length > 0 ? (
           <div>
             {this.appointmentsList().map((appointment) => (
