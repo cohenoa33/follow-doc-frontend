@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { addNewDependent } from "../../actions";
+import { withRouter } from "react-router-dom";
 
 class NewDependent extends React.Component {
   state = {
@@ -15,10 +16,12 @@ class NewDependent extends React.Component {
   };
 
   handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     let userID = this.props.id;
-    this.props.addNewDependent(this.state.newDependent, userID);
-    this.setState({ blockInput: true });
+    this.props
+      .addNewDependent(e, this.state.newDependent, userID)
+      // .then(this.props.history.push("/problems"));
+      .then(this.setState({ blockInput: true }));
   };
 
   render() {
@@ -78,9 +81,12 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    addNewDependent: (newDependent, userID, e) =>
-      dispatch(addNewDependent(newDependent, userID, e)),
+    addNewDependent: (e, newDependent, userID) =>
+      dispatch(addNewDependent(e, newDependent, userID)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewDependent);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(NewDependent));

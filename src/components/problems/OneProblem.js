@@ -34,17 +34,18 @@ class OneProblem extends React.Component {
     let problem = this.props.problems.filter((problem) => problem.id === id);
     return (
       <div>
-        <div>
+        <div className="row">
           {this.renderOneProbProblemInfo(problem, id)}
-          <div className="column-30"> {this.renderOpenAppointments(id)} </div>
           <div className="problem-container-buttons">
             {this.renderUploadFiles(id)}
             {this.renderNewAppointment(id)}
             {this.renderAddNewComment(id)}
           </div>
         </div>
-        <br />
-        <div>{this.renderOneProbComments()}</div>
+        <div className="row">
+          <div> {this.renderOpenAppointments(id)} </div>
+          <div>{this.renderOneProbComments()}</div>
+        </div>
         <div>{this.renderAllAppointments(id)}</div>
         <div>{this.renderFiles(problem)}</div>
       </div>

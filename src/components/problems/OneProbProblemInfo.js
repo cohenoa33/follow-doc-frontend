@@ -12,7 +12,6 @@ class OneProbProblemInfo extends React.Component {
   };
 
   saveChanges = (e, data) => {
-    // if (e.target.value !== "") {
     this.setState({
       ...this.state,
       problem: {
@@ -30,74 +29,73 @@ class OneProbProblemInfo extends React.Component {
   };
 
   render() {
-    console.log(this.props.problems);
-    console.log(this.props.id);
-
     return (
-      <div>
+      <div className="problem-container-description">
         {!this.state.disabled ? (
           <div>
             {this.props.problem.map((problem) => (
-              <div className="problem-container-description">
-                <span> Dependent: {problem.dependent.name}</span>
+              <div className="column-100" key={problem.id}>
+                <button className="btn-edit" onClick={this.toggleDisabled}>
+                  edit
+                </button>
                 <br />
+                <p>
+                  {" "}
+                  Dependent:
+                  <br />
+                  {problem.dependent.name}
+                </p>
                 <h1>{problem.name}</h1>
                 <br />
                 Description:
-                <div name="description-one-problem">{problem.description}</div>
-                <button className="edit-btn" onClick={this.toggleDisabled}>
-                  Edit
-                </button>
+                <br />
+                {problem.description}
               </div>
             ))}
           </div>
         ) : (
           <div>
             {this.props.problem.map((problem) => (
-              <div className="problem-container-description">
-                <button className="x-btn" onClick={this.toggleDisabled}>
-                  X
+              <div>
+                {/* <form onSubmit={this.submitChanges}> */}
+                <label>Dependent:</label>
+                <br />
+                <input
+                  disabled
+                  placeholder={problem.dependent.name}
+                  className="one-appointment-text-area"
+                />
+                <br />
+                <label> Problem Name: </label> <br />
+                <input
+                  className="one-appointment-text-area"
+                  type="text"
+                  name="name"
+                  onChange={(e) => this.saveChanges(e, problem.name)}
+                  placeholder={problem.name}
+                  value={this.state.name}
+                  disabled={!this.state.disabled ? true : false}
+                />
+                <br />
+                <label> Description:</label>
+                <br />
+                <input
+                  className="one-appointment-text-area"
+                  type="textarea"
+                  name="description"
+                  onChange={(e) => this.saveChanges(e, problem.description)}
+                  placeholder={problem.description}
+                  value={this.state.description}
+                  disabled={!this.state.disabled ? true : false}
+                />
+                <br />
+                <button className="btn" onClick={this.submitChanges}>
+                  Save
                 </button>
-                <br />
-                <br />
-                <br />
-                <form onSubmit={this.submitChanges}>
-                  <label>Dependent:</label>
-                  <br />
-                  <input
-                    disabled
-                    placeholder={problem.dependent.name}
-                    className="one-appointment-text-area"
-                  />
-                  <br />
-                  <br />
-                  <label> Problem Name: </label> <br />
-                  <input
-                    className="one-appointment-text-area"
-                    type="text"
-                    name="name"
-                    onChange={(e) => this.saveChanges(e, problem.name)}
-                    placeholder={problem.name}
-                    value={this.state.name}
-                    disabled={!this.state.disabled ? true : false}
-                  />
-                  <br />
-                  <label> Description:</label>
-                  <br />
-                  <input
-                    className="one-appointment-text-area"
-                    type="textarea"
-                    name="description"
-                    onChange={(e) => this.saveChanges(e, problem.description)}
-                    placeholder={problem.description}
-                    value={this.state.description}
-                    disabled={!this.state.disabled ? true : false}
-                  />
-                  <br />
-                  <button className="edit-btn" onClick={this.submitChanges}>
-                    Save
-                  </button>
-                </form>
+                <button className="btn" onClick={this.toggleDisabled}>
+                  Back
+                </button>
+                {/* </form> */}
               </div>
             ))}
           </div>

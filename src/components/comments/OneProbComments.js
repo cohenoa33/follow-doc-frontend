@@ -23,7 +23,6 @@ class OneProbComments extends React.Component {
       <div>
         <div className="one-problem-comments">
           <table className="one-problem-comments-table">
-            <thead></thead>
             <tbody>
               <tr>
                 <th>Comment </th>
@@ -46,11 +45,11 @@ class OneProbComments extends React.Component {
                   </td>
                   <td>
                     <button
-                      className="x-btn"
+                      className="x-btn-delete"
                       id={comment.id}
                       onClick={this.handleDeleteComment}
                     >
-                      delete
+                      X
                     </button>
                   </td>
                 </tr>
