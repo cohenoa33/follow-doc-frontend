@@ -13,18 +13,20 @@ class AllFilesList extends React.Component {
     return (
       <div>
         <div className="one-problem-comments">
-          <h1>File List</h1>
           {problem
             ? problem.file.map((file) => (
-                <li key={file.id}>
+                <li className="files-list" key={file.id}>
                   <a
                     href={`http://localhost:3000/${file.path}`}
                     target="_blank"
                   >
                     {file.name}
                   </a>
-                  <button onClick={() => this.handleDeleteFile(problem, file)}>
-                    x
+                  <button
+                    className="x-btn-delete"
+                    onClick={() => this.handleDeleteFile(problem, file)}
+                  >
+                    X
                   </button>
                 </li>
               ))

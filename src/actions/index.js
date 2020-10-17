@@ -38,11 +38,18 @@ export const setLogout = () => {
   };
 };
 
-export const addNewDependent = (newDependent, userID) => {
+export const addNewDependent = (e, newDependent, userID) => {
+  e.preventDefault();
   return (dispatch) => {
     return api.dependents
       .addDependent({ name: newDependent, user_id: userID })
-      .then((data) => dispatch({ type: "ADD_DEP", payload: data }));
+      .then((data) => {
+        if (!data.error) {
+          dispatch({ type: "ADD_DEP", payload: data });
+        } else {
+          alert(data.error);
+        }
+      });
   };
 };
 
@@ -56,7 +63,13 @@ export const addNewProblem = (newProblem, e) => {
         dependent_id: dependent_id,
         description: description,
       })
-      .then((data) => dispatch({ type: "ADD_PROBLEM", payload: data }));
+      .then((data) => {
+        if (!data.error) {
+          dispatch({ type: "ADD_PROBLEM", payload: data });
+        } else {
+          alert(data.error);
+        }
+      });
   };
 };
 
@@ -69,7 +82,13 @@ export const addNewComment = (newComment, e, id) => {
         status_open: newComment.status_open,
         problem_id: id,
       })
-      .then((data) => dispatch({ type: "ADD_COMMENT", payload: data }));
+      .then((data) => {
+        if (!data.error) {
+          dispatch({ type: "ADD_COMMENT", payload: data });
+        } else {
+          alert(data.error);
+        }
+      });
   };
 };
 
@@ -123,17 +142,25 @@ export const deleteAppointment = (id) => {
 
 export const editComment = (comment) => {
   return (dispatch) => {
-    return api.comments
-      .editComment(comment)
-      .then((data) => dispatch({ type: "EDIT_COMMENT", payload: data }));
+    return api.comments.editComment(comment).then((data) => {
+      if (!data.error) {
+        dispatch({ type: "EDIT_COMMENT", payload: data });
+      } else {
+        alert(data.error);
+      }
+    });
   };
 };
 
 export const editAppointment = (appointment) => {
   return (dispatch) => {
-    return api.appointments
-      .editAppointment(appointment)
-      .then((data) => dispatch({ type: "EDIT_APPOINTMENT", payload: data }));
+    return api.appointments.editAppointment(appointment).then((data) => {
+      if (!data.error) {
+        dispatch({ type: "EDIT_APPOINTMENT", payload: data });
+      } else {
+        alert(data.error);
+      }
+    });
   };
 };
 
@@ -151,9 +178,13 @@ export const editProblem = (problem, id) => {
 
 export const updateFile = (formData) => {
   return (dispatch) => {
-    return api.problems
-      .addFile(formData)
-      .then((data) => dispatch({ type: "EDIT_PROBLEM", payload: data }));
+    return api.problems.addFile(formData).then((data) => {
+      if (!data.error) {
+        dispatch({ type: "EDIT_PROBLEM", payload: data });
+      } else {
+        alert(data.error);
+      }
+    });
   };
 };
 
