@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Problems from "../components/problems/ProblemsList";
@@ -11,7 +11,7 @@ import OpenAppointments from "../components/appointments/OpenAppointments";
 import AllAppointments from "../components/appointments/AllAppointments";
 import NewAppointment from "../components/appointments/NewAppointment";
 
-class ProfileContainer extends React.Component {
+class HomeContainer extends React.Component {
   componentDidMount() {
     if (!localStorage.token) {
       this.props.history.push("/");
@@ -24,7 +24,7 @@ class ProfileContainer extends React.Component {
   renderAddNewProblem = () => <NewProblem />;
   renderOpenAppointments = () => <OpenAppointments />;
   renderAllAppointments = () => <AllAppointments />;
-  renderAddNewAppointment = () => <NewAppointment />;
+  renderNewAppointment = () => <NewAppointment />;
   renderAddNewDoctor = () => <NewDoctor />;
 
   render() {
@@ -37,7 +37,7 @@ class ProfileContainer extends React.Component {
             <div> {this.renderAddNewDependent()}</div>
             <div> {this.renderAddNewProblem()}</div>
             <div> {this.renderAddNewDoctor()}</div>
-            <div> {this.renderAddNewAppointment()}</div>
+            <div> {this.renderNewAppointment()}</div>
           </div>
           <div className="column-30"> {this.renderComments()}</div>
           <br></br>
@@ -58,4 +58,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(withRouter(ProfileContainer));
+export default connect(mapStateToProps)(withRouter(HomeContainer));

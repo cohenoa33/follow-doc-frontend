@@ -14,11 +14,12 @@ import NotFound from "./components/NotFound";
 import Navbar from "./components/Navbar";
 import SearchBar from "./components/search/SearchBar";
 import Welcome from "./containers/Welcome";
-import ProfileContainer from "./containers/ProfileContainer";
+import HomeContainer from "./containers/HomeContainer";
 import ProblemsContainer from "./containers/ProblemsContainer";
 import OneAppointment from "./components/appointments/OneAppointment";
 import Appointments from "./components/appointments/Appointments";
 import SearchResults from "./components/search/SearchResults";
+import NewAppointment from "./components/appointments/NewAppointment";
 
 class App extends React.Component {
   handleLoginSubmit = (e, user) => {
@@ -65,7 +66,7 @@ class App extends React.Component {
         this.props.history.location.pathname === "/login" ||
         this.props.history.location.pathname === "/signup"
       ) {
-        this.props.history.push("/profile");
+        this.props.history.push("/home");
       }
     } else {
       alert("Something Went Wrong....");
@@ -90,8 +91,8 @@ class App extends React.Component {
       handleSignUpSubmit={this.handleSignUpSubmit}
     />
   );
-
-  renderProfile = () => <ProfileContainer />;
+  renderAddNewAppointment = () => <NewAppointment />;
+  renderHome = () => <HomeContainer />;
   renderSearchBar = () => <SearchBar />;
   renderSearchResults = () => <SearchResults />;
   renderNavBar = () => (
@@ -137,7 +138,7 @@ class App extends React.Component {
           <Route path="/appointments" component={this.renderAllAppointments} />
           <Route path="/login" component={this.renderLogin} />
           <Route path="/signup" component={this.renderSignup} />
-          <Route path="/profile" component={this.renderProfile} />
+          <Route path="/home" component={this.renderHome} />
           <Route path="/newproblem" component={this.renderNewProblem} />
           <Route path="/search" component={this.renderSearchResults} />
           <Route path="/" component={this.renderWelcomePage} />

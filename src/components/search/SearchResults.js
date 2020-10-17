@@ -16,11 +16,11 @@ class SearchResults extends React.Component {
   render() {
     return (
       <div>
-        <h2> Search Results for</h2> <h1> {this.props.search}</h1>
+        <h2> That's what we found...</h2>
         {this.renderCommentSearch()}
         {this.renderProblemsSearch()}
-        {this.renderDoctorsSearch()}
         {this.renderAppointmentsSearch()}
+        {this.renderDoctorsSearch()}
       </div>
     );
   }

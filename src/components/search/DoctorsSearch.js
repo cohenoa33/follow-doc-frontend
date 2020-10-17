@@ -20,7 +20,7 @@ class DoctorsSearch extends React.Component {
   render() {
     return (
       <div className="search-results">
-        <h3>Doctors</h3>
+        Doctors that match to {this.props.search}:
         {this.props.search.length > 0 ? (
           <div>
             {this.doctorsList().map((doctor) => (

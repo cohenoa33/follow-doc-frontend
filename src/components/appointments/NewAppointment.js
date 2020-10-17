@@ -15,6 +15,7 @@ class NewAppointment extends React.Component {
       status_open: false,
     },
     blockInput: false,
+    success: false,
   };
 
   handleChange = (e) => {
@@ -37,7 +38,12 @@ class NewAppointment extends React.Component {
   };
   handleAddAppointment = (e) => {
     this.setState({ blockInput: !this.state.blockInput });
-    this.props.addAppointment(this.state.appointment, e);
+    this.props.addAppointment(this.state.appointment, e).then(
+      this.setState((state) => ({
+        ...state,
+        success: !state.success,
+      }))
+    );
   };
 
   filterDoctors = () => {
@@ -70,6 +76,8 @@ class NewAppointment extends React.Component {
             </button>
             <br></br>
             <br></br>
+            <br></br>
+            {this.state.success ? "Appointment saved" : null}
             <form
               className="popup-form"
               noValidate

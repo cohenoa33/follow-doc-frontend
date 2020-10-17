@@ -12,7 +12,7 @@ const Navbar = ({ searchBar, user, handleLogout }) => {
         </NavLink>
         {user ? (
           <div>
-            <NavLink to="/profile" className="navbar-list">
+            <NavLink to="/home" className="navbar-list">
               {" "}
               {user.username} Profile{" "}
             </NavLink>
