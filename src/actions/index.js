@@ -139,9 +139,13 @@ export const editAppointment = (appointment) => {
 
 export const editProblem = (problem, id) => {
   return (dispatch) => {
-    return api.problems
-      .editProblem(problem, id)
-      .then((data) => dispatch({ type: "EDIT_PROBLEM", payload: data }));
+    return api.problems.editProblem(problem, id).then((data) => {
+      if (!data.error) {
+        dispatch({ type: "EDIT_PROBLEM", payload: data });
+      } else {
+        alert(data.error);
+      }
+    });
   };
 };
 
