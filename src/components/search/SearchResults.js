@@ -2,25 +2,25 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-import CommentSearch from "./CommentSearch";
-import ProblemsSearch from "./ProblemsSearch";
-import DoctorsSearch from "./DoctorsSearch";
-import AppointmentsSearch from "./AppointmentsSearch";
+import Results from "./Results";
 
 class SearchResults extends React.Component {
-  renderCommentSearch = () => <CommentSearch />;
-  renderProblemsSearch = () => <ProblemsSearch />;
-  renderDoctorsSearch = () => <DoctorsSearch />;
-  renderAppointmentsSearch = () => <AppointmentsSearch />;
+  componentDidMount() {
+    if (!localStorage.token) {
+      this.props.history.push("/");
+    }
+  }
+
+  renderResults = () => <Results />;
 
   render() {
     return (
       <div>
-        <h2> That's what we found...</h2>
-        {this.renderCommentSearch()}
-        {this.renderProblemsSearch()}
-        {this.renderAppointmentsSearch()}
-        {this.renderDoctorsSearch()}
+        {this.props.search.length > 0 ? (
+          <div>{this.renderResults()}</div>
+        ) : (
+          <div> Please Try Again </div>
+        )}
       </div>
     );
   }
@@ -28,7 +28,6 @@ class SearchResults extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    appointments: state.appointments,
     search: state.search,
   };
 };
