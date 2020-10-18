@@ -22,9 +22,15 @@ export const userReducer = (state = initialState, action) => {
         id: action.payload.id,
         comments: action.payload.comments,
         appointments: action.payload.appointments,
+      };
+    }
+    case "SET_DOCTORS": {
+      return {
+        ...state,
         doctors: action.payload.doctors,
       };
     }
+
     case "USER_LOGOUT": {
       return {
         ...state,
