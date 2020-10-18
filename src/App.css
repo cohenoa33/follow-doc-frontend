@@ -307,11 +307,8 @@ input[type="textarea"] {
 .problems-list-table {
   border-collapse: collapse;
   width: 100%;
-  border-radius: 0%;
 }
-.problems-list-table th,
-td {
-  border: 1px solid #ddd;
+.problems-list-table td {
   padding: 8px;
 }
 .problems-list-table tr:nth-child(even) {
@@ -390,7 +387,6 @@ a {
   padding: 6px;
   margin: 0 auto;
   text-align: center;
-  border-radius: 5px;
   box-sizing: border-box;
   text-decoration: none;
 }

@@ -29,7 +29,18 @@ const Navbar = ({ searchBar, user, handleLogout }) => {
             </NavLink>
             {searchBar()}
           </div>
-        ) : null}
+        ) : (
+          <div>
+            <NavLink to="/login" className="navbar-list">
+              {" "}
+              Login{" "}
+            </NavLink>
+            <NavLink to="/signup" className="navbar-list">
+              {" "}
+              Signup{" "}
+            </NavLink>
+          </div>
+        )}
       </div>
     </div>
   );

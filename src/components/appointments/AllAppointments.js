@@ -12,11 +12,9 @@ class AllAppointments extends React.Component {
       day: "2-digit",
     }).format(today);
 
-    let appointmentList = appointments
-      .filter((app) => app.date > time)
-      .sort(function (a, b) {
-        return a.date === b.date ? 0 : a.date < b.date ? 1 : -1;
-      });
+    let appointmentList = appointments.sort(function (a, b) {
+      return a.date === b.date ? 0 : a.date < b.date ? 1 : -1;
+    });
     return appointmentList;
   };
 

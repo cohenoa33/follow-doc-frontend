@@ -3,20 +3,23 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 class OpenAppointments extends React.Component {
-  state = {
-    list: {},
-  };
-  filterdAppointments() {
+  filterAppointments() {
     const appointments = this.props.appointments.filter(
       (appointment) =>
         appointment.status_open === true || appointment.insurance_auth === false
     );
     if (this.props.id) {
-      return appointments.filter(
-        (appointment) => appointment.problem.id === this.props.id
-      );
+      const list = appointments
+        .filter((appointment) => appointment.problem.id === this.props.id)
+        .sort(function (a, b) {
+          return a.date === b.date ? 0 : a.date < b.date ? -1 : 1;
+        });
+      console.log(list);
+      return list;
     } else {
-      return appointments;
+      return appointments.sort(function (a, b) {
+        return a.date === b.date ? 0 : a.date < b.date ? -1 : 1;
+      });
     }
   }
 
@@ -24,7 +27,7 @@ class OpenAppointments extends React.Component {
     return (
       <div className="open-comments-appointments">
         <h1>Appointments who needs preparation:</h1>
-        {this.filterdAppointments().map((appointment) => (
+        {this.filterAppointments().map((appointment) => (
           <li key={appointment.id}>
             <Link to={`/appointments/${appointment.id}`}>
               Appointment for {appointment.doctor.name} on {appointment.date} at{" "}
