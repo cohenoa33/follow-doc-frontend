@@ -65,9 +65,7 @@ class AddNewComment extends React.Component {
             onChange={this.handleInput}
           />{" "}
           {this.state.newComment.text.length > 0 ? (
-            <button className="btn-problem-container-buttons">
-              Add New Comment
-            </button>
+            <button className="btn">Add New Comment</button>
           ) : null}
         </form>
       </div>

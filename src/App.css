@@ -23,7 +23,6 @@ media screen and (max-width: 600px) {
   align-items: left;
   text-align-last: center;
 }
-
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -33,6 +32,7 @@ media screen and (max-width: 600px) {
 .one-problem-grid {
   grid-template: ;
 }
+
 .problem-container-description {
   padding-top: 20px;
   line-height: 1.5em;
@@ -88,7 +88,6 @@ media screen and (max-width: 600px) {
   margin: auto;
   position: absolute;
 }
-
 .open-comments-appointments li {
   text-align: left;
   padding: 5px;
@@ -144,27 +143,35 @@ input[type="time"]::-webkit-datetime-edit-ampm-field {
 }
 select,
 input[type="text"],
+input:disabled,
 input[type="time"],
 input[type="date"],
 input[type="password"] {
   width: 80%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  text-align: left;
-}
-input[type="textarea"].one-appointment-text-area {
-  width: 80%;
-  height: 100px;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
   text-align: center;
-  overflow-wrap: break-word;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input[type="file"] {
+  width: 80%;
+  text-align: center;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+
+  box-sizing: border-box;
+}
+.one-appointment-edit {
+  margin: 0;
+}
+.one-appointment-edit input[type="textarea"] {
+  width: 80%;
+  height: 80px;
+  border: 1px solid #ccc;
 }
 
 input[type="textarea"] {
@@ -208,6 +215,17 @@ input[type="textarea"] {
   background: none;
   outline: none;
   background: url(./images/edit-icon.png) no-repeat;
+}
+.back-btn {
+  margin-left: 10px;
+  float: center;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  color: transparent;
+  background: none;
+  outline: none;
+  background: url(./images/back-icon.png) no-repeat;
 }
 .comment-btn-edit {
   padding-right: 40px;
@@ -295,16 +313,22 @@ td {
   background-color: #51d6cb;
   color: black;
 }
+
 .problem-card {
+  border-radius: 10px;
   cursor: pointer;
   text-align: center;
-  border-radius: 5px;
-  border: 1px solid #51d6cb;
   background: #eeeeee;
   padding: 8px;
   width: 15rem;
+  height: 25rem;
   display: inline-grid;
   margin: 1rem 2rem;
+  line-height: 1.5em;
+}
+.dependent-card {
+  padding-top: 20px;
+  padding: 10px;
 }
 .nav-bar {
   position: relative;
@@ -316,7 +340,7 @@ td {
 
 .navbar-list .navbar-list-followDoc {
   height: 100%;
-  float: left;
+  float: center;
   color: #bad63d;
   text-align: center;
   padding: 14px 16px;
@@ -338,7 +362,6 @@ td {
   cursor: pointer;
 }
 .navbar-list-items {
-  float: left;
   padding: 6px;
   border: none;
   margin-top: 1px;
