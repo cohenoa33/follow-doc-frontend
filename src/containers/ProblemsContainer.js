@@ -45,6 +45,7 @@ class ProblemsContainer extends React.Component {
           </label>
         </div>
         <br />
+
         {this.filterByDependent().map((problem) => (
           <ProblemCard problem={problem} key={problem.id} />
         ))}

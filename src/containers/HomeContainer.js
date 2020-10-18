@@ -30,7 +30,6 @@ class HomeContainer extends React.Component {
   render() {
     return (
       <div>
-        <div>Profile Page </div>
         <div className="row">
           <div className="column-30">{this.renderOpenAppointments()} </div>
           <div className="column-30">

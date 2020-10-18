@@ -54,21 +54,19 @@ class OneProbProblemInfo extends React.Component {
             ))}
           </div>
         ) : (
-          <div>
+          <div className="one-appointment-edit">
             {this.props.problem.map((problem) => (
-              <div>
-                {/* <form onSubmit={this.submitChanges}> */}
+              <div className="column-100">
+                <button className="back-btn" onClick={this.toggleDisabled}>
+                  Back
+                </button>
+                <br></br>
                 <label>Dependent:</label>
                 <br />
-                <input
-                  disabled
-                  placeholder={problem.dependent.name}
-                  className="one-appointment-text-area"
-                />
+                <input disabled placeholder={problem.dependent.name} />
                 <br />
                 <label> Problem Name: </label> <br />
                 <input
-                  className="one-appointment-text-area"
                   type="text"
                   name="name"
                   onChange={(e) => this.saveChanges(e, problem.name)}
@@ -80,7 +78,6 @@ class OneProbProblemInfo extends React.Component {
                 <label> Description:</label>
                 <br />
                 <input
-                  className="one-appointment-text-area"
                   type="textarea"
                   name="description"
                   onChange={(e) => this.saveChanges(e, problem.description)}
@@ -92,10 +89,6 @@ class OneProbProblemInfo extends React.Component {
                 <button className="btn" onClick={this.submitChanges}>
                   Save
                 </button>
-                <button className="btn" onClick={this.toggleDisabled}>
-                  Back
-                </button>
-                {/* </form> */}
               </div>
             ))}
           </div>
