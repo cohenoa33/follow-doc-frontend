@@ -14,7 +14,6 @@ export const setLogin = (user) => {
   let jwt = user.jwt;
   let id = user.user.id;
   let appointments = user.user.appointments;
-  let doctors = user.user.doctors;
 
   return {
     type: "USER_LOGIN",
@@ -26,8 +25,14 @@ export const setLogin = (user) => {
       id,
       comments,
       appointments,
-      doctors,
     },
+  };
+};
+
+export const setDoctors = (doctors) => {
+  return {
+    type: "SET_DOCTORS",
+    payload: { doctors },
   };
 };
 

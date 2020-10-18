@@ -4,7 +4,7 @@ import "./App.css";
 import { connect } from "react-redux";
 
 import api from "./services/api";
-import { setLogin, setLogout } from "./actions";
+import { setDoctors, setLogin, setLogout } from "./actions";
 
 import LoginForm from "./components/signup-login/LoginForm";
 import SignupForm from "./components/signup-login/SignupForm";
@@ -47,6 +47,11 @@ class App extends React.Component {
     });
   };
   componentDidMount() {
+    api.doctors.allDoctors().then((data) => {
+      if (!data.error) {
+        this.props.setDoctors(data);
+      }
+    });
     if (localStorage.token) {
       api.auth.reauth().then((data) => {
         if (!data.error) {
@@ -62,6 +67,7 @@ class App extends React.Component {
     if (data.user) {
       localStorage.token = data.jwt;
       this.props.setLogin(data);
+
       if (
         this.props.history.location.pathname === "/login" ||
         this.props.history.location.pathname === "/signup"
@@ -158,6 +164,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setLogin: (user) => dispatch(setLogin(user)),
     setLogout: () => dispatch(setLogout()),
+    setDoctors: (doctors) => dispatch(setDoctors(doctors)),
   };
 };
 

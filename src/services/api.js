@@ -18,6 +18,12 @@ const login = (user) => {
     body: JSON.stringify({ user }),
   }).then((res) => res.json());
 };
+const doctors = () => {
+  return fetch(`${API_ROOT}/doctors`, {
+    method: "GET",
+    headers: headers,
+  }).then((res) => res.json());
+};
 
 const signup = (user) => {
   return fetch(`${API_ROOT}/users`, {
@@ -28,6 +34,12 @@ const signup = (user) => {
 };
 const reauth = () => {
   return fetch(`${API_ROOT}/reauth`, {
+    method: "GET",
+    headers: headers,
+  }).then((res) => res.json());
+};
+const allDoctors = () => {
+  return fetch(`${API_ROOT}/doctors`, {
     method: "GET",
     headers: headers,
   }).then((res) => res.json());
@@ -153,6 +165,7 @@ export default {
   },
   doctors: {
     addDoctor: addDoctor,
+    allDoctors: allDoctors,
   },
 
   comments: {

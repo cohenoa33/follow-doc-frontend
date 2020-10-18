@@ -12,7 +12,6 @@ class NewDoctor extends React.Component {
       city: "",
       state: "",
       zipcode: "",
-      info: "",
     },
     blockInput: false,
   };
@@ -88,13 +87,6 @@ class NewDoctor extends React.Component {
                 value={this.state.zipcode}
                 name="zipcode"
                 placeholder="Zipcode"
-              ></input>
-              <input
-                onChange={this.handleChange}
-                type="textarea"
-                value={this.state.info}
-                name="info"
-                placeholder="Add Information"
               ></input>
               <br />
               {this.state.blockInput ? null : (
