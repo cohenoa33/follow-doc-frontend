@@ -17,7 +17,7 @@ import Welcome from "./containers/Welcome";
 import HomeContainer from "./containers/HomeContainer";
 import ProblemsContainer from "./containers/ProblemsContainer";
 import OneAppointment from "./components/appointments/OneAppointment";
-import Appointments from "./components/appointments/Appointments";
+import AppointmentsContainer from "./containers/AppointmentsContainer";
 import SearchResults from "./components/search/SearchResults";
 import NewAppointment from "./components/appointments/NewAppointment";
 
@@ -107,7 +107,7 @@ class App extends React.Component {
   renderNewProblem = () => <NewProblem />;
   renderAllProblem = () => <ProblemsContainer />;
   renderAllAppointments = () => (
-    <Appointments appointments={this.props.appointments} />
+    <AppointmentsContainer appointments={this.props.appointments} />
   );
   renderOneProblem = (routerProps) => {
     let problemId = parseInt(routerProps.match.params.id);
