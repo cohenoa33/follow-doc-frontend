@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import GoogleApiWrapper from "../../containers/MapContainer";
 import { deleteAppointment, editAppointment } from "../../actions";
 import AddToCalendar from "./AddToCalendar";
+import moment from "moment";
 
 class AppointmentForm extends React.Component {
   state = {
@@ -113,7 +114,7 @@ class AppointmentForm extends React.Component {
             <input
               type="text"
               className="one-appointment-data"
-              placeholder={date}
+              placeholder={moment(date).format("LL")}
               disabled
             />
             <br />
@@ -170,6 +171,7 @@ class AppointmentForm extends React.Component {
             <textarea
               name="note"
               value={this.state.note}
+              placeholder={note}
               disabled={this.state.disabled ? true : false}
               noValidate
             />

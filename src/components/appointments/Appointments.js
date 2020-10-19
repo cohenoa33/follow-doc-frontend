@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 const Appointments = ({ appointments }) => {
   return (
@@ -20,7 +21,7 @@ const Appointments = ({ appointments }) => {
               <tr key={appointment.id}>
                 <td>
                   <Link to={`/appointments/${appointment.id}`}>
-                    {appointment.date}{" "}
+                    {moment(appointment.date).format("LL")}{" "}
                   </Link>
                 </td>
                 <td>{appointment.time}</td>

@@ -60,6 +60,9 @@ media screen and (max-width: 600px) {
   border: none;
   border: 1px solid grey;
 }
+.one-problem-comments-table {
+  width: 85%;
+}
 .one-problem-comments-table th {
   font-size: 16px;
   font-weight: bold;
@@ -84,7 +87,7 @@ media screen and (max-width: 600px) {
   text-align: center;
   font-weight: bold;
 }
-.dependents-table-td {
+.dependents-table-td td {
   font-size: 14px;
   font-weight: normal;
 
