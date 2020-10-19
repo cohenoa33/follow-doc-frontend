@@ -10,16 +10,16 @@ import LoginForm from "./components/signup-login/LoginForm";
 import SignupForm from "./components/signup-login/SignupForm";
 import NewProblem from "./components/problems/NewProblem";
 import OneProblem from "./components/problems/OneProblem";
+import OneAppointment from "./components/appointments/OneAppointment";
+import SearchResults from "./components/search/SearchResults";
 import NotFound from "./components/NotFound";
 import Navbar from "./components/Navbar";
 import SearchBar from "./components/search/SearchBar";
 import Welcome from "./containers/Welcome";
 import HomeContainer from "./containers/HomeContainer";
 import ProblemsContainer from "./containers/ProblemsContainer";
-import OneAppointment from "./components/appointments/OneAppointment";
+import ProfilePage from "./containers/ProfilePage";
 import AppointmentsContainer from "./containers/AppointmentsContainer";
-import SearchResults from "./components/search/SearchResults";
-import NewAppointment from "./components/appointments/NewAppointment";
 
 class App extends React.Component {
   handleLoginSubmit = (e, user) => {
@@ -97,7 +97,7 @@ class App extends React.Component {
       handleSignUpSubmit={this.handleSignUpSubmit}
     />
   );
-  renderAddNewAppointment = () => <NewAppointment />;
+  renderProfilePage = () => <ProfilePage />;
   renderHome = () => <HomeContainer />;
   renderSearchBar = () => <SearchBar />;
   renderSearchResults = () => <SearchResults />;
@@ -141,6 +141,7 @@ class App extends React.Component {
             render={(routerProps) => this.renderOneAppointment(routerProps)}
           />{" "}
           <Route path="/problems" component={this.renderAllProblem} />
+          <Route path="/profile" component={this.renderProfilePage} />
           <Route path="/appointments" component={this.renderAllAppointments} />
           <Route path="/login" component={this.renderLogin} />
           <Route path="/signup" component={this.renderSignup} />

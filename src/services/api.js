@@ -18,12 +18,6 @@ const login = (user) => {
     body: JSON.stringify({ user }),
   }).then((res) => res.json());
 };
-const doctors = () => {
-  return fetch(`${API_ROOT}/doctors`, {
-    method: "GET",
-    headers: headers,
-  }).then((res) => res.json());
-};
 
 const signup = (user) => {
   return fetch(`${API_ROOT}/users`, {
@@ -113,6 +107,21 @@ const editComment = ({ text, status_open, id }) => {
     body: JSON.stringify({ text, status_open }),
   }).then((res) => res.json());
 };
+
+const editUser = (user, id) => {
+  return fetch(`${API_ROOT}/users/${id}`, {
+    method: "PATCH",
+    headers: headers,
+    body: JSON.stringify({ user }),
+  }).then((res) => res.json());
+};
+const editDependent = ({ name, id }) => {
+  return fetch(`${API_ROOT}/dependents/${id}`, {
+    method: "PATCH",
+    headers: headers,
+    body: JSON.stringify({ name }),
+  }).then((res) => res.json());
+};
 const editAppointment = ({ note, status_open, insurance_auth, id }) => {
   return fetch(`${API_ROOT}/appointments/${id}`, {
     method: "PATCH",
@@ -149,6 +158,7 @@ export default {
   },
   dependents: {
     addDependent: addDependent,
+    editDependent: editDependent,
   },
 
   problems: {
@@ -172,5 +182,8 @@ export default {
     addComment: addComment,
     deleteComment: deleteComment,
     editComment: editComment,
+  },
+  user: {
+    editUser: editUser,
   },
 };

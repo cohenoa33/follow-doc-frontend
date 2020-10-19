@@ -16,7 +16,7 @@ media screen and (max-width: 600px) {
   width: 33%;
   list-style-type: none;
 }
-.column-60 {
+.column-50 {
   float: left;
   width: 50%;
   list-style-type: none;

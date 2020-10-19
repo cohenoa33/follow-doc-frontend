@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-import { updateFile } from "../../actions";
+import { addFile } from "../../actions";
 
 class UploadFiles extends React.Component {
   state = {
@@ -23,7 +23,7 @@ class UploadFiles extends React.Component {
     formData.append("fileName", this.state.newFile);
     formData.append("problem_id", this.props.id);
 
-    this.props.updateFile(formData);
+    this.props.addFile(formData);
   };
 
   render() {
@@ -76,7 +76,7 @@ class UploadFiles extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateFile: (problem) => dispatch(updateFile(problem)),
+    addFile: (problem) => dispatch(addFile(problem)),
   };
 };
 

@@ -16,11 +16,10 @@ class NewDependent extends React.Component {
   };
 
   handleSubmit = (e) => {
-    // e.preventDefault();
     let userID = this.props.id;
     this.props
       .addNewDependent(e, this.state.newDependent, userID)
-      // .then(this.props.history.push("/problems"));
+
       .then(this.setState({ blockInput: true }));
   };
 
@@ -54,6 +53,7 @@ class NewDependent extends React.Component {
                     name="name"
                     type="text"
                     placeholder="New Dependent Name"
+                    required
                   />
                 )}
                 {this.state.blockInput ? null : (
