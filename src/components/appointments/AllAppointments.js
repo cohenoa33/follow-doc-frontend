@@ -1,16 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import Appointments from "./Appointments";
+import NewAppointment from "./NewAppointment";
 
 class AllAppointments extends React.Component {
   appointmentsList = () => {
     let appointments = this.props.appointments;
-    let today = Date.now();
-    let time = new Intl.DateTimeFormat("en-US", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    }).format(today);
 
     let appointmentList = appointments.sort(function (a, b) {
       return a.date === b.date ? 0 : a.date < b.date ? 1 : -1;
@@ -23,6 +18,9 @@ class AllAppointments extends React.Component {
 
     return (
       <div>
+        <div>
+          <NewAppointment />
+        </div>
         <Appointments appointments={appointments} />
       </div>
     );
