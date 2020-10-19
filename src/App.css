@@ -168,21 +168,20 @@ input[type="file"] {
 .one-appointment-edit {
   margin: 0;
 }
-.one-appointment-edit input[type="textarea"] {
+/* .one-appointment-edit input[type="textarea"] {
   width: 80%;
   height: 80px;
   border: 1px solid #ccc;
-}
+} */
 
-input[type="textarea"] {
+textarea {
   width: 80%;
-  height: 200px;
+  height: 100px;
   padding: 12px 20px;
   margin: 8px 0;
-  display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
-  text-align: center;
+  white-space: pre-line;
 }
 .x-btn {
   border-radius: 8px;
@@ -384,9 +383,11 @@ a {
 }
 
 * {
+  outline: none;
   padding: 6px;
   margin: 0 auto;
   text-align: center;
   box-sizing: border-box;
   text-decoration: none;
+  font-family: "Poppins";
 }
