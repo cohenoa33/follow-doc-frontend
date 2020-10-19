@@ -93,7 +93,7 @@ class AppointmentForm extends React.Component {
         <Link to={`/problems/${problem.id}`}>
           <h1>Problem: {problem.name}</h1>
         </Link>
-        <div className="column-60">
+        <div className="column-50">
           <form
             onChange={this.handleChange}
             onSubmit={(e) => this.handleSubmit(e, id)}

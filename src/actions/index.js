@@ -156,6 +156,17 @@ export const editComment = (comment) => {
     });
   };
 };
+export const editDependent = (dependent) => {
+  return (dispatch) => {
+    return api.dependents.editDependent(dependent).then((data) => {
+      if (!data.error) {
+        dispatch({ type: "EDIT_DEPENDENT", payload: data });
+      } else {
+        alert(data.error);
+      }
+    });
+  };
+};
 
 export const editAppointment = (appointment) => {
   return (dispatch) => {
@@ -169,6 +180,19 @@ export const editAppointment = (appointment) => {
   };
 };
 
+export const editUser = (user, e, id) => {
+  e.preventDefault();
+  return (dispatch) => {
+    return api.user.editUser(user, id).then((data) => {
+      if (!data.error) {
+        alert("Your password has been changed successfully");
+        dispatch({ type: "EDIT_User", payload: data });
+      } else {
+        alert(data.error);
+      }
+    });
+  };
+};
 export const editProblem = (problem, id) => {
   return (dispatch) => {
     return api.problems.editProblem(problem, id).then((data) => {
@@ -181,7 +205,7 @@ export const editProblem = (problem, id) => {
   };
 };
 
-export const updateFile = (formData) => {
+export const addFile = (formData) => {
   return (dispatch) => {
     return api.problems.addFile(formData).then((data) => {
       if (!data.error) {

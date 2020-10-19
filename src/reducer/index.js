@@ -82,6 +82,14 @@ export const userReducer = (state = initialState, action) => {
           .push(action.payload),
       };
     }
+    case "EDIT_DEPENDENT": {
+      return {
+        ...state,
+        dependents: state.dependents
+          .filter((dependent) => dependent.id !== action.payload.id)
+          .push(action.payload),
+      };
+    }
     case "EDIT_APPOINTMENT": {
       let updatedList = [
         ...state.appointments.filter(

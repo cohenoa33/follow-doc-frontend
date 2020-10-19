@@ -21,7 +21,7 @@ class OneProbComments extends React.Component {
 
     return (
       <div>
-        <div className="column-60">
+        <div className="column-50">
           <table className="one-problem-comments-table">
             <tbody>
               <tr>
