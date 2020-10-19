@@ -19,44 +19,33 @@ class EditUser extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="column-100">
         {!this.props.user.user ? (
           <div> Loading... </div>
         ) : (
-          <div className="form-grid">
+          <div className="column-100-bold">
             Change Your Password
-            <div className="form-container">
-              <form onSubmit={this.handleSubmit}>
-                <input
-                  type="text"
-                  onChange={this.handleChange}
-                  value={this.props.user.user.username}
-                  name="username"
-                  disabled
-                  placeholder={this.props.user.user.username}
-                ></input>
+            <form onSubmit={this.handleSubmit}>
+              <input
+                type="password"
+                onChange={this.handleChange}
+                value={null}
+                name="password"
+                placeholder="Password"
+              ></input>
+              <input
+                type="password"
+                onChange={this.handleChange}
+                name="password_confirmation"
+                placeholder="Password Confirmation"
+                value={null}
+              />
+              <br />
 
-                <input
-                  type="password"
-                  onChange={this.handleChange}
-                  value={null}
-                  name="password"
-                  placeholder="Password"
-                ></input>
-                <input
-                  type="password"
-                  onChange={this.handleChange}
-                  name="password_confirmation"
-                  placeholder="Password Confirmation"
-                  value={null}
-                />
-                <br />
-                <button className="btn">Update</button>
-              </form>
-
-              <div>
-                <br></br>
-              </div>
+              <button className="btn">Update</button>
+            </form>
+            <div>
+              <br></br>
             </div>
           </div>
         )}

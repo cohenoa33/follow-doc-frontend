@@ -13,14 +13,12 @@ class DependentsList extends React.Component {
     return (
       <div>
         <div className="column-100">
+          <div className="dependents-table-header">Your Dependents: </div>
           <table className="dependents-table">
             <tbody>
-              <tr>
-                <th>Your Dependents: </th>
-              </tr>
               {dependents.map((dependent) => (
-                <tr key={dependent.id}>
-                  <td> {dependent.name}</td>
+                <tr className="dependents-table-td" key={dependent.id}>
+                  <td className="dependents-table-td"> {dependent.name}</td>
                   <td>
                     {this.renderEditDependent(dependent.id, dependent.name)}{" "}
                   </td>
