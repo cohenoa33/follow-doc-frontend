@@ -13,15 +13,12 @@ class ProfilePAge extends React.Component {
   render() {
     return (
       <div>
-        profile page
         <div className="column-50">
-          <div> {this.renderAddNewDependent()}</div>
-          <div> {this.renderDependentsList()}</div>
+          {this.renderDependentsList()}
+          {this.renderAddNewDependent()}
         </div>
-        <br />
-        <div className="column-50">
-          <div> {this.renderEditUser()}</div>
-        </div>
+
+        <div className="column-50">{this.renderEditUser()}</div>
       </div>
     );
   }
