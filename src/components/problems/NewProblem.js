@@ -50,7 +50,6 @@ class NewProblem extends React.Component {
             </button>
             <br />
             <br />
-            <br />
             <form
               className="popup-form"
               noValidate
@@ -58,7 +57,7 @@ class NewProblem extends React.Component {
                 this.validate(e);
               }}
             >
-              <br></br>
+              New Problem
               <select name="dependent_id" onChange={this.handleChange}>
                 <option name="dependent_id" value="0">
                   {" "}
@@ -82,14 +81,13 @@ class NewProblem extends React.Component {
                 placeholder="Problem Name"
                 noValidate
               ></input>
-              <input
+              <textarea
                 onChange={this.handleChange}
-                type="textarea"
                 value={this.state.description}
                 name="description"
                 placeholder="Description"
-                noValidate
-              ></input>
+                minLength="5"
+              />
               <br />
               {this.state.blockInput ? null : (
                 <button className="btn">Add new Problem</button>

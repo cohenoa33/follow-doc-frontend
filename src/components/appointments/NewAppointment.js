@@ -76,7 +76,6 @@ class NewAppointment extends React.Component {
             </button>
             <br></br>
             <br></br>
-            <br></br>
             {this.state.success ? "Appointment saved" : null}
             <form
               className="popup-form"
@@ -85,8 +84,7 @@ class NewAppointment extends React.Component {
                 this.handleAddAppointment(e);
               }}
             >
-              <br></br>
-
+              New Appointment
               <select name="problem_id" onChange={this.handleChange}>
                 <option name="problem_id" value="0">
                   {" "}
@@ -151,15 +149,13 @@ class NewAppointment extends React.Component {
                 />{" "}
                 Approved by Insurance
               </label>
-              <input
+              <textarea
                 onChange={this.handleChange}
-                type="textarea"
                 value={this.state.appointment.note}
                 name="note"
                 placeholder="Add More Information"
                 noValidate
-              ></input>
-
+              />
               <br />
               {this.state.blockInput ? null : (
                 <button className="btn" type="Submit">

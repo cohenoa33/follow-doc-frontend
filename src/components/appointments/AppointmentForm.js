@@ -167,9 +167,7 @@ class AppointmentForm extends React.Component {
             <br />
             <br />
             <label> Additional Information: </label> <br />
-            <input
-              className="one-appointment-text-area"
-              type="textarea"
+            <textarea
               name="note"
               value={this.state.note}
               disabled={this.state.disabled ? true : false}

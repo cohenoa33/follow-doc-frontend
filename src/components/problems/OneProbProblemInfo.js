@@ -11,7 +11,7 @@ class OneProbProblemInfo extends React.Component {
     this.setState({ disabled: !this.state.disabled });
   };
 
-  saveChanges = (e, data) => {
+  saveChanges = (e) => {
     this.setState({
       ...this.state,
       problem: {
@@ -69,21 +69,18 @@ class OneProbProblemInfo extends React.Component {
                 <input
                   type="text"
                   name="name"
-                  onChange={(e) => this.saveChanges(e, problem.name)}
+                  onChange={this.saveChanges}
                   placeholder={problem.name}
                   value={this.state.name}
-                  disabled={!this.state.disabled ? true : false}
                 />
                 <br />
                 <label> Description:</label>
                 <br />
-                <input
-                  type="textarea"
+                <textarea
                   name="description"
-                  onChange={(e) => this.saveChanges(e, problem.description)}
+                  onChange={this.saveChanges}
                   placeholder={problem.description}
                   value={this.state.description}
-                  disabled={!this.state.disabled ? true : false}
                 />
                 <br />
                 <button className="btn" onClick={this.submitChanges}>
