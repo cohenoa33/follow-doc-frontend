@@ -389,7 +389,7 @@ textarea {
   line-height: 1.5em;
 }
 .card-footer {
-  bottom: auto;
+  bottom: 0;
 }
 
 .dependent-card {

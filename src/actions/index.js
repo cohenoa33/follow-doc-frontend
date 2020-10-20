@@ -156,6 +156,7 @@ export const editComment = (comment, e) => {
         dispatch({ type: "EDIT_COMMENT", payload: data });
       } else {
         alert(data.error);
+        return data.error;
       }
     });
   };
@@ -168,6 +169,7 @@ export const editDependent = (dependent, e) => {
         dispatch({ type: "EDIT_DEPENDENT", payload: data });
       } else {
         alert(data.error);
+        return data.error;
       }
     });
   };
