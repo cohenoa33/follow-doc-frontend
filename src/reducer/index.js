@@ -76,7 +76,7 @@ export const userReducer = (state = initialState, action) => {
 
     case "EDIT_COMMENT": {
       let updatedList = [
-        ...state.comments.filter((comment) => comment.id != action.payload.id),
+        ...state.comments.filter((comment) => comment.id !== action.payload.id),
         action.payload,
       ];
       return {
@@ -87,7 +87,7 @@ export const userReducer = (state = initialState, action) => {
     case "EDIT_DEPENDENT": {
       let updatedList = [
         ...state.dependents.filter(
-          (dependent) => dependent.id != action.payload.id
+          (dependent) => dependent.id !== action.payload.id
         ),
         action.payload,
       ];
@@ -99,7 +99,7 @@ export const userReducer = (state = initialState, action) => {
     case "EDIT_APPOINTMENT": {
       let updatedList = [
         ...state.appointments.filter(
-          (appointment) => appointment.id != action.payload.id
+          (appointment) => appointment.id !== action.payload.id
         ),
         action.payload,
       ];
@@ -110,7 +110,7 @@ export const userReducer = (state = initialState, action) => {
     }
     case "EDIT_PROBLEM": {
       let updatedList = [
-        ...state.problems.filter((problem) => problem.id != action.payload.id),
+        ...state.problems.filter((problem) => problem.id !== action.payload.id),
         action.payload,
       ];
       return {

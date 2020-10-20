@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 class AllFilesList extends React.Component {
   handleDeleteFile = (problem, file) => {
     const problem_id = problem.id;
-    const index = problem.file.findIndex((f) => f == file);
+    const index = problem.file.findIndex((f) => f === file);
     this.props.deleteFile(problem_id, index);
   };
   render() {
@@ -15,10 +15,11 @@ class AllFilesList extends React.Component {
         <div className="one-problem-comments">
           {problem
             ? problem.file.map((file) => (
-                <li className="files-list" key={file.id}>
+                <li className="files-list" key={file.name}>
                   <a
                     href={`http://localhost:3000/${file.path}`}
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     {file.name}
                   </a>
