@@ -76,7 +76,8 @@ class NewProblem extends React.Component {
                 this.validate(e);
               }}
             >
-              New Problem
+              Add New Problem
+              <br />
               <select name="dependent_id" onChange={this.handleChange}>
                 <option name="dependent_id" value="0">
                   {" "}

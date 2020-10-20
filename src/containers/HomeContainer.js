@@ -41,10 +41,11 @@ class HomeContainer extends React.Component {
           <div className="column-30"> {this.renderComments()}</div>
           <br></br>
         </div>
-        <div>
+        <div className="row">
           <div className="column-100">{this.renderProblems()} </div>
-          <div className="column-100">{this.renderAllAppointments()} </div>
         </div>
+
+        <div className="column-100">{this.renderAllAppointments()} </div>
       </div>
     );
   }

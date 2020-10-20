@@ -12,6 +12,10 @@ media screen and (max-width: 600px) {
   text-align: center;
 }
 
+.row {
+  border-bottom: 5px solid #333;
+  margin-bottom: 50px;
+}
 .column-100 {
   float: center;
 }
@@ -37,10 +41,6 @@ media screen and (max-width: 600px) {
   display: table;
   clear: both;
 }
-.one-problem-grid {
-  grid-template: ;
-}
-
 .problem-container-description {
   padding-top: 20px;
   line-height: 1.5em;
@@ -94,7 +94,6 @@ media screen and (max-width: 600px) {
 .dependents-table-td td {
   font-size: 14px;
   font-weight: normal;
-
   border-collapse: collapse;
 }
 
@@ -267,19 +266,11 @@ textarea {
   background: url(./images/edit-icon.png) no-repeat;
 }
 
-/* .edit-btn {
-  border-radius: 8px;
-  padding: 20px;
-  float: right;
-  cursor: pointer;
-  color: #51d6cb;
-  border: none;
-  font-size: 16px;
-  background: none;
-  outline: none;
-} */
 .x-btn:focus {
   outline: none;
+}
+.one-problem-grid {
+  grid-template: ;
 }
 
 .description-one-problem {
@@ -307,7 +298,7 @@ textarea {
 
 .btn {
   background-color: #51d6cb;
-  color: white;
+  color: #333;
   padding: 14px;
   margin: 8px;
   border: none;
@@ -316,9 +307,22 @@ textarea {
   width: 50%;
   text-align: center;
 }
+
+.btn-info {
+  background-color: #51d6cb;
+  color: #333;
+  padding: 10px;
+  margin: 4px;
+  border: none;
+  bottom: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
 .search-btn {
   background-color: #51d6cb;
-  color: white;
+  color: #333;
   padding: 14px;
   margin: 8px;
   border: none;
@@ -333,15 +337,18 @@ textarea {
 }
 .problems-list-table {
   border-collapse: collapse;
+  border-radius: 0px;
   width: 100%;
 }
 .problems-list-table td {
+  border-radius: 0px;
   padding: 8px;
 }
 .problems-list-table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 .problems-list-table th {
+  border-radius: 0px;
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
@@ -350,17 +357,41 @@ textarea {
 }
 
 .problem-card {
-  border-radius: 10px;
+  /* border-radius: 10px; */
   cursor: pointer;
   text-align: center;
   background: #eeeeee;
-  padding: 8px;
-  width: 15rem;
-  height: 25rem;
+  width: 18rem;
+  height: 30rem;
   display: inline-grid;
   margin: 1rem 2rem;
   line-height: 1.5em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+.dependent-card {
+  padding-top: 20px;
+  padding: 10px;
+}
+.card-header {
+  font-size: 2rem;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: bold;
+  width: 100%;
+  height: 2rem;
+  color: #bad63d;
+  word-wrap: normal;
+}
+
+.card-body {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 1.5em;
+}
+.card-footer {
+  bottom: auto;
+}
+
 .dependent-card {
   padding-top: 20px;
   padding: 10px;
@@ -418,4 +449,6 @@ a {
   box-sizing: border-box;
   text-decoration: none;
   font-family: "Poppins";
+  /* word-wrap: break-word; */
+  border-radius: 5px;
 }

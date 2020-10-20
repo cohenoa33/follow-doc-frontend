@@ -49,12 +49,13 @@ class NewDependent extends React.Component {
             </div>
             <div className="actions">
               <form onSubmit={this.handleSubmit}>
-                <label>Dependent Name</label>
+                <br />
+                <label>Add Dependent</label>
                 {this.state.blockInput ? (
                   <input
                     name="name"
                     type="text"
-                    placeholder="New Dependent Name"
+                    placeholder="Dependent Name"
                     disabled
                   />
                 ) : (
@@ -62,13 +63,13 @@ class NewDependent extends React.Component {
                     onChange={this.handleChange}
                     name="name"
                     type="text"
-                    placeholder="New Dependent Name"
+                    placeholder="Dependent Name"
                     required
                   />
                 )}
                 {this.state.blockInput ? null : (
                   <button className="btn" type="submit">
-                    Add new Dependent
+                    Add Dependent
                   </button>
                 )}
               </form>

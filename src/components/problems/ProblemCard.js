@@ -6,18 +6,20 @@ const ProblemCard = (props) => {
   return (
     <div className="problem-card">
       <div className="dependent-card">
-        <h1>{name} </h1>
+        <div className="card-header">{name} </div>
         <br />
         Dependent: {dependent.name}
       </div>
-      <br />
-      <h1 className="problem-name"></h1>
-      <h3> Problem Description: </h3>
-      <p className="problem-description">{description}</p>
-      <br />
-      <button className="btn">
-        <Link to={`/problems/${id}`}> More Info</Link>{" "}
-      </button>
+      <div className="card-body">
+        <h3> Problem Description: </h3>
+        {description}
+        <br />
+      </div>
+      <div className="card-footer">
+        <button className="btn-info">
+          <Link to={`/problems/${id}`}>More information</Link>{" "}
+        </button>
+      </div>
     </div>
   );
 };

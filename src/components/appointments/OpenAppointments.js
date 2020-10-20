@@ -27,7 +27,7 @@ class OpenAppointments extends React.Component {
   render() {
     return (
       <div className="open-comments-appointments">
-        <h1>Appointments who needs preparation:</h1>
+        <h1>Appointments Who Needs Preparation</h1>
         {this.filterAppointments().map((appointment) => (
           <li key={appointment.id}>
             <Link to={`/appointments/${appointment.id}`}>

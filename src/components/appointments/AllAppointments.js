@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import Appointments from "./Appointments";
-import NewAppointment from "./NewAppointment";
 
 class AllAppointments extends React.Component {
   appointmentsList = () => {
@@ -18,9 +17,6 @@ class AllAppointments extends React.Component {
 
     return (
       <div>
-        <div>
-          <NewAppointment />
-        </div>
         <Appointments appointments={appointments} />
       </div>
     );
