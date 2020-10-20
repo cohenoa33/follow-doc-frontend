@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 class OpenAppointments extends React.Component {
   filterAppointments() {
@@ -14,7 +15,7 @@ class OpenAppointments extends React.Component {
         .sort(function (a, b) {
           return a.date === b.date ? 0 : a.date < b.date ? -1 : 1;
         });
-      console.log(list);
+
       return list;
     } else {
       return appointments.sort(function (a, b) {
@@ -30,8 +31,8 @@ class OpenAppointments extends React.Component {
         {this.filterAppointments().map((appointment) => (
           <li key={appointment.id}>
             <Link to={`/appointments/${appointment.id}`}>
-              Appointment for {appointment.doctor.name} on {appointment.date} at{" "}
-              {appointment.time}.
+              Appointment for {appointment.doctor.name} on{" "}
+              {moment(appointment.date).format("LL")} at {appointment.time}.
               <br /> Notes: {appointment.note}
             </Link>
           </li>

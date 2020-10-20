@@ -3,6 +3,7 @@ import { deleteComment } from "../../actions";
 import { connect } from "react-redux";
 import EditComment from "./EditComment";
 import { withRouter } from "react-router-dom";
+import moment from "moment";
 
 class OneProbComments extends React.Component {
   handleDeleteComment = (e) => {
@@ -21,7 +22,7 @@ class OneProbComments extends React.Component {
 
     return (
       <div>
-        <div className="column-50">
+        <div className="column-100">
           <table className="one-problem-comments-table">
             <tbody>
               <tr>
@@ -33,8 +34,8 @@ class OneProbComments extends React.Component {
               {comments.map((comment) => (
                 <tr key={comment.id}>
                   <td> {comment.text}</td>
-                  <td> {comment.updated_at}</td>
-                  <td> {comment.created_at}</td>
+                  <td> {moment(comment.updated_at).format("LLL")}</td>
+                  <td> {moment(comment.created_at).format("LLL")}</td>
                   <td> {comment.status_open ? "Open" : "Closed"}</td>
                   <td>
                     {this.renderEditComment(

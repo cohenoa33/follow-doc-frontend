@@ -75,19 +75,25 @@ export const userReducer = (state = initialState, action) => {
     }
 
     case "EDIT_COMMENT": {
+      let updatedList = [
+        ...state.comments.filter((comment) => comment.id != action.payload.id),
+        action.payload,
+      ];
       return {
         ...state,
-        comments: state.comments
-          .filter((comment) => comment.id !== action.payload.id)
-          .push(action.payload),
+        comments: updatedList,
       };
     }
     case "EDIT_DEPENDENT": {
+      let updatedList = [
+        ...state.dependents.filter(
+          (dependent) => dependent.id != action.payload.id
+        ),
+        action.payload,
+      ];
       return {
         ...state,
-        dependents: state.dependents
-          .filter((dependent) => dependent.id !== action.payload.id)
-          .push(action.payload),
+        dependents: updatedList,
       };
     }
     case "EDIT_APPOINTMENT": {

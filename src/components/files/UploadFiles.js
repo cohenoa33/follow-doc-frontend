@@ -7,7 +7,8 @@ import { addFile } from "../../actions";
 class UploadFiles extends React.Component {
   state = {
     newFile: null,
-    isUploading: false,
+    uploaded: false,
+    uploading: false,
   };
   handleFileChange = (e) => {
     let file = e.target.files[0];
@@ -17,13 +18,25 @@ class UploadFiles extends React.Component {
   };
   uploadFile = (e) => {
     e.preventDefault();
-    this.setState({ ...this.state, isUploading: !this.state.isUploading });
+    this.setState({ uploading: true });
     const formData = new FormData();
     formData.append("file", this.state.newFile);
     formData.append("fileName", this.state.newFile);
     formData.append("problem_id", this.props.id);
 
-    this.props.addFile(formData);
+    this.props.addFile(formData).then((data) => {
+      if (!data) {
+        this.setState({ uploaded: true });
+      }
+    });
+  };
+
+  refreshState = () => {
+    this.setState({
+      newFile: null,
+      uploaded: false,
+      uploading: false,
+    });
   };
 
   render() {
@@ -32,10 +45,12 @@ class UploadFiles extends React.Component {
         trigger={<button className="btn"> Upload File</button>}
         modal
         nested
+        closeOnDocumentClick={false}
+        onOpen={this.refreshState}
       >
         {(close) => (
           <div className="modal">
-            {!this.state.isUploading ? (
+            {!this.state.uploaded ? (
               <div>
                 <button className="x-btn" onClick={close}>
                   x
@@ -56,16 +71,19 @@ class UploadFiles extends React.Component {
                     onChange={this.handleFileChange}
                   />
                   <button className="btn" onClick={this.uploadFile}>
-                    Upload
+                    {this.state.uploading ? "Uploading File..." : "Submit"}
                   </button>
 
                   <br></br>
                 </form>
               </div>
             ) : (
-              <button className="btn" onClick={close}>
-                File Uploaded{" "}
-              </button>
+              <div className="success-message">
+                File uploaded Successfully"
+                <button className="btn" onClick={close}>
+                  close{" "}
+                </button>
+              </div>
             )}
           </div>
         )}

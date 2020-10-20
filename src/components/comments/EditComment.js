@@ -35,11 +35,23 @@ class EditComment extends React.Component {
   };
 
   validate = (e) => {
+    this.props
+      .editComment(this.state.comment, e, this.props.id)
+      .then((data) => {
+        if (!data) {
+          this.setState({ blockInput: true });
+        }
+      });
+  };
+  refreshState = () => {
     this.setState({
-      ...this.state,
-      blockInput: true,
+      comment: {
+        id: this.props.id,
+        text: this.props.text,
+        status_open: this.props.status_open,
+      },
+      blockInput: false,
     });
-    this.props.editComment(this.state.comment, e, this.props.id);
   };
 
   render() {
@@ -48,6 +60,8 @@ class EditComment extends React.Component {
         trigger={<button className="comment-btn-edit"> x </button>}
         modal
         nested
+        closeOnDocumentClick={false}
+        onOpen={this.refreshState}
       >
         {(close) => (
           <div className="modal">

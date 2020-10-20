@@ -43,7 +43,7 @@ export const setLogout = () => {
   };
 };
 
-export const addNewDependent = (e, newDependent, userID) => {
+export const addDependent = (e, newDependent, userID) => {
   e.preventDefault();
   return (dispatch) => {
     return api.dependents
@@ -53,14 +53,14 @@ export const addNewDependent = (e, newDependent, userID) => {
           dispatch({ type: "ADD_DEP", payload: data });
         } else {
           alert(data.error);
+          return data.error;
         }
       });
   };
 };
 
-export const addNewProblem = (newProblem, e) => {
+export const addProblem = (newProblem) => {
   const { name, description, dependent_id } = newProblem;
-  e.preventDefault();
   return (dispatch) => {
     return api.problems
       .addProblem({
@@ -73,6 +73,7 @@ export const addNewProblem = (newProblem, e) => {
           dispatch({ type: "ADD_PROBLEM", payload: data });
         } else {
           alert(data.error);
+          return data.error;
         }
       });
   };
@@ -105,6 +106,7 @@ export const addAppointment = (appointment, e) => {
         dispatch({ type: "ADD_APPOINTMENT", payload: data });
       } else {
         alert(data.error);
+        return data.error;
       }
     });
   };
@@ -117,6 +119,7 @@ export const addDoctor = (doctor, e) => {
         dispatch({ type: "ADD_DOCTOR", payload: data });
       } else {
         alert(data.error);
+        return data.error;
       }
     });
   };
@@ -145,7 +148,8 @@ export const deleteAppointment = (id) => {
   };
 };
 
-export const editComment = (comment) => {
+export const editComment = (comment, e) => {
+  e.preventDefault();
   return (dispatch) => {
     return api.comments.editComment(comment).then((data) => {
       if (!data.error) {
@@ -156,7 +160,8 @@ export const editComment = (comment) => {
     });
   };
 };
-export const editDependent = (dependent) => {
+export const editDependent = (dependent, e) => {
+  e.preventDefault();
   return (dispatch) => {
     return api.dependents.editDependent(dependent).then((data) => {
       if (!data.error) {
@@ -212,6 +217,7 @@ export const addFile = (formData) => {
         dispatch({ type: "EDIT_PROBLEM", payload: data });
       } else {
         alert(data.error);
+        return data.error;
       }
     });
   };
