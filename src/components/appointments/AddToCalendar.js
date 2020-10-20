@@ -7,7 +7,7 @@ export default class addToCalendar extends React.Component {
 
     return (
       <AddToCalendar
-        class
+        // class
         buttonLabel="Add To Calendar"
         listItems={items}
         event={this.props.event}

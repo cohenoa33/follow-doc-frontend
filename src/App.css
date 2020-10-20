@@ -8,6 +8,13 @@ media screen and (max-width: 600px) {
   color: #51d6cb;
   font-weight: bold;
 }
+
+.status-open {
+  color: #d65151;
+}
+.status-close {
+  color: #5cd651;
+}
 .modal-popup {
   text-align: center;
 }
@@ -35,6 +42,15 @@ media screen and (max-width: 600px) {
   align-items: left;
   text-align-last: center;
 }
+.column-50-appointment {
+  float: left;
+  width: 50%;
+  list-style-type: none;
+  align-items: left;
+  text-align-last: center;
+  display: inline-grid;
+}
+
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -95,6 +111,13 @@ media screen and (max-width: 600px) {
   font-size: 14px;
   font-weight: normal;
   border-collapse: collapse;
+}
+
+.table-appointment td {
+  text-align: left;
+}
+.table-appointment {
+  text-align: left;
 }
 
 .btn-edit .btn-problem-container-buttons {
@@ -195,11 +218,6 @@ input[type="file"] {
 .one-appointment-edit {
   margin: 0;
 }
-/* .one-appointment-edit input[type="textarea"] {
-  width: 80%;
-  height: 80px;
-  border: 1px solid #ccc;
-} */
 
 textarea {
   width: 80%;
@@ -209,6 +227,11 @@ textarea {
   border: 1px solid #ccc;
   box-sizing: border-box;
   white-space: pre-line;
+}
+.edit-appointment-textarea {
+  width: 120%;
+  margin: 0 auto;
+  padding: 8px;
 }
 .x-btn {
   border-radius: 8px;
@@ -241,6 +264,17 @@ textarea {
   background: none;
   outline: none;
   background: url(./images/edit-icon.png) no-repeat;
+}
+.btn-delete {
+  margin-left: 10px;
+  float: center;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  color: transparent;
+  background: none;
+  outline: none;
+  background: url(./images/delete.png) no-repeat;
 }
 .back-btn {
   margin-left: 10px;
@@ -284,10 +318,11 @@ textarea {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 80%;
+  width: 50%;
   text-align: center;
   float: center;
   text-decoration: none;
+  list-style: none;
 }
 .add-to-calendar ul li a {
   text-decoration: none;
@@ -308,11 +343,12 @@ textarea {
   text-align: center;
 }
 
-.btn-info {
+.btn-info,
+.btn-saveChanges {
   background-color: #51d6cb;
   color: #333;
   padding: 10px;
-  margin: 4px;
+  /* margin: 4px; */
   border: none;
   bottom: 0;
   border-radius: 5px;
@@ -389,7 +425,7 @@ textarea {
   line-height: 1.5em;
 }
 .card-footer {
-  bottom: auto;
+  bottom: 0;
 }
 
 .dependent-card {

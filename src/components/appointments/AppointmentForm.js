@@ -63,6 +63,7 @@ class AppointmentForm extends React.Component {
   };
 
   render() {
+    const disabled = this.state.disabled;
     const {
       id,
       date,
@@ -90,118 +91,143 @@ class AppointmentForm extends React.Component {
 
     return (
       <div>
-        <h1>Appointment for {dependent} </h1>
-        <Link to={`/problems/${problem.id}`}>
-          <h1>Problem: {problem.name}</h1>
-        </Link>
-        <div className="column-50">
-          <form
-            onChange={this.handleChange}
-            onSubmit={(e) => this.handleSubmit(e, id)}
-          >
-            <label> Doctor: </label> <br />
-            <input
-              type="text"
-              placeholder={doctor.name}
-              disabled
-              value={this.state.doctor}
-            />
-            <br />
-            <label> Address: </label> <br />
-            <input type="text" placeholder={doctor.address} disabled />
-            <br />
-            <label> Date: </label> <br />
-            <input
-              type="text"
-              className="one-appointment-data"
-              placeholder={moment(date).format("LL")}
-              disabled
-            />
-            <br />
-            <label> Time: </label>
-            <br />
-            <input
-              type="text"
-              className="one-appointment-data"
-              placeholder={time}
-              disabled
-            />
-            <br />
-            {this.state.disabled ? (
-              <div>
-                <label>{status_open ? "Status: Open" : "Status: Close"}</label>
-                <br />
-                <br />
-                <label>
-                  {insurance_auth
-                    ? "Approved By Insurance"
-                    : "Waiting for Insurance Approval"}{" "}
-                </label>{" "}
-              </div>
-            ) : (
-              <div>
-                <br></br>
-                <label>
-                  {" "}
-                  <input
-                    name="status_open"
-                    type="checkbox"
-                    value={status_open}
-                  />{" "}
-                  {status_open ? "Mark as Closed" : "Mark as Open"}
-                </label>
-                <br />
-                <br></br>
-                <label>
-                  {" "}
-                  <input
-                    name="insurance_auth"
-                    type="checkbox"
-                    value={insurance_auth}
-                  />{" "}
-                  {insurance_auth
-                    ? "Need Insurance Approval"
-                    : "Approved By Insurance"}
-                </label>
-              </div>
-            )}
-            <br />
-            <br />
-            <label> Additional Information: </label> <br />
-            <textarea
-              name="note"
-              value={this.state.note}
-              placeholder={note}
-              disabled={this.state.disabled ? true : false}
-              noValidate
-            />
-            {this.state.disabled ? null : (
-              <div>
-                <button type="submit" className="btn">
-                  Save Changes
-                </button>
-                <button onClick={this.handleEditButton} className="btn">
-                  Back
-                </button>
-              </div>
-            )}
-          </form>
-          {this.state.disabled ? (
+        <h1>
+          {dependent} Appointment For
+          <Link to={`/problems/${problem.id}`}>{problem.name}</Link>
+        </h1>
+
+        {disabled ? (
+          <div className="column-50-appointment">
             <div>
-              <div>
-                <div className="add-to-calendar">
-                  <AddToCalendar event={event} />
-                </div>
-              </div>
-              <button className="btn" onClick={this.handleEditButton}>
-                Edit Appointment
+              <button className="btn-edit" onClick={this.handleEditButton}>
+                ed
               </button>
-              <button className="btn" onClick={this.handleDelete}>
-                Delete Appointment
+              <button className="btn-delete" onClick={this.handleDelete}>
+                de
               </button>{" "}
             </div>
-          ) : null}
-        </div>
+
+            <table className="table-appointment">
+              <tbody>
+                <tr>
+                  <td>Doctor:</td>
+                  <td>{doctor.name}</td>
+                </tr>
+                <tr>
+                  <td>Address:</td>
+                  <td>{doctor.address}</td>
+                </tr>
+                <tr>
+                  <td>Date:</td>
+                  <td>{moment(date).format("LL")}</td>
+                </tr>
+                <tr>
+                  <td>Time:</td>
+                  <td>{time}</td>
+                </tr>
+                <tr>
+                  <td> Status:</td>
+                  {status_open ? (
+                    <td className="status-open">Open</td>
+                  ) : (
+                    <td className="status-close">Close</td>
+                  )}
+                </tr>
+                <tr>
+                  <td> Insurance Approval:</td>
+                  {insurance_auth ? (
+                    <td className="status-close">Approved By Insurance</td>
+                  ) : (
+                    <td className="status-open">
+                      Waiting for Insurance Approval
+                    </td>
+                  )}
+                </tr>
+                <tr>
+                  <td>Additional Information:</td>
+                  <td>{note}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div className="add-to-calendar">
+              <AddToCalendar event={event} />
+            </div>
+          </div>
+        ) : (
+          <div className="column-50-appointment">
+            <button onClick={this.handleEditButton} className="back-btn">
+              Back
+            </button>
+            <br />
+            <button
+              type="submit"
+              className="btn-saveChanges"
+              onClick={(e) => this.handleSubmit(e, id)}
+            >
+              {" "}
+              Save Changes
+            </button>
+
+            <table className="table-appointment">
+              <tbody>
+                <tr>
+                  <td>Doctor:</td>
+                  <td>{doctor.name}</td>
+                </tr>
+                <tr>
+                  <td>Address:</td>
+                  <td>{doctor.address}</td>
+                </tr>
+                <tr>
+                  <td>Date:</td>
+                  <td>{moment(date).format("LL")}</td>
+                </tr>
+                <tr>
+                  <td>Time:</td>
+                  <td>{time}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <form onSubmit={(e) => this.handleSubmit(e, id)}>
+              <label>
+                <input
+                  name="status_open"
+                  type="checkbox"
+                  onChange={this.handleChange}
+                  value={status_open}
+                />{" "}
+                {status_open ? "Mark as Closed" : "Mark as Open"}
+              </label>
+              <br />
+              <label>
+                {" "}
+                <input
+                  name="insurance_auth"
+                  type="checkbox"
+                  value={insurance_auth}
+                  onChange={this.handleChange}
+                />{" "}
+                {insurance_auth
+                  ? "Need Insurance Approval"
+                  : "Approved By Insurance"}
+              </label>
+              <br />
+              <br />
+              <label> Additional Information: </label> <br />
+              <textarea
+                name="note"
+                type="text"
+                value={this.state.appointment.note}
+                placeholder={note}
+                noValidate
+                className="edit-appointment-textarea"
+                onChange={this.handleChange}
+              />
+            </form>
+          </div>
+        )}
         <div className="map-squere">
           <GoogleApiWrapper lat={doctor.latitude} lng={doctor.longitude} />
         </div>
