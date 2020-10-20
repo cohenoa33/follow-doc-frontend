@@ -79,7 +79,7 @@ class UploadFiles extends React.Component {
               </div>
             ) : (
               <div className="success-message">
-                File uploaded Successfully"
+                File uploaded Successfully
                 <button className="btn" onClick={close}>
                   close{" "}
                 </button>

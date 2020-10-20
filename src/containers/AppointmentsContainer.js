@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 
 import AllAppointments from "../components/appointments/AllAppointments";
+import NewAppointment from "../components/appointments/NewAppointment";
 
 class AppointmentsContainer extends React.Component {
   componentDidMount() {
@@ -13,9 +14,15 @@ class AppointmentsContainer extends React.Component {
   renderAllAppointments = () => (
     <AllAppointments appointments={this.props.appointments} />
   );
+  renderNewAppointments = () => <NewAppointment />;
 
   render() {
-    return <div className="column-100">{this.renderAllAppointments()} </div>;
+    return (
+      <div className="column-100">
+        {this.renderNewAppointments()}
+        {this.renderAllAppointments()}
+      </div>
+    );
   }
 }
 
