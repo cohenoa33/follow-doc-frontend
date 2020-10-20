@@ -13,6 +13,7 @@ class NewAppointment extends React.Component {
       problem_id: 0,
       insurance_auth: false,
       status_open: false,
+      note: "",
     },
     blockInput: false,
   };
@@ -67,6 +68,7 @@ class NewAppointment extends React.Component {
         problem_id: 0,
         insurance_auth: false,
         status_open: false,
+        note: "",
       },
       blockInput: false,
     });

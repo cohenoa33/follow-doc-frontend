@@ -12,6 +12,10 @@ media screen and (max-width: 600px) {
   text-align: center;
 }
 
+.row {
+  border-bottom: 5px solid #333;
+  margin-bottom: 50px;
+}
 .column-100 {
   float: center;
 }
@@ -37,10 +41,6 @@ media screen and (max-width: 600px) {
   display: table;
   clear: both;
 }
-.one-problem-grid {
-  grid-template: ;
-}
-
 .problem-container-description {
   padding-top: 20px;
   line-height: 1.5em;
@@ -267,17 +267,6 @@ textarea {
   background: url(./images/edit-icon.png) no-repeat;
 }
 
-/* .edit-btn {
-  border-radius: 8px;
-  padding: 20px;
-  float: right;
-  cursor: pointer;
-  color: #51d6cb;
-  border: none;
-  font-size: 16px;
-  background: none;
-  outline: none;
-} */
 .x-btn:focus {
   outline: none;
 }
@@ -350,17 +339,36 @@ textarea {
 }
 
 .problem-card {
-  border-radius: 10px;
   cursor: pointer;
   text-align: center;
   background: #eeeeee;
-  padding: 8px;
-  width: 15rem;
-  height: 25rem;
+  height: 350px;
   display: inline-grid;
+  height: 25rem;
   margin: 1rem 2rem;
   line-height: 1.5em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 35%;
+  border-radius: 0px;
 }
+.card-header {
+  font-size: 2rem;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: bold;
+  width: 100%;
+  height: 2rem;
+  color: #bad63d;
+  word-wrap: normal;
+}
+.card-body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  line-height: 1.5em;
+}
+
 .dependent-card {
   padding-top: 20px;
   padding: 10px;
@@ -418,4 +426,6 @@ a {
   box-sizing: border-box;
   text-decoration: none;
   font-family: "Poppins";
+  /* word-wrap: break-word; */
+  border-radius: 5px;
 }
