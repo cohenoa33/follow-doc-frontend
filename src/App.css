@@ -233,6 +233,11 @@ textarea {
   margin: 0 auto;
   padding: 8px;
 }
+.edit-problem-textarea {
+  width: 200%;
+  margin: 0 auto;
+  padding: 8px;
+}
 .x-btn {
   border-radius: 8px;
   padding: 20px;
@@ -327,8 +332,13 @@ textarea {
 .add-to-calendar ul li a {
   text-decoration: none;
   list-style: none;
-  font-size: 12px;
+  font-size: 14px;
   cursor: pointer;
+}
+li::marker {
+  text-decoration: none;
+  list-style: none;
+  color: #51d6cb;
 }
 
 .btn {
