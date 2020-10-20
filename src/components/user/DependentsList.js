@@ -37,14 +37,5 @@ const mapStateToProps = (state) => {
     dependents: state.dependents,
   };
 };
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     addNewDependent: (e, newDependent, userID) =>
-//       dispatch(addNewDependent(e, newDependent, userID)),
-//   };
-// };
 
-export default connect(
-  mapStateToProps
-  // mapDispatchToProps
-)(DependentsList);
+export default connect(mapStateToProps)(DependentsList);

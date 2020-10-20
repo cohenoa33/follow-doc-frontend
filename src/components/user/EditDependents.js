@@ -24,12 +24,22 @@ class EditDependents extends React.Component {
   };
 
   validate = (e) => {
+    this.props
+      .editDependent(this.state.dependent, e, this.props.id)
+      .then((data) => {
+        if (!data) {
+          this.setState({ blockInput: true });
+        }
+      });
+  };
+  refreshState = () => {
     this.setState({
-      ...this.state,
-      blockInput: true,
+      dependent: {
+        id: this.props.id,
+        name: this.props.name,
+      },
+      blockInput: false,
     });
-
-    this.props.editDependent(this.state.dependent, e, this.props.id);
   };
 
   render() {
@@ -38,6 +48,8 @@ class EditDependents extends React.Component {
         trigger={<button className="comment-btn-edit"> x </button>}
         modal
         nested
+        closeOnDocumentClick={false}
+        onOpen={this.refreshState}
       >
         {(close) => (
           <div className="modal">

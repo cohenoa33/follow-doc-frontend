@@ -26,8 +26,23 @@ class NewDoctor extends React.Component {
   };
 
   handleAddDoctor = (e) => {
-    this.setState({ blockInput: !this.state.blockInput });
-    this.props.addDoctor(this.state.doctor, e);
+    this.props.addDoctor(this.state.doctor, e).then((data) => {
+      if (!data) {
+        this.setState({ blockInput: true });
+      }
+    });
+  };
+  refreshState = () => {
+    this.setState({
+      doctor: {
+        name: "",
+        street: "",
+        city: "",
+        state: "",
+        zipcode: "",
+      },
+      blockInput: false,
+    });
   };
 
   render() {
@@ -36,6 +51,8 @@ class NewDoctor extends React.Component {
         trigger={<button className="btn"> Add Doctor </button>}
         modal
         nested
+        closeOnDocumentClick={false}
+        onOpen={this.refreshState}
       >
         {(close) => (
           <div className="modal">
@@ -44,9 +61,11 @@ class NewDoctor extends React.Component {
             </button>
             <br></br>
             <br></br>
+            <div className="success-message">
+              {this.state.blockInput ? "Added Doctor Successfully" : null}{" "}
+            </div>{" "}
             <form
               className="popup-form"
-              noValidate
               onSubmit={(e) => {
                 this.handleAddDoctor(e);
               }}
@@ -59,6 +78,7 @@ class NewDoctor extends React.Component {
                 value={this.state.name}
                 name="name"
                 placeholder="Doctor Name"
+                required
               ></input>
               <input
                 onChange={this.handleChange}
@@ -66,6 +86,7 @@ class NewDoctor extends React.Component {
                 value={this.state.street}
                 name="street"
                 placeholder="Street"
+                required
               ></input>
               <input
                 onChange={this.handleChange}
@@ -73,6 +94,7 @@ class NewDoctor extends React.Component {
                 value={this.state.city}
                 name="city"
                 placeholder="City"
+                required
               ></input>
               <input
                 onChange={this.handleChange}
@@ -80,6 +102,7 @@ class NewDoctor extends React.Component {
                 value={this.state.state}
                 name="state"
                 placeholder="State"
+                required
               ></input>
               <input
                 onChange={this.handleChange}

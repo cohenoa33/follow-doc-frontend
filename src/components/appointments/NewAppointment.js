@@ -15,7 +15,6 @@ class NewAppointment extends React.Component {
       status_open: false,
     },
     blockInput: false,
-    success: false,
   };
 
   handleChange = (e) => {
@@ -37,13 +36,11 @@ class NewAppointment extends React.Component {
     }
   };
   handleAddAppointment = (e) => {
-    this.setState({ blockInput: !this.state.blockInput });
-    this.props.addAppointment(this.state.appointment, e).then(
-      this.setState((state) => ({
-        ...state,
-        success: !state.success,
-      }))
-    );
+    this.props.addAppointment(this.state.appointment, e).then((data) => {
+      if (!data) {
+        this.setState({ blockInput: true });
+      }
+    });
   };
 
   filterDoctors = () => {
@@ -61,13 +58,28 @@ class NewAppointment extends React.Component {
       return this.props.problems;
     }
   };
+  refreshState = () => {
+    this.setState({
+      appointment: {
+        date: "",
+        time: "",
+        doctor_id: 0,
+        problem_id: 0,
+        insurance_auth: false,
+        status_open: false,
+      },
+      blockInput: false,
+    });
+  };
 
   render() {
     return (
       <Popup
-        trigger={<button className="btn"> add New Appointment </button>}
+        trigger={<button className="btn"> Add New Appointment </button>}
         modal
         nested
+        closeOnDocumentClick={false}
+        onOpen={this.refreshState}
       >
         {(close) => (
           <div className="modal">
@@ -75,8 +87,10 @@ class NewAppointment extends React.Component {
               x
             </button>
             <br></br>
+            <div className="success-message">
+              {this.state.blockInput ? "Added Appointment Successfully" : null}{" "}
+            </div>
             <br></br>
-            {this.state.success ? "Appointment saved" : null}
             <form
               className="popup-form"
               noValidate
@@ -115,8 +129,6 @@ class NewAppointment extends React.Component {
                 value={this.state.appointment.date}
                 name="date"
                 placeholder="Date"
-                required
-                noValidate
               ></input>
               <br />
               <input
@@ -125,8 +137,6 @@ class NewAppointment extends React.Component {
                 value={this.state.appointment.time}
                 name="time"
                 placeholder="time"
-                noValidate
-                required
               ></input>
               <br />
               <label>

@@ -4,6 +4,10 @@ media screen and (max-width: 600px) {
   }
 }
 
+.success-message {
+  color: #51d6cb;
+  font-weight: bold;
+}
 .modal-popup {
   text-align: center;
 }

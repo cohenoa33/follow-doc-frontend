@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Popup from "reactjs-popup";
 import { withRouter } from "react-router-dom";
-import { addNewProblem } from "../../actions";
+import { addProblem } from "../../actions";
 import "reactjs-popup/dist/index.css";
 
 class NewProblem extends React.Component {
@@ -31,17 +31,33 @@ class NewProblem extends React.Component {
     } else if (name.length < 5 || description.length < 5) {
       alert("Name/Description Must be at least 5 letters long");
     } else {
-      this.props.addNewProblem(this.state.newProblem, e);
-      this.setState({ blockInput: true });
+      this.props.addProblem(this.state.newProblem, e).then((data) => {
+        if (!data) {
+          this.setState({ blockInput: true });
+        }
+      });
     }
+  };
+
+  refreshState = () => {
+    this.setState({
+      newProblem: {
+        name: "",
+        description: "",
+        dependent_id: 0,
+      },
+      blockInput: false,
+    });
   };
 
   render() {
     return (
       <Popup
-        trigger={<button className="btn"> add New Problem </button>}
+        trigger={<button className="btn"> Add New Problem </button>}
         modal
         nested
+        closeOnDocumentClick={false}
+        onOpen={this.refreshState}
       >
         {(close) => (
           <div className="modal">
@@ -50,6 +66,9 @@ class NewProblem extends React.Component {
             </button>
             <br />
             <br />
+            <div className="success-message">
+              {this.state.blockInput ? "Added Problem Successfully" : null}{" "}
+            </div>
             <form
               className="popup-form"
               noValidate
@@ -113,7 +132,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    addNewProblem: (newProblem, e) => dispatch(addNewProblem(newProblem, e)),
+    addProblem: (newProblem) => dispatch(addProblem(newProblem)),
   };
 };
 
