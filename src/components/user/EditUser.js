@@ -4,6 +4,11 @@ import { editUser } from "../../actions";
 import { withRouter } from "react-router-dom";
 
 class EditUser extends React.Component {
+  state = {
+    password: "",
+    password_confirmation: "",
+    blockInput: false,
+  };
   componentDidMount() {
     if (!localStorage.token) {
       this.props.history.push("/");
@@ -14,7 +19,21 @@ class EditUser extends React.Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.editUser(this.state, e, this.props.user.user.id);
+    this.props.editUser(this.state, e, this.props.user.user.id).then((data) => {
+      if (!data) {
+        this.setState({
+          blockInput: true,
+        });
+      }
+    });
+  };
+
+  refreshState = () => {
+    this.setState({
+      password: "",
+      password_confirmation: "",
+      blockInput: false,
+    });
   };
 
   render() {
@@ -24,29 +43,41 @@ class EditUser extends React.Component {
           <div> Loading... </div>
         ) : (
           <div className="column-100-bold">
-            Change Your Password
-            <form onSubmit={this.handleSubmit}>
-              <input
-                type="password"
-                onChange={this.handleChange}
-                value={null}
-                name="password"
-                placeholder="Password"
-              ></input>
-              <input
-                type="password"
-                onChange={this.handleChange}
-                name="password_confirmation"
-                placeholder="Password Confirmation"
-                value={null}
-              />
-              <br />
+            {this.state.blockInput ? (
+              <div className="success-message">
+                {" "}
+                Your Password Has Been Changed!
+                <button onClick={this.refreshState} className="btn">
+                  Change My Password Again
+                </button>
+              </div>
+            ) : (
+              <div>
+                Change Your Password
+                <form onSubmit={this.handleSubmit}>
+                  <input
+                    type="password"
+                    onChange={this.handleChange}
+                    value={this.state.password}
+                    name="password"
+                    placeholder="Password"
+                  ></input>
+                  <input
+                    type="password"
+                    onChange={this.handleChange}
+                    name="password_confirmation"
+                    placeholder="Password Confirmation"
+                    value={this.state.password_confirmation}
+                  />
+                  <br />
 
-              <button className="btn">Update</button>
-            </form>
-            <div>
-              <br></br>
-            </div>
+                  <button className="btn">Update</button>
+                </form>
+                <div>
+                  <br></br>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>

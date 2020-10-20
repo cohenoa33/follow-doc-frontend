@@ -190,10 +190,10 @@ export const editUser = (user, e, id) => {
   return (dispatch) => {
     return api.user.editUser(user, id).then((data) => {
       if (!data.error) {
-        alert("Your password has been changed successfully");
         dispatch({ type: "EDIT_User", payload: data });
       } else {
         alert(data.error);
+        return data.error;
       }
     });
   };

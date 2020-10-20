@@ -45,11 +45,15 @@ class NewAppointment extends React.Component {
   };
 
   filterDoctors = () => {
-    return this.props.doctors.filter(
-      (doctor, index, self) =>
-        index ===
-        self.findIndex((d) => d.id === doctor.id && d.name === doctor.name)
-    );
+    if (this.props.doctors) {
+      return this.props.doctors.filter(
+        (doctor, index, self) =>
+          index ===
+          self.findIndex((d) => d.id === doctor.id && d.name === doctor.name)
+      );
+    } else {
+      return this.props.doctors;
+    }
   };
 
   problemsList = () => {

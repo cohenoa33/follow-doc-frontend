@@ -25,7 +25,7 @@ class LoginForm extends React.Component {
           <div className="form-container">
             <form onSubmit={(e) => this.props.handleLoginSubmit(e, this.state)}>
               <input
-                autocomplete="on"
+                autoComplete="on"
                 onChange={this.handleChange}
                 type="text"
                 value={this.state.username}
