@@ -122,7 +122,7 @@ class AppointmentForm extends React.Component {
                   <td>{time}</td>
                 </tr>
                 <tr>
-                  <td>Required Follow-up:</td>
+                  <td>Add to Todo List:</td>
                   {status_open ? (
                     <td className="status-open">Yes</td>
                   ) : (
@@ -183,7 +183,7 @@ class AppointmentForm extends React.Component {
                   onChange={this.handleChange}
                   value={status_open}
                 />{" "}
-                {status_open ? "Not Required Follow-up" : "Required Follow-up"}
+                {status_open ? "Remove from Todo List" : "Add to Todo List"}
               </label>
               <br />
               <label>

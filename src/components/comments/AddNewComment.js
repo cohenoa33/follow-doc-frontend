@@ -63,7 +63,7 @@ class AddNewComment extends React.Component {
               value={this.state.newComment.status_open}
               onChange={this.handleInputChange}
             />{" "}
-            Required follow up
+            Add to Todo List
           </label>
           <br></br>
           {this.state.newComment.text.length > 0 ? (

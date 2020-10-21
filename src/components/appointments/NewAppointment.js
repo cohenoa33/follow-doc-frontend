@@ -175,7 +175,7 @@ class NewAppointment extends React.Component {
                       value={this.state.appointment.status_open}
                       onChange={this.handleChange}
                     />{" "}
-                    Required Follow-up
+                    Add to Todo List
                   </label>
                   <label>
                     {" "}
