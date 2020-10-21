@@ -94,10 +94,10 @@ class AppointmentForm extends React.Component {
         <h1 className="h1-title">
           {dependent} Appointment For
           <Link to={`/problems/${problem.id}`}>{problem.name}</Link>
-          <button className="btn-edit-right" onClick={this.handleEditButton}>
+          <button className="btn-10" onClick={this.handleEditButton}>
             Edit
           </button>
-          <button className="btn-delete-right" onClick={this.handleDelete}>
+          <button className="btn-red-10" onClick={this.handleDelete}>
             Delete
           </button>{" "}
         </h1>

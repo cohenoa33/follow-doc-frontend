@@ -89,7 +89,9 @@ form,
 }
 .modal-popup {
   text-align: center;
+  overflow: auto;
 }
+
 .problem-container-description {
   text-align: center;
   padding-top: 20px;
@@ -115,6 +117,7 @@ form,
 }
 .one-problem-comments-table {
   width: 85%;
+  overflow: auto;
 }
 .one-problem-comments-table th {
   font-size: 16px;
@@ -169,7 +172,8 @@ form,
   background-color: white;
   background-position: 10px;
   background-repeat: no-repeat;
-  padding-left: 40px;
+  margin: 0 auto;
+  width: 60%;
 }
 .files-list {
   list-style: url(./images/file-icon.png);
@@ -331,10 +335,25 @@ li::marker {
   font-weight: bold;
   font-size: 16px;
 }
+.btn-10 {
+  /* login page */
+  background-color: #51d6cb;
+  color: #333;
+  padding: 10px;
+  font-size: 12px;
+  margin: 4px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 10%;
+  text-align: center;
+  float: center;
+  font-weight: bold;
+}
 .btn-blue {
   /* login page */
   background-color: #517bd6;
-  color: #333;
+  color: snow;
   padding: 10px;
   font-size: 12px;
   margin: 4px;
@@ -345,7 +364,7 @@ li::marker {
   text-align: center;
   font-weight: bold;
 }
-.btn-red {
+.btn-red-10 {
   /* login page */
   background-color: #d65151;
   color: #333;
@@ -355,7 +374,7 @@ li::marker {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 30%;
+  width: 10%;
   text-align: center;
   float: center;
   font-weight: bold;
@@ -467,21 +486,23 @@ li::marker {
 }
 
 .problem-card {
-  /* border-radius: 10px; */
-  cursor: pointer;
   text-align: center;
   background: #eeeeee;
-  width: 18rem;
+  width: 15rem;
   height: 30rem;
   display: inline-grid;
   margin: 1rem 2rem;
   line-height: 1.5em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
-.dependent-card {
-  padding-top: 20px;
-  padding: 10px;
+.problem-card a {
+  cursor: pointer;
+  text-align: center;
+  width: 15rem;
+  height: 30rem;
+  display: inline-grid;
 }
+
 .card-header {
   font-size: 2rem;
   padding-top: 20px;
@@ -500,6 +521,8 @@ li::marker {
 }
 .card-footer {
   bottom: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .dependent-card {
