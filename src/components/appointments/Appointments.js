@@ -39,9 +39,7 @@ const Appointments = ({ appointments }) => {
             </table>
           </div>
         </div>
-      ) : (
-        <h1> Once You Add Appointments They Will Appear Here</h1>
-      )}
+      ) : null}
     </div>
   );
 };

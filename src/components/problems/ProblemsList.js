@@ -34,9 +34,7 @@ class Problems extends React.Component {
               </table>
             </div>
           </div>
-        ) : (
-          <h1>After You Add Problems They Will Appear Here</h1>
-        )}
+        ) : null}
       </div>
     );
   }

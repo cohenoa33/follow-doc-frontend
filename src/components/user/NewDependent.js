@@ -33,7 +33,9 @@ class NewDependent extends React.Component {
   render() {
     return (
       <Popup
-        trigger={<button className="btn"> Add Dependent </button>}
+        trigger={
+          <button className={this.props.className}> Add Dependent </button>
+        }
         modal
         nested
         closeOnDocumentClick={false}

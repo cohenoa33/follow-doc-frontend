@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Popup from "reactjs-popup";
 import { withRouter } from "react-router-dom";
 import { addAppointment } from "../../actions";
+import NewDoctor from "../doctors/NewDoctor";
 
 class NewAppointment extends React.Component {
   state = {
@@ -45,7 +46,7 @@ class NewAppointment extends React.Component {
   };
 
   filterDoctors = () => {
-    if (this.props.doctors) {
+    if (this.props.doctors.length > 0) {
       return this.props.doctors.filter(
         (doctor, index, self) =>
           index ===
@@ -78,6 +79,8 @@ class NewAppointment extends React.Component {
     });
   };
 
+  renderAddNewDoctor = (className) => <NewDoctor className={className} />;
+
   render() {
     return (
       <Popup
@@ -97,11 +100,16 @@ class NewAppointment extends React.Component {
                   back
                 </button>
                 <br></br>
-                <div className="success-message">
-                  {this.state.blockInput
-                    ? "Added Appointment Successfully"
-                    : null}{" "}
-                </div>
+                {this.state.blockInput ? (
+                  <div className="success-message">
+                    Added Appointment Successfully
+                  </div>
+                ) : (
+                  <div>
+                    <div className="form-title"> New Appointment</div>
+                    {this.renderAddNewDoctor("btn-render-inside-modal")}
+                  </div>
+                )}
                 <form
                   className="popup-form"
                   noValidate
@@ -109,7 +117,6 @@ class NewAppointment extends React.Component {
                     this.handleAddAppointment(e);
                   }}
                 >
-                  <div className="form-title"> New Appointment</div>
                   <select name="problem_id" onChange={this.handleChange}>
                     <option name="problem_id" value="0">
                       {" "}
