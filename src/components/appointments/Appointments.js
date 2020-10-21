@@ -15,7 +15,7 @@ const Appointments = ({ appointments }) => {
                   <th>Date </th>
                   <th>Time </th>
                   <th>Doctor Name</th>
-                  <th>Required Follow Up</th>
+                  <th>Required Follow-up</th>
                   <th>Approved By Insurance</th>
                   <th>More Information</th>
                   <th></th>

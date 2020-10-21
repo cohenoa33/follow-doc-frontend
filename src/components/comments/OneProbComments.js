@@ -23,20 +23,21 @@ class OneProbComments extends React.Component {
     return (
       <div>
         <div className="column-100">
+          <h1 className="h1-title">Notes</h1>
           <table className="one-problem-comments-table">
             <tbody>
               <tr>
-                <th>Comment </th>
+                <th>Note</th>
                 <th>Last update</th>
                 <th>Create at</th>
-                <th>Status</th>
+                <th>Requires follow-up</th>
               </tr>
               {comments.map((comment) => (
                 <tr key={comment.id}>
                   <td> {comment.text}</td>
                   <td> {moment(comment.updated_at).format("LLL")}</td>
                   <td> {moment(comment.created_at).format("LLL")}</td>
-                  <td> {comment.status_open ? "Open" : "Closed"}</td>
+                  <td> {comment.status_open ? "Yes" : "No"}</td>
                   <td>
                     {this.renderEditComment(
                       comment.id,

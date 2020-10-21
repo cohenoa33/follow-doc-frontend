@@ -108,6 +108,7 @@ form,
 .problem-container-buttons {
   width: 50%;
   float: right;
+  text-align: center;
 }
 .problem-container-new-comment {
   border: none;
@@ -227,15 +228,21 @@ input[type="password"] {
   box-sizing: border-box;
 }
 
-input[type="file"] {
-  width: 80%;
-  text-align: center;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-
-  box-sizing: border-box;
+input[type="file"].upload-file {
+  font-size: 18px;
+  width: 90%;
+  align-content: center;
+  padding: 20px;
+  padding-left: 50px;
+  margin: 0;
+  top: 50%;
+  margin-right: -30%;
+  /* position: absolute; */
+  /* left: 50%;
+  right: 50%; */
+  /* transform: translate(-50%, -50%); */
 }
+
 .one-appointment-edit {
   margin: 0;
 }
@@ -271,7 +278,7 @@ textarea {
   color: transparent;
   background: none;
   outline: none;
-  background: url(./images/edit-icon.png) no-repeat;
+  background: url(./images/edit.png) no-repeat;
 }
 
 .x-btn:focus {
@@ -396,7 +403,7 @@ li::marker {
   color: transparent;
   background: none;
   outline: none;
-  background: url(./images/delete-trash.png) no-repeat;
+  background: url(./images/delete.png) no-repeat;
 }
 .btn-edit {
   margin-left: 10px;
@@ -445,7 +452,7 @@ li::marker {
   outline: none;
   background: url(./images/more-icon.png) no-repeat;
 }
-
+.popup-form input[type="file"],
 .popup-form input[type="text"] {
   text-align: center;
   padding: 10px 0 10px 0;
