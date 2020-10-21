@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import EditComment from "./EditComment";
 import { withRouter } from "react-router-dom";
 import moment from "moment";
+import { renderDeletePopup } from "../../services/renderComponents";
 
 class OneProbCommentsTable extends React.Component {
-  handleDeleteComment = (e) => {
-    let id = e.target.id;
+  handleDeleteComment = (id) => {
     this.props.deleteComment(id);
   };
   renderEditComment = (id, text, status_open) => (
@@ -39,13 +39,17 @@ class OneProbCommentsTable extends React.Component {
                       )}{" "}
                     </td>
                     <td>
-                      <button
+                      {renderDeletePopup(
+                        () => this.handleDeleteComment(comment.id),
+                        "btn-delete"
+                      )}
+                      {/* <button
                         className="btn-delete"
                         id={comment.id}
                         onClick={this.handleDeleteComment}
                       >
                         X
-                      </button>
+                      </button> */}
                     </td>
                   </tr>
                 ))}

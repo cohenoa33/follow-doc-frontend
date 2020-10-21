@@ -1,6 +1,7 @@
 import React from "react";
 import { deleteFile } from "../../actions";
 import { connect } from "react-redux";
+import { renderDeletePopup } from "../../services/renderComponents";
 
 class AllFilesList extends React.Component {
   handleDeleteFile = (problem, file) => {
@@ -8,6 +9,7 @@ class AllFilesList extends React.Component {
     const index = problem.file.findIndex((f) => f === file);
     this.props.deleteFile(problem_id, index);
   };
+
   render() {
     let problem = this.props.id[0];
     return (
@@ -23,12 +25,10 @@ class AllFilesList extends React.Component {
                   >
                     {file.name}
                   </a>
-                  <button
-                    className="btn-delete"
-                    onClick={() => this.handleDeleteFile(problem, file)}
-                  >
-                    X
-                  </button>
+                  {renderDeletePopup(
+                    () => this.handleDeleteFile(problem, file),
+                    "btn-delete"
+                  )}
                 </li>
               ))
             : null}

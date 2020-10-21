@@ -23,7 +23,7 @@ class ArchiveComments extends React.Component {
               back
             </button>
             <div className="actions">
-              <h1 className="h1-title">Notes Archive </h1>
+              <h1 className="h1-title">Archive Notes </h1>
               {this.renderOneProbCommentsTable(this.props.comments)}
             </div>
           </div>
