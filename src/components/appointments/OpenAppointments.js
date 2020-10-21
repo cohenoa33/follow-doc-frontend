@@ -27,16 +27,24 @@ class OpenAppointments extends React.Component {
   render() {
     return (
       <div className="open-comments-appointments">
-        <h1>Appointments Who Needs Preparation</h1>
-        {this.filterAppointments().map((appointment) => (
-          <li key={appointment.id}>
-            <Link to={`/appointments/${appointment.id}`}>
-              Appointment for {appointment.doctor.name} on{" "}
-              {moment(appointment.date).format("LL")} at {appointment.time}.
-              <br /> Notes: {appointment.note}
-            </Link>
-          </li>
-        ))}
+        {this.filterAppointments().length > 0 ? (
+          <div>
+            <h1>Appointments to Prepare</h1>
+            {this.filterAppointments().map((appointment) => (
+              <li key={appointment.id}>
+                <Link to={`/appointments/${appointment.id}`}>
+                  Appointment for Doctor {appointment.doctor.name} on{" "}
+                  {moment(appointment.date).format("LL")} at {appointment.time}.
+                  <br /> Notes: {appointment.note}.
+                  <br />{" "}
+                  {appointment.insurance_auth
+                    ? null
+                    : "Waiting for Insurance Approval"}
+                </Link>
+              </li>
+            ))}
+          </div>
+        ) : null}
       </div>
     );
   }

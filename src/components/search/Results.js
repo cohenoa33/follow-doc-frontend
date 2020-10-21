@@ -14,16 +14,16 @@ class Results extends React.Component {
           problem.name.toLowerCase().includes(value) ||
           problem.description.toLowerCase().includes(value)
       );
-      let filteredComments = comments.filter((comment) =>
-        comment.text.toLowerCase().includes(value)
-      );
-      const commentsId = filteredComments.map((comment) => comment.problem_id);
-      for (let i = 0; i < commentsId.length; i++) {
-        let problem = problems.find(
-          (problems) => problems.id === commentsId[i]
-        );
-        filter.push(problem);
-      }
+      // let filteredComments = comments.filter((comment) =>
+      //   comment.text.toLowerCase().includes(value)
+      // );
+      // const commentsId = filteredComments.map((comment) => comment.problem_id);
+      // for (let i = 0; i < commentsId.length; i++) {
+      //   let problem = problems.find(
+      //     (problems) => problems.id === commentsId[i]
+      //   );
+      //   filter.push(problem);
+      // }
       let searchResult = filter.filter(
         (problem, index, self) =>
           index ===
@@ -33,16 +33,27 @@ class Results extends React.Component {
     }
   };
 
+  commentsList = () => {
+    if (this.props.search.length > 0) {
+      let value = this.props.search.toLowerCase();
+      let searchResult = this.props.comments.filter((comment) =>
+        comment.text.toLowerCase().includes(value)
+      );
+      console.log(searchResult);
+      return searchResult;
+    }
+  };
+
   appointmentsList = () => {
     if (this.props.search.length > 0) {
-      let search = this.props.search.toLowerCase();
+      let value = this.props.search.toLowerCase();
       let filterList = this.props.appointments.filter(
         (appointment) => appointment.note
       );
       return filterList.filter(
         (appointment) =>
-          appointment.note.toLowerCase().includes(search) ||
-          appointment.doctor.name.toLowerCase().includes(search)
+          appointment.note.toLowerCase().includes(value) ||
+          appointment.doctor.name.toLowerCase().includes(value)
       );
     }
   };
@@ -50,39 +61,41 @@ class Results extends React.Component {
   render() {
     return (
       <div className="search-results">
-        {this.problemsList().length || this.appointmentsList().length > 0 ? (
+        {this.problemsList().length ||
+        this.appointmentsList().length ||
+        this.commentsList().length > 0 ? (
           <div>
-            <h2> That's what we found...</h2>
-            <div>
-              {this.problemsList().map((problem) => (
-                <Link to={`/problems/${problem.id}`}>
-                  <li key={problem.id}>
-                    {problem.name}:<br></br>
-                    {problem.description}
+            {this.problemsList().map((problem) => (
+              <Link to={`/problems/${problem.id}`}>
+                <li className="serach-list" key={problem.id}>
+                  Problem: {problem.name}:<br></br>
+                  Description: {problem.description}
+                  <br />
+                  {/* comments:
                     {problem.comments.map((comment) => (
                       <li className="comments-search" key={comment.id}>
                         {" "}
                         {comment.text}
                       </li>
-                    ))}
-                  </li>
-                </Link>
-              ))}
-            </div>
+                    ))} */}
+                </li>
+              </Link>
+            ))}
 
-            <div>
-              {this.appointmentsList().map((appointment) => (
-                <Link
-                  key={appointment.id}
-                  to={`/appointments/${appointment.id}`}
-                >
-                  <li key={appointment.id}>
-                    {appointment.note}: Note for the appointment for Doctor{" "}
-                    {appointment.doctor.name} on {appointment.date}.
-                  </li>
-                </Link>
-              ))}
-            </div>
+            {this.appointmentsList().map((appointment) => (
+              <Link key={appointment.id} to={`/appointments/${appointment.id}`}>
+                <li key={appointment.id}>
+                  Note from Appointment for Doctor {appointment.doctor.name} on{" "}
+                  {appointment.date}: {appointment.note}
+                </li>
+              </Link>
+            ))}
+
+            {this.commentsList().map((comment) => (
+              <Link key={comment.id} to={`/problems/${comment.problem_id}`}>
+                <li key={comment.id}>Comment: {comment.text}</li>
+              </Link>
+            ))}
           </div>
         ) : (
           <h1> No results for match to {this.props.search} </h1>

@@ -105,6 +105,7 @@ class NewAppointment extends React.Component {
               }}
             >
               New Appointment
+              <br></br>
               <select name="problem_id" onChange={this.handleChange}>
                 <option name="problem_id" value="0">
                   {" "}

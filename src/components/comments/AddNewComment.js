@@ -45,8 +45,16 @@ class AddNewComment extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="add-comment">
         <form onSubmit={(e) => this.addNewComment(e)}>
+          <input
+            type="text"
+            placeholder="Add New Comment"
+            name="text"
+            value={this.state.newComment.text}
+            onChange={this.handleInput}
+          />{" "}
+          <br></br>
           <label>
             {" "}
             <input
@@ -57,13 +65,7 @@ class AddNewComment extends React.Component {
             />{" "}
             Mark as Open
           </label>
-          <input
-            type="text"
-            placeholder="Add New Comment"
-            name="text"
-            value={this.state.newComment.text}
-            onChange={this.handleInput}
-          />{" "}
+          <br></br>
           {this.state.newComment.text.length > 0 ? (
             <button className="btn">Add New Comment</button>
           ) : null}
@@ -73,12 +75,6 @@ class AddNewComment extends React.Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     user: state.user,
-//     problem: state.problems,
-//   };
-// };
 const mapDispatchToProps = (dispatch) => {
   return {
     addNewComment: (newComment, e, id) =>

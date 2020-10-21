@@ -73,7 +73,7 @@ media screen and (max-width: 600px) {
   width: 33%;
 }
 .problem-container-buttons {
-  width: 33%;
+  width: 50%;
   float: right;
 }
 .problem-container-new-comment {
@@ -133,10 +133,16 @@ media screen and (max-width: 600px) {
 }
 
 .one-problem-comment {
-  width: 100%;
+  width: 80%;
   display: block;
   margin: auto;
   position: absolute;
+}
+
+.add-comment {
+  width: 100%;
+
+  margin: auto;
 }
 .open-comments-appointments li {
   text-align: left;

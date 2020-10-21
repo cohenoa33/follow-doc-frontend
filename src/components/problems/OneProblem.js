@@ -46,6 +46,7 @@ class OneProblem extends React.Component {
       <div>
         <div className="row">
           {this.renderOneProblemInfo(problemArray, id)}
+
           <div className="problem-container-buttons">
             {this.renderUploadFiles(id)}
             {this.renderNewAppointment(id)}

@@ -16,25 +16,29 @@ class EditComment extends React.Component {
   };
 
   handleChange = (e) => {
-    this.setState({
-      ...this.state,
-      comment: {
-        ...this.state.comment,
-        [e.target.name]: e.target.value,
-      },
-    });
-  };
-  handleStatusChange = (e) => {
-    this.setState({
-      ...this.state,
-      comment: {
-        ...this.state.comment,
-        status_open: !this.state.status_open,
-      },
-    });
+    const { status_open } = this.state.comment;
+    let name = e.target.name;
+    if (name === "status_open") {
+      this.setState({
+        ...this.state,
+        comment: {
+          ...this.state.comment,
+          status_open: !status_open,
+        },
+      });
+      if (name === "text") {
+        this.setState({
+          ...this.state,
+          comment: {
+            ...this.state.comment,
+            text: e.target.value,
+          },
+        });
+      }
+    }
   };
 
-  validate = (e) => {
+  submitComment = (e) => {
     this.props
       .editComment(this.state.comment, e, this.props.id)
       .then((data) => {
@@ -44,14 +48,7 @@ class EditComment extends React.Component {
       });
   };
   refreshState = () => {
-    this.setState({
-      comment: {
-        id: this.props.id,
-        text: this.props.text,
-        status_open: this.props.status_open,
-      },
-      blockInput: false,
-    });
+    this.setState({ blockInput: false });
   };
 
   render() {
@@ -70,33 +67,37 @@ class EditComment extends React.Component {
             </button>
             <div className="actions">
               <form
-                noValidate
                 onSubmit={(e) => {
-                  this.validate(e);
+                  this.submitComment(e);
                 }}
               >
-                <label>
-                  {" "}
-                  <input
-                    name="status_open"
-                    type="checkbox"
-                    checked={this.state.comment.status_open}
-                    value={this.state.comment.status_open}
-                    onClick={this.handleStatusChange}
-                  />{" "}
-                  Mark as Open
-                </label>
-                <input
-                  onChange={this.handleChange}
-                  type="text"
-                  value={this.state.comment.text}
-                  name="text"
-                  placeholder={this.props.text}
-                  noValidate
-                ></input>
-                <br />
-                {this.state.blockInput ? null : (
-                  <button className="btn">Save</button>
+                {!this.state.blockInput ? (
+                  <div>
+                    <label>
+                      <input
+                        name="status_open"
+                        type="checkbox"
+                        value={this.state.comment.status_open}
+                        onChange={this.handleChange}
+                      />{" "}
+                      {this.props.status_open
+                        ? "Mark as Closed"
+                        : "Mark as Open"}
+                    </label>
+                    <input
+                      onChange={this.handleChange}
+                      type="text"
+                      value={this.state.comment.text}
+                      name="text"
+                      placeholder={this.props.text}
+                      noValidate
+                    ></input>
+                    <br />
+
+                    <button className="btn">Save</button>
+                  </div>
+                ) : (
+                  <div className="">Comment Updated Successfully</div>
                 )}
               </form>
               <button className="btn" onClick={close}>
