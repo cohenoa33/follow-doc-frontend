@@ -18,6 +18,7 @@ export default class Welcome extends React.Component {
             {" "}
             <button className="btn"> Login </button>
           </Link>{" "}
+          <br />
           <Link to="/signup">
             {" "}
             <button className="btn"> Signup </button>

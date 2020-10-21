@@ -4,11 +4,23 @@ media screen and (max-width: 600px) {
   }
 }
 
+.home-page {
+  text-align: center;
+}
+.form-grid {
+  /* login page */
+  border: 3px solid #f1f1f1;
+  text-align: center;
+  max-width: 50%;
+  background: rgb(238, 238, 238);
+  border: 1px solid #ccc;
+  line-height: 1.5em;
+}
+
 .success-message {
   color: #51d6cb;
   font-weight: bold;
 }
-
 .status-open {
   color: #d65151;
 }
@@ -18,7 +30,6 @@ media screen and (max-width: 600px) {
 .modal-popup {
   text-align: center;
 }
-
 .row {
   border-bottom: 5px solid #333;
   margin-bottom: 50px;
@@ -50,7 +61,9 @@ media screen and (max-width: 600px) {
   text-align-last: center;
   display: inline-grid;
 }
-
+.form-title {
+  font-weight: bold;
+}
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -174,13 +187,6 @@ media screen and (max-width: 600px) {
   box-sizing: border-box;
   border: none;
 }
-.form-grid {
-  border: 3px solid #f1f1f1;
-  text-align: center;
-  max-width: 50%;
-  background: rgb(238, 238, 238);
-  border: 1px solid #ccc;
-}
 .form-grid-newProblem {
   border: 3px solid #f1f1f1;
   text-align: center;
@@ -244,60 +250,7 @@ textarea {
   margin: 0 auto;
   padding: 8px;
 }
-.x-btn {
-  border-radius: 8px;
-  padding: 20px;
-  float: right;
-  cursor: pointer;
-  border: none;
-  font-size: 16px;
-  background: none;
-  outline: none;
-}
-.x-btn-delete {
-  padding-right: 40px;
-  float: left;
-  cursor: pointer;
-  border: none;
-  font-size: 16px;
-  color: transparent;
-  background: none;
-  outline: none;
-  background: url(./images/delete.png) no-repeat;
-}
-.btn-edit {
-  margin-left: 10px;
-  float: center;
-  cursor: pointer;
-  border: none;
-  font-size: 16px;
-  color: transparent;
-  background: none;
-  outline: none;
-  background: url(./images/edit-icon.png) no-repeat;
-}
-.btn-delete {
-  margin-left: 10px;
-  float: center;
-  cursor: pointer;
-  border: none;
-  font-size: 16px;
-  color: transparent;
-  background: none;
-  outline: none;
-  background: url(./images/delete.png) no-repeat;
-}
-.back-btn {
-  margin-left: 10px;
-  float: center;
-  cursor: pointer;
-  border: none;
-  font-size: 16px;
-  color: transparent;
-  background: none;
-  outline: none;
-  background: url(./images/back-icon.png) no-repeat;
-}
+
 .comment-btn-edit {
   padding-right: 40px;
   margin-left: 10px;
@@ -348,15 +301,33 @@ li::marker {
 }
 
 .btn {
+  /* login page */
   background-color: #51d6cb;
   color: #333;
   padding: 14px;
+
   margin: 8px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 50%;
+  width: 30%;
   text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+.btn-blue {
+  /* login page */
+  background-color: #517bd6;
+  color: #333;
+  padding: 10px;
+  font-size: 12px;
+  margin: 4px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 30%;
+  text-align: center;
+  font-weight: bold;
 }
 
 .btn-info,
@@ -383,6 +354,64 @@ li::marker {
   min-width: 30px;
   text-align: center;
 }
+
+.x-btn {
+  border-radius: 8px;
+  padding: 20px;
+  float: right;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  background: none;
+  outline: none;
+}
+.x-btn-delete {
+  padding-right: 40px;
+  float: left;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  color: transparent;
+  background: none;
+  outline: none;
+  background: url(./images/delete-trash.png) no-repeat;
+}
+.btn-edit {
+  margin-left: 10px;
+  float: center;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  color: transparent;
+  background: none;
+  outline: none;
+  background: url(./images/edit-icon.png) no-repeat;
+}
+.btn-delete {
+  margin-left: 10px;
+  float: center;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  color: transparent;
+  background: none;
+  outline: none;
+  background: url(./images/delete.png) no-repeat;
+}
+.back-btn {
+  /* login page */
+  margin-left: 10px;
+  float: center;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+  font-size: 16px;
+  color: transparent;
+  background: none;
+  outline: none;
+  background: url(./images/back.png) no-repeat;
+}
+
 .popup-form input[type="text"] {
   text-align: center;
   padding: 10px 0 10px 0;
@@ -497,7 +526,7 @@ a {
   outline: none;
   padding: 6px;
   margin: 0 auto;
-  text-align: center;
+  /* text-align: center; */
   box-sizing: border-box;
   text-decoration: none;
   font-family: "Poppins";

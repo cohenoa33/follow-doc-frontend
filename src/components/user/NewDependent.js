@@ -46,11 +46,13 @@ class NewDependent extends React.Component {
             </button>
             <div className="success-message">
               {this.state.blockInput ? "Added Dependent Successfully" : null}{" "}
+              <br />
             </div>
             <div className="actions">
               <form onSubmit={this.handleSubmit}>
                 <br />
-                <label>Add Dependent</label>
+                <label className="form-title">Add Dependent</label>
+                <br />
                 {this.state.blockInput ? (
                   <input
                     name="name"
@@ -73,6 +75,7 @@ class NewDependent extends React.Component {
                   </button>
                 )}
               </form>
+
               <button className="btn" onClick={close}>
                 {" "}
                 Close{" "}

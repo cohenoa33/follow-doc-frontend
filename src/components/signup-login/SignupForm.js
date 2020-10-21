@@ -16,14 +16,12 @@ export default class SignupForm extends React.Component {
   render() {
     return (
       <div>
+        <br></br>
         <div className="form-grid">
           <Link to="/">
             {" "}
-            <button className="x-btn"> x </button>
+            <button className="back-btn"> back </button>
           </Link>{" "}
-          <br />
-          <br />
-          <br />
           <div className="form-container">
             <form
               onSubmit={(e) => this.props.handleSignUpSubmit(e, this.state)}
@@ -53,16 +51,15 @@ export default class SignupForm extends React.Component {
                 type="password"
                 onChange={this.handleChange}
                 name="password_confirmation"
-                placeholder="password Confirmation"
+                placeholder="Password Confirmation"
                 value={this.state.password_confirmation}
               />
               <br />
-              <button className="btn">Signup</button>
+              <button className="btn">Sign Up</button>
             </form>
             <div>
-              <br></br>
-              <Link to="/login" className="signup-link">
-                Have an account?
+              <Link to="/login">
+                <button className="btn-blue">Log In </button>
               </Link>
             </div>
           </div>
