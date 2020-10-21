@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 
 import Problems from "../components/problems/ProblemsList";
 import OpenComments from "../components/comments/OpenComments";
-import NewDependent from "../components/user/NewDependent";
 import NewProblem from "../components/problems/NewProblem";
 import NewDoctor from "../components/doctors/NewDoctor";
 import OpenAppointments from "../components/appointments/OpenAppointments";
@@ -20,7 +19,6 @@ class HomeContainer extends React.Component {
 
   renderProblems = () => <Problems />;
   renderComments = () => <OpenComments />;
-  renderAddNewDependent = () => <NewDependent />;
   renderAddNewProblem = () => <NewProblem />;
   renderOpenAppointments = () => <OpenAppointments />;
   renderAllAppointments = () => <AllAppointments />;
@@ -33,10 +31,9 @@ class HomeContainer extends React.Component {
         <div className="row">
           <div className="column-30">{this.renderOpenAppointments()} </div>
           <div className="column-30">
-            <div> {this.renderAddNewDependent()}</div>
             <div> {this.renderAddNewProblem()}</div>
-            <div> {this.renderAddNewDoctor()}</div>
             <div> {this.renderNewAppointment()}</div>
+            <div> {this.renderAddNewDoctor()}</div>
           </div>
           <div className="column-30"> {this.renderComments()}</div>
           <br></br>

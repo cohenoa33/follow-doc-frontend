@@ -42,18 +42,15 @@ class EditUser extends React.Component {
         {!this.props.user.user ? (
           <div> Loading... </div>
         ) : (
-          <div className="column-100-bold">
+          <div className="column-100">
             {this.state.blockInput ? (
               <div className="success-message">
                 {" "}
-                Your Password Has Been Changed!
-                <button onClick={this.refreshState} className="btn">
-                  Change My Password Again
-                </button>
+                <h1>Your Password Has Been Changed!</h1>
               </div>
             ) : (
               <div>
-                Change Your Password
+                <h1 className="h1-title">Change Your Password</h1>
                 <form onSubmit={this.handleSubmit}>
                   <input
                     type="password"
@@ -61,6 +58,7 @@ class EditUser extends React.Component {
                     value={this.state.password}
                     name="password"
                     placeholder="Password"
+                    required
                   ></input>
                   <input
                     type="password"
@@ -68,9 +66,8 @@ class EditUser extends React.Component {
                     name="password_confirmation"
                     placeholder="Password Confirmation"
                     value={this.state.password_confirmation}
+                    required
                   />
-                  <br />
-
                   <button className="btn">Update</button>
                 </form>
                 <div>

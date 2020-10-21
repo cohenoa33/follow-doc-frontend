@@ -14,14 +14,12 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div>
+        <br></br>
         <div className="form-grid">
           <Link to="/">
             {" "}
-            <button className="x-btn"> x </button>
+            <button className="back-btn"> back </button>
           </Link>{" "}
-          <br />
-          <br />
-          <br />
           <div className="form-container">
             <form onSubmit={(e) => this.props.handleLoginSubmit(e, this.state)}>
               <input
@@ -43,9 +41,8 @@ class LoginForm extends React.Component {
               <button className="btn">Login</button>
             </form>
             <div>
-              <br></br>
               <Link to="/signup" className="login-signup-link">
-                New here?
+                <button className="btn-blue">Create New Account</button>
               </Link>
             </div>
           </div>

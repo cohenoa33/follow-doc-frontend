@@ -48,7 +48,7 @@ class NewDoctor extends React.Component {
   render() {
     return (
       <Popup
-        trigger={<button className="btn"> Add Doctor </button>}
+        trigger={<button className="btn-width-90">Add Doctor </button>}
         modal
         nested
         closeOnDocumentClick={false}
@@ -56,11 +56,9 @@ class NewDoctor extends React.Component {
       >
         {(close) => (
           <div className="modal">
-            <button className="x-btn" onClick={close}>
-              x
+            <button className="back-btn" onClick={close}>
+              back
             </button>
-            <br></br>
-            <br></br>
             <div className="success-message">
               {this.state.blockInput ? "Added Doctor Successfully" : null}{" "}
             </div>{" "}
@@ -70,8 +68,7 @@ class NewDoctor extends React.Component {
                 this.handleAddDoctor(e);
               }}
             >
-              <br></br>
-
+              <div className="form-title">Add New Doctor</div>
               <input
                 onChange={this.handleChange}
                 type="text"
@@ -112,14 +109,15 @@ class NewDoctor extends React.Component {
                 placeholder="Zipcode"
               ></input>
               <br />
-              {this.state.blockInput ? null : (
-                <button className="btn">Add new Doctor</button>
+              {this.state.blockInput ? (
+                <button className="btn" onClick={close}>
+                  {" "}
+                  Close{" "}
+                </button>
+              ) : (
+                <button className="btn-width-90">Add new Doctor</button>
               )}
             </form>
-            <button className="btn" onClick={close}>
-              {" "}
-              Close{" "}
-            </button>
           </div>
         )}
       </Popup>

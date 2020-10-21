@@ -1,39 +1,64 @@
-media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .column {
     width: 100%;
   }
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.home-page,
+.modal {
+  text-align: center;
+}
+
+.form-grid {
+  /* login page */
+  border: 3px solid #f1f1f1;
+  text-align: center;
+  max-width: 50%;
+  background: rgb(238, 238, 238);
+  border: 1px solid #ccc;
+  line-height: 1.5em;
 }
 
 .success-message {
-  color: #51d6cb;
+  color: #517bd6;
   font-weight: bold;
 }
-
 .status-open {
   color: #d65151;
 }
 .status-close {
   color: #5cd651;
 }
+
+.h1-title {
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
+}
 .modal-popup {
   text-align: center;
 }
-
 .row {
   border-bottom: 5px solid #333;
   margin-bottom: 50px;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr; */
 }
 .column-100 {
   float: center;
-}
-.column-100-bold {
-  float: center;
-  font-weight: bold;
 }
 .column-30 {
   float: left;
   width: 33%;
   list-style-type: none;
+}
+.column-30-center {
+  float: center;
+  width: 33%;
 }
 .column-50 {
   float: left;
@@ -50,7 +75,9 @@ media screen and (max-width: 600px) {
   text-align-last: center;
   display: inline-grid;
 }
-
+.form-title {
+  font-weight: bold;
+}
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -69,9 +96,7 @@ media screen and (max-width: 600px) {
   padding-top: 20px;
   line-height: 1.5em;
 }
-.problem-container-appointments {
-  width: 33%;
-}
+
 .problem-container-buttons {
   width: 50%;
   float: right;
@@ -120,18 +145,6 @@ media screen and (max-width: 600px) {
   text-align: left;
 }
 
-.btn-edit .btn-problem-container-buttons {
-  background-color: #51d6cb;
-  color: white;
-  padding: 14px;
-  margin: 8px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 80%;
-  text-align: center;
-}
-
 .one-problem-comment {
   width: 80%;
   display: block;
@@ -174,13 +187,6 @@ media screen and (max-width: 600px) {
   box-sizing: border-box;
   border: none;
 }
-.form-grid {
-  border: 3px solid #f1f1f1;
-  text-align: center;
-  max-width: 50%;
-  background: rgb(238, 238, 238);
-  border: 1px solid #ccc;
-}
 .form-grid-newProblem {
   border: 3px solid #f1f1f1;
   text-align: center;
@@ -197,6 +203,7 @@ input[type="time"]::-webkit-datetime-edit-ampm-field {
 .form-container-newProblem {
   padding: 10px;
 }
+
 select,
 input[type="text"],
 input:disabled,
@@ -233,6 +240,7 @@ textarea {
   border: 1px solid #ccc;
   box-sizing: border-box;
   white-space: pre-line;
+  text-align: center;
 }
 .edit-appointment-textarea {
   width: 120%;
@@ -244,60 +252,7 @@ textarea {
   margin: 0 auto;
   padding: 8px;
 }
-.x-btn {
-  border-radius: 8px;
-  padding: 20px;
-  float: right;
-  cursor: pointer;
-  border: none;
-  font-size: 16px;
-  background: none;
-  outline: none;
-}
-.x-btn-delete {
-  padding-right: 40px;
-  float: left;
-  cursor: pointer;
-  border: none;
-  font-size: 16px;
-  color: transparent;
-  background: none;
-  outline: none;
-  background: url(./images/delete.png) no-repeat;
-}
-.btn-edit {
-  margin-left: 10px;
-  float: center;
-  cursor: pointer;
-  border: none;
-  font-size: 16px;
-  color: transparent;
-  background: none;
-  outline: none;
-  background: url(./images/edit-icon.png) no-repeat;
-}
-.btn-delete {
-  margin-left: 10px;
-  float: center;
-  cursor: pointer;
-  border: none;
-  font-size: 16px;
-  color: transparent;
-  background: none;
-  outline: none;
-  background: url(./images/delete.png) no-repeat;
-}
-.back-btn {
-  margin-left: 10px;
-  float: center;
-  cursor: pointer;
-  border: none;
-  font-size: 16px;
-  color: transparent;
-  background: none;
-  outline: none;
-  background: url(./images/back-icon.png) no-repeat;
-}
+
 .comment-btn-edit {
   padding-right: 40px;
   margin-left: 10px;
@@ -348,6 +303,7 @@ li::marker {
 }
 
 .btn {
+  /* login page */
   background-color: #51d6cb;
   color: #333;
   padding: 14px;
@@ -355,7 +311,36 @@ li::marker {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 50%;
+  width: 30%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+.btn-blue {
+  /* login page */
+  background-color: #517bd6;
+  color: #333;
+  padding: 10px;
+  font-size: 12px;
+  margin: 4px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 30%;
+  text-align: center;
+  font-weight: bold;
+}
+.btn-width-90,
+.btn-edit .btn-problem-container-buttons {
+  background-color: #51d6cb;
+  color: #333;
+  font-weight: bold;
+  padding: 14px;
+  margin: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 80%;
   text-align: center;
 }
 
@@ -383,29 +368,96 @@ li::marker {
   min-width: 30px;
   text-align: center;
 }
+
+.x-btn {
+  border-radius: 8px;
+  padding: 20px;
+  float: right;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  background: none;
+  outline: none;
+}
+.x-btn-delete {
+  padding-right: 40px;
+  float: left;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  color: transparent;
+  background: none;
+  outline: none;
+  background: url(./images/delete-trash.png) no-repeat;
+}
+.btn-edit {
+  margin-left: 10px;
+  float: center;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  color: transparent;
+  background: none;
+  outline: none;
+  background: url(./images/edit-icon.png) no-repeat;
+}
+.btn-delete {
+  margin-left: 10px;
+  float: center;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  color: transparent;
+  background: none;
+  outline: none;
+  background: url(./images/delete.png) no-repeat;
+}
+.back-btn {
+  /* login page */
+  margin-left: 10px;
+  float: center;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+  font-size: 16px;
+  color: transparent;
+  background: none;
+  outline: none;
+  background: url(./images/back.png) no-repeat;
+}
+.btn-more {
+  margin-left: 30px;
+  float: center;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+  font-size: 16px;
+  color: transparent;
+  background: none;
+  outline: none;
+  background: url(./images/more-icon.png) no-repeat;
+}
+
 .popup-form input[type="text"] {
   text-align: center;
   padding: 10px 0 10px 0;
 }
 .problems-list-table {
   border-collapse: collapse;
-  border-radius: 0px;
   width: 100%;
-}
-.problems-list-table td {
-  border-radius: 0px;
   padding: 8px;
+  table-layout: auto;
 }
+
 .problems-list-table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 .problems-list-table th {
-  border-radius: 0px;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  text-emphasis: bold;
   text-align: center;
   background-color: #51d6cb;
-  color: black;
+  color: #333;
+  text-align: center;
 }
 
 .problem-card {
@@ -475,8 +527,7 @@ li::marker {
   font-size: 17px;
 }
 .navbar-list a:hover {
-  background-color: #51d6cb;
-  color: black;
+  color: #51d6cb;
   cursor: pointer;
 }
 .navbar-list-items {
@@ -493,14 +544,19 @@ a {
   text-decoration: none;
 }
 
+body {
+  max-width: 1100px;
+  margin: 0 auto;
+}
 * {
   outline: none;
   padding: 6px;
   margin: 0 auto;
-  text-align: center;
+
+  /* text-align: center; */
   box-sizing: border-box;
   text-decoration: none;
   font-family: "Poppins";
   /* word-wrap: break-word; */
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }

@@ -3,12 +3,11 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 
 const Appointments = ({ appointments }) => {
-  console.log(appointments);
   return (
     <div>
       {appointments.length > 0 ? (
         <div>
-          <h1>Appointments List</h1>
+          <h1 className="h1-title">Appointments List</h1>
           <div className="problems-list-table">
             <table>
               <tbody>
@@ -16,22 +15,24 @@ const Appointments = ({ appointments }) => {
                   <th>Date </th>
                   <th>Time </th>
                   <th>Doctor Name</th>
-                  <th>More Information</th>
-                  <th>Status</th>
+                  <th>Required Follow Up</th>
                   <th>Approved By Insurance</th>
+                  <th>More Information</th>
+                  <th></th>
                 </tr>
                 {appointments.map((appointment) => (
                   <tr key={appointment.id}>
-                    <td>
-                      <Link to={`/appointments/${appointment.id}`}>
-                        {moment(appointment.date).format("LL")}{" "}
-                      </Link>
-                    </td>
+                    <td>{moment(appointment.date).format("LL")} </td>
                     <td>{appointment.time}</td>
                     <td>{appointment.doctor.name}</td>
-                    <td>{appointment.note} </td>
-                    <td>{appointment.status_open ? "Open" : "Close"} </td>
+                    <td>{appointment.status_open ? "Yes" : "No"} </td>
                     <td>{appointment.insurance_auth ? "Yes" : "No"} </td>
+                    <td>{appointment.note} </td>
+                    <td>
+                      <Link to={`/appointments/${appointment.id}`}>
+                        <button className="btn-more">MORE</button>
+                      </Link>
+                    </td>
                   </tr>
                 ))}
               </tbody>

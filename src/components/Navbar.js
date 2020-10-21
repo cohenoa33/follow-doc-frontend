@@ -14,11 +14,7 @@ const Navbar = ({ searchBar, user, handleLogout }) => {
           <div>
             <NavLink to="/home" className="navbar-list">
               {" "}
-              {user.username} Dashboard{" "}
-            </NavLink>
-            <NavLink to="/profile" className="navbar-list">
-              {" "}
-              {user.username} Profile{" "}
+              Dashboard{" "}
             </NavLink>
             <NavLink to="/problems" className="navbar-list">
               {" "}
@@ -27,6 +23,10 @@ const Navbar = ({ searchBar, user, handleLogout }) => {
             <NavLink to="/appointments" className="navbar-list">
               {" "}
               All Appointments{" "}
+            </NavLink>
+            <NavLink to="/profile" className="navbar-list">
+              {" "}
+              Profile{" "}
             </NavLink>
             <NavLink to="/" className="navbar-list" onClick={handleLogout}>
               Logout
