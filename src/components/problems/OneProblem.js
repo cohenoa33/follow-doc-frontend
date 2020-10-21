@@ -54,8 +54,10 @@ class OneProblem extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div> {this.renderOpenAppointments(id)} </div>
           <div>{this.renderOneProbComments()}</div>
+        </div>
+        <div className="row">
+          <div> {this.renderOpenAppointments(id)} </div>
         </div>
         <div>{this.renderAllAppointments(id)}</div>
         <div>{this.renderFiles(problemArray)}</div>

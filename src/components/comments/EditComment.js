@@ -17,6 +17,7 @@ class EditComment extends React.Component {
 
   handleChange = (e) => {
     const { status_open } = this.state.comment;
+
     let name = e.target.name;
     if (name === "status_open") {
       this.setState({
@@ -26,15 +27,15 @@ class EditComment extends React.Component {
           status_open: !status_open,
         },
       });
-      if (name === "text") {
-        this.setState({
-          ...this.state,
-          comment: {
-            ...this.state.comment,
-            text: e.target.value,
-          },
-        });
-      }
+    } else if (name === "text") {
+      debugger;
+      this.setState({
+        ...this.state,
+        comment: {
+          ...this.state.comment,
+          text: e.target.value,
+        },
+      });
     }
   };
 
@@ -54,7 +55,7 @@ class EditComment extends React.Component {
   render() {
     return (
       <Popup
-        trigger={<button className="comment-btn-edit"> x </button>}
+        trigger={<button className="btn-edit"> x </button>}
         modal
         nested
         closeOnDocumentClick={false}
@@ -62,16 +63,16 @@ class EditComment extends React.Component {
       >
         {(close) => (
           <div className="modal">
-            <button className="x-btn" onClick={close}>
-              x
+            <button className="back-btn" onClick={close}>
+              back
             </button>
             <div className="actions">
-              <form
-                onSubmit={(e) => {
-                  this.submitComment(e);
-                }}
-              >
-                {!this.state.blockInput ? (
+              {!this.state.blockInput ? (
+                <form
+                  onSubmit={(e) => {
+                    this.submitComment(e);
+                  }}
+                >
                   <div>
                     <label>
                       <input
@@ -81,29 +82,23 @@ class EditComment extends React.Component {
                         onChange={this.handleChange}
                       />{" "}
                       {this.props.status_open
-                        ? "Mark as Closed"
-                        : "Mark as Open"}
+                        ? "Remove from Todo List"
+                        : "Add to Todo List"}
                     </label>
                     <input
                       onChange={this.handleChange}
                       type="text"
                       value={this.state.comment.text}
                       name="text"
-                      placeholder={this.props.text}
-                      noValidate
+                      placeholder={this.state.comment.text}
                     ></input>
                     <br />
-
                     <button className="btn">Save</button>
                   </div>
-                ) : (
-                  <div className="">Comment Updated Successfully</div>
-                )}
-              </form>
-              <button className="btn" onClick={close}>
-                {" "}
-                Close{" "}
-              </button>
+                </form>
+              ) : (
+                <div className="success-message">Note Updated Successfully</div>
+              )}
             </div>
           </div>
         )}

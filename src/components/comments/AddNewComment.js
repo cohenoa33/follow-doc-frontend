@@ -49,7 +49,7 @@ class AddNewComment extends React.Component {
         <form onSubmit={(e) => this.addNewComment(e)}>
           <input
             type="text"
-            placeholder="Add New Comment"
+            placeholder="Add Note"
             name="text"
             value={this.state.newComment.text}
             onChange={this.handleInput}
@@ -63,11 +63,11 @@ class AddNewComment extends React.Component {
               value={this.state.newComment.status_open}
               onChange={this.handleInputChange}
             />{" "}
-            Mark as Open
+            Add to Todo List
           </label>
           <br></br>
           {this.state.newComment.text.length > 0 ? (
-            <button className="btn">Add New Comment</button>
+            <button className="btn-width-80">Add Note for Problem</button>
           ) : null}
         </form>
       </div>

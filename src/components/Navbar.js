@@ -18,11 +18,11 @@ const Navbar = ({ searchBar, user, handleLogout }) => {
             </NavLink>
             <NavLink to="/problems" className="navbar-list">
               {" "}
-              All Problems{" "}
+              Problems{" "}
             </NavLink>
             <NavLink to="/appointments" className="navbar-list">
               {" "}
-              All Appointments{" "}
+              Appointments{" "}
             </NavLink>
             <NavLink to="/profile" className="navbar-list">
               {" "}

@@ -33,7 +33,7 @@ class HomeContainer extends React.Component {
           <div className="column-30">
             <div> {this.renderAddNewProblem()}</div>
             <div> {this.renderNewAppointment()}</div>
-            <div> {this.renderAddNewDoctor("btn-width-90")}</div>
+            <div> {this.renderAddNewDoctor("btn-width-80")}</div>
           </div>
           <div className="column-30"> {this.renderComments()}</div>
           <br></br>

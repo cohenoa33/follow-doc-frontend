@@ -42,7 +42,7 @@ class UploadFiles extends React.Component {
   render() {
     return (
       <Popup
-        trigger={<button className="btn"> Upload File</button>}
+        trigger={<button className="btn-width-80"> Upload File</button>}
         modal
         nested
         closeOnDocumentClick={false}
@@ -52,36 +52,37 @@ class UploadFiles extends React.Component {
           <div className="modal">
             {!this.state.uploaded ? (
               <div>
-                <button className="x-btn" onClick={close}>
-                  x
+                <button className="back-btn" onClick={close}>
+                  back
                 </button>
-                <br></br>
-                <br></br>
-
                 <form
-                  enctype="multipart/form-data"
+                  // enctype="multipart/form-data"
                   method="post"
-                  name="fileinfo"
+                  // name="fileinfo"
                   className="popup-form"
                   onSubmit={this.uploadFile}
                 >
                   <input
+                    className="upload-file"
                     type="file"
-                    name="newFile"
+                    // name="newFile"
                     onChange={this.handleFileChange}
                   />
-                  <button className="btn" onClick={this.uploadFile}>
-                    {this.state.uploading ? "Uploading File..." : "Submit"}
-                  </button>
 
                   <br></br>
                 </form>
+                <div>
+                  <button className="btn" onClick={this.uploadFile}>
+                    {this.state.uploading ? "Uploading File..." : "Upload"}
+                  </button>
+                </div>
               </div>
             ) : (
               <div className="success-message">
                 File uploaded Successfully
-                <button className="btn" onClick={close}>
-                  close{" "}
+                <br />
+                <button className="back-btn" onClick={close}>
+                  back{" "}
                 </button>
               </div>
             )}

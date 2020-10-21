@@ -11,7 +11,9 @@ class OpenComments extends React.Component {
   render() {
     return (
       <div className="open-comments-appointments">
-        <h1> Open Comments</h1>
+        <div className="h1-title">
+          <h1>Todo List</h1>
+        </div>
         {this.commentsList().map((comment) => (
           <li key={comment.id}>
             {" "}

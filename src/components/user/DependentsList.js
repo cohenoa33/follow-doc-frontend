@@ -13,7 +13,10 @@ class DependentsList extends React.Component {
     return (
       <div>
         <div className="column-100">
-          <div className="dependents-table-header">Your Dependents: </div>
+          <div>
+            <h1 className="h1-title">Your Dependents </h1>
+          </div>
+
           <table className="dependents-table">
             <tbody>
               {dependents.map((dependent) => (

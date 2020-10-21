@@ -45,7 +45,7 @@ class EditDependents extends React.Component {
   render() {
     return (
       <Popup
-        trigger={<button className="comment-btn-edit"> x </button>}
+        trigger={<button className="btn-edit"> x </button>}
         modal
         nested
         closeOnDocumentClick={false}
@@ -53,9 +53,15 @@ class EditDependents extends React.Component {
       >
         {(close) => (
           <div className="modal">
-            <button className="x-btn" onClick={close}>
-              x
+            <button className="back-btn" onClick={close}>
+              back
             </button>
+
+            {this.state.blockInput ? (
+              <div className="success-message">
+                Dependent Updated Successfully
+              </div>
+            ) : null}
             <div className="actions">
               <form
                 noValidate
@@ -75,10 +81,6 @@ class EditDependents extends React.Component {
                   <button className="btn">Save</button>
                 )}
               </form>
-              <button className="btn" onClick={close}>
-                {" "}
-                Close{" "}
-              </button>
             </div>
           </div>
         )}

@@ -56,7 +56,7 @@ class NewProblem extends React.Component {
   render() {
     return (
       <Popup
-        trigger={<button className="btn-width-90"> Add New Problem </button>}
+        trigger={<button className="btn-width-80"> Add New Problem </button>}
         modal
         nested
         closeOnDocumentClick={false}
@@ -119,7 +119,7 @@ class NewProblem extends React.Component {
                   Close{" "}
                 </button>
               ) : (
-                <button className="btn-width-90">Add new Problem</button>
+                <button className="btn-width-80">Add new Problem</button>
               )}
             </form>
           </div>

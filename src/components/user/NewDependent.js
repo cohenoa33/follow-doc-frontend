@@ -43,16 +43,16 @@ class NewDependent extends React.Component {
       >
         {(close) => (
           <div className="modal">
-            <button className="x-btn" onClick={close}>
-              x
+            <button className="back-btn" onClick={close}>
+              back
             </button>
-            <div className="success-message">
-              {this.state.blockInput ? "Added Dependent Successfully" : null}{" "}
-              <br />
-            </div>
+            {this.state.blockInput ? (
+              <div className="success-message">
+                Added Dependent Successfully
+              </div>
+            ) : null}
             <div className="actions">
               <form onSubmit={this.handleSubmit}>
-                <br />
                 <label className="form-title">Add Dependent</label>
                 <br />
                 {this.state.blockInput ? (
@@ -72,16 +72,11 @@ class NewDependent extends React.Component {
                   />
                 )}
                 {this.state.blockInput ? null : (
-                  <button className="btn" type="submit">
+                  <button className="btn-width-80" type="submit">
                     Add Dependent
                   </button>
                 )}
               </form>
-
-              <button className="btn" onClick={close}>
-                {" "}
-                Close{" "}
-              </button>
             </div>
           </div>
         )}
