@@ -6,7 +6,7 @@ import DependentsList from "../components/user/DependentsList";
 import EditUser from "../components/user/EditUser";
 
 class ProfilePAge extends React.Component {
-  renderAddNewDependent = () => <NewDependent />;
+  renderAddNewDependent = (className) => <NewDependent className={className} />;
   renderDependentsList = () => <DependentsList />;
   renderEditUser = () => <EditUser />;
 
@@ -15,7 +15,7 @@ class ProfilePAge extends React.Component {
       <div>
         <div className="column-50">
           {this.renderDependentsList()}
-          {this.renderAddNewDependent()}
+          {this.renderAddNewDependent("btn")}
         </div>
 
         <div className="column-50">{this.renderEditUser()}</div>

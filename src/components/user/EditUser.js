@@ -46,7 +46,7 @@ class EditUser extends React.Component {
             {this.state.blockInput ? (
               <div className="success-message">
                 {" "}
-                <h1>Your Password Has Been Changed!</h1>
+                <h1>Your Password Has Been Changed Successfully</h1>
               </div>
             ) : (
               <div>

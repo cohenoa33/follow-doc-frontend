@@ -4,6 +4,7 @@ import Popup from "reactjs-popup";
 import { withRouter } from "react-router-dom";
 import { addProblem } from "../../actions";
 import "reactjs-popup/dist/index.css";
+import NewDependent from "../user/NewDependent";
 
 class NewProblem extends React.Component {
   state = {
@@ -50,6 +51,8 @@ class NewProblem extends React.Component {
     });
   };
 
+  renderAddNewDependent = (className) => <NewDependent className={className} />;
+
   render() {
     return (
       <Popup
@@ -64,9 +67,14 @@ class NewProblem extends React.Component {
             <button className="back-btn" onClick={close}>
               back
             </button>
-            <div className="success-message">
-              {this.state.blockInput ? "Added Problem Successfully" : null}{" "}
-            </div>
+            {this.state.blockInput ? (
+              <div className="success-message">Added Problem Successfully</div>
+            ) : (
+              <div>
+                <div className="form-title">Add New Problem</div>{" "}
+                {this.renderAddNewDependent("btn-render-inside-modal")}
+              </div>
+            )}
             <form
               className="popup-form"
               noValidate
@@ -74,7 +82,6 @@ class NewProblem extends React.Component {
                 this.validate(e);
               }}
             >
-              <div className="form-title">Add New Problem</div>
               <select name="dependent_id" onChange={this.handleChange}>
                 <option name="dependent_id" value="0">
                   {" "}

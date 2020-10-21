@@ -48,7 +48,7 @@ class NewDoctor extends React.Component {
   render() {
     return (
       <Popup
-        trigger={<button className="btn-width-90">Add Doctor </button>}
+        trigger={<button className={this.props.className}>Add Doctor </button>}
         modal
         nested
         closeOnDocumentClick={false}

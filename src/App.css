@@ -6,7 +6,7 @@
     grid-template-columns: 1fr;
   }
 }
-
+form,
 .home-page,
 .modal {
   text-align: center;
@@ -25,6 +25,7 @@
 .success-message {
   color: #517bd6;
   font-weight: bold;
+  text-align: center;
 }
 .status-open {
   color: #d65151;
@@ -39,9 +40,7 @@
   text-align: center;
   text-shadow: 1px 1px 2px black;
 }
-.modal-popup {
-  text-align: center;
-}
+
 .row {
   border-bottom: 5px solid #333;
   margin-bottom: 50px;
@@ -51,6 +50,7 @@
 .column-100 {
   float: center;
 }
+
 .column-30 {
   float: left;
   width: 33%;
@@ -78,11 +78,19 @@
 .form-title {
   font-weight: bold;
 }
+
 /* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
+}
+.btn-render-inside-modal {
+  width: 18%;
+  font-size: 12px;
+}
+.modal-popup {
+  text-align: center;
 }
 .problem-container-description {
   padding-top: 20px;
