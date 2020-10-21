@@ -22,43 +22,45 @@ class OneProbComments extends React.Component {
 
     return (
       <div>
-        <div className="column-100">
-          <h1 className="h1-title">Notes</h1>
-          <table className="one-problem-comments-table">
-            <tbody>
-              <tr>
-                <th>Note</th>
-                <th>Last update</th>
-                <th>Create at</th>
-                <th>Requires follow-up</th>
-              </tr>
-              {comments.map((comment) => (
-                <tr key={comment.id}>
-                  <td> {comment.text}</td>
-                  <td> {moment(comment.updated_at).format("LLL")}</td>
-                  <td> {moment(comment.created_at).format("LLL")}</td>
-                  <td> {comment.status_open ? "Yes" : "No"}</td>
-                  <td>
-                    {this.renderEditComment(
-                      comment.id,
-                      comment.text,
-                      comment.status_open
-                    )}{" "}
-                  </td>
-                  <td>
-                    <button
-                      className="x-btn-delete"
-                      id={comment.id}
-                      onClick={this.handleDeleteComment}
-                    >
-                      X
-                    </button>
-                  </td>
+        <h1 className="h1-title">Notes</h1>
+        {comments.length > 0 ? (
+          <div className="column-100">
+            <table className="one-problem-comments-table">
+              <tbody>
+                <tr>
+                  <th>Note</th>
+                  <th>Last update</th>
+                  <th>Create at</th>
+                  <th>Required follow-up</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                {comments.map((comment) => (
+                  <tr key={comment.id}>
+                    <td> {comment.text}</td>
+                    <td> {moment(comment.updated_at).format("LLL")}</td>
+                    <td> {moment(comment.created_at).format("LLL")}</td>
+                    <td> {comment.status_open ? "Yes" : "No"}</td>
+                    <td>
+                      {this.renderEditComment(
+                        comment.id,
+                        comment.text,
+                        comment.status_open
+                      )}{" "}
+                    </td>
+                    <td>
+                      <button
+                        className="x-btn-delete"
+                        id={comment.id}
+                        onClick={this.handleDeleteComment}
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : null}
       </div>
     );
   }

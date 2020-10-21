@@ -82,8 +82,8 @@ class EditComment extends React.Component {
                         onChange={this.handleChange}
                       />{" "}
                       {this.props.status_open
-                        ? "Not requires follow-up"
-                        : "Requires follow-up"}
+                        ? "Not required follow-up"
+                        : "Required follow-up"}
                     </label>
                     <input
                       onChange={this.handleChange}

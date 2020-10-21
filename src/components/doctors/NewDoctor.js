@@ -115,7 +115,7 @@ class NewDoctor extends React.Component {
                   Close{" "}
                 </button>
               ) : (
-                <button className="btn-width-90">Add new Doctor</button>
+                <button className="btn-width-80">Add new Doctor</button>
               )}
             </form>
           </div>

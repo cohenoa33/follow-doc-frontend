@@ -67,7 +67,7 @@ class AddNewComment extends React.Component {
           </label>
           <br></br>
           {this.state.newComment.text.length > 0 ? (
-            <button className="btn-width-90">Add Note for Problem</button>
+            <button className="btn-width-80">Add Note for Problem</button>
           ) : null}
         </form>
       </div>

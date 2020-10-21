@@ -39,22 +39,21 @@ class OneProblemInfo extends React.Component {
         {!this.state.disabled ? (
           <div>
             <div className="column-100">
-              <button className="btn-edit" onClick={this.toggleDisabled}>
-                edit
-              </button>
-              <br />
+              <h1>{name}</h1>
               <p>
                 {" "}
-                Dependent:
+                Dependent Name:
                 <br />
                 {dependent.name}
               </p>
-              <h1>{name}</h1>
               <br />
-              Description:
+              Problem Description:
               <br />
               {description}
             </div>
+            <button className="btn-width-80" onClick={this.toggleDisabled}>
+              Edit Problem
+            </button>
           </div>
         ) : (
           <div className="one-appointment-edit">
@@ -63,9 +62,7 @@ class OneProblemInfo extends React.Component {
                 Back
               </button>
               <br></br>
-              <label>Dependent:</label>
-              <br />
-              <input disabled placeholder={dependent.name} />
+              <label>Dependent: {dependent.name}</label>
               <br />
               <label> Problem Name: </label> <br />
               <input

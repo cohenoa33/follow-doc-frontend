@@ -93,6 +93,7 @@ form,
   text-align: center;
 }
 .problem-container-description {
+  text-align: center;
   padding-top: 20px;
   line-height: 1.5em;
   float: left;
@@ -281,9 +282,9 @@ textarea {
   background: url(./images/edit.png) no-repeat;
 }
 
-.x-btn:focus {
+/* .x-btn:focus {
   outline: none;
-}
+} */
 .one-problem-grid {
   grid-template: ;
 }
@@ -345,8 +346,7 @@ li::marker {
   text-align: center;
   font-weight: bold;
 }
-.btn-width-90,
-.btn-edit .btn-problem-container-buttons {
+.btn-width-80 {
   background-color: #51d6cb;
   color: #333;
   font-weight: bold;
@@ -404,17 +404,6 @@ li::marker {
   background: none;
   outline: none;
   background: url(./images/delete.png) no-repeat;
-}
-.btn-edit {
-  margin-left: 10px;
-  float: center;
-  cursor: pointer;
-  border: none;
-  font-size: 16px;
-  color: transparent;
-  background: none;
-  outline: none;
-  background: url(./images/edit-icon.png) no-repeat;
 }
 .btn-delete {
   margin-left: 10px;

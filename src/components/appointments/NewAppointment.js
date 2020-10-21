@@ -85,7 +85,7 @@ class NewAppointment extends React.Component {
     return (
       <Popup
         trigger={
-          <button className="btn-width-90"> Add New Appointment </button>
+          <button className="btn-width-80"> Add New Appointment </button>
         }
         modal
         nested
@@ -201,7 +201,7 @@ class NewAppointment extends React.Component {
                       Close{" "}
                     </button>
                   ) : (
-                    <button className="btn-width-90" type="Submit">
+                    <button className="btn-width-80" type="Submit">
                       Add new Appointment
                     </button>
                   )}

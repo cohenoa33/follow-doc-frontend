@@ -42,7 +42,7 @@ class UploadFiles extends React.Component {
   render() {
     return (
       <Popup
-        trigger={<button className="btn-width-90"> Upload File</button>}
+        trigger={<button className="btn-width-80"> Upload File</button>}
         modal
         nested
         closeOnDocumentClick={false}
