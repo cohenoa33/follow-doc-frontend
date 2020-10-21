@@ -91,9 +91,16 @@ export const userReducer = (state = initialState, action) => {
         ),
         action.payload,
       ];
+      let list = state.problems.map((problem) =>
+        problem.dependent_id === action.payload.id
+          ? { ...problem, dependent: action.payload }
+          : problem
+      );
+
       return {
         ...state,
         dependents: updatedList,
+        problems: list,
       };
     }
     case "EDIT_APPOINTMENT": {
@@ -103,6 +110,7 @@ export const userReducer = (state = initialState, action) => {
         ),
         action.payload,
       ];
+
       return {
         ...state,
         appointments: updatedList,
