@@ -14,16 +14,7 @@ class Results extends React.Component {
           problem.name.toLowerCase().includes(value) ||
           problem.description.toLowerCase().includes(value)
       );
-      // let filteredComments = comments.filter((comment) =>
-      //   comment.text.toLowerCase().includes(value)
-      // );
-      // const commentsId = filteredComments.map((comment) => comment.problem_id);
-      // for (let i = 0; i < commentsId.length; i++) {
-      //   let problem = problems.find(
-      //     (problems) => problems.id === commentsId[i]
-      //   );
-      //   filter.push(problem);
-      // }
+
       let searchResult = filter.filter(
         (problem, index, self) =>
           index ===
@@ -71,13 +62,6 @@ class Results extends React.Component {
                   Problem: {problem.name}:<br></br>
                   Description: {problem.description}
                   <br />
-                  {/* comments:
-                    {problem.comments.map((comment) => (
-                      <li className="comments-search" key={comment.id}>
-                        {" "}
-                        {comment.text}
-                      </li>
-                    ))} */}
                 </li>
               </Link>
             ))}
@@ -93,7 +77,12 @@ class Results extends React.Component {
 
             {this.commentsList().map((comment) => (
               <Link key={comment.id} to={`/problems/${comment.problem_id}`}>
-                <li key={comment.id}>Comment: {comment.text}</li>
+                <li key={comment.id}>
+                  Note: {comment.text}
+                  {comment.status_open === false ? (
+                    <p className="status-open"> Archived </p>
+                  ) : null}
+                </li>
               </Link>
             ))}
           </div>

@@ -18,7 +18,9 @@ class ProblemsContainer extends React.Component {
     this.setState({ filter: e.target.value });
   };
   filterByDependent = () => {
-    const problems = this.props.problems;
+    const problems = this.props.problems.sort(function (a, b) {
+      return a.name === b.name ? 0 : a.name < b.name ? -1 : 1;
+    });
     if (this.state.filter === "all") {
       return problems;
     } else {

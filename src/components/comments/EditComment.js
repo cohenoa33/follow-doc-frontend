@@ -85,6 +85,7 @@ class EditComment extends React.Component {
                         ? "Remove from Todo List"
                         : "Add to Todo List"}
                     </label>
+                    <br />
                     <input
                       onChange={this.handleChange}
                       type="text"
