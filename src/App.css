@@ -4,9 +4,11 @@ media screen and (max-width: 600px) {
   }
 }
 
-.home-page {
+.home-page,
+.modal {
   text-align: center;
 }
+
 .form-grid {
   /* login page */
   border: 3px solid #f1f1f1;
@@ -131,18 +133,6 @@ media screen and (max-width: 600px) {
 }
 .table-appointment {
   text-align: left;
-}
-
-.btn-edit .btn-problem-container-buttons {
-  background-color: #51d6cb;
-  color: white;
-  padding: 14px;
-  margin: 8px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 80%;
-  text-align: center;
 }
 
 .one-problem-comment {
@@ -305,7 +295,6 @@ li::marker {
   background-color: #51d6cb;
   color: #333;
   padding: 14px;
-
   margin: 8px;
   border: none;
   border-radius: 5px;
@@ -328,6 +317,19 @@ li::marker {
   width: 30%;
   text-align: center;
   font-weight: bold;
+}
+.btn-width-90,
+.btn-edit .btn-problem-container-buttons {
+  background-color: #51d6cb;
+  color: #333;
+  font-weight: bold;
+  padding: 14px;
+  margin: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 80%;
+  text-align: center;
 }
 
 .btn-info,
@@ -504,8 +506,7 @@ li::marker {
   font-size: 17px;
 }
 .navbar-list a:hover {
-  background-color: #51d6cb;
-  color: black;
+  color: #51d6cb;
   cursor: pointer;
 }
 .navbar-list-items {

@@ -81,7 +81,9 @@ class NewAppointment extends React.Component {
   render() {
     return (
       <Popup
-        trigger={<button className="btn"> Add New Appointment </button>}
+        trigger={
+          <button className="btn-width-90"> Add New Appointment </button>
+        }
         modal
         nested
         closeOnDocumentClick={false}
@@ -91,8 +93,8 @@ class NewAppointment extends React.Component {
           <div className="modal">
             {this.filterDoctors().length > 0 ? (
               <div>
-                <button className="x-btn" onClick={close}>
-                  x
+                <button className="back-btn" onClick={close}>
+                  back
                 </button>
                 <br></br>
                 <div className="success-message">
@@ -100,7 +102,6 @@ class NewAppointment extends React.Component {
                     ? "Added Appointment Successfully"
                     : null}{" "}
                 </div>
-                <br></br>
                 <form
                   className="popup-form"
                   noValidate
@@ -108,8 +109,7 @@ class NewAppointment extends React.Component {
                     this.handleAddAppointment(e);
                   }}
                 >
-                  New Appointment
-                  <br></br>
+                  <div className="form-title"> New Appointment</div>
                   <select name="problem_id" onChange={this.handleChange}>
                     <option name="problem_id" value="0">
                       {" "}
@@ -166,7 +166,7 @@ class NewAppointment extends React.Component {
                       value={this.state.appointment.status_open}
                       onChange={this.handleChange}
                     />{" "}
-                    Mark as Open
+                    Required Follow Up
                   </label>
                   <label>
                     {" "}
@@ -186,16 +186,17 @@ class NewAppointment extends React.Component {
                     noValidate
                   />
                   <br />
-                  {this.state.blockInput ? null : (
-                    <button className="btn" type="Submit">
+                  {this.state.blockInput ? (
+                    <button className="btn" onClick={close}>
+                      {" "}
+                      Close{" "}
+                    </button>
+                  ) : (
+                    <button className="btn-width-90" type="Submit">
                       Add new Appointment
                     </button>
                   )}
                 </form>
-                <button className="btn" onClick={close}>
-                  {" "}
-                  Close{" "}
-                </button>
               </div>
             ) : (
               <div> Loading...</div>

@@ -201,7 +201,6 @@ export const editUser = (user, e, id) => {
   };
 };
 export const editProblem = (problem, id) => {
-  console.log(problem, id);
   return (dispatch) => {
     return api.problems.editProblem(problem, id).then((data) => {
       if (!data.error) {
