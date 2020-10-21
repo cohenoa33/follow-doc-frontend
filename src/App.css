@@ -51,10 +51,6 @@
 .column-100 {
   float: center;
 }
-.column-100-bold {
-  float: center;
-  font-weight: bold;
-}
 .column-30 {
   float: left;
   width: 33%;
@@ -207,6 +203,7 @@ input[type="time"]::-webkit-datetime-edit-ampm-field {
 .form-container-newProblem {
   padding: 10px;
 }
+
 select,
 input[type="text"],
 input:disabled,
