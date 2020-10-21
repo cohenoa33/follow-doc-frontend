@@ -18,8 +18,9 @@ class AppointmentsContainer extends React.Component {
 
   render() {
     return (
-      <div className="column-100">
-        {this.renderNewAppointments()}
+      <div>
+        <div className="column-30-center">{this.renderNewAppointments()}</div>
+
         {this.renderAllAppointments()}
       </div>
     );

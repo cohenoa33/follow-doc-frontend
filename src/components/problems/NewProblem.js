@@ -64,8 +64,6 @@ class NewProblem extends React.Component {
             <button className="back-btn" onClick={close}>
               back
             </button>
-            <br />
-
             <div className="success-message">
               {this.state.blockInput ? "Added Problem Successfully" : null}{" "}
             </div>
@@ -77,7 +75,6 @@ class NewProblem extends React.Component {
               }}
             >
               <div className="form-title">Add New Problem</div>
-              <br />
               <select name="dependent_id" onChange={this.handleChange}>
                 <option name="dependent_id" value="0">
                   {" "}
@@ -99,14 +96,14 @@ class NewProblem extends React.Component {
                 value={this.state.name}
                 name="name"
                 placeholder="Problem Name"
-                noValidate
+                required
               ></input>
               <textarea
                 onChange={this.handleChange}
                 value={this.state.description}
                 name="description"
                 placeholder="Description"
-                minLength="5"
+                required
               />
               <br />
               {this.state.blockInput ? (
@@ -115,7 +112,7 @@ class NewProblem extends React.Component {
                   Close{" "}
                 </button>
               ) : (
-                <button className="btn">Add new Problem</button>
+                <button className="btn-width-90">Add new Problem</button>
               )}
             </form>
           </div>

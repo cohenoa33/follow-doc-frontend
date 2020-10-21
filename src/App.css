@@ -1,6 +1,9 @@
-media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .column {
     width: 100%;
+  }
+  .row {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -20,7 +23,7 @@ media screen and (max-width: 600px) {
 }
 
 .success-message {
-  color: #51d6cb;
+  color: #517bd6;
   font-weight: bold;
 }
 .status-open {
@@ -29,12 +32,21 @@ media screen and (max-width: 600px) {
 .status-close {
   color: #5cd651;
 }
+
+.h1-title {
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
+}
 .modal-popup {
   text-align: center;
 }
 .row {
   border-bottom: 5px solid #333;
   margin-bottom: 50px;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr; */
 }
 .column-100 {
   float: center;
@@ -47,6 +59,10 @@ media screen and (max-width: 600px) {
   float: left;
   width: 33%;
   list-style-type: none;
+}
+.column-30-center {
+  float: center;
+  width: 33%;
 }
 .column-50 {
   float: left;
@@ -84,9 +100,7 @@ media screen and (max-width: 600px) {
   padding-top: 20px;
   line-height: 1.5em;
 }
-.problem-container-appointments {
-  width: 33%;
-}
+
 .problem-container-buttons {
   width: 50%;
   float: right;
@@ -229,6 +243,7 @@ textarea {
   border: 1px solid #ccc;
   box-sizing: border-box;
   white-space: pre-line;
+  text-align: center;
 }
 .edit-appointment-textarea {
   width: 120%;
@@ -413,6 +428,18 @@ li::marker {
   outline: none;
   background: url(./images/back.png) no-repeat;
 }
+.btn-more {
+  margin-left: 30px;
+  float: center;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+  font-size: 16px;
+  color: transparent;
+  background: none;
+  outline: none;
+  background: url(./images/more-icon.png) no-repeat;
+}
 
 .popup-form input[type="text"] {
   text-align: center;
@@ -420,23 +447,20 @@ li::marker {
 }
 .problems-list-table {
   border-collapse: collapse;
-  border-radius: 0px;
   width: 100%;
-}
-.problems-list-table td {
-  border-radius: 0px;
   padding: 8px;
+  table-layout: auto;
 }
+
 .problems-list-table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 .problems-list-table th {
-  border-radius: 0px;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  text-emphasis: bold;
   text-align: center;
   background-color: #51d6cb;
-  color: black;
+  color: #333;
+  text-align: center;
 }
 
 .problem-card {
@@ -523,14 +547,19 @@ a {
   text-decoration: none;
 }
 
+body {
+  max-width: 1100px;
+  margin: 0 auto;
+}
 * {
   outline: none;
   padding: 6px;
   margin: 0 auto;
+
   /* text-align: center; */
   box-sizing: border-box;
   text-decoration: none;
   font-family: "Poppins";
   /* word-wrap: break-word; */
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }

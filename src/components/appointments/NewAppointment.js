@@ -148,6 +148,7 @@ class NewAppointment extends React.Component {
                     value={this.state.appointment.date}
                     name="date"
                     placeholder="Date"
+                    required
                   ></input>
                   <br />
                   <input
@@ -156,6 +157,7 @@ class NewAppointment extends React.Component {
                     value={this.state.appointment.time}
                     name="time"
                     placeholder="time"
+                    required
                   ></input>
                   <br />
                   <label>
