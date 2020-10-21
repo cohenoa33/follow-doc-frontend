@@ -16,22 +16,25 @@ class EditComment extends React.Component {
   };
 
   handleChange = (e) => {
-    this.setState({
-      ...this.state,
-      comment: {
-        ...this.state.comment,
-        [e.target.name]: e.target.value,
-      },
-    });
-  };
-  handleStatusChange = (e) => {
-    this.setState({
-      ...this.state,
-      comment: {
-        ...this.state.comment,
-        status_open: !this.state.status_open,
-      },
-    });
+    const { status_open } = this.state.comment;
+    let name = e.target.name;
+    if (name === "status_open") {
+      this.setState({
+        ...this.state,
+        comment: {
+          ...this.state.appointment,
+          status_open: !status_open,
+        },
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        comment: {
+          ...this.state.appointment,
+          [name]: e.target.value,
+        },
+      });
+    }
   };
 
   validate = (e) => {
@@ -44,14 +47,7 @@ class EditComment extends React.Component {
       });
   };
   refreshState = () => {
-    this.setState({
-      comment: {
-        id: this.props.id,
-        text: this.props.text,
-        status_open: this.props.status_open,
-      },
-      blockInput: false,
-    });
+    this.setState({ blockInput: false });
   };
 
   render() {
@@ -70,7 +66,6 @@ class EditComment extends React.Component {
             </button>
             <div className="actions">
               <form
-                noValidate
                 onSubmit={(e) => {
                   this.validate(e);
                 }}
@@ -80,9 +75,8 @@ class EditComment extends React.Component {
                   <input
                     name="status_open"
                     type="checkbox"
-                    checked={this.state.comment.status_open}
                     value={this.state.comment.status_open}
-                    onClick={this.handleStatusChange}
+                    OnChange={this.handleChange}
                   />{" "}
                   Mark as Open
                 </label>
