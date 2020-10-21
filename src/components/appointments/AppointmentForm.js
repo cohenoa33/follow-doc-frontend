@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import GoogleApiWrapper from "../../containers/MapContainer";
 import { deleteAppointment, editAppointment } from "../../actions";
 import AddToCalendar from "./AddToCalendar";
+import { renderDeletePopup } from "../../services/renderComponents";
+
 import moment from "moment";
 
 class AppointmentForm extends React.Component {
@@ -97,9 +99,7 @@ class AppointmentForm extends React.Component {
           <button className="btn-10" onClick={this.handleEditButton}>
             Edit
           </button>
-          <button className="btn-red-10" onClick={this.handleDelete}>
-            Delete
-          </button>{" "}
+          {renderDeletePopup(this.handleDelete, "btn-10")}
         </h1>
         {disabled ? (
           <div className="column-50-text-left">
