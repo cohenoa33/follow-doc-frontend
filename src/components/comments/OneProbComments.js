@@ -48,7 +48,7 @@ class OneProbComments extends React.Component {
                     </td>
                     <td>
                       <button
-                        className="x-btn-delete"
+                        className="btn-delete"
                         id={comment.id}
                         onClick={this.handleDeleteComment}
                       >

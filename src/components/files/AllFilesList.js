@@ -24,7 +24,7 @@ class AllFilesList extends React.Component {
                     {file.name}
                   </a>
                   <button
-                    className="x-btn-delete"
+                    className="btn-delete"
                     onClick={() => this.handleDeleteFile(problem, file)}
                   >
                     X

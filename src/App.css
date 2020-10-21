@@ -67,13 +67,11 @@ form,
   align-items: left;
   text-align-last: center;
 }
-.column-50-appointment {
+.column-50-text-left {
   float: left;
   width: 50%;
   list-style-type: none;
   align-items: left;
-  text-align-last: center;
-  display: inline-grid;
 }
 .form-title {
   font-weight: bold;
@@ -146,13 +144,6 @@ form,
   font-size: 14px;
   font-weight: normal;
   border-collapse: collapse;
-}
-
-.table-appointment td {
-  text-align: left;
-}
-.table-appointment {
-  text-align: left;
 }
 
 .one-problem-comment {
@@ -259,7 +250,7 @@ textarea {
   text-align: center;
 }
 .edit-appointment-textarea {
-  width: 120%;
+  width: 80%;
   margin: 0 auto;
   padding: 8px;
 }
@@ -269,9 +260,20 @@ textarea {
   padding: 8px;
 }
 
-.comment-btn-edit {
+.btn-edit {
   padding-right: 40px;
   margin-left: 10px;
+  float: center;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  color: transparent;
+  background: none;
+  outline: none;
+  background: url(./images/edit.png) no-repeat;
+}
+.btn-edit-right {
+  margin-left: 40px;
   float: center;
   cursor: pointer;
   border: none;
@@ -289,9 +291,6 @@ textarea {
   grid-template: ;
 }
 
-.description-one-problem {
-  background-color: #51d6cb;
-}
 .add-to-calendar,
 .add-to-calendar a {
   padding: 0;
@@ -300,9 +299,9 @@ textarea {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 50%;
+  width: 40%;
   text-align: center;
-  float: center;
+  /* float: center; */
   text-decoration: none;
   list-style: none;
 }
@@ -346,6 +345,21 @@ li::marker {
   text-align: center;
   font-weight: bold;
 }
+.btn-red {
+  /* login page */
+  background-color: #d65151;
+  color: #333;
+  padding: 10px;
+  font-size: 12px;
+  margin: 4px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 30%;
+  text-align: center;
+  float: center;
+  font-weight: bold;
+}
 .btn-width-80 {
   background-color: #51d6cb;
   color: #333;
@@ -359,8 +373,7 @@ li::marker {
   text-align: center;
 }
 
-.btn-info,
-.btn-saveChanges {
+.btn-info {
   background-color: #51d6cb;
   color: #333;
   padding: 10px;
@@ -384,17 +397,7 @@ li::marker {
   text-align: center;
 }
 
-.x-btn {
-  border-radius: 8px;
-  padding: 20px;
-  float: right;
-  cursor: pointer;
-  border: none;
-  font-size: 16px;
-  background: none;
-  outline: none;
-}
-.x-btn-delete {
+.btn-delete {
   padding-right: 40px;
   float: left;
   cursor: pointer;
@@ -405,9 +408,8 @@ li::marker {
   outline: none;
   background: url(./images/delete.png) no-repeat;
 }
-.btn-delete {
-  margin-left: 10px;
-  float: center;
+
+.btn-delete-right {
   cursor: pointer;
   border: none;
   font-size: 16px;

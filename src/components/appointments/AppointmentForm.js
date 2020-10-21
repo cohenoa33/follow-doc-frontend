@@ -91,23 +91,19 @@ class AppointmentForm extends React.Component {
 
     return (
       <div>
-        <h1>
+        <h1 className="h1-title">
           {dependent} Appointment For
           <Link to={`/problems/${problem.id}`}>{problem.name}</Link>
+          <button className="btn-edit-right" onClick={this.handleEditButton}>
+            Edit
+          </button>
+          <button className="btn-delete-right" onClick={this.handleDelete}>
+            Delete
+          </button>{" "}
         </h1>
-
         {disabled ? (
-          <div className="column-50-appointment">
-            <div>
-              <button className="btn-edit" onClick={this.handleEditButton}>
-                ed
-              </button>
-              <button className="btn-delete" onClick={this.handleDelete}>
-                de
-              </button>{" "}
-            </div>
-
-            <table className="table-appointment">
+          <div className="column-50-text-left">
+            <table>
               <tbody>
                 <tr>
                   <td>Doctor:</td>
@@ -126,21 +122,19 @@ class AppointmentForm extends React.Component {
                   <td>{time}</td>
                 </tr>
                 <tr>
-                  <td> Status:</td>
+                  <td>Required Follow-up:</td>
                   {status_open ? (
-                    <td className="status-open">Open</td>
+                    <td className="status-open">Yes</td>
                   ) : (
-                    <td className="status-close">Close</td>
+                    <td className="status-close">No</td>
                   )}
                 </tr>
                 <tr>
-                  <td> Insurance Approval:</td>
+                  <td>Approved By Insurance:</td>
                   {insurance_auth ? (
-                    <td className="status-close">Approved By Insurance</td>
+                    <td className="status-close">Yes</td>
                   ) : (
-                    <td className="status-open">
-                      Waiting for Insurance Approval
-                    </td>
+                    <td className="status-open">No</td>
                   )}
                 </tr>
                 <tr>
@@ -149,27 +143,18 @@ class AppointmentForm extends React.Component {
                 </tr>
               </tbody>
             </table>
-
             <div className="add-to-calendar">
               <AddToCalendar event={event} />
             </div>
           </div>
         ) : (
-          <div className="column-50-appointment">
+          <div className="column-50-text-left">
             <button onClick={this.handleEditButton} className="back-btn">
               Back
             </button>
             <br />
-            <button
-              type="submit"
-              className="btn-saveChanges"
-              onClick={(e) => this.handleSubmit(e, id)}
-            >
-              {" "}
-              Save Changes
-            </button>
 
-            <table className="table-appointment">
+            <table>
               <tbody>
                 <tr>
                   <td>Doctor:</td>
@@ -198,7 +183,7 @@ class AppointmentForm extends React.Component {
                   onChange={this.handleChange}
                   value={status_open}
                 />{" "}
-                {status_open ? "Mark as Closed" : "Mark as Open"}
+                {status_open ? "Not Required Follow-up" : "Required Follow-up"}
               </label>
               <br />
               <label>
@@ -210,10 +195,9 @@ class AppointmentForm extends React.Component {
                   onChange={this.handleChange}
                 />{" "}
                 {insurance_auth
-                  ? "Need Insurance Approval"
-                  : "Approved By Insurance"}
+                  ? "Not Approved by Insurance"
+                  : "Approved by Insurance"}
               </label>
-              <br />
               <br />
               <label> Additional Information: </label> <br />
               <textarea
@@ -225,6 +209,14 @@ class AppointmentForm extends React.Component {
                 className="edit-appointment-textarea"
                 onChange={this.handleChange}
               />
+              <button
+                type="submit"
+                className="btn-width-80"
+                onClick={(e) => this.handleSubmit(e, id)}
+              >
+                {" "}
+                Save Changes
+              </button>
             </form>
           </div>
         )}

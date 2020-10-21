@@ -45,7 +45,7 @@ class EditDependents extends React.Component {
   render() {
     return (
       <Popup
-        trigger={<button className="comment-btn-edit"> x </button>}
+        trigger={<button className="btn-edit"> x </button>}
         modal
         nested
         closeOnDocumentClick={false}
