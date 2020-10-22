@@ -2,12 +2,14 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-import Problems from "../components/problems/ProblemsList";
+import { futureAppointments } from "../services/helpers";
+
+// import Problems from "../components/problems/ProblemsList";
 import OpenComments from "../components/comments/OpenComments";
 import NewProblem from "../components/problems/NewProblem";
 import NewDoctor from "../components/doctors/NewDoctor";
 import OpenAppointments from "../components/appointments/OpenAppointments";
-import AllAppointments from "../components/appointments/AllAppointments";
+import FullTableAppointments from "../components/appointments/FullTableAppointments";
 import NewAppointment from "../components/appointments/NewAppointment";
 
 class HomeContainer extends React.Component {
@@ -17,11 +19,15 @@ class HomeContainer extends React.Component {
     }
   }
 
-  renderProblems = () => <Problems />;
+  // renderProblems = () => <Problems />;
   renderComments = () => <OpenComments />;
   renderAddNewProblem = () => <NewProblem />;
   renderOpenAppointments = () => <OpenAppointments />;
-  renderAllAppointments = () => <AllAppointments />;
+  renderAllOpenAppointments = () => (
+    <FullTableAppointments
+      appointments={futureAppointments(this.props.appointments)}
+    />
+  );
   renderNewAppointment = () => <NewAppointment />;
   renderAddNewDoctor = (className) => <NewDoctor className={className} />;
 
@@ -38,11 +44,11 @@ class HomeContainer extends React.Component {
           <div className="column-30"> {this.renderComments()}</div>
           <br></br>
         </div>
-        <div className="row">
+        <h1 className="h1-title">Next Appointments </h1>
+        <div className="column-100">{this.renderAllOpenAppointments()} </div>
+        {/* <div className="row">
           <div className="column-100">{this.renderProblems()} </div>
-        </div>
-
-        <div className="column-100">{this.renderAllAppointments()} </div>
+        </div> */}
       </div>
     );
   }
@@ -52,6 +58,7 @@ const mapStateToProps = (state) => {
     user: state.user,
     problems: state.user.problems,
     dependents: state.dependents,
+    appointments: state.appointments,
   };
 };
 

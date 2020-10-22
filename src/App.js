@@ -11,6 +11,7 @@ import SignupForm from "./components/signup-login/SignupForm";
 import NewProblem from "./components/problems/NewProblem";
 import OneProblem from "./components/problems/OneProblem";
 import OneAppointment from "./components/appointments/OneAppointment";
+import NewAppointment from "./components/appointments/NewAppointment";
 import ArchiveComments from "./components/comments/ArchiveComments";
 import SearchResults from "./components/search/SearchResults";
 import NotFound from "./components/NotFound";
@@ -21,6 +22,7 @@ import HomeContainer from "./containers/HomeContainer";
 import ProblemsContainer from "./containers/ProblemsContainer";
 import ProfilePage from "./containers/ProfilePage";
 import AppointmentsContainer from "./containers/AppointmentsContainer";
+import ProblemAppointments from "./components/appointments/ProblemAppointments";
 
 class App extends React.Component {
   handleLoginSubmit = (e, user) => {
@@ -84,8 +86,8 @@ class App extends React.Component {
     localStorage.removeItem("token");
     this.props.setLogout();
   };
-  renderWelcomePage = () => <Welcome />;
 
+  renderWelcomePage = () => <Welcome />;
   renderLogin = () => (
     <LoginForm
       handleLogin={this.handleLogin}
@@ -98,12 +100,17 @@ class App extends React.Component {
       handleSignUpSubmit={this.handleSignUpSubmit}
     />
   );
+  renderNewAppointment = () => <NewAppointment btnName={"navbar-list"} />;
   renderProfilePage = () => <ProfilePage />;
   renderHome = () => <HomeContainer />;
   renderSearchBar = () => <SearchBar />;
   renderSearchResults = () => <SearchResults />;
   renderNavBar = () => (
-    <Navbar handleLogout={this.handleLogout} searchBar={this.renderSearchBar} />
+    <Navbar
+      handleLogout={this.handleLogout}
+      searchBar={this.renderSearchBar}
+      newAppointment={this.renderNewAppointment}
+    />
   );
   renderNewProblem = () => <NewProblem />;
   renderAllProblem = () => <ProblemsContainer />;
@@ -124,6 +131,16 @@ class App extends React.Component {
     );
     return foundProblem ? <ArchiveComments id={problemId} /> : <NotFound />;
   };
+
+  allAppointmentsForOneProblem = (routerProps) => {
+    let problemId = parseInt(routerProps.match.params.id);
+    let foundProblem = this.props.problems.filter(
+      (problem) => problem.id === problemId
+    );
+
+    return foundProblem ? <ProblemAppointments id={problemId} /> : <NotFound />;
+  };
+
   renderOneAppointment = (routerProps) => {
     let appID = parseInt(routerProps.match.params.id);
     let foundApp = this.props.appointments.filter(
@@ -147,6 +164,13 @@ class App extends React.Component {
             exact
             path="/problems/:id/archivenotes"
             render={(routerProps) => this.archiveComments(routerProps)}
+          />{" "}
+          <Route
+            exact
+            path="/problems/:id/appointments"
+            render={(routerProps) =>
+              this.allAppointmentsForOneProblem(routerProps)
+            }
           />{" "}
           <Route
             exact

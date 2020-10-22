@@ -14,16 +14,9 @@ class OpenAppointments extends React.Component {
       const list = appointments.filter(
         (appointment) => appointment.problem.id === this.props.id
       );
-      // .sort(function (a, b) {
-      //   return a.date === b.date ? 0 : a.date < b.date ? -1 : 1;
-      // });
-
       return sortByAsc(list);
     } else {
       return sortByAsc(appointments);
-      // return appointments.sort(function (a, b) {
-      //   return a.date === b.date ? 0 : a.date < b.date ? -1 : 1;
-      // });
     }
   }
 

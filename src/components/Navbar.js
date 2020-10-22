@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 
-const Navbar = ({ searchBar, user, handleLogout }) => {
+const Navbar = ({ searchBar, user, handleLogout, newAppointment }) => {
   return (
     <div className="nav-bar">
       <div className="navbar-list">
@@ -28,6 +28,7 @@ const Navbar = ({ searchBar, user, handleLogout }) => {
               {" "}
               Profile{" "}
             </NavLink>
+            {newAppointment()}
             <NavLink to="/" className="navbar-list" onClick={handleLogout}>
               Logout
             </NavLink>

@@ -131,11 +131,7 @@ class AppointmentForm extends React.Component {
                 </tr>
                 <tr>
                   <td>Approved By Insurance:</td>
-                  {insurance_auth ? (
-                    <td className="status-close">Yes</td>
-                  ) : (
-                    <td className="status-open">No</td>
-                  )}
+                  {insurance_auth ? <td>Yes</td> : <td>No</td>}
                 </tr>
                 <tr>
                   <td>Additional Information:</td>

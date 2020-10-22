@@ -1,19 +1,16 @@
 import React from "react";
 
-const SortFuture = ({ dependents, handleFilter }) => {
+const SortFuture = ({ status, handleSort }) => {
   return (
     <div>
-      <h1 className="h1-title">Appointments List</h1>
       <label>
-        Filter by Dependent:{" "}
-        <select name="filter" onChange={handleFilter}>
-          <option value="all">All</option>
-          {dependents.map((dependant) => (
-            <option key={dependant.id} value={dependant.name}>
-              {dependant.name}
-            </option>
-          ))}
-        </select>
+        <input
+          name="futureOnly"
+          type="checkbox"
+          value={status}
+          onChange={handleSort}
+        />{" "}
+        Show Only Future Appointments
       </label>
     </div>
   );

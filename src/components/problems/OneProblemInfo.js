@@ -40,16 +40,9 @@ class OneProblemInfo extends React.Component {
           <div>
             <div className="column-100">
               <h1>{name}</h1>
-              <p>
-                {" "}
-                Dependent Name:
-                <br />
-                {dependent.name}
-              </p>
+              <p> Dependent Name: {dependent.name}</p>
               <br />
-              Problem Description:
-              <br />
-              {description}
+              Problem Description:{description}
             </div>
             <button className="btn-width-80" onClick={this.toggleDisabled}>
               Edit Problem
