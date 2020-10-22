@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import { convertTime } from "../../services/helpers";
 
 const Appointments = ({ appointments }) => {
   return (
@@ -23,7 +24,7 @@ const Appointments = ({ appointments }) => {
                 {appointments.map((appointment) => (
                   <tr key={appointment.id}>
                     <td>{moment(appointment.date).format("LL")} </td>
-                    <td>{appointment.time}</td>
+                    <td>{convertTime(appointment.time)}</td>
                     <td>{appointment.doctor.name}</td>
                     <td>{appointment.status_open ? "Yes" : "No"} </td>
                     <td>{appointment.insurance_auth ? "Yes" : "No"} </td>

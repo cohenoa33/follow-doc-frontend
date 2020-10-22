@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import EditComment from "./EditComment";
 import { withRouter } from "react-router-dom";
 import moment from "moment";
-import { renderDeletePopup } from "../../services/renderComponents";
+import { renderDeletePopup } from "../../services/helpers";
 
 class OneProbCommentsTable extends React.Component {
   handleDeleteComment = (id) => {

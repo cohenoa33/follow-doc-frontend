@@ -1,7 +1,7 @@
 import React from "react";
 import { deleteFile } from "../../actions";
 import { connect } from "react-redux";
-import { renderDeletePopup } from "../../services/renderComponents";
+import { renderDeletePopup } from "../../services/helpers";
 
 class AllFilesList extends React.Component {
   handleDeleteFile = (problem, file) => {
