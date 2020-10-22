@@ -2,7 +2,10 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
+import { filterDependent } from "../services/helpers";
+
 import ProblemCard from "../components/problems/ProblemCard";
+import FilterDependents from "../components/search/FilterDependents";
 
 class ProblemsContainer extends React.Component {
   state = {
@@ -21,31 +24,16 @@ class ProblemsContainer extends React.Component {
     const problems = this.props.problems.sort(function (a, b) {
       return a.name === b.name ? 0 : a.name < b.name ? -1 : 1;
     });
-    if (this.state.filter === "all") {
-      return problems;
-    } else {
-      return problems.filter(
-        (problem) => problem.dependent.name === this.state.filter
-      );
-    }
+    return filterDependent(problems, this.state.filter);
   };
 
   render() {
     return (
       <div>
-        <div>
-          <label>
-            Filter by Dependent:
-            <select onChange={this.handleFilter}>
-              <option value="all">All</option>
-              {this.props.dependents.map((dependant) => (
-                <option key={dependant.id} value={dependant.name}>
-                  {dependant.name}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
+        <FilterDependents
+          handleFilter={this.handleFilter}
+          dependents={this.props.dependents}
+        />
         <br />
 
         {this.filterByDependent().map((problem) => (

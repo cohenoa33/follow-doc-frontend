@@ -1,31 +1,35 @@
 import React from "react";
 import { connect } from "react-redux";
-import Appointments from "./Appointments";
-import {
-  sortByDesc,
-  futureAppointments,
-  pastAppointments,
-} from "../../services/helpers";
+import FullTableAppointments from "./FullTableAppointments";
+import { sortByDesc, filterDependent } from "../../services/helpers";
+import FilterDependents from "../search/FilterDependents";
 
 class AllAppointments extends React.Component {
-  render() {
-    const appointments = sortByDesc(this.props.appointments);
+  state = {
+    filter: "all",
+    futureOnly: false,
+  };
 
+  handleFilter = (e) => {
+    this.setState({ ...this.state, [e.target.name]: e.target.value });
+  };
+  filterByDependent = () => {
+    const appointments = sortByDesc(this.props.appointments);
+    return filterDependent(appointments, this.state.filter);
+  };
+
+  render() {
     return (
       <div>
-        {futureAppointments ? (
-          <div>
-            <h1 className="h1-title">Future Appointments</h1>
-            <Appointments appointments={futureAppointments(appointments)} />
-          </div>
-        ) : null}
+        <h1 className="h1-title">Appointments List</h1>
 
-        {appointments ? (
-          <div>
-            <h1 className="h1-title">Past Appointments</h1>
-            <Appointments appointments={pastAppointments(appointments)} />
-          </div>
-        ) : null}
+        <FilterDependents
+          handleFilter={this.handleFilter}
+          dependents={this.props.dependents}
+        />
+        <div>
+          <FullTableAppointments appointments={this.filterByDependent()} />
+        </div>
       </div>
     );
   }
@@ -34,6 +38,7 @@ class AllAppointments extends React.Component {
 const mapStateToProps = (state) => {
   return {
     appointments: state.appointments,
+    dependents: state.dependents,
   };
 };
 

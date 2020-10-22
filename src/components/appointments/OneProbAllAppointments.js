@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import Appointments from "./Appointments";
+import FullTableAppointments from "./FullTableAppointments";
 import { futureAppointments, pastAppointments } from "../../services/helpers";
 
 const OneProbAllAppointments = ({ appointments, id }) => {
@@ -12,7 +12,7 @@ const OneProbAllAppointments = ({ appointments, id }) => {
     <div>
       {appointmentsList.length > 0 ? (
         <div>
-          <Appointments appointments={appointmentsList} />
+          <FullTableAppointments appointments={appointmentsList} />
         </div>
       ) : (
         <h1 className="h1-title">No future Appointments</h1>

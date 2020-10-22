@@ -3,12 +3,11 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import { convertTime } from "../../services/helpers";
 
-const Appointments = ({ appointments }) => {
+const FullTableAppointments = ({ appointments }) => {
   return (
     <div>
       {appointments.length > 0 ? (
         <div>
-          {/* <h1 className="h1-title">Appointments List</h1> */}
           <div className="problems-list-table">
             <table>
               <tbody>
@@ -16,9 +15,10 @@ const Appointments = ({ appointments }) => {
                   <th>Date </th>
                   <th>Time </th>
                   <th>Doctor Name</th>
-                  <th>Todo List</th>
-                  <th>Approved By Insurance</th>
+                  <th>Problem and Dependent Name</th>
                   <th>More Information</th>
+                  <th>Need Attention</th>
+                  {/* <th>Approved By Insurance</th> */}
                   <th></th>
                 </tr>
                 {appointments.map((appointment) => (
@@ -26,9 +26,13 @@ const Appointments = ({ appointments }) => {
                     <td>{moment(appointment.date).format("LL")} </td>
                     <td>{convertTime(appointment.time)}</td>
                     <td>{appointment.doctor.name}</td>
-                    <td>{appointment.status_open ? "Yes" : "No"} </td>
-                    <td>{appointment.insurance_auth ? "Yes" : "No"} </td>
+                    <td>
+                      {appointment.problem.name} for{" "}
+                      {appointment.dependent.name}
+                    </td>
                     <td>{appointment.note} </td>
+                    <td>{appointment.status_open ? "Yes" : "No"} </td>
+                    {/* <td>{appointment.insurance_auth ? "Yes" : "No"} </td> */}
                     <td>
                       <Link to={`/appointments/${appointment.id}`}>
                         <button className="btn-more">MORE</button>
@@ -45,4 +49,4 @@ const Appointments = ({ appointments }) => {
   );
 };
 
-export default Appointments;
+export default FullTableAppointments;
