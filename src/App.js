@@ -11,6 +11,7 @@ import SignupForm from "./components/signup-login/SignupForm";
 import NewProblem from "./components/problems/NewProblem";
 import OneProblem from "./components/problems/OneProblem";
 import OneAppointment from "./components/appointments/OneAppointment";
+import ArchiveComments from "./components/comments/ArchiveComments";
 import SearchResults from "./components/search/SearchResults";
 import NotFound from "./components/NotFound";
 import Navbar from "./components/Navbar";
@@ -116,6 +117,13 @@ class App extends React.Component {
     );
     return foundProblem ? <OneProblem id={problemId} /> : <NotFound />;
   };
+  archiveComments = (routerProps) => {
+    let problemId = parseInt(routerProps.match.params.id);
+    let foundProblem = this.props.problems.filter(
+      (problem) => problem.id === problemId
+    );
+    return foundProblem ? <ArchiveComments id={problemId} /> : <NotFound />;
+  };
   renderOneAppointment = (routerProps) => {
     let appID = parseInt(routerProps.match.params.id);
     let foundApp = this.props.appointments.filter(
@@ -134,6 +142,11 @@ class App extends React.Component {
             exact
             path="/problems/:id"
             render={(routerProps) => this.renderOneProblem(routerProps)}
+          />{" "}
+          <Route
+            exact
+            path="/problems/:id/archivenotes"
+            render={(routerProps) => this.archiveComments(routerProps)}
           />{" "}
           <Route
             exact
