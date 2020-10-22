@@ -43,7 +43,7 @@ form,
 
 .row {
   border-bottom: 5px solid #333;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
   /* display: grid;
   grid-template-columns: 1fr 1fr 1fr; */
 }
@@ -546,6 +546,7 @@ li::marker {
   text-decoration: none;
   font-size: 22px;
 }
+
 .navbar-list a {
   height: 100%;
   float: left;
@@ -555,6 +556,18 @@ li::marker {
   text-decoration: none;
   font-size: 17px;
 }
+.navbar-list button {
+  background: transparent;
+  border: none;
+  height: 100%;
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.navbar-list button:hover,
 .navbar-list a:hover {
   color: #51d6cb;
   cursor: pointer;

@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import Appointments from "./Appointments";
-import { futureAppointments, pastAppointments } from "../../services/helpers";
+import ShortTableAppointments from "./ShortTableAppointments";
+import { futureAppointments } from "../../services/helpers";
+import { Link } from "react-router-dom";
 
 const OneProbAllAppointments = ({ appointments, id }) => {
   const appointmentsList = futureAppointments(
@@ -12,11 +13,17 @@ const OneProbAllAppointments = ({ appointments, id }) => {
     <div>
       {appointmentsList.length > 0 ? (
         <div>
-          <Appointments appointments={appointmentsList} />
+          <h1 className="h1-title">Next Appointments</h1>
+
+          <ShortTableAppointments appointments={appointmentsList} />
         </div>
       ) : (
         <h1 className="h1-title">No future Appointments</h1>
       )}
+      <Link to={`/problems/${id}/appointments`}>
+        {" "}
+        <button className="btn"> All Appointments </button>{" "}
+      </Link>
     </div>
   );
 };

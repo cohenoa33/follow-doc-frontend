@@ -50,3 +50,11 @@ export const pastAppointments = (appointments) => {
     }
   });
 };
+
+export const filterDependent = (list, filter) => {
+  if (filter === "all") {
+    return list;
+  } else {
+    return list.filter((item) => item.dependent.name === filter);
+  }
+};

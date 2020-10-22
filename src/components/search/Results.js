@@ -58,7 +58,7 @@ class Results extends React.Component {
           <div>
             {this.problemsList().map((problem) => (
               <Link to={`/problems/${problem.id}`}>
-                <li className="serach-list" key={problem.id}>
+                <li key={problem.id}>
                   Problem: {problem.name}:<br></br>
                   Description: {problem.description}
                   <br />

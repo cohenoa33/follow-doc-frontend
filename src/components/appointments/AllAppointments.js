@@ -1,31 +1,49 @@
 import React from "react";
 import { connect } from "react-redux";
-import Appointments from "./Appointments";
+import FullTableAppointments from "./FullTableAppointments";
 import {
-  sortByDesc,
   futureAppointments,
-  pastAppointments,
+  sortByDesc,
+  filterDependent,
 } from "../../services/helpers";
+import FilterDependents from "../search/FilterDependents";
+import SortFuture from "../search/SortFuture";
 
 class AllAppointments extends React.Component {
-  render() {
-    const appointments = sortByDesc(this.props.appointments);
+  state = {
+    filter: "all",
+    futureOnly: false,
+  };
 
+  handleFilter = (e) => {
+    this.setState({ ...this.state, filter: e.target.value });
+  };
+  handleSort = () => {
+    this.setState({ ...this.state, futureOnly: !this.state.futureOnly });
+  };
+  filterByDependent = () => {
+    const { filter, futureOnly } = this.state;
+    const appointments = sortByDesc(this.props.appointments);
+    if (futureOnly) {
+      return futureAppointments(filterDependent(appointments, filter));
+    }
+    return filterDependent(appointments, filter);
+  };
+
+  render() {
     return (
       <div>
-        {futureAppointments ? (
-          <div>
-            <h1 className="h1-title">Future Appointments</h1>
-            <Appointments appointments={futureAppointments(appointments)} />
-          </div>
-        ) : null}
-
-        {appointments ? (
-          <div>
-            <h1 className="h1-title">Past Appointments</h1>
-            <Appointments appointments={pastAppointments(appointments)} />
-          </div>
-        ) : null}
+        <SortFuture
+          handleSort={this.handleSort}
+          status={this.state.futureOnly}
+        />
+        <FilterDependents
+          handleFilter={this.handleFilter}
+          dependents={this.props.dependents}
+        />
+        <div>
+          <FullTableAppointments appointments={this.filterByDependent()} />
+        </div>
       </div>
     );
   }
@@ -34,6 +52,7 @@ class AllAppointments extends React.Component {
 const mapStateToProps = (state) => {
   return {
     appointments: state.appointments,
+    dependents: state.dependents,
   };
 };
 

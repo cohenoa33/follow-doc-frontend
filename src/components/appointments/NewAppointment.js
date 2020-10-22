@@ -58,10 +58,11 @@ class NewAppointment extends React.Component {
   };
 
   problemsList = () => {
-    if (this.props.id) {
-      return this.props.problems.filter((p) => p.id === this.props.id);
+    const { id, problems } = this.props;
+    if (id) {
+      return problems.filter((p) => p.id === id);
     } else {
-      return this.props.problems;
+      return problems;
     }
   };
   refreshState = () => {
@@ -82,10 +83,13 @@ class NewAppointment extends React.Component {
   renderAddNewDoctor = (className) => <NewDoctor className={className} />;
 
   render() {
+    const btnClassName = this.props.btnName
+      ? this.props.btnName
+      : "btn-width-80";
     return (
       <Popup
         trigger={
-          <button className="btn-width-80"> Add New Appointment </button>
+          <button className={btnClassName}> Add New Appointment </button>
         }
         modal
         nested
