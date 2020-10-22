@@ -122,11 +122,11 @@ class AppointmentForm extends React.Component {
                   <td>{convertTime(time)}</td>
                 </tr>
                 <tr>
-                  <td>Add to Todo List:</td>
+                  <td>Need Attention:</td>
                   {status_open ? (
-                    <td className="status-open">Yes</td>
+                    <td className="status-alert">Yes</td>
                   ) : (
-                    <td className="status-close">No</td>
+                    <td>No</td>
                   )}
                 </tr>
                 <tr>

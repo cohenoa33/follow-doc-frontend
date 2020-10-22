@@ -88,7 +88,7 @@ class Results extends React.Component {
               ) : (
                 <li key={comment.id}>
                   {" "}
-                  <Link to={`/problems/${comment.problem_id}`}>
+                  <Link to={`/problems/${comment.problem_id}/archivenotes`}>
                     {" "}
                     Note: {comment.text}{" "}
                     <span className="status-open">Archived</span>

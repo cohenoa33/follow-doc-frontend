@@ -45,6 +45,10 @@ form,
 .status-close {
   color: #5cd651;
 }
+.status-alert {
+  color: #5186d6;
+  font-weight: bold;
+}
 
 .h1-title {
   font-weight: bold;
