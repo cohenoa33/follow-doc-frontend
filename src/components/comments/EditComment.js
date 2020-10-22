@@ -28,7 +28,6 @@ class EditComment extends React.Component {
         },
       });
     } else if (name === "text") {
-      debugger;
       this.setState({
         ...this.state,
         comment: {

@@ -43,20 +43,15 @@ class OneProbCommentsTable extends React.Component {
                         () => this.handleDeleteComment(comment.id),
                         "btn-delete"
                       )}
-                      {/* <button
-                        className="btn-delete"
-                        id={comment.id}
-                        onClick={this.handleDeleteComment}
-                      >
-                        X
-                      </button> */}
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-        ) : null}
+        ) : (
+          `There Are No Notes for ${this.props.name}`
+        )}
       </div>
     );
   }

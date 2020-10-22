@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 class Results extends React.Component {
   problemsList = () => {
-    const { problems, search, comments } = this.props;
+    const { problems, search } = this.props;
 
     if (search.length > 0) {
       const value = search.toLowerCase();
@@ -30,7 +30,7 @@ class Results extends React.Component {
       let searchResult = this.props.comments.filter((comment) =>
         comment.text.toLowerCase().includes(value)
       );
-      console.log(searchResult);
+
       return searchResult;
     }
   };
@@ -65,7 +65,6 @@ class Results extends React.Component {
                 </li>
               </Link>
             ))}
-
             {this.appointmentsList().map((appointment) => (
               <Link key={appointment.id} to={`/appointments/${appointment.id}`}>
                 <li key={appointment.id}>
@@ -75,16 +74,23 @@ class Results extends React.Component {
               </Link>
             ))}
 
-            {this.commentsList().map((comment) => (
-              <Link key={comment.id} to={`/problems/${comment.problem_id}`}>
-                <li key={comment.id}>
-                  Note: {comment.text}
-                  {comment.status_open === false ? (
+            {this.commentsList().map((comment) =>
+              comment.status_open === true ? (
+                <Link key={comment.id} to={`/problems/${comment.problem_id}`}>
+                  <li key={comment.id}>Note: {comment.text}</li>
+                </Link>
+              ) : (
+                <Link
+                  key={comment.id}
+                  to={`/problems/${comment.problem_id}/archivenotes`}
+                >
+                  <li key={comment.id}>
+                    Note: {comment.text}
                     <p className="status-open"> Archived </p>
-                  ) : null}
-                </li>
-              </Link>
-            ))}
+                  </li>
+                </Link>
+              )
+            )}
           </div>
         ) : (
           <h1> No results for match to {this.props.search} </h1>
