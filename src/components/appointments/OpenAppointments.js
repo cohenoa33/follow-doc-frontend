@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import { convertTime } from "../../services/helpers";
 
 class OpenAppointments extends React.Component {
   filterAppointments() {
@@ -34,12 +35,12 @@ class OpenAppointments extends React.Component {
               <li key={appointment.id}>
                 <Link to={`/appointments/${appointment.id}`}>
                   Appointment for Doctor {appointment.doctor.name} on{" "}
-                  {moment(appointment.date).format("LL")} at {appointment.time}.
-                  <br /> Notes: {appointment.note}.
-                  <br />{" "}
-                  {appointment.insurance_auth
-                    ? null
-                    : "Waiting for Insurance Approval"}
+                  {moment(appointment.date).format("LL")} at{" "}
+                  {convertTime(appointment.time)}.
+                  <br />
+                  {appointment.note.length > 0
+                    ? `Note: ${appointment.note}`
+                    : null}
                 </Link>
               </li>
             ))}

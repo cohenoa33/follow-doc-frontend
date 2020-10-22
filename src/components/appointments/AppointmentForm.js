@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import GoogleApiWrapper from "../../containers/MapContainer";
 import { deleteAppointment, editAppointment } from "../../actions";
 import AddToCalendar from "./AddToCalendar";
-import { renderDeletePopup } from "../../services/renderComponents";
+import { renderDeletePopup, convertTime } from "../../services/helpers";
 
 import moment from "moment";
 
@@ -119,7 +119,7 @@ class AppointmentForm extends React.Component {
                 </tr>
                 <tr>
                   <td>Time:</td>
-                  <td>{time}</td>
+                  <td>{convertTime(time)}</td>
                 </tr>
                 <tr>
                   <td>Add to Todo List:</td>
