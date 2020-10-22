@@ -57,38 +57,43 @@ class Results extends React.Component {
         this.commentsList().length > 0 ? (
           <div>
             {this.problemsList().map((problem) => (
-              <Link to={`/problems/${problem.id}`}>
-                <li key={problem.id}>
+              <li key={problem.id}>
+                <Link key={problem.id} to={`/problems/${problem.id}`}>
                   Problem: {problem.name}:<br></br>
                   Description: {problem.description}
                   <br />
-                </li>
-              </Link>
+                </Link>
+              </li>
             ))}
             {this.appointmentsList().map((appointment) => (
-              <Link key={appointment.id} to={`/appointments/${appointment.id}`}>
-                <li key={appointment.id}>
+              <li key={appointment.id}>
+                <Link
+                  key={appointment.id}
+                  to={`/appointments/${appointment.id}`}
+                >
                   Note from Appointment for Doctor {appointment.doctor.name} on{" "}
                   {appointment.date}: {appointment.note}
-                </li>
-              </Link>
+                </Link>
+              </li>
             ))}
-
             {this.commentsList().map((comment) =>
               comment.status_open === true ? (
-                <Link key={comment.id} to={`/problems/${comment.problem_id}`}>
-                  <li key={comment.id}>Note: {comment.text}</li>
-                </Link>
-              ) : (
-                <Link
-                  key={comment.id}
-                  to={`/problems/${comment.problem_id}/archivenotes`}
-                >
-                  <li key={comment.id}>
+                <li key={comment.id}>
+                  {" "}
+                  <Link to={`/problems/${comment.problem_id}`}>
+                    {" "}
                     Note: {comment.text}
-                    <p className="status-open"> Archived </p>
-                  </li>
-                </Link>
+                  </Link>{" "}
+                </li>
+              ) : (
+                <li key={comment.id}>
+                  {" "}
+                  <Link to={`/problems/${comment.problem_id}/archivenotes`}>
+                    {" "}
+                    Note: {comment.text}{" "}
+                    <span className="status-open">Archived</span>
+                  </Link>{" "}
+                </li>
               )
             )}
           </div>

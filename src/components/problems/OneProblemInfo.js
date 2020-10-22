@@ -39,10 +39,9 @@ class OneProblemInfo extends React.Component {
         {!this.state.disabled ? (
           <div>
             <div className="column-100">
-              <h1>{name}</h1>
-              <p> Dependent Name: {dependent.name}</p>
+              Description:
               <br />
-              Problem Description:{description}
+              {description}
             </div>
             <button className="btn-width-80" onClick={this.toggleDisabled}>
               Edit Problem

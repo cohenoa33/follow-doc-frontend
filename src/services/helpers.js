@@ -15,7 +15,7 @@ export const convertTime = (timeToConvert) => {
     timeValue = "" + hours;
   } else if (hours > 12) {
     timeValue = "" + (hours - 12);
-  } else if (hours == 0) {
+  } else if (hours === 0) {
     timeValue = "12";
   }
 

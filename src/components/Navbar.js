@@ -4,14 +4,14 @@ import { connect } from "react-redux";
 
 const Navbar = ({ searchBar, user, handleLogout, newAppointment }) => {
   return (
-    <div className="nav-bar">
+    <div className="navbar">
       <div className="navbar-list">
-        <NavLink to="/" className="navbar-list-followDoc">
-          {" "}
-          FollowDoc
-        </NavLink>
         {user ? (
           <div>
+            <NavLink to="/" className="navbar-list-followDoc">
+              {" "}
+              FollowDoc
+            </NavLink>
             <NavLink to="/home" className="navbar-list">
               {" "}
               Dashboard{" "}
@@ -24,11 +24,11 @@ const Navbar = ({ searchBar, user, handleLogout, newAppointment }) => {
               {" "}
               Appointments{" "}
             </NavLink>
+            {newAppointment()}
             <NavLink to="/profile" className="navbar-list">
               {" "}
               Profile{" "}
             </NavLink>
-            {newAppointment()}
             <NavLink to="/" className="navbar-list" onClick={handleLogout}>
               Logout
             </NavLink>
@@ -36,6 +36,10 @@ const Navbar = ({ searchBar, user, handleLogout, newAppointment }) => {
           </div>
         ) : (
           <div>
+            <NavLink to="/" className="navbar-list-followDoc">
+              {" "}
+              FollowDoc
+            </NavLink>
             <NavLink to="/login" className="navbar-list">
               {" "}
               Login{" "}

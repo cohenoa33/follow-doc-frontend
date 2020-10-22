@@ -100,7 +100,9 @@ class App extends React.Component {
       handleSignUpSubmit={this.handleSignUpSubmit}
     />
   );
-  renderNewAppointment = () => <NewAppointment btnName={"navbar-list"} />;
+  renderNewAppointment = () => (
+    <NewAppointment btnName={"navbar-list-button"} />
+  );
   renderProfilePage = () => <ProfilePage />;
   renderHome = () => <HomeContainer />;
   renderSearchBar = () => <SearchBar />;

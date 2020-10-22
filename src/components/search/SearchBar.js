@@ -26,9 +26,7 @@ class SearchBar extends React.Component {
             onChange={this.handleSearch}
             placeholder="Search"
           />
-          {this.state.search.length > 0 ? (
-            <button className="search-btn">Search</button>
-          ) : null}
+          <button className="search-btn">Search</button>
         </form>
       </div>
     );

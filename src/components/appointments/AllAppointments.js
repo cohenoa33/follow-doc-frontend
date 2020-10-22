@@ -31,6 +31,7 @@ class AllAppointments extends React.Component {
   };
 
   render() {
+    console.log(this.props.appointments);
     return (
       <div>
         <SortFuture
