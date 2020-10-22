@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { convertTime } from "../../services/helpers";
+import { convertTime, sortByAsc } from "../../services/helpers";
 
 class OpenAppointments extends React.Component {
   filterAppointments() {
@@ -11,17 +11,19 @@ class OpenAppointments extends React.Component {
         appointment.status_open === true || appointment.insurance_auth === false
     );
     if (this.props.id) {
-      const list = appointments
-        .filter((appointment) => appointment.problem.id === this.props.id)
-        .sort(function (a, b) {
-          return a.date === b.date ? 0 : a.date < b.date ? -1 : 1;
-        });
+      const list = appointments.filter(
+        (appointment) => appointment.problem.id === this.props.id
+      );
+      // .sort(function (a, b) {
+      //   return a.date === b.date ? 0 : a.date < b.date ? -1 : 1;
+      // });
 
-      return list;
+      return sortByAsc(list);
     } else {
-      return appointments.sort(function (a, b) {
-        return a.date === b.date ? 0 : a.date < b.date ? -1 : 1;
-      });
+      return sortByAsc(appointments);
+      // return appointments.sort(function (a, b) {
+      //   return a.date === b.date ? 0 : a.date < b.date ? -1 : 1;
+      // });
     }
   }
 

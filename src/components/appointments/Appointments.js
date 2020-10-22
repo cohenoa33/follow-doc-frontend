@@ -8,7 +8,7 @@ const Appointments = ({ appointments }) => {
     <div>
       {appointments.length > 0 ? (
         <div>
-          <h1 className="h1-title">Appointments List</h1>
+          {/* <h1 className="h1-title">Appointments List</h1> */}
           <div className="problems-list-table">
             <table>
               <tbody>

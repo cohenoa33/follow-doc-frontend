@@ -77,8 +77,8 @@ class AppointmentForm extends React.Component {
       doctor,
     } = this.props.appointment;
 
-    let prob = this.props.problems.find((p) => p.id === problem.id);
-    let dependent = prob.dependent.name;
+    let oneProblem = this.props.problems.find((p) => p.id === problem.id);
+    let dependent = oneProblem.dependent.name;
 
     const hour = +time.split(":")[0] + 1;
     const updatedHour = hour < 10 ? `0${hour}` : hour;

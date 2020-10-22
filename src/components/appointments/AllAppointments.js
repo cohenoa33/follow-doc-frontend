@@ -1,23 +1,31 @@
 import React from "react";
 import { connect } from "react-redux";
 import Appointments from "./Appointments";
+import {
+  sortByDesc,
+  futureAppointments,
+  pastAppointments,
+} from "../../services/helpers";
 
 class AllAppointments extends React.Component {
-  appointmentsList = () => {
-    let appointments = this.props.appointments;
-
-    let appointmentList = appointments.sort(function (a, b) {
-      return a.date === b.date ? 0 : a.date < b.date ? 1 : -1;
-    });
-    return appointmentList;
-  };
-
   render() {
-    const appointments = this.appointmentsList();
+    const appointments = sortByDesc(this.props.appointments);
 
     return (
       <div>
-        <Appointments appointments={appointments} />
+        {futureAppointments ? (
+          <div>
+            <h1 className="h1-title">Future Appointments</h1>
+            <Appointments appointments={futureAppointments(appointments)} />
+          </div>
+        ) : null}
+
+        {appointments ? (
+          <div>
+            <h1 className="h1-title">Past Appointments</h1>
+            <Appointments appointments={pastAppointments(appointments)} />
+          </div>
+        ) : null}
       </div>
     );
   }
