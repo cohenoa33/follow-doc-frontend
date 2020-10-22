@@ -91,16 +91,22 @@ export const userReducer = (state = initialState, action) => {
         ),
         action.payload,
       ];
-      let list = state.problems.map((problem) =>
+      let problemsList = state.problems.map((problem) =>
         problem.dependent_id === action.payload.id
           ? { ...problem, dependent: action.payload }
           : problem
+      );
+      let appointmentsList = state.appointments.map((appointment) =>
+        appointment.dependent.id === action.payload.id
+          ? { ...appointment, dependent: action.payload }
+          : appointment
       );
 
       return {
         ...state,
         dependents: updatedList,
-        problems: list,
+        problems: problemsList,
+        appointments: appointmentsList,
       };
     }
     case "EDIT_APPOINTMENT": {
@@ -121,9 +127,15 @@ export const userReducer = (state = initialState, action) => {
         ...state.problems.filter((problem) => problem.id !== action.payload.id),
         action.payload,
       ];
+      let appointmentsList = state.appointments.map((appointment) =>
+        appointment.problem.id === action.payload.id
+          ? { ...appointment, problem: action.payload }
+          : appointment
+      );
       return {
         ...state,
         problems: updatedList,
+        appointments: appointmentsList,
       };
     }
 
