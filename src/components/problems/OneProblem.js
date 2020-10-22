@@ -41,12 +41,15 @@ class OneProblem extends React.Component {
     let problemArray = this.props.problems.filter(
       (problem) => problem.id === id
     );
-
+    let problem = problemArray.find((problems) => problems);
+    console.log(problem);
     return (
       <div>
         <div className="row">
+          <h1 className="h1-title">
+            {problem ? `${problem.name} for ${problem.dependent.name}` : null}{" "}
+          </h1>
           {this.renderOneProblemInfo(problemArray, id)}
-
           <div className="problem-container-buttons">
             {this.renderUploadFiles(id)}
             {this.renderNewAppointment(id)}
