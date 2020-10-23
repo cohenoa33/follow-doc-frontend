@@ -26,7 +26,7 @@ export default class Welcome extends React.Component {
             <button className="btn">Sign In</button>
           </Link>
           <br />
-          <Link to="/Signup">
+          <Link to="/signup">
             {" "}
             <button className="btn">Sign Up</button>
           </Link>

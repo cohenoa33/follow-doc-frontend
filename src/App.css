@@ -66,6 +66,10 @@ form,
 .column-100 {
   float: center;
 }
+.column-100-center {
+  margin: 50px 50px;
+  margin-top: 0px;
+}
 
 .column-30 {
   float: left;

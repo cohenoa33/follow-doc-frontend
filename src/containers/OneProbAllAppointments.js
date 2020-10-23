@@ -1,12 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import ShortTableAppointments from "../components/appointments/ShortTableAppointments";
-import { futureAppointments } from "../services/helpers";
+import { sortByAsc, futureAppointments } from "../services/helpers";
 import { Link } from "react-router-dom";
 
 const OneProbAllAppointments = ({ appointments, id }) => {
-  const appointmentsList = futureAppointments(
-    appointments.filter((appointment) => appointment.problem.id === +id)
+  const appointmentsList = sortByAsc(
+    futureAppointments(
+      appointments.filter((appointment) => appointment.problem.id === +id)
+    )
   );
 
   return (
