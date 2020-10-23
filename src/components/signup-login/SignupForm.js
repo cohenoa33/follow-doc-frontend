@@ -55,11 +55,11 @@ export default class SignupForm extends React.Component {
                 value={this.state.password_confirmation}
               />
               <br />
-              <button className="btn">Sign Up</button>
+              <button className="btn">Create an Account</button>
             </form>
             <div>
-              <Link to="/login">
-                <button className="btn-blue">Log In </button>
+              <Link to="/signin">
+                <button className="btn-blue">Already Register? </button>
               </Link>
             </div>
           </div>

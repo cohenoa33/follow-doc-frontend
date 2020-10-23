@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import ShortTableAppointments from "./ShortTableAppointments";
-import { futureAppointments } from "../../services/helpers";
+import ShortTableAppointments from "../components/appointments/ShortTableAppointments";
+import { futureAppointments } from "../services/helpers";
 import { Link } from "react-router-dom";
 
 const OneProbAllAppointments = ({ appointments, id }) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 
-import AllAppointments from "../components/appointments/AllAppointments";
+import AllAppointments from "./AllAppointments";
 
 class AppointmentsContainer extends React.Component {
   componentDidMount() {

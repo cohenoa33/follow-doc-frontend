@@ -72,7 +72,7 @@ class App extends React.Component {
       this.props.setLogin(data);
 
       if (
-        this.props.history.location.pathname === "/login" ||
+        this.props.history.location.pathname === "/signin" ||
         this.props.history.location.pathname === "/signup"
       ) {
         this.props.history.push("/home");
@@ -182,7 +182,7 @@ class App extends React.Component {
           <Route path="/problems" component={this.renderAllProblem} />
           <Route path="/profile" component={this.renderProfilePage} />
           <Route path="/appointments" component={this.renderAllAppointments} />
-          <Route path="/login" component={this.renderLogin} />
+          <Route path="/signin" component={this.renderLogin} />
           <Route path="/signup" component={this.renderSignup} />
           <Route path="/home" component={this.renderHome} />
           <Route path="/newproblem" component={this.renderNewProblem} />

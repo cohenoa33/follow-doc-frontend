@@ -14,6 +14,7 @@ class AllFilesList extends React.Component {
     let problem = this.props.id[0];
     return (
       <div>
+        <h1 className="h1-title"> Files: </h1>
         <div className="one-problem-comments">
           {problem
             ? problem.file.map((file) => (

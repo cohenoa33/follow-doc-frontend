@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import FullTableAppointments from "./FullTableAppointments";
+import FullTableAppointments from "../components/appointments/FullTableAppointments";
 import {
   futureAppointments,
   sortByDesc,
   filterDependent,
-} from "../../services/helpers";
-import FilterDependents from "../search/FilterDependents";
-import SortFuture from "../search/SortFuture";
+} from "../services/helpers";
+import FilterDependents from "../components/search/FilterDependents";
+import SortFuture from "../components/search/SortFuture";
 
 class AllAppointments extends React.Component {
   state = {
@@ -31,7 +31,6 @@ class AllAppointments extends React.Component {
   };
 
   render() {
-    console.log(this.props.appointments);
     return (
       <div>
         <SortFuture

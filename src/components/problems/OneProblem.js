@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 import NewAppointment from "../appointments/NewAppointment";
-import OneProbAllAppointments from "../appointments/OneProbAllAppointments";
+import OneProbAllAppointments from "../../containers/OneProbAllAppointments";
 import OpenAppointments from "../appointments/OpenAppointments";
 import OneProblemInfo from "./OneProblemInfo";
 import OneProbComments from "../comments/OneProbComments";
@@ -42,7 +42,7 @@ class OneProblem extends React.Component {
       (problem) => problem.id === id
     );
     let problem = problemArray.find((problems) => problems);
-    console.log(problem);
+
     return (
       <div>
         <div className="row">

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default class Welcome extends React.Component {
   render() {
@@ -20,6 +21,15 @@ export default class Welcome extends React.Component {
             You will also be able to keep a to-do list of all the ongoing items
             and have an organized list of your future and past appointments.
           </p>
+          <Link to="/signin">
+            {" "}
+            <button className="btn">Sign In</button>
+          </Link>
+          <br />
+          <Link to="/Signup">
+            {" "}
+            <button className="btn">Sign Up</button>
+          </Link>
         </div>
       </div>
     );
