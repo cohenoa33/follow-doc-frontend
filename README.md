@@ -42,7 +42,7 @@ You will also be able to keep a to-do list of all the ongoing items and have an 
 
 - Users can view a single appointment, see location on a map and add to the calendar.
   <br><br/>
-  ![appointment]
+  ![appointment](https://media.giphy.com/media/kYWQ48VfiJMK1zRrJE/giphy.gif)
 
 ## Build
 
