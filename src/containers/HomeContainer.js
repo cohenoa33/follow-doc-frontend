@@ -2,9 +2,8 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { futureAppointments } from "../services/helpers";
+import { sortByAsc, futureAppointments } from "../services/helpers";
 
-// import Problems from "../components/problems/ProblemsList";
 import OpenComments from "../components/comments/OpenComments";
 import NewProblem from "../components/problems/NewProblem";
 import NewDoctor from "../components/doctors/NewDoctor";
@@ -19,13 +18,12 @@ class HomeContainer extends React.Component {
     }
   }
 
-  // renderProblems = () => <Problems />;
   renderComments = () => <OpenComments />;
   renderAddNewProblem = () => <NewProblem />;
   renderOpenAppointments = () => <OpenAppointments />;
   renderAllOpenAppointments = () => (
     <FullTableAppointments
-      appointments={futureAppointments(this.props.appointments)}
+      appointments={sortByAsc(futureAppointments(this.props.appointments))}
     />
   );
   renderNewAppointment = () => <NewAppointment />;

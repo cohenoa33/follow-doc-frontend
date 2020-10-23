@@ -35,10 +35,11 @@ class ProblemsContainer extends React.Component {
           dependents={this.props.dependents}
         />
         <br />
-
-        {this.filterByDependent().map((problem) => (
-          <ProblemCard problem={problem} key={problem.id} />
-        ))}
+        <div className="column-100-center">
+          {this.filterByDependent().map((problem) => (
+            <ProblemCard problem={problem} key={problem.id} />
+          ))}
+        </div>
       </div>
     );
   }

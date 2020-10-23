@@ -72,8 +72,8 @@ class App extends React.Component {
       this.props.setLogin(data);
 
       if (
-        this.props.history.location.pathname === "/signin" ||
-        this.props.history.location.pathname === "/signup"
+        this.props.history.location.pathname === "/signup" ||
+        this.props.history.location.pathname === "/signin"
       ) {
         this.props.history.push("/home");
       }
