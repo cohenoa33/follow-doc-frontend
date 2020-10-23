@@ -458,6 +458,17 @@ li::marker {
   outline: none;
   background: url(./images/back.png) no-repeat;
 }
+
+.back-btn-text {
+  align-items: top;
+}
+.back-btn-text-left {
+  margin-left: -20px;
+  color: #51d6cb;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
 .btn-more {
   margin-left: 30px;
   float: center;

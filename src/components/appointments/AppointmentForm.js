@@ -93,9 +93,14 @@ class AppointmentForm extends React.Component {
 
     return (
       <div>
+        <div className="back-btn-text">
+          <Link to={`/problems/${problem.id}`}>
+            <button className="back-btn">back</button>
+            <span className="back-btn-text-left">To {problem.name} Page</span>
+          </Link>
+        </div>
         <h1 className="h1-title">
-          {dependent} Appointment For
-          <Link to={`/problems/${problem.id}`}>{problem.name}</Link>
+          {dependent} Appointment For {problem.name}
           <button className="btn-10" onClick={this.handleEditButton}>
             Edit
           </button>

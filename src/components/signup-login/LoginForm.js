@@ -38,11 +38,13 @@ class LoginForm extends React.Component {
                 placeholder="Password"
               ></input>
               <br />
-              <button className="btn">Login</button>
+              <button className="btn">Sign In</button>
             </form>
             <div>
               <Link to="/signup" className="login-signup-link">
-                <button className="btn-blue">Create New Account</button>
+                <button className="btn-blue">
+                  Haven’t created an account yet?{" "}
+                </button>
               </Link>
             </div>
           </div>

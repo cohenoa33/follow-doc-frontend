@@ -40,9 +40,9 @@ const Navbar = ({ searchBar, user, handleLogout, newAppointment }) => {
               {" "}
               FollowDoc
             </NavLink>
-            <NavLink to="/login" className="navbar-list">
+            <NavLink to="/signin" className="navbar-list">
               {" "}
-              Login{" "}
+              Sign In{" "}
             </NavLink>
             <NavLink to="/signup" className="navbar-list">
               {" "}
