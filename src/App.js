@@ -87,7 +87,7 @@ class App extends React.Component {
     this.props.setLogout();
   };
 
-  renderWelcomePage = () => <Welcome />;
+  renderWelcomePage = () => <Welcome user={this.props.user} />;
   renderLogin = () => (
     <LoginForm
       handleLogin={this.handleLogin}
