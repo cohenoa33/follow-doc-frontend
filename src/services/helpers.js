@@ -58,3 +58,9 @@ export const filterDependent = (list, filter) => {
     return list.filter((item) => item.dependent.name === filter);
   }
 };
+
+export const authorized = (props) => {
+  if (!localStorage.token) {
+    props.push("/");
+  }
+};

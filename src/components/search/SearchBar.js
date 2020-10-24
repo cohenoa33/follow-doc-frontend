@@ -17,6 +17,7 @@ class SearchBar extends React.Component {
     this.props.searchValue(this.state.search);
     this.props.history.push("/search");
   };
+
   render() {
     return (
       <div className="search-bar">

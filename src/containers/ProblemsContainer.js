@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { filterDependent } from "../services/helpers";
+import { authorized, filterDependent } from "../services/helpers";
 
 import ProblemCard from "../components/problems/ProblemCard";
 import FilterDependents from "../components/search/FilterDependents";
@@ -12,14 +12,13 @@ class ProblemsContainer extends React.Component {
     filter: "all",
   };
   componentDidMount() {
-    if (!localStorage.token) {
-      this.props.history.push("/");
-    }
+    authorized(this.props.history);
   }
 
   handleFilter = (e) => {
     this.setState({ filter: e.target.value });
   };
+
   filterByDependent = () => {
     const problems = this.props.problems.sort(function (a, b) {
       return a.name === b.name ? 0 : a.name < b.name ? -1 : 1;

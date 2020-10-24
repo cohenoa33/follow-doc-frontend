@@ -1,14 +1,13 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { authorized } from "../../services/helpers";
 
 import Results from "./Results";
 
 class SearchResults extends React.Component {
   componentDidMount() {
-    if (!localStorage.token) {
-      this.props.history.push("/");
-    }
+    authorized(this.props.history);
   }
 
   renderResults = () => <Results />;
