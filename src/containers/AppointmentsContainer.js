@@ -1,13 +1,12 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { authorized } from "../services/helpers";
 
 import AllAppointments from "./AllAppointments";
 
 class AppointmentsContainer extends React.Component {
   componentDidMount() {
-    if (!localStorage.token) {
-      this.props.history.push("/");
-    }
+    authorized(this.props.history);
   }
 
   renderAllAppointments = () => (

@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { authorized } from "../../services/helpers";
 
 import NewAppointment from "../appointments/NewAppointment";
 import OneProbAllAppointments from "../../containers/OneProbAllAppointments";
@@ -14,9 +15,7 @@ import NotFound from "../../components/NotFound";
 
 class OneProblem extends React.Component {
   componentDidMount() {
-    if (!localStorage.token) {
-      this.props.history.push("/");
-    }
+    authorized(this.props.history);
   }
 
   renderAllAppointments = (id) => <OneProbAllAppointments id={id} />;

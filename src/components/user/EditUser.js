@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { editUser } from "../../actions";
 import { withRouter } from "react-router-dom";
+import { authorized } from "../../services/helpers";
 
 class EditUser extends React.Component {
   state = {
@@ -10,10 +11,9 @@ class EditUser extends React.Component {
     blockInput: false,
   };
   componentDidMount() {
-    if (!localStorage.token) {
-      this.props.history.push("/");
-    }
+    authorized(this.props.history);
   }
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };

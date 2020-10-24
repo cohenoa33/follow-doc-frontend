@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { sortByAsc, futureAppointments } from "../services/helpers";
+import { authorized, sortByAsc, futureAppointments } from "../services/helpers";
 
 import OpenComments from "../components/comments/OpenComments";
 import NewProblem from "../components/problems/NewProblem";
@@ -13,9 +13,7 @@ import NewAppointment from "../components/appointments/NewAppointment";
 
 class HomeContainer extends React.Component {
   componentDidMount() {
-    if (!localStorage.token) {
-      this.props.history.push("/");
-    }
+    authorized(this.props.history);
   }
 
   renderComments = () => <OpenComments />;
