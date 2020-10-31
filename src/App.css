@@ -391,7 +391,8 @@ li::marker {
   float: center;
   font-weight: bold;
 }
-.btn-width-80 {
+.btn-width-80,
+.uploadFiles {
   background-color: #51d6cb;
   color: #333;
   font-weight: bold;

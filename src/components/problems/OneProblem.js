@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { authorized } from "../../services/helpers";
+import { addFile } from "../../actions";
 
 import NewAppointment from "../appointments/NewAppointment";
 import OneProbAllAppointments from "../../containers/OneProbAllAppointments";
@@ -12,11 +13,33 @@ import AddNewComment from "../comments/AddNewComment";
 import UploadFiles from "../files/UploadFiles";
 import AllFilesList from "../files/AllFilesList";
 import NotFound from "../../components/NotFound";
+import Dropzone from "../files/Dropzone";
 
 class OneProblem extends React.Component {
   componentDidMount() {
     authorized(this.props.history);
   }
+
+  state = {
+    uploaded: false,
+    uploading: false,
+  };
+
+  uploadFile = (formData) => {
+    this.setState({ uploading: true });
+    this.props.addFile(formData).then((data) => {
+      if (!data) {
+        this.setState({ uploading: false });
+      }
+    });
+  };
+
+  refreshState = () => {
+    this.setState({
+      uploaded: false,
+      uploading: false,
+    });
+  };
 
   renderAllAppointments = (id) => <OneProbAllAppointments id={id} />;
   renderOpenAppointments = (id) => <OpenAppointments id={id} />;
@@ -34,6 +57,7 @@ class OneProblem extends React.Component {
   renderOneProbComments = () => <OneProbComments />;
   renderUploadFiles = (id) => <UploadFiles id={id} />;
   renderFiles = (id) => <AllFilesList id={id} />;
+  renderDropZone = (id) => <Dropzone id={id} uploadFile={this.uploadFile} />;
 
   render() {
     const id = this.props.id;
@@ -50,7 +74,11 @@ class OneProblem extends React.Component {
           </h1>
           {this.renderOneProblemInfo(problemArray, id)}
           <div className="problem-container-buttons">
-            {this.renderUploadFiles(id)}
+            {this.state.uploading ? (
+              <p className="success-message">Uploading</p>
+            ) : null}
+            {this.renderDropZone(id)}
+            {/* {this.renderUploadFiles(id)} */}
             {this.renderNewAppointment(id)}
             {this.renderAddNewComment(id)}
           </div>
@@ -73,5 +101,13 @@ const mapStateToProps = (state) => {
     problems: state.problems,
   };
 };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addFile: (problem) => dispatch(addFile(problem)),
+  };
+};
 
-export default connect(mapStateToProps)(withRouter(OneProblem));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(OneProblem));
