@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { addFile } from "../../actions";
-import Dropzone from "react-dropzone";
 
 class UploadFiles extends React.Component {
   state = {

@@ -4,17 +4,21 @@ import { connect } from "react-redux";
 import { authorized } from "../../services/helpers";
 import { addFile } from "../../actions";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import NewAppointment from "../appointments/NewAppointment";
 import OneProbAllAppointments from "../../containers/OneProbAllAppointments";
 import OpenAppointments from "../appointments/OpenAppointments";
 import OneProblemInfo from "./OneProblemInfo";
 import OneProbComments from "../comments/OneProbComments";
 import AddNewComment from "../comments/AddNewComment";
-import UploadFiles from "../files/UploadFiles";
+// import UploadFiles from "../files/UploadFiles";
 import AllFilesList from "../files/AllFilesList";
 import NotFound from "../../components/NotFound";
 import Dropzone from "../files/Dropzone";
 
+toast.configure();
 class OneProblem extends React.Component {
   componentDidMount() {
     authorized(this.props.history);
@@ -23,11 +27,23 @@ class OneProblem extends React.Component {
   state = {
     uploading: false,
   };
+  notify = (success) => {
+    if (success) {
+      toast("File uploaded Successfully", { autoClose: false });
+    } else {
+      toast.error("Failed to upload File, Please try again", {
+        autoClose: false,
+      });
+    }
+  };
 
   uploadFile = (formData) => {
     this.setState({ uploading: true });
     this.props.addFile(formData).then((data) => {
       if (!data) {
+        this.setState({ uploading: false });
+        this.notify("sucess");
+      } else {
         this.setState({ uploading: false });
       }
     });
@@ -47,7 +63,7 @@ class OneProblem extends React.Component {
   renderNewAppointment = (id) => <NewAppointment id={id} />;
   renderAddNewComment = (id) => <AddNewComment id={id} />;
   renderOneProbComments = () => <OneProbComments />;
-  renderUploadFiles = (id) => <UploadFiles id={id} />;
+  // renderUploadFiles = (id) => <UploadFiles id={id} />;
   renderFiles = (id) => <AllFilesList id={id} />;
   renderDropZone = (id) => <Dropzone id={id} uploadFile={this.uploadFile} />;
 

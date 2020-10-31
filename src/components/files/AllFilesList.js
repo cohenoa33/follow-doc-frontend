@@ -18,7 +18,7 @@ class AllFilesList extends React.Component {
         <div className="row-no-line">
           {problem
             ? problem.file.map((file) => (
-                <div className="files-card">
+                <div className="files-card" key={file.path}>
                   <a
                     href={`http://localhost:3000/${file.path}`}
                     target="_blank"

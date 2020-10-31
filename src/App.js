@@ -189,6 +189,7 @@ class App extends React.Component {
           <Route path="/search" component={this.renderSearchResults} />
           <Route path="/" component={this.renderWelcomePage} />
         </Switch>
+        {/* <NotificationContainer /> */}
       </div>
     );
   }

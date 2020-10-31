@@ -2,9 +2,6 @@ import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { addFile } from "../../actions";
 import { connect } from "react-redux";
-{
-  /* accept="image/png, image/gif, application/doc, application/pdf, application/docx " */
-}
 
 const Dropzone = (props) => {
   const maxSize = 1048576;

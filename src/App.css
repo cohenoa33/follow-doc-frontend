@@ -353,6 +353,15 @@ li::marker {
   font-size: 14px;
   word-break: break-word;
 }
+
+.Toastify__toast-body {
+  color: #333;
+}
+
+.Toastify__toast--default {
+  color: #5186d6;
+  font-weight: bold;
+}
 .btn-10 {
   /* login page */
   background-color: #51d6cb;
