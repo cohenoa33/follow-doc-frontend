@@ -21,7 +21,6 @@ class OneProblem extends React.Component {
   }
 
   state = {
-    uploaded: false,
     uploading: false,
   };
 
@@ -31,13 +30,6 @@ class OneProblem extends React.Component {
       if (!data) {
         this.setState({ uploading: false });
       }
-    });
-  };
-
-  refreshState = () => {
-    this.setState({
-      uploaded: false,
-      uploading: false,
     });
   };
 
@@ -91,6 +83,8 @@ class OneProblem extends React.Component {
         </div>
         <div>{this.renderAllAppointments(id)}</div>
         <div>{this.renderFiles(problemArray)}</div>
+        <br></br>
+        <div className="row-no-line"></div>
       </div>
     );
   }

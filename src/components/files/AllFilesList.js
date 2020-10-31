@@ -15,22 +15,34 @@ class AllFilesList extends React.Component {
     return (
       <div>
         <h1 className="h1-title"> Files: </h1>
-        <div className="one-problem-comments">
+        <div className="row-no-line">
           {problem
             ? problem.file.map((file) => (
-                <li className="files-list" key={file.name}>
+                <div className="files-card">
                   <a
                     href={`http://localhost:3000/${file.path}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     {file.name}
+
+                    <img
+                      width="100px"
+                      src={`http://localhost:3000/${file.path}.preview`}
+                      alt="file"
+                      style={{
+                        margin: 10,
+                        width: 200,
+                        height: 100,
+                        border: "1px solid grey",
+                      }}
+                    />
                   </a>
                   {renderDeletePopup(
                     () => this.handleDeleteFile(problem, file),
-                    "btn-delete"
+                    "btn-delete-center"
                   )}
-                </li>
+                </div>
               ))
             : null}
         </div>
