@@ -87,7 +87,7 @@ class App extends React.Component {
     this.props.setLogout();
   };
 
-  renderWelcomePage = () => <Welcome />;
+  renderWelcomePage = () => <Welcome user={this.props.user} />;
   renderLogin = () => (
     <LoginForm
       handleLogin={this.handleLogin}
@@ -189,6 +189,7 @@ class App extends React.Component {
           <Route path="/search" component={this.renderSearchResults} />
           <Route path="/" component={this.renderWelcomePage} />
         </Switch>
+        {/* <NotificationContainer /> */}
       </div>
     );
   }

@@ -12,6 +12,7 @@ class UploadFiles extends React.Component {
   };
   handleFileChange = (e) => {
     let file = e.target.files[0];
+    console.log(file);
     if (file) {
       this.setState({ newFile: file });
     }
