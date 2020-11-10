@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { capitalize } from "../../services/helpers";
 
 export default class SignupForm extends React.Component {
   state = {
@@ -10,7 +11,11 @@ export default class SignupForm extends React.Component {
   };
 
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    let value = e.target.value;
+    if (e.target.name === "username") {
+      value = capitalize(e.target.value);
+    }
+    this.setState({ [e.target.name]: value });
   };
 
   render() {

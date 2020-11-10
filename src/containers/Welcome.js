@@ -23,7 +23,7 @@ const Welcome = ({ user }) => {
         </p>
 
         <br />
-        {!user.jwt ? (
+        {!user.user ? (
           <div>
             <Link to="/signin">
               {" "}

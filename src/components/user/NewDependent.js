@@ -4,6 +4,7 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { addDependent } from "../../actions";
 import { withRouter } from "react-router-dom";
+import { capitalize } from "../../services/helpers";
 
 class NewDependent extends React.Component {
   state = {
@@ -12,7 +13,8 @@ class NewDependent extends React.Component {
   };
 
   handleChange = (e) => {
-    this.setState({ newDependent: e.target.value });
+    let value = capitalize(e.target.value);
+    this.setState({ newDependent: value });
   };
 
   handleSubmit = (e) => {

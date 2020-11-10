@@ -9,7 +9,7 @@ class DependentsList extends React.Component {
 
   render() {
     const dependents = this.props.dependents;
-
+    console.log(dependents);
     return (
       <div>
         <div className="column-100">
