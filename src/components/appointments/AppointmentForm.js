@@ -92,7 +92,7 @@ class AppointmentForm extends React.Component {
     };
 
     return (
-      <div>
+      <div className="column-100-block">
         <div className="back-btn-text">
           <Link to={`/problems/${problem.id}`}>
             <button className="back-btn">back</button>
@@ -106,6 +106,7 @@ class AppointmentForm extends React.Component {
           </button>
           {renderDeletePopup(this.handleDelete, "btn-10")}
         </h1>
+
         {disabled ? (
           <div className="column-50-text-left">
             <table>

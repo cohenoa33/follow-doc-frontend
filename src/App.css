@@ -71,6 +71,10 @@ form,
 .column-100 {
   float: center;
 }
+.column-100-block {
+  float: center;
+  display: block;
+}
 .column-100-center {
   margin: 50px 50px;
   margin-top: 0px;
@@ -93,7 +97,7 @@ form,
   text-align-last: center;
 }
 .column-50-text-left {
-  float: left;
+  display: inline-block;
   width: 50%;
   list-style-type: none;
   align-items: left;
@@ -646,6 +650,18 @@ li::marker {
   height: 45px;
 }
 
+.footer {
+  /* width: 100%; */
+  bottom: 0;
+  margin-top: 200px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: white;
+  background-color: #333;
+  text-align: center;
+  display: block;
+}
+
 a {
   color: black;
   text-decoration: none;
@@ -657,12 +673,6 @@ body {
   padding-top: 140px;
 }
 
-footer {
-  /* width: 100%; */
-  margin-top: 200px;
-  text-align: center;
-  font-size: 0.75rem;
-}
 * {
   outline: none;
   padding: 6px;

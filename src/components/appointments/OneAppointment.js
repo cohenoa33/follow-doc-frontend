@@ -15,7 +15,7 @@ class OneAppointment extends React.Component {
       (appointment) => appointment.id === +id
     );
     return (
-      <div>
+      <div className="column-100-block">
         {appointment.map((appointment) => (
           <AppointmentForm appointment={appointment} key={id} />
         ))}
