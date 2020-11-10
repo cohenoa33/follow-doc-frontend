@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { capitalize } from "../../services/helpers";
 
 class LoginForm extends React.Component {
   state = {
@@ -7,8 +8,12 @@ class LoginForm extends React.Component {
     password: "",
   };
 
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+  handleChange = (e) => {
+    let value = e.target.value;
+    if (e.target.name === "username") {
+      value = capitalize(e.target.value);
+    }
+    this.setState({ [e.target.name]: value });
   };
 
   render() {
