@@ -23,6 +23,7 @@ import ProblemsContainer from "./containers/ProblemsContainer";
 import ProfilePage from "./containers/ProfilePage";
 import AppointmentsContainer from "./containers/AppointmentsContainer";
 import ProblemAppointments from "./components/appointments/ProblemAppointments";
+import Footer from "./components/Footer";
 
 class App extends React.Component {
   handleLoginSubmit = (e, user) => {
@@ -190,6 +191,8 @@ class App extends React.Component {
           <Route path="/" component={this.renderWelcomePage} />
         </Switch>
         {/* <NotificationContainer /> */}
+
+        <Footer />
       </div>
     );
   }
