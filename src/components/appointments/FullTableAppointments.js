@@ -46,7 +46,9 @@ const FullTableAppointments = ({ appointments }) => {
             </table>
           </div>
         </div>
-      ) : null}
+      ) : (
+        "No Appointments Scheduled"
+      )}
     </div>
   );
 };

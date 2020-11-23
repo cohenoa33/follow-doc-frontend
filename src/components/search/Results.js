@@ -64,7 +64,7 @@ class Results extends React.Component {
   };
 
   render() {
-    console.log(this.props.search);
+    // console.log(this.props.search);
     return (
       <div className="search-results">
         {this.problemsList().length ||

@@ -98,7 +98,7 @@ class OneProblem extends React.Component {
           <div> {this.renderOpenAppointments(id)} </div>
         </div>
         <div>{this.renderAllAppointments(id)}</div>
-        <div>{this.renderFiles(problemArray)}</div>
+        <div>{this.renderFiles(problemArray, id)}</div>
         <br></br>
         <div className="row-no-line"></div>
       </div>
