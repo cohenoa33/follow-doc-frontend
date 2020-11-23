@@ -34,6 +34,20 @@ class Results extends React.Component {
       return searchResult;
     }
   };
+  filesList = () => {
+    let list = [];
+    if (this.props.search.length > 0) {
+      let value = this.props.search.toLowerCase();
+      let searchResult = this.props.problems.filter((problem) =>
+        problem.file.filter((file) => {
+          if (file.name.toLowerCase().includes(value)) {
+            list.push(problem);
+          }
+        })
+      );
+      return list;
+    }
+  };
 
   appointmentsList = () => {
     if (this.props.search.length > 0) {
@@ -50,10 +64,12 @@ class Results extends React.Component {
   };
 
   render() {
+    console.log(this.props.search);
     return (
       <div className="search-results">
         {this.problemsList().length ||
         this.appointmentsList().length ||
+        this.filesList().length ||
         this.commentsList().length > 0 ? (
           <div>
             {this.problemsList().map((problem) => (
@@ -94,6 +110,26 @@ class Results extends React.Component {
                     <span className="status-open">Archived</span>
                   </Link>{" "}
                 </li>
+              )
+            )}
+            {this.filesList().map((problem) =>
+              problem.file.map((file) =>
+                file.name.toLowerCase().includes(this.props.search) ? (
+                  <li key={file.name}>
+                    <a
+                      href={`http://localhost:3000/${file.path}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      File: {file.name}
+                    </a>
+                    Belongs to:
+                    <Link key={problem.id} to={`/problems/${problem.id}`}>
+                      {problem.name}
+                      <br />
+                    </Link>
+                  </li>
+                ) : null
               )
             )}
           </div>
