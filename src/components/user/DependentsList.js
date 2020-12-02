@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { sortByName, omitUserFromDependentsList } from "../../services/helpers";
 import EditDependents from "./EditDependents";
 
 import "reactjs-popup/dist/index.css";
@@ -14,12 +15,15 @@ class DependentsList extends React.Component {
       <div>
         <div className="column-100">
           <div>
-            <h1 className="h1-title">Your Dependents </h1>
+            <h1 className="h1-title">Dependents List</h1>
           </div>
 
           <table className="dependents-table">
             <tbody>
-              {dependents.map((dependent) => (
+              {omitUserFromDependentsList(
+                this.props.user,
+                sortByName(dependents)
+              ).map((dependent) => (
                 <tr className="dependents-table-td" key={dependent.id}>
                   <td className="dependents-table-td"> {dependent.name}</td>
                   <td>
@@ -38,6 +42,7 @@ class DependentsList extends React.Component {
 const mapStateToProps = (state) => {
   return {
     dependents: state.dependents,
+    user: state.user,
   };
 };
 

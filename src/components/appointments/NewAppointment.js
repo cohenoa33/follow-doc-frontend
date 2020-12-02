@@ -4,6 +4,7 @@ import Popup from "reactjs-popup";
 import { withRouter } from "react-router-dom";
 import { addAppointment } from "../../actions";
 import NewDoctor from "../doctors/NewDoctor";
+import NewProblem from "../problems/NewProblem";
 
 class NewAppointment extends React.Component {
   state = {
@@ -81,6 +82,7 @@ class NewAppointment extends React.Component {
   };
 
   renderAddNewDoctor = (className) => <NewDoctor className={className} />;
+  renderAddNewProblem = (className) => <NewProblem className={className} />;
 
   render() {
     const btnClassName = this.props.btnName
@@ -111,7 +113,12 @@ class NewAppointment extends React.Component {
                 ) : (
                   <div>
                     <div className="form-title"> New Appointment</div>
-                    {this.renderAddNewDoctor("btn-render-inside-modal")}
+                    <div>
+                      {this.renderAddNewDoctor("btn-render-inside-modal")}
+                    </div>
+                    <div>
+                      {this.renderAddNewProblem("btn-render-inside-modal-wide")}
+                    </div>
                   </div>
                 )}
                 <form

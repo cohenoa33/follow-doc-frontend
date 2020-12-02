@@ -56,7 +56,9 @@ class NewProblem extends React.Component {
   render() {
     return (
       <Popup
-        trigger={<button className="btn-width-80"> Add New Problem </button>}
+        trigger={
+          <button className={this.props.className}> Add New Problem </button>
+        }
         modal
         nested
         closeOnDocumentClick={false}
@@ -85,7 +87,7 @@ class NewProblem extends React.Component {
               <select name="dependent_id" onChange={this.handleChange}>
                 <option name="dependent_id" value="0">
                   {" "}
-                  Please Choose Dependent From List{" "}
+                  Problem for{" "}
                 </option>
                 {this.props.dependents.map((dependant) => (
                   <option

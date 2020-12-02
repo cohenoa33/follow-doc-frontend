@@ -68,3 +68,12 @@ export const authorized = (props) => {
 export const capitalize = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
+export const sortByName = (array) => {
+  return array.sort(function (a, b) {
+    return a.name === b.name ? 0 : a.name < b.name ? -1 : 1;
+  });
+};
+
+export const omitUserFromDependentsList = (user, list) => {
+  return list.filter((dependent) => dependent.name !== user.user.username);
+};

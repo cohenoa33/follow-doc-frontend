@@ -11,14 +11,22 @@ class ProfilePAge extends React.Component {
   renderEditUser = () => <EditUser />;
 
   render() {
+    console.log(this.props.user.user);
     return (
       <div>
-        <div className="column-50">
-          {this.renderDependentsList()}
-          {this.renderAddNewDependent("btn")}
-        </div>
+        {this.props.user.user ? (
+          <div>
+            <h1 className="h1-title">
+              {this.props.user.user.username} Profile Page
+            </h1>
+          </div>
+        ) : null}
+        <div className="column-50">{this.renderDependentsList()}</div>
 
-        <div className="column-50">{this.renderEditUser()}</div>
+        <div className="column-50">
+          {this.renderEditUser()}
+          <div>{this.renderAddNewDependent("btn-width-80")}</div>
+        </div>
       </div>
     );
   }

@@ -17,7 +17,7 @@ class HomeContainer extends React.Component {
   }
 
   renderComments = () => <OpenComments />;
-  renderAddNewProblem = () => <NewProblem />;
+  renderAddNewProblem = (className) => <NewProblem className={className} />;
   renderOpenAppointments = () => <OpenAppointments />;
   renderAllOpenAppointments = () => (
     <FullTableAppointments
@@ -33,7 +33,7 @@ class HomeContainer extends React.Component {
         <div className="row">
           <div className="column-30">{this.renderOpenAppointments()} </div>
           <div className="column-30">
-            <div> {this.renderAddNewProblem()}</div>
+            <div> {this.renderAddNewProblem("btn-width-80")}</div>
             <div> {this.renderNewAppointment()}</div>
             <div> {this.renderAddNewDoctor("btn-width-80")}</div>
           </div>
