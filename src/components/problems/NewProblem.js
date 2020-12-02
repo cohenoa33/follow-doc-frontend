@@ -85,7 +85,7 @@ class NewProblem extends React.Component {
               <select name="dependent_id" onChange={this.handleChange}>
                 <option name="dependent_id" value="0">
                   {" "}
-                  Please Choose Dependent From List{" "}
+                  Problem for{" "}
                 </option>
                 {this.props.dependents.map((dependant) => (
                   <option

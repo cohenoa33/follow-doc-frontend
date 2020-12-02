@@ -173,7 +173,7 @@ form,
   font-weight: bold;
 }
 .dependents-table-td td {
-  font-size: 14px;
+  /* font-size: 14px; */
   font-weight: normal;
   border-collapse: collapse;
 }
@@ -292,6 +292,16 @@ textarea {
   cursor: pointer;
   border: none;
   font-size: 16px;
+  color: transparent;
+  background: none;
+  outline: none;
+  background: url(./images/edit.png) no-repeat;
+}
+.btn-edit-small {
+  padding-right: 40px;
+  cursor: pointer;
+  border: none;
+  font-size: 12px;
   color: transparent;
   background: none;
   outline: none;
