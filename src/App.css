@@ -116,6 +116,10 @@ form,
   width: 18%;
   font-size: 12px;
 }
+.btn-render-inside-modal-wide {
+  width: 35%;
+  font-size: 12px;
+}
 .modal-popup {
   text-align: center;
   overflow: auto;

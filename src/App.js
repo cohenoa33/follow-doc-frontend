@@ -115,7 +115,7 @@ class App extends React.Component {
       newAppointment={this.renderNewAppointment}
     />
   );
-  renderNewProblem = () => <NewProblem />;
+  renderNewProblem = (className) => <NewProblem className={className} />;
   renderAllProblem = () => <ProblemsContainer />;
   renderAllAppointments = () => (
     <AppointmentsContainer appointments={this.props.appointments} />
@@ -186,7 +186,10 @@ class App extends React.Component {
           <Route path="/signin" component={this.renderLogin} />
           <Route path="/signup" component={this.renderSignup} />
           <Route path="/home" component={this.renderHome} />
-          <Route path="/newproblem" component={this.renderNewProblem} />
+          <Route
+            path="/newproblem"
+            component={this.renderNewProblem("btn-width-80")}
+          />
           <Route path="/search" component={this.renderSearchResults} />
           <Route path="/" component={this.renderWelcomePage} />
         </Switch>
