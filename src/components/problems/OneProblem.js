@@ -40,6 +40,7 @@ class OneProblem extends React.Component {
   uploadFile = (formData) => {
     this.setState({ uploading: true });
     this.props.addFile(formData).then((data) => {
+      debugger;
       if (!data) {
         this.setState({ uploading: false });
         this.notify("sucess");

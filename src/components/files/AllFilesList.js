@@ -3,6 +3,8 @@ import { deleteFile } from "../../actions";
 import { connect } from "react-redux";
 import { renderDeletePopup } from "../../services/helpers";
 
+const URL = `https://followdoc-api.herokuapp.com/`;
+
 class AllFilesList extends React.Component {
   handleDeleteFile = (problem, file) => {
     const problem_id = problem.id;
@@ -22,7 +24,7 @@ class AllFilesList extends React.Component {
                 <div className="files-card" key={file.path}>
                   <a
                     id="file-link"
-                    href={`http://localhost:3000/${file.path}`}
+                    href={`${URL}${file.path}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -30,7 +32,7 @@ class AllFilesList extends React.Component {
 
                     <img
                       id="file-display"
-                      src={`http://localhost:3000/${file.path}.preview`}
+                      src={`${URL}${file.path}.preview`}
                       alt="file"
                     />
                   </a>

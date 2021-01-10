@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+const URL = `https://followdoc-api.herokuapp.com/`;
 
 class Results extends React.Component {
   problemsList = () => {
@@ -117,7 +118,7 @@ class Results extends React.Component {
                 file.name.toLowerCase().includes(this.props.search) ? (
                   <li key={file.name}>
                     <a
-                      href={`http://localhost:3000/${file.path}`}
+                      href={`${URL}${file.path}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
