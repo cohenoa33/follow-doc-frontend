@@ -38,7 +38,7 @@ class Results extends React.Component {
     let list = [];
     if (this.props.search.length > 0) {
       let value = this.props.search.toLowerCase();
-      let searchResult = this.props.problems.filter((problem) =>
+      this.props.problems.filter((problem) =>
         problem.file.filter((file) => {
           if (file.name.toLowerCase().includes(value)) {
             list.push(problem);

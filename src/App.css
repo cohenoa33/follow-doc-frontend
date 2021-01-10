@@ -203,7 +203,9 @@ form,
 .files-list {
   list-style: url(./images/file-icon.png);
   text-align: left;
+  display: block;
 }
+
 .search-results li {
   text-decoration: none;
   text-align: left;
@@ -216,6 +218,7 @@ form,
   height: 500px;
   box-sizing: border-box;
   border: none;
+  z-index: -1;
 }
 .form-grid-newProblem {
   border: 3px solid #f1f1f1;
@@ -556,6 +559,16 @@ li::marker {
   text-align: center;
   width: 15rem;
   display: inline-grid;
+}
+
+#file-display,
+#file-link {
+  display: block;
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto;
+  white-space: wrap;
+  overflow: hidden;
 }
 .problem-card {
   text-align: center;

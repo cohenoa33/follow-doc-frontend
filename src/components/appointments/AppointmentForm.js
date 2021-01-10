@@ -3,7 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import GoogleApiWrapper from "../../containers/MapContainer";
 import { deleteAppointment, editAppointment } from "../../actions";
-import AddToCalendar from "./AddToCalendar";
+import AddCalendar from "./AddCalendar";
 import { renderDeletePopup, convertTime } from "../../services/helpers";
 
 import moment from "moment";
@@ -146,7 +146,7 @@ class AppointmentForm extends React.Component {
               </tbody>
             </table>
             <div className="add-to-calendar">
-              <AddToCalendar event={event} />
+              <AddCalendar event={event} />
             </div>
           </div>
         ) : (

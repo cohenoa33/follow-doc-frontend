@@ -2,7 +2,6 @@ import React from "react";
 import { deleteFile } from "../../actions";
 import { connect } from "react-redux";
 import { renderDeletePopup } from "../../services/helpers";
-import Dropzone from "../files/Dropzone";
 
 class AllFilesList extends React.Component {
   handleDeleteFile = (problem, file) => {
@@ -10,20 +9,19 @@ class AllFilesList extends React.Component {
     const index = problem.file.findIndex((f) => f === file);
     this.props.deleteFile(problem_id, index);
   };
-  renderDropZone = (id) => <Dropzone id={id} uploadFile={this.uploadFile} />;
-  // need to add uploadFile function
+
   render() {
     let problem = this.props.id[0];
-    console.log(this.props);
+
     return (
       <div>
-        <h1 className="h1-title"> Files: </h1>
-        {this.renderDropZone(problem)}
+        <h1 className="h1-title"> </h1>
         <div className="row-no-line">
           {problem
             ? problem.file.map((file) => (
                 <div className="files-card" key={file.path}>
                   <a
+                    id="file-link"
                     href={`http://localhost:3000/${file.path}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -31,15 +29,9 @@ class AllFilesList extends React.Component {
                     {file.name}
 
                     <img
-                      width="100px"
+                      id="file-display"
                       src={`http://localhost:3000/${file.path}.preview`}
                       alt="file"
-                      style={{
-                        margin: 10,
-                        width: 200,
-                        height: 100,
-                        border: "1px solid grey",
-                      }}
                     />
                   </a>
                   {renderDeletePopup(

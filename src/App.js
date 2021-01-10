@@ -51,15 +51,15 @@ class App extends React.Component {
     });
   };
   componentDidMount() {
-    api.doctors.allDoctors().then((data) => {
-      if (!data.error) {
-        this.props.setDoctors(data);
-      }
-    });
     if (localStorage.token) {
       api.auth.reauth().then((data) => {
         if (!data.error) {
           this.props.setLogin(data);
+          api.doctors.allDoctors().then((data) => {
+            if (!data.error) {
+              this.props.setDoctors(data);
+            }
+          });
         } else {
           alert("Please Login");
         }
@@ -188,7 +188,7 @@ class App extends React.Component {
           <Route path="/home" component={this.renderHome} />
           <Route
             path="/newproblem"
-            component={this.renderNewProblem("btn-width-80")}
+            component={() => this.renderNewProblem("btn-width-80")}
           />
           <Route path="/search" component={this.renderSearchResults} />
           <Route path="/" component={this.renderWelcomePage} />

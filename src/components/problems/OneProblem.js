@@ -64,8 +64,8 @@ class OneProblem extends React.Component {
   renderAddNewComment = (id) => <AddNewComment id={id} />;
   renderOneProbComments = () => <OneProbComments />;
   // renderUploadFiles = (id) => <UploadFiles id={id} />;
-  renderFiles = (id) => <AllFilesList id={id} />;
   renderDropZone = (id) => <Dropzone id={id} uploadFile={this.uploadFile} />;
+  renderFiles = (id) => <AllFilesList id={id} />;
 
   render() {
     const id = this.props.id;

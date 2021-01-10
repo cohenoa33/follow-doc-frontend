@@ -3,7 +3,7 @@ import { useDropzone } from "react-dropzone";
 import { addFile } from "../../actions";
 import { connect } from "react-redux";
 
-const Dropzone = (props) => {
+const Dropzone = ({ id, uploadFile }) => {
   const maxSize = 1048576;
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -11,9 +11,9 @@ const Dropzone = (props) => {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("fileName", file);
-      formData.append("problem_id", props.id);
+      formData.append("problem_id", id);
 
-      props.uploadFile(formData);
+      uploadFile(formData);
     });
   }, []);
 
