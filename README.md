@@ -44,7 +44,7 @@ You will also be able to keep a to-do list of all the ongoing items and have an 
   <br><br/>
   ![appointment](https://media.giphy.com/media/kYWQ48VfiJMK1zRrJE/giphy.gif)
   
-## [Demo](http://follow-doc.surge.sh/)
+## [Live App](http://follow-doc.surge.sh/)
 
 ## Build
 
@@ -56,4 +56,4 @@ You will also be able to keep a to-do list of all the ongoing items and have an 
 
 ## Backend
 
-[Github](https://github.com/cohenoa33/follow-doc-backend)
+[GitHub](https://github.com/cohenoa33/follow-doc-backend)
