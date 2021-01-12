@@ -56,4 +56,4 @@ You will also be able to keep a to-do list of all the ongoing items and have an 
 
 ## Backend
 
-To view the backend, [click here](https://github.com/cohenoa33/follow-doc-backend)
+[GitHub repo](https://github.com/cohenoa33/follow-doc-backend)
