@@ -48,7 +48,7 @@ class LoginForm extends React.Component {
             <div>
               <Link to="/signup" className="login-signup-link">
                 <button className="btn-blue">
-                  Haven’t created an account yet?{" "}
+                  Don't have an account? Sign Up{" "}
                 </button>
               </Link>
             </div>

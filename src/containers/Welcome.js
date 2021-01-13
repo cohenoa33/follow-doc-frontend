@@ -6,7 +6,6 @@ const Welcome = ({ user }) => {
     <div>
       <div className="home-page">
         <h1> Welcome to FollowDoc</h1>
-
         <br />
         <h3>
           {" "}
@@ -21,7 +20,6 @@ const Welcome = ({ user }) => {
           You will also be able to keep a to-do list of all the ongoing items
           and have an organized list of your future and past appointments.
         </p>
-
         <br />
         {!user.user ? (
           <div>
@@ -37,6 +35,9 @@ const Welcome = ({ user }) => {
           </div>
         ) : null}
         <br />
+        For checking FollowDoc without signing up:
+        <br /> Username: Bob
+        <br /> Password: 123
       </div>
       <br />
     </div>

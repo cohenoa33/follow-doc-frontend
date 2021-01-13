@@ -64,7 +64,9 @@ export default class SignupForm extends React.Component {
             </form>
             <div>
               <Link to="/signin">
-                <button className="btn-blue">Already Register? </button>
+                <button className="btn-blue">
+                  Already have an account? Log In
+                </button>
               </Link>
             </div>
           </div>
