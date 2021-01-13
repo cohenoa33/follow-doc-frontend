@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 
 import NewDependent from "../components/user/NewDependent";
 import DependentsList from "../components/user/DependentsList";
-import EditUser from "../components/user/EditUser";
+// import EditUser from "../components/user/EditUser";
 
 class ProfilePAge extends React.Component {
   renderAddNewDependent = (className) => <NewDependent className={className} />;
   renderDependentsList = () => <DependentsList />;
-  renderEditUser = () => <EditUser />;
+  // renderEditUser = () => <EditUser />;
 
   render() {
     console.log(this.props.user.user);
@@ -24,7 +24,8 @@ class ProfilePAge extends React.Component {
         <div className="column-50">{this.renderDependentsList()}</div>
 
         <div className="column-50">
-          {this.renderEditUser()}
+          <br />
+          {/* {this.renderEditUser()} */}
           <div>{this.renderAddNewDependent("btn-width-80")}</div>
         </div>
       </div>
