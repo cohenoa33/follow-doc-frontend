@@ -3,7 +3,8 @@ import { deleteFile } from "../../actions";
 import { connect } from "react-redux";
 import { renderDeletePopup } from "../../services/helpers";
 
-const URL = `https://followdoc-api.herokuapp.com/`;
+// const URL = `https://followdoc-api.herokuapp.com/`;
+const URL = `http://localhost:3000/`;
 
 class AllFilesList extends React.Component {
   handleDeleteFile = (problem, file) => {

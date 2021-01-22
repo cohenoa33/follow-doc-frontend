@@ -2,7 +2,8 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-const URL = `https://followdoc-api.herokuapp.com/`;
+// const URL = `https://followdoc-api.herokuapp.com/`;
+const URL = `http://localhost:3000/`;
 
 class Results extends React.Component {
   problemsList = () => {
