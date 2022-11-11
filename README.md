@@ -44,7 +44,6 @@ You will also be able to keep a to-do list of all the ongoing items and have an 
   <br><br/>
   ![appointment](https://media.giphy.com/media/kYWQ48VfiJMK1zRrJE/giphy.gif)
   
-## [Live App](http://follow-doc.surge.sh/)
 
 ## Build
 
